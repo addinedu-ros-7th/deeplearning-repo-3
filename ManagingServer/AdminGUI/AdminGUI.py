@@ -10,6 +10,10 @@ from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot
 import DBConnector
 from PoseDetector import VideoThread
+from TcpServer import TcpServerThread
+from logger_config import setup_logger
+
+logger = setup_logger()
 
 # UI 파일을 로드하여 from_class로 정의
 from_class = uic.loadUiType("AdminGUI.ui")[0]
@@ -33,6 +37,7 @@ class WindowClass(QMainWindow, from_class):
 
         # 비디오 스레드 시작
         self.thread = VideoThread()
+        
         # 스레드에서 전달받은 신호를 슬롯에 연결
         self.thread.change_pixmap_signal.connect(self.update_image)
         self.thread.person_entered.connect(self.person_entered)
@@ -40,6 +45,17 @@ class WindowClass(QMainWindow, from_class):
         self.thread.person_stopped_posing.connect(self.person_stopped_posing)
         self.thread.person_exited.connect(self.person_exited)
         self.thread.start()  # 스레드 실행
+
+        # tcp thread 시작
+        self.tcp_server_thread = TcpServerThread(
+            host = "0.0.0.0",
+            port = 8080,
+        )
+
+        self.tcp_server_thread.start()
+        logger.info("서버가 시작되었습니다.")
+
+
 
     # OpenCV 이미지를 QPixmap으로 변환하여 라벨 크기에 맞게 조정하는 함수
     def convert_cv_qt(self, cv_img, label_width, label_height):
@@ -73,33 +89,37 @@ class WindowClass(QMainWindow, from_class):
         if track_id not in self.person_states:
             self.person_states[track_id] = Person(track_id)
             self.person_states[track_id].detected = True
-            print(f"Person {track_id} entered")
+            # print(f"Person {track_id} entered")
 
     @pyqtSlot(int)
     def person_posed(self, track_id):
         """사람이 포즈를 취했을 때 호출"""
         if track_id in self.person_states:
             self.person_states[track_id].posed = True
-            print(f"Person {track_id} posed")
+            # print(f"Person {track_id} posed")
 
     @pyqtSlot(int)
     def person_stopped_posing(self, track_id):
         """사람이 포즈를 멈췄을 때 호출"""
         if track_id in self.person_states:
             self.person_states[track_id].posed = False
-            print(f"Person {track_id} stopped posing")
+            # print(f"Person {track_id} stopped posing")
 
     @pyqtSlot(int)
     def person_exited(self, track_id):
         """사람이 나갔을 때 호출"""
         if track_id in self.person_states:
             del self.person_states[track_id]
-            print(f"Person {track_id} exited")
+            # print(f"Person {track_id} exited")
 
     # 윈도우 종료 시 비디오 스레드 중지
     def closeEvent(self, event):
         """윈도우 종료 시 호출 - 비디오 스레드 정지"""
         self.thread.stop()
+        if hasattr(self, "tcp_server_thread") and self.tcp_server_thread.is_alive():
+            self.tcp_server_thread.stop()  # TCP 서버 종료 플래그 설정
+            self.tcp_server_thread.join()  # 스레드가 종료될 때까지 대기
+
         event.accept()
 
 # 메인 함수
