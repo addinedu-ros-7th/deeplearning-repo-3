@@ -8,6 +8,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot
+import DBConnector
 
 from_class = uic.loadUiType("AdminGUI.ui")[0]
 
@@ -119,7 +120,7 @@ class VideoThread(QThread):
             # YOLOv8로 키포인트 추출
             results = self.pose_model(frame)
 
-            # Detection 목록 생성
+            # Detection 목록 생성 (모든 디텍팅된 개체들 detection에 담음)
             detections = []
             for result in results:
                 boxes = result.boxes.xyxy.cpu().numpy()
@@ -248,7 +249,7 @@ class WindowClass(QMainWindow, from_class):
         h, w, ch = rgb_image.shape
         bytes_per_line = ch * w
         qt_image = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format_RGB888)
-        # Scale the image to the label dimensions while keeping the aspect ratio
+        # 
         qt_image = qt_image.scaled(label_width, label_height, Qt.KeepAspectRatio)
         return QPixmap.fromImage(qt_image)
 
