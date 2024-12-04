@@ -33,10 +33,8 @@ def analysis(
     time_threshold=3,
     frame_threshold=5,
     anti_spoofing: bool = False,
-    ):
-
+):
     # initialize models
-    #build_demography_models(enable_face_analysis=enable_face_analysis)
     build_facial_recognition_model(model_name=model_name)
     # call a dummy find function for db_path once to create embeddings before starting webcam
     _ = search_identity(
@@ -55,6 +53,7 @@ def analysis(
     cap = cv2.VideoCapture(source)  # webcam
     while True:
         has_frame, img = cap.read()
+        logger.info("Show your face")
         if not has_frame:
             break
 
@@ -86,7 +85,7 @@ def analysis(
                 )
                 
                 # facial recogntion analysis
-                img = perform_facial_recognition(
+                img, target_name = perform_facial_recognition(
                     img=img,
                     faces_coordinates=faces_coordinates,
                     detected_faces=detected_faces,
@@ -95,6 +94,10 @@ def analysis(
                     distance_metric=distance_metric,
                     model_name=model_name,
                 )
+
+                print("User Info------------")
+                print("name : ", target_name)
+                print("---------------------")
 
                 # freeze the img after analysis
                 freezed_img = img.copy()
@@ -121,6 +124,8 @@ def analysis(
     cap.release()
     cv2.destroyAllWindows()
 
+    return target_name
+
 
 def build_facial_recognition_model(model_name: str) -> None:
     _ = DeepFace.build_model(task="facial_recognition", model_name=model_name)
@@ -146,6 +151,8 @@ def search_identity(
             enforce_detection=False,
             silent=True,
         )
+
+        # print(dfs)
     except ValueError as err:
         if f"No item found in {db_path}" in str(err):
             logger.warn(
@@ -162,12 +169,18 @@ def search_identity(
     # detected face is coming from parent, safe to access 1st index
     df = dfs[0]
 
+    print("Recognized Faces-----")
+    print(df)
+    print("---------------------")
+
     if df.shape[0] == 0:
         return None, None
 
     candidate = df.iloc[0]
     target_path = candidate["identity"]
-    logger.info(f"Hello, {target_path}")
+    #print(type(target_path))
+    target_name = target_path.split("/")[1]
+    logger.info(f"Hello, {target_name}")
 
     # load found identity image - extracted if possible
     target_objs = DeepFace.extract_faces(
@@ -191,7 +204,7 @@ def search_identity(
     # resize anyway
     target_img = cv2.resize(target_img, (IDENTIFIED_IMG_SIZE, IDENTIFIED_IMG_SIZE))
 
-    return target_path.split("/")[-1], target_img
+    return target_path.split("/")[-1], target_img, target_name
 
 """
 def build_demography_models(enable_face_analysis: bool) -> None:
@@ -313,7 +326,7 @@ def perform_facial_recognition(
 ) -> np.ndarray:
     for idx, (x, y, w, h, is_real, antispoof_score) in enumerate(faces_coordinates):
         detected_face = detected_faces[idx]
-        target_label, target_img = search_identity(
+        target_label, target_img, target_name= search_identity(
             detected_face=detected_face,
             db_path=db_path,
             detector_backend=detector_backend,
@@ -333,44 +346,11 @@ def perform_facial_recognition(
             h=h,
         )
 
-    return img
+        # print("User Info : ", target_name)
+
+    return img, target_name
 
 
-def perform_demography_analysis(
-    enable_face_analysis: bool,
-    img: np.ndarray,
-    faces_coordinates: List[Tuple[int, int, int, int, bool, float]],
-    detected_faces: List[np.ndarray],
-) -> np.ndarray:
-    if enable_face_analysis is False:
-        return img
-    for idx, (x, y, w, h, is_real, antispoof_score) in enumerate(faces_coordinates):
-        detected_face = detected_faces[idx]
-        demographies = DeepFace.analyze(
-            img_path=detected_face,
-            actions=("age", "gender", "emotion"),
-            detector_backend="skip",
-            enforce_detection=False,
-            silent=True,
-        )
-
-        if len(demographies) == 0:
-            continue
-
-        # safe to access 1st index because detector backend is skip
-        demography = demographies[0]
-
-        img = overlay_emotion(img=img, emotion_probas=demography["emotion"], x=x, y=y, w=w, h=h)
-        img = overlay_age_gender(
-            img=img,
-            apparent_age=demography["age"],
-            gender=demography["dominant_gender"][0:1],  # M or W
-            x=x,
-            y=y,
-            w=w,
-            h=h,
-        )
-    return img
 
 
 def overlay_identified_face(
@@ -610,208 +590,3 @@ def overlay_identified_face(
         logger.error(f"{str(err)} - {traceback.format_exc()}")
     return img
 
-
-def overlay_emotion(
-    img: np.ndarray, emotion_probas: dict, x: int, y: int, w: int, h: int
-) -> np.ndarray:
-    emotion_df = pd.DataFrame(emotion_probas.items(), columns=["emotion", "score"])
-    emotion_df = emotion_df.sort_values(by=["score"], ascending=False).reset_index(drop=True)
-
-    # background of mood box
-
-    # transparency
-    overlay = img.copy()
-    opacity = 0.4
-
-    # put gray background to the right of the detected image
-    if x + w + IDENTIFIED_IMG_SIZE < img.shape[1]:
-        cv2.rectangle(
-            img,
-            (x + w, y),
-            (x + w + IDENTIFIED_IMG_SIZE, y + h),
-            (64, 64, 64),
-            cv2.FILLED,
-        )
-        cv2.addWeighted(overlay, opacity, img, 1 - opacity, 0, img)
-
-    # put gray background to the left of the detected image
-    elif x - IDENTIFIED_IMG_SIZE > 0:
-        cv2.rectangle(
-            img,
-            (x - IDENTIFIED_IMG_SIZE, y),
-            (x, y + h),
-            (64, 64, 64),
-            cv2.FILLED,
-        )
-        cv2.addWeighted(overlay, opacity, img, 1 - opacity, 0, img)
-
-    for index, instance in emotion_df.iterrows():
-
-        current_emotion = instance["emotion"]
-        emotion_label = f"{current_emotion} "
-        emotion_score = instance["score"] / 100
-
-        filled_bar_x = 35  # this is the size if an emotion is 100%
-        bar_x = int(filled_bar_x * emotion_score)
-
-        if x + w + IDENTIFIED_IMG_SIZE < img.shape[1]:
-
-            text_location_y = y + 20 + (index + 1) * 20
-            text_location_x = x + w
-
-            if text_location_y < y + h:
-                cv2.putText(
-                    img,
-                    emotion_label,
-                    (text_location_x, text_location_y),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.5,
-                    (255, 255, 255),
-                    1,
-                )
-
-                cv2.rectangle(
-                    img,
-                    (x + w + 70, y + 13 + (index + 1) * 20),
-                    (
-                        x + w + 70 + bar_x,
-                        y + 13 + (index + 1) * 20 + 5,
-                    ),
-                    (255, 255, 255),
-                    cv2.FILLED,
-                )
-
-        elif x - IDENTIFIED_IMG_SIZE > 0:
-
-            text_location_y = y + 20 + (index + 1) * 20
-            text_location_x = x - IDENTIFIED_IMG_SIZE
-
-            if text_location_y <= y + h:
-                cv2.putText(
-                    img,
-                    emotion_label,
-                    (text_location_x, text_location_y),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.5,
-                    (255, 255, 255),
-                    1,
-                )
-
-                cv2.rectangle(
-                    img,
-                    (
-                        x - IDENTIFIED_IMG_SIZE + 70,
-                        y + 13 + (index + 1) * 20,
-                    ),
-                    (
-                        x - IDENTIFIED_IMG_SIZE + 70 + bar_x,
-                        y + 13 + (index + 1) * 20 + 5,
-                    ),
-                    (255, 255, 255),
-                    cv2.FILLED,
-                )
-
-    return img
-
-
-def overlay_age_gender(
-    img: np.ndarray, apparent_age: float, gender: str, x: int, y: int, w: int, h: int
-) -> np.ndarray:
-    logger.debug(f"{apparent_age} years old {gender}")
-    analysis_report = f"{int(apparent_age)} {gender}"
-
-    info_box_color = (46, 200, 255)
-
-    # show its age and gender on the top of the image
-    if y - IDENTIFIED_IMG_SIZE + int(IDENTIFIED_IMG_SIZE / 5) > 0:
-
-        triangle_coordinates = np.array(
-            [
-                (x + int(w / 2), y),
-                (
-                    x + int(w / 2) - int(w / 10),
-                    y - int(IDENTIFIED_IMG_SIZE / 3),
-                ),
-                (
-                    x + int(w / 2) + int(w / 10),
-                    y - int(IDENTIFIED_IMG_SIZE / 3),
-                ),
-            ]
-        )
-
-        cv2.drawContours(
-            img,
-            [triangle_coordinates],
-            0,
-            info_box_color,
-            -1,
-        )
-
-        cv2.rectangle(
-            img,
-            (
-                x + int(w / 5),
-                y - IDENTIFIED_IMG_SIZE + int(IDENTIFIED_IMG_SIZE / 5),
-            ),
-            (x + w - int(w / 5), y - int(IDENTIFIED_IMG_SIZE / 3)),
-            info_box_color,
-            cv2.FILLED,
-        )
-
-        cv2.putText(
-            img,
-            analysis_report,
-            (x + int(w / 3.5), y - int(IDENTIFIED_IMG_SIZE / 2.1)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1,
-            (0, 111, 255),
-            2,
-        )
-
-    # show its age and gender on the top of the image
-    elif y + h + IDENTIFIED_IMG_SIZE - int(IDENTIFIED_IMG_SIZE / 5) < img.shape[0]:
-
-        triangle_coordinates = np.array(
-            [
-                (x + int(w / 2), y + h),
-                (
-                    x + int(w / 2) - int(w / 10),
-                    y + h + int(IDENTIFIED_IMG_SIZE / 3),
-                ),
-                (
-                    x + int(w / 2) + int(w / 10),
-                    y + h + int(IDENTIFIED_IMG_SIZE / 3),
-                ),
-            ]
-        )
-
-        cv2.drawContours(
-            img,
-            [triangle_coordinates],
-            0,
-            info_box_color,
-            -1,
-        )
-
-        cv2.rectangle(
-            img,
-            (x + int(w / 5), y + h + int(IDENTIFIED_IMG_SIZE / 3)),
-            (
-                x + w - int(w / 5),
-                y + h + IDENTIFIED_IMG_SIZE - int(IDENTIFIED_IMG_SIZE / 5),
-            ),
-            info_box_color,
-            cv2.FILLED,
-        )
-
-        cv2.putText(
-            img,
-            analysis_report,
-            (x + int(w / 3.5), y + h + int(IDENTIFIED_IMG_SIZE / 1.5)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1,
-            (0, 111, 255),
-            2,
-        )
-
-    return img
