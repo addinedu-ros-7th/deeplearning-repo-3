@@ -7,6 +7,7 @@ from deep_sort_realtime.deepsort_tracker import DeepSort
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from PyQt5.QtGui import QPixmap
+from datetime import datetime, timedelta
 
 # 유틸리티 함수 정의
 def convert_to_neck_relative_coordinates(keypoints):
@@ -77,13 +78,14 @@ class VideoThread(QThread):
     person_posed = pyqtSignal(int)  # 사람이 특정 포즈를 취했을 때
     person_stopped_posing = pyqtSignal(int)  # 사람이 포즈를 멈췄을 때
     person_exited = pyqtSignal(int)  # 사람이 화면에서 사라졌을 때
+    file_path = pyqtSignal(str) #비디오가 저장되는 경로
 
     def __init__(self):
         super().__init__()
         self._run_flag = True  # 쓰레드 실행 상태 플래그
 
         # YOLOv8 Pose 모델 로드
-        self.pose_model = YOLO("yolov8m-pose.pt")
+        self.pose_model = YOLO("yolov8m-pose.pt", verbose= False)
 
         # 포즈 분류 모델 정의 및 초기화
         class PoseClassifier(torch.nn.Module):
@@ -107,6 +109,18 @@ class VideoThread(QThread):
         # DeepSORT Tracker 초기화
         self.tracker = DeepSort(max_age=5)  # 추적 상태가 유지될 최대 프레임 수 설정
 
+        # 영상 저장 관련 초기화
+        self.video_writer = None  # 초기화
+        self.current_video_save_path = "./video_output/output.avi"  # 임시 파일 경로
+        timestamp = (datetime.now() + timedelta(minutes=1)).strftime("%Y%m%d_%H%M%S")
+        self.future_video_save_path = f"./video_output/output_{timestamp}.avi"  # 앞으로 저장될 파일 경로
+        self.fps = 30
+        self.frame_size = None
+        self.last_save_time = datetime.now()
+
+        # 저장될 비디오의 경로를 시그널로 전송
+        self.file_path.emit(self.future_video_save_path)
+
     def run(self):
         # 웹캠 비디오 캡처
         cap = cv2.VideoCapture(0)
@@ -118,8 +132,18 @@ class VideoThread(QThread):
             if not ret:  # 프레임을 읽을 수 없으면 종료
                 break
 
+            # 비디오 저장 초기화
+            if self.video_writer is None:
+                self.frame_size = (frame.shape[1], frame.shape[0])
+                self.video_writer = cv2.VideoWriter(
+                    self.current_video_save_path,
+                    cv2.VideoWriter_fourcc(*'XVID'),
+                    self.fps,
+                    self.frame_size
+                )
+
             # YOLOv8로 키포인트 추출
-            results = self.pose_model(frame)
+            results = self.pose_model(frame, verbose = False)
 
             # Detection 목록 생성
             detections = []
@@ -220,6 +244,38 @@ class VideoThread(QThread):
 
             # 이전 프레임 ID 목록 업데이트
             prev_track_ids = current_track_ids.copy()
+            
+            # 비디오 저장
+            if frame is not None and self.video_writer is not None:
+                self.video_writer.write(frame)
+
+            # 1분 경과 확인 후 저장 완료
+            if datetime.now() - self.last_save_time >= timedelta(minutes=1):
+                # 비디오 저장 종료
+                if self.video_writer is not None:
+                    self.video_writer.release()
+                    self.video_writer = None
+
+                # 임시 파일을 미래 경로로 이름 변경
+                import os
+                os.rename(self.current_video_save_path, self.future_video_save_path)
+
+                # 다음 비디오 저장 경로 계산
+                self.last_save_time = datetime.now()
+                timestamp = (self.last_save_time + timedelta(minutes=1)).strftime("%Y%m%d_%H%M%S")
+                self.future_video_save_path = f"./video_output/output_{timestamp}.avi"
+
+                # 다음에 저장될 비디오 경로를 시그널로 전송
+                self.file_path.emit(self.future_video_save_path)
+
+                # 비디오 저장 초기화 (다시 임시 파일로 시작)
+                self.video_writer = cv2.VideoWriter(
+                    self.current_video_save_path,
+                    cv2.VideoWriter_fourcc(*'XVID'),
+                    self.fps,
+                    self.frame_size
+                )
+
 
             # cv2.imshow 대신 프레임을 시그널로 전송
             self.change_pixmap_signal.emit(frame)
@@ -229,6 +285,14 @@ class VideoThread(QThread):
                 break
 
         cap.release()  # 비디오 캡처 해제
+        if self.video_writer is not None:
+            self.video_writer.release()
+            self.video_writer = None
+
+            # 마지막으로 저장된 비디오를 미래 경로로 이름 변경
+            import os
+            os.rename(self.current_video_save_path, self.future_video_save_path)
+            # 마지막으로 저장된 비디오 경로를 시그널로 전송
 
     def stop(self):
         """

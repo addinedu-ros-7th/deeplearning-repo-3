@@ -44,6 +44,7 @@ class WindowClass(QMainWindow, from_class):
         self.thread.person_posed.connect(self.person_posed)
         self.thread.person_stopped_posing.connect(self.person_stopped_posing)
         self.thread.person_exited.connect(self.person_exited)
+        self.thread.file_path.connect(self.save_video_path)  # 경로 신호 연결
         self.thread.start()  # 스레드 실행
 
         # tcp thread 시작
@@ -111,6 +112,12 @@ class WindowClass(QMainWindow, from_class):
         if track_id in self.person_states:
             del self.person_states[track_id]
             # print(f"Person {track_id} exited")
+
+    @pyqtSlot(str)
+    def save_video_path(self, path):
+        """앞으로 저장될 비디오 경로를 업데이트"""
+        self.saved_video_path = path
+        logger.info(f"앞으로 저장될 비디오 경로: {path}")
 
     # 윈도우 종료 시 비디오 스레드 중지
     def closeEvent(self, event):
