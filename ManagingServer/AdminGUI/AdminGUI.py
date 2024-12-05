@@ -30,7 +30,7 @@ class WindowClass(QMainWindow, from_class):
 
         # 메인 스레드에서 person_states 딕셔너리 초기화
         self.person_states = {}
-
+        
         # 비디오 스레드 시작
         self.thread = VideoThread()
         # 스레드에서 전달받은 신호를 슬롯에 연결
