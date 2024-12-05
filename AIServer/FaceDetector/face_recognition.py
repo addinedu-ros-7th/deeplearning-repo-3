@@ -139,6 +139,7 @@ class FaceRecognition():
         y = person["target_y"]
         w = person["target_w"]
         h = person["target_h"]
+        
 
         # Draw a bounding box
         cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
@@ -163,6 +164,7 @@ class FaceRecognition():
                                  distance_metric=self.metrics[1],
                                  time_threshold=3
                                  )
+        
 
 
 def main():
