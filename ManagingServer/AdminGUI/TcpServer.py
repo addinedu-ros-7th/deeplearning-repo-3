@@ -2,6 +2,8 @@ import socket
 import json
 import threading
 from logger_config import setup_logger
+from shared_queue import *
+
 
 # 로거 가져오기
 logger = setup_logger()
@@ -21,6 +23,21 @@ class ClientHandlerThread(threading.Thread):
                 if data:
                     json_data = json.loads(data)
                     logger.debug(f"클라이언트 {self.addr}에서 수신된 데이터: {json_data}")
+                    
+                    camera_id = json_data.pop("camera_id")
+                    if camera_id in [1,2,3,4]:  # face cam
+                        continue
+                    elif camera_id in [11,12,13,14]: # CCTV cam
+                        continue
+                    elif camera_id in [21,22,23,24]: # cart cam
+                        for cart in shared_cart_queue:
+                            if cart.camera_id == camera_id:
+                                cart.fruits.update(json_data)
+                                logger.debug(f"camera_id {cart.camera_id}에서 수신된 데이터: {json_data}")
+                                break
+                    
+                    elif camera_id in [31,32,33,34]: # fruit cam
+                        continue
                 else:
                     logger.info(f"클라이언트 {self.addr} 연결 종료")
                     break

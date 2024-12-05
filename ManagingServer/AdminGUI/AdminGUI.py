@@ -12,18 +12,14 @@ import DBConnector
 from PoseDetector import VideoThread
 from TcpServer import TcpServerThread
 from logger_config import setup_logger
+from custom_classes import *
+from shared_queue import *
 
 logger = setup_logger()
 
 # UI 파일을 로드하여 from_class로 정의
 from_class = uic.loadUiType("AdminGUI.ui")[0]
 
-# Person 클래스를 정의 - 개별 사람의 상태를 추적하기 위해 사용
-class Person:
-    def __init__(self, track_id):
-        self.track_id = track_id  # 각 사람의 고유 ID
-        self.detected = False    # 사람이 감지되었는지 여부
-        self.posed = False       # 포즈가 감지되었는지 여부
 
 # 메인 윈도우 클래스
 class WindowClass(QMainWindow, from_class):
@@ -55,6 +51,9 @@ class WindowClass(QMainWindow, from_class):
 
         self.tcp_server_thread.start()
         logger.info("서버가 시작되었습니다.")
+
+        cart = Cart(21,1)
+        shared_cart_queue.put(cart)
 
 
 

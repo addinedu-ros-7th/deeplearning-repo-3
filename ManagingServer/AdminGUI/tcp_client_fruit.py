@@ -18,6 +18,7 @@ while cnt < 50:
             try:
                 # JSON 데이터 생성
                 data = {
+                    "camera_id": 21,
                     "apple_defective" :3,
                     "apple_fair" :3,
                     "peach_defective" :3,
