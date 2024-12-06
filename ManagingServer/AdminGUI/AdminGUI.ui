@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -356,7 +356,7 @@
       <attribute name="title">
        <string>Sell</string>
       </attribute>
-      <widget class="QTableWidget" name="tableWidget_2">
+      <widget class="QTableWidget" name="selling_table">
        <property name="geometry">
         <rect>
          <x>490</x>
@@ -616,7 +616,7 @@
       <attribute name="title">
        <string>Visitor</string>
       </attribute>
-      <widget class="QTableWidget" name="tableWidget_3">
+      <widget class="QTableWidget" name="visit_table">
        <property name="geometry">
         <rect>
          <x>330</x>
@@ -669,11 +669,24 @@
     <widget class="QDateEdit" name="dateEdit">
      <property name="geometry">
       <rect>
-       <x>970</x>
+       <x>900</x>
        <y>30</y>
        <width>110</width>
        <height>26</height>
       </rect>
+     </property>
+     <property name="displayFormat">
+      <string>yy/M/d/</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+     <property name="date">
+      <date>
+       <year>2024</year>
+       <month>12</month>
+       <day>6</day>
+      </date>
      </property>
     </widget>
    </widget>
@@ -681,13 +694,13 @@
     <attribute name="title">
      <string>Theft</string>
     </attribute>
-    <widget class="QTableWidget" name="tableWidget_4">
+    <widget class="QTableWidget" name="event_table">
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>150</y>
+       <y>50</y>
        <width>511</width>
-       <height>331</height>
+       <height>651</height>
       </rect>
      </property>
      <column>

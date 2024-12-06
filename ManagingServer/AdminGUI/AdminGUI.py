@@ -5,10 +5,10 @@ from ultralytics import YOLO
 import torch
 from deep_sort_realtime.deepsort_tracker import DeepSort
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem
 from PyQt5.QtGui import QPixmap, QImage
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot
-import DBConnector
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
+from DBConnector import DBThread
 from PoseDetector import VideoThread
 from TcpServer import TcpServerThread
 from logger_config import setup_logger
@@ -51,11 +51,65 @@ class WindowClass(QMainWindow, from_class):
 
         self.tcp_server_thread.start()
         logger.info("서버가 시작되었습니다.")
-
+        
         cart = Cart(21,1)
         shared_cart_queue.put(cart)
+        
 
+        # DB 스레드 초기화
+        self.db_thread = DBThread({
+            "host": "localhost",
+            "user": "root",
+            "password": "whdgh29k05",
+            "db": "FruitShopDB",
+            "charset": "utf8mb4",
+        })
 
+        # QDateEdit 신호 연결
+        self.dateEdit.dateChanged.connect(self.filter_by_date)
+
+        # 테이블 업데이트 신호 연결
+        self.db_thread.selling_log_signal.connect(self.update_selling_log)
+        self.db_thread.visit_log_signal.connect(self.update_visit_log)
+        self.db_thread.event_log_signal.connect(self.update_event_log)
+        self.db_thread.start()
+
+    #-------------------------------------------------------------------로그 GUI 관련 함수
+
+    def filter_by_date(self):
+        """선택된 날짜를 기준으로 데이터 필터링"""
+        selected_date = self.dateEdit.date()  # QDate 객체
+        formatted_date = selected_date.toString("yyyy-MM-dd")  # MySQL 쿼리에 맞는 형식
+
+        # DB 스레드에 필터 요청
+        self.db_thread.set_date_filter(formatted_date)
+
+    def update_selling_log(self, data):
+        """판매 로그를 테이블 위젯에 업데이트"""
+        self.selling_table.setRowCount(len(data))
+        for row_idx, row_data in enumerate(data):
+            for col_idx, col_data in enumerate(row_data):
+                self.selling_table.setItem(row_idx, col_idx, QTableWidgetItem(str(col_data)))
+
+    def update_visit_log(self, data):
+        """방문 로그 업데이트"""
+        self.visit_table.setRowCount(len(data))
+        #print("visit log is:", data)
+        for row_idx, row_data in enumerate(data):
+            for col_idx, col_data in enumerate(row_data):
+                self.visit_table.setItem(row_idx, col_idx, QTableWidgetItem(str(col_data)))
+
+    def update_event_log(self, data):
+        """이벤트 로그 업데이트"""
+        self.event_table.setRowCount(len(data))
+        for row_idx, row_data in enumerate(data):
+            for col_idx, col_data in enumerate(row_data):
+                self.event_table.setItem(row_idx, col_idx, QTableWidgetItem(str(col_data)))
+
+    def closeEvent(self, event):
+        """윈도우 종료 시 DB 스레드 종료"""
+        self.db_thread.stop()
+        super().closeEvent(event)
 
     # OpenCV 이미지를 QPixmap으로 변환하여 라벨 크기에 맞게 조정하는 함수
     def convert_cv_qt(self, cv_img, label_width, label_height):
@@ -66,6 +120,8 @@ class WindowClass(QMainWindow, from_class):
         qt_image = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format_RGB888)
         qt_image = qt_image.scaled(label_width, label_height, Qt.KeepAspectRatio)
         return QPixmap.fromImage(qt_image)
+
+    #----------------------------------------------------------------------- 사람포즈인식 관련 함수
 
     # OpenCV 이미지를 QLabel에 업데이트
     @pyqtSlot(np.ndarray)
