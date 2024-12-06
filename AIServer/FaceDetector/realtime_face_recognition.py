@@ -37,7 +37,6 @@ def analysis(
     name_queue: queue.Queue = queue.Queue(),
 ):
     
-    print("니가이러면안되지")
     # initialize models
     build_facial_recognition_model(model_name=model_name)
     # call a dummy find function for db_path once to create embeddings before starting webcam
@@ -48,12 +47,12 @@ def analysis(
         distance_metric=distance_metric,
         model_name=model_name,
     )
-
+    
     freezed_img = None
     freeze = False
     num_frames_with_faces = 0
     tic = time.time()
-
+    logger.info("Open Webcam")
     cap = cv2.VideoCapture(source)  # webcam
     while True:
         has_frame, img = cap.read()
@@ -146,6 +145,7 @@ def search_identity(
     distance_metric: str,
 ) -> Tuple[Optional[str], Optional[np.ndarray]]:
     target_path = None
+    logger.info("Search an identity in facial database")
     try:
         dfs = DeepFace.find(
             img_path=detected_face,
@@ -154,7 +154,8 @@ def search_identity(
             detector_backend=detector_backend,
             distance_metric=distance_metric,
             enforce_detection=False,
-            silent=True,
+            #threshold=20,
+            silent=True
         )
 
         # print(dfs)
@@ -185,9 +186,9 @@ def search_identity(
     target_path = candidate["identity"]
     #print(type(target_path))
     target_name = target_path.split("/")[1]
-    threashold = candidate["threshold"]
+    threshold = candidate["threshold"]
     distance = candidate["distance"]
-    logger.info(f"Find : {target_name} ( {threashold} / {distance} )")
+    logger.info(f"Find : {target_name} ( {threshold} / {distance} )")
 
     # load found identity image - extracted if possible
     target_objs = DeepFace.extract_faces(
