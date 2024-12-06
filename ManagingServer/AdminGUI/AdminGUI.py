@@ -89,28 +89,28 @@ class WindowClass(QMainWindow, from_class):
         if track_id not in self.person_states:
             self.person_states[track_id] = Person(track_id)
             self.person_states[track_id].detected = True
-            # print(f"Person {track_id} entered")
+            print(f"Person {track_id} entered")
 
     @pyqtSlot(int)
     def person_posed(self, track_id):
         """사람이 포즈를 취했을 때 호출"""
         if track_id in self.person_states:
             self.person_states[track_id].posed = True
-            # print(f"Person {track_id} posed")
+            print(f"Person {track_id} posed")
 
     @pyqtSlot(int)
     def person_stopped_posing(self, track_id):
         """사람이 포즈를 멈췄을 때 호출"""
         if track_id in self.person_states:
             self.person_states[track_id].posed = False
-            # print(f"Person {track_id} stopped posing")
+            print(f"Person {track_id} stopped posing")
 
     @pyqtSlot(int)
     def person_exited(self, track_id):
         """사람이 나갔을 때 호출"""
         if track_id in self.person_states:
             del self.person_states[track_id]
-            # print(f"Person {track_id} exited")
+            print(f"Person {track_id} exited")
 
     @pyqtSlot(str)
     def save_video_path(self, path):
