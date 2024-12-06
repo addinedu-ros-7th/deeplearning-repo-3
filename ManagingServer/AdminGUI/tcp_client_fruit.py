@@ -2,23 +2,23 @@ import socket
 import json
 import time
 
-server_ip = 'server'  # 서버 IP
-server_port = 8080       # 서버 포트
+server_ip = '192.168.0.100'  # 서버 IP
+server_port = 5003       # 서버 포트
 
 cnt = 0
 
-while cnt < 50:
+while True: #cnt < 50
     try:
         # 서버에 연결
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((server_ip, server_port))
         print("서버에 연결되었습니다.")
 
-        while cnt < 50:
+        while True:  #cnt < 50
             try:
                 # JSON 데이터 생성
                 data = {
-                    "camera_id": 21,
+                    "camera_id": 3,
                     "apple_defective" :3,
                     "apple_fair" :3,
                     "peach_defective" :3,

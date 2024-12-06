@@ -6,6 +6,7 @@ class DBThread(QThread):
     selling_log_signal = pyqtSignal(list)
     visit_log_signal = pyqtSignal(list)
     event_log_signal = pyqtSignal(list)
+    selling_sum_signal = pyqtSignal(int)
 
     def __init__(self, db_config):
         super().__init__()
