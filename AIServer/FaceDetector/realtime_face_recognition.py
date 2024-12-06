@@ -3,6 +3,7 @@ import os
 import time
 from typing import List, Tuple, Optional
 import traceback
+import queue
 
 # 3rd party dependencies
 import numpy as np
@@ -30,10 +31,13 @@ def analysis(
     distance_metric="cosine",
     enable_face_analysis=True,
     source=0,
-    time_threshold=3,
+    time_threshold=5,
     frame_threshold=5,
     anti_spoofing: bool = False,
+    name_queue: queue.Queue = queue.Queue(),
 ):
+    
+    print("니가이러면안되지")
     # initialize models
     build_facial_recognition_model(model_name=model_name)
     # call a dummy find function for db_path once to create embeddings before starting webcam
@@ -53,7 +57,6 @@ def analysis(
     cap = cv2.VideoCapture(source)  # webcam
     while True:
         has_frame, img = cap.read()
-        logger.info("Show your face")
         if not has_frame:
             break
 
@@ -95,9 +98,13 @@ def analysis(
                     model_name=model_name,
                 )
 
-                print("User Info------------")
-                print("name : ", target_name)
-                print("---------------------")
+                #print("User Info------------")
+                #print("name : ", target_name)
+                #print("---------------------")
+
+                if target_name:
+                    name_queue.put(target_name)
+                    logger.info(f"Put target name: {list(name_queue.queue)}")
 
                 # freeze the img after analysis
                 freezed_img = img.copy()
@@ -123,8 +130,6 @@ def analysis(
     # kill open cv things
     cap.release()
     cv2.destroyAllWindows()
-
-    return target_name
 
 
 def build_facial_recognition_model(model_name: str) -> None:
@@ -169,9 +174,9 @@ def search_identity(
     # detected face is coming from parent, safe to access 1st index
     df = dfs[0]
 
-    print("Recognized Faces-----")
-    print(df)
-    print("---------------------")
+    #print("Recognized Faces-----")
+    #print(df)
+    #print("---------------------")
 
     if df.shape[0] == 0:
         return None, None
@@ -180,7 +185,9 @@ def search_identity(
     target_path = candidate["identity"]
     #print(type(target_path))
     target_name = target_path.split("/")[1]
-    logger.info(f"Hello, {target_name}")
+    threashold = candidate["threshold"]
+    distance = candidate["distance"]
+    logger.info(f"Find : {target_name} ( {threashold} / {distance} )")
 
     # load found identity image - extracted if possible
     target_objs = DeepFace.extract_faces(
@@ -206,17 +213,6 @@ def search_identity(
 
     return target_path.split("/")[-1], target_img, target_name
 
-"""
-def build_demography_models(enable_face_analysis: bool) -> None:
-    if enable_face_analysis is False:
-        return
-    DeepFace.build_model(task="facial_attribute", model_name="Age")
-    logger.info("Age model is just built")
-    DeepFace.build_model(task="facial_attribute", model_name="Gender")
-    logger.info("Gender model is just built")
-    DeepFace.build_model(task="facial_attribute", model_name="Emotion")
-    logger.info("Emotion model is just built")
-"""
 
 def highlight_facial_areas(
     img: np.ndarray,
@@ -349,8 +345,6 @@ def perform_facial_recognition(
         # print("User Info : ", target_name)
 
     return img, target_name
-
-
 
 
 def overlay_identified_face(
