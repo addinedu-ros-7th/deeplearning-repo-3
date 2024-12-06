@@ -2,7 +2,7 @@ import socket
 import json
 import time
 
-server_ip = 'server'  # 서버 IP
+server_ip = '192.168.0.100'  # 서버 IP
 server_port = 8080       # 서버 포트
 
 cnt = 0
