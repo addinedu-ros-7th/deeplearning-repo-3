@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 import torch
+import collections
 from deep_sort_realtime.deepsort_tracker import DeepSort
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
@@ -12,32 +13,41 @@ from datetime import datetime, timedelta
 # 유틸리티 함수 정의
 def convert_to_neck_relative_coordinates(keypoints):
     """
-    키포인트 데이터를 목(neck) 중심 좌표로 변환하는 함수.
-    keypoints: (num_keypoints, 3) 형태의 numpy 배열.
+    키포인트 데이터를 목(neck) 중심 좌표로 변환하고 스케일 정규화하는 함수.
+    keypoints: Keypoints 객체.
     """
-    # x, y 좌표만 추출
-    keypoints_xy = keypoints[:, :2]  # Shape: (num_keypoints, 2)
-    
-    # 목 좌표 (키포인트 인덱스 0 사용)
-    neck_x, neck_y = keypoints_xy[0]
+    keypoints_array = keypoints.xy.cpu().numpy()  # GPU -> CPU 변환 및 numpy로 변환
 
-    # 목 좌표가 없는 경우 처리
-    if neck_x == 0 and neck_y == 0:
-        return None  # 유효하지 않은 데이터
+    # 최소한 필요한 키포인트 수 확인 (17개)
+    if keypoints_array.shape[0] < 7:  # 목(0), 어깨(5, 6) 포함 최소 7개가 필요
+        return None  # 유효하지 않은 데이터 처리
 
-    # 손목 좌표 가져오기 (왼손목 인덱스 9, 오른손목 인덱스 10)
-    left_wrist_x, left_wrist_y = keypoints_xy[9]
-    right_wrist_x, right_wrist_y = keypoints_xy[10]
+    neck = keypoints_array[0][:2]  # 목 좌표 가져오기
 
-    # 손목 좌표가 없는 경우 처리
-    if (left_wrist_x == 0 and left_wrist_y == 0) or (right_wrist_x == 0 and right_wrist_y == 0):
-        return None  # 유효하지 않은 데이터
+    if np.all(neck == 0):
+        return None  # 목 좌표가 없는 경우 무효 처리
 
-    # 목 중심 상대 좌표 계산
-    relative_keypoints = keypoints_xy - np.array([neck_x, neck_y])
+    # 어깨 좌표 가져오기
+    left_shoulder = keypoints_array[5][:2]
+    right_shoulder = keypoints_array[6][:2]
 
-    # 1차원 배열로 평탄화
-    return relative_keypoints.flatten()
+    # 어깨 좌표 유효성 검사
+    if np.all(left_shoulder == 0) or np.all(right_shoulder == 0):
+        return None  # 어깨 좌표가 없는 경우 무효 처리
+
+    # 스케일 계산 (어깨 간 거리)
+    scale = np.linalg.norm(left_shoulder - right_shoulder)
+    if scale == 0:
+        return None  # 스케일이 0인 경우 무효 처리
+
+    # 목 기준 상대 좌표 변환 (평행 이동)
+    relative_keypoints = keypoints_array[:, :2] - neck
+
+    # 스케일 정규화
+    normalized_keypoints = relative_keypoints / scale
+
+    return normalized_keypoints.flatten()
+
 
 def bbox_iou(boxA, boxB):
     """
@@ -85,25 +95,36 @@ class VideoThread(QThread):
         self._run_flag = True  # 쓰레드 실행 상태 플래그
 
         # YOLOv8 Pose 모델 로드
-        self.pose_model = YOLO("yolov8m-pose.pt", verbose= False)
+        self.pose_model = YOLO("yolov8m-pose.pt", verbose=False)
 
         # 포즈 분류 모델 정의 및 초기화
-        class PoseClassifier(torch.nn.Module):
-            def __init__(self, input_size, num_classes):
-                super(PoseClassifier, self).__init__()
-                self.fc = torch.nn.Sequential(
-                    torch.nn.Linear(input_size, 128),
-                    torch.nn.ReLU(),
-                    torch.nn.Linear(128, 64),
-                    torch.nn.ReLU(),
-                    torch.nn.Linear(64, num_classes)
-                )
-            
-            def forward(self, x):
-                return self.fc(x)
+        class PoseLSTMClassifier(torch.nn.Module):
+            def __init__(self, input_size, hidden_size, num_layers, num_classes):
+                super(PoseLSTMClassifier, self).__init__()
+                self.lstm = torch.nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)
+                self.dropout = torch.nn.Dropout(p=0.5)
+                self.fc1 = torch.nn.Linear(hidden_size, 64)
+                self.relu = torch.nn.ReLU()
+                self.fc2 = torch.nn.Linear(64, num_classes)
 
-        self.model = PoseClassifier(input_size=34, num_classes=2)  # 입력: 34개 특징, 출력: 2개 클래스
-        self.model.load_state_dict(torch.load("pose_classifier500.pth"))  # 모델 가중치 로드
+            def forward(self, x):
+                h_0 = torch.zeros(self.lstm.num_layers, x.size(0), self.lstm.hidden_size).to(x.device)
+                c_0 = torch.zeros(self.lstm.num_layers, x.size(0), self.lstm.hidden_size).to(x.device)
+                out, _ = self.lstm(x, (h_0, c_0))
+                out = out[:, -1, :]
+                out = self.dropout(out)
+                out = self.fc1(out)
+                out = self.relu(out)
+                out = self.fc2(out)
+                return out  # 로짓(logits) 반환
+
+        input_size = 34  # 17 키포인트 x 2 좌표
+        hidden_size = 128
+        num_layers = 2
+        num_classes = 2  # 클래스 수
+
+        self.model = PoseLSTMClassifier(input_size, hidden_size, num_layers, num_classes)
+        self.model.load_state_dict(torch.load("pose_lstm_classifier.pth"))
         self.model.eval()  # 평가 모드로 설정
 
         # DeepSORT Tracker 초기화
@@ -120,6 +141,10 @@ class VideoThread(QThread):
 
         # 저장될 비디오의 경로를 시그널로 전송
         self.file_path.emit(self.future_video_save_path)
+
+        # 시퀀스 버퍼 설정
+        self.sequence_length = 10  # 시퀀스 길이
+        self.sequence_buffers = {}  # 각 트랙 ID에 대한 시퀀스 버퍼 저장
 
     def run(self):
         # 웹캠 비디오 캡처
@@ -143,22 +168,24 @@ class VideoThread(QThread):
                 )
 
             # YOLOv8로 키포인트 추출
-            results = self.pose_model(frame, verbose = False)
+            results = self.pose_model(frame, verbose=False)
 
             # Detection 목록 생성
             detections = []
             for result in results:
+                if result.keypoints is None:
+                    print("키포인트가 감지되지 않음")
+                    continue
                 boxes = result.boxes.xyxy.cpu().numpy()  # 바운딩 박스 좌표
                 confidences = result.boxes.conf.cpu().numpy()  # 각 바운딩 박스의 정확도
-                keypoints_tensor = result.keypoints.data.cpu()  # 키포인트 데이터 (Tensor)
-                keypoints_list = keypoints_tensor.numpy()  # NumPy 배열로 변환
+                keypoints = result.keypoints  # 키포인트 데이터
 
-                for box, confidence, keypoints in zip(boxes, confidences, keypoints_list):
+                for box, confidence, kp in zip(boxes, confidences, keypoints):
                     x1, y1, x2, y2 = box
                     detections.append({
                         'bbox': [x1, y1, x2, y2],
                         'confidence': confidence,
-                        'keypoints': keypoints  # NumPy 배열
+                        'keypoints': kp  # Keypoints 객체
                     })
 
             # DeepSORT에 Detection 전달
@@ -185,6 +212,8 @@ class VideoThread(QThread):
                 # 새로운 트랙 ID 감지
                 if track_id not in prev_track_ids:
                     self.person_entered.emit(track_id)  # 새로운 사람이 등장했다고 신호 전송
+                    # 시퀀스 버퍼 초기화
+                    self.sequence_buffers[track_id] = collections.deque(maxlen=self.sequence_length)
 
                 # 가장 매칭되는 Detection 찾기
                 best_iou = 0
@@ -202,28 +231,41 @@ class VideoThread(QThread):
                         # 목 중심 상대 좌표 변환
                         relative_keypoints = convert_to_neck_relative_coordinates(keypoints)
 
-                        # 유효하지 않은 키포인트는 일반 포즈로 처리
-                        if relative_keypoints is None:
-                            prediction = 0  # 일반 포즈
+                        if relative_keypoints is not None:
+                            # 시퀀스 버퍼에 추가
+                            self.sequence_buffers[track_id].append(relative_keypoints)
+
+                            # 충분한 프레임이 모였는지 확인
+                            if len(self.sequence_buffers[track_id]) == self.sequence_length:
+                                input_sequence = np.array(self.sequence_buffers[track_id])  # 형상: (sequence_length, input_size)
+                                input_tensor = torch.tensor([input_sequence], dtype=torch.float32)  # 배치 차원 추가
+
+                                # 예측
+                                with torch.no_grad():
+                                    outputs = self.model(input_tensor)
+                                    probabilities = torch.softmax(outputs, dim=1).cpu().numpy()[0]
+                                    predicted = np.argmax(probabilities)
+                                    prediction = predicted.item()
+
+                                # 이전 포즈와 비교
+                                prev_pose = prev_poses.get(track_id, 0)
+                                if prediction == 1 and prev_pose == 0:
+                                    self.person_posed.emit(track_id)  # 포즈 시작 신호 전송
+                                elif prediction == 0 and prev_pose == 1:
+                                    self.person_stopped_posing.emit(track_id)  # 포즈 중지 신호 전송
+
+                                # 이전 포즈 상태 업데이트
+                                prev_poses[track_id] = prediction
+
+                                # 결과 표시
+                                pose_texts = ["Normal Pose", "Target Pose"]
+                                colors = [(0, 0, 255), (0, 255, 0)]  # Red for normal, green for target
+
+                                cv2.putText(frame, pose_texts[prediction], (int(x1), int(y2)+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, colors[prediction], 2)
                         else:
-                            # 분류 모델로 예측 수행
-                            input_tensor = torch.tensor([relative_keypoints], dtype=torch.float32)
-                            prediction = torch.argmax(self.model(input_tensor), dim=1).item()
-
-                        # 이전 포즈와 비교
-                        prev_pose = prev_poses.get(track_id, 0)
-                        if prediction == 1 and prev_pose == 0:
-                            self.person_posed.emit(track_id)  # 포즈 시작 신호 전송
-                        elif prediction == 0 and prev_pose == 1:
-                            self.person_stopped_posing.emit(track_id)  # 포즈 중지 신호 전송
-
-                        # 이전 포즈 상태 업데이트
-                        prev_poses[track_id] = prediction
-
-                        # 결과 표시
-                        if prediction == 1:
-                            cv2.putText(frame, "Target Pose", (int(x1), int(y2)+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                        else:
+                            # 유효하지 않은 키포인트는 일반 포즈로 처리
+                            prediction = 0  # Normal Pose
+                            prev_poses[track_id] = prediction
                             cv2.putText(frame, "Normal Pose", (int(x1), int(y2)+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
                         # 바운딩 박스와 ID 표시
@@ -241,6 +283,8 @@ class VideoThread(QThread):
                 self.person_exited.emit(lost_track_id)  # 사람이 사라졌다는 신호 전송
                 if lost_track_id in prev_poses:
                     del prev_poses[lost_track_id]  # 이전 포즈 상태에서 삭제
+                if lost_track_id in self.sequence_buffers:
+                    del self.sequence_buffers[lost_track_id]  # 시퀀스 버퍼 삭제
 
             # 이전 프레임 ID 목록 업데이트
             prev_track_ids = current_track_ids.copy()
@@ -276,7 +320,6 @@ class VideoThread(QThread):
                     self.frame_size
                 )
 
-
             # cv2.imshow 대신 프레임을 시그널로 전송
             self.change_pixmap_signal.emit(frame)
 
@@ -292,7 +335,6 @@ class VideoThread(QThread):
             # 마지막으로 저장된 비디오를 미래 경로로 이름 변경
             import os
             os.rename(self.current_video_save_path, self.future_video_save_path)
-            # 마지막으로 저장된 비디오 경로를 시그널로 전송
 
     def stop(self):
         """

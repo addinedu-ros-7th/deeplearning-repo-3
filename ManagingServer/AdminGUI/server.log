@@ -3573,3 +3573,2067 @@
 2024-12-05 18:41:01,359 - INFO - 서버가 시작되었습니다.
 2024-12-05 18:41:01,494 - INFO - TCP 서버 실행 중...
 2024-12-05 18:41:26,892 - INFO - TCP 서버가 중지되었습니다.
+2024-12-05 19:36:10,556 - DEBUG - uiname is Dialog
+2024-12-05 19:36:10,556 - DEBUG - toplevel widget is QDialog
+2024-12-05 19:36:10,556 - DEBUG - setting property geometry
+2024-12-05 19:36:10,556 - DEBUG - setting property windowTitle
+2024-12-05 19:36:10,557 - DEBUG - push QDialog Dialog
+2024-12-05 19:36:10,557 - DEBUG - setting property geometry
+2024-12-05 19:36:10,557 - DEBUG - setting property currentIndex
+2024-12-05 19:36:10,557 - DEBUG - push QTabWidget tabWidget
+2024-12-05 19:36:10,557 - DEBUG - push QWidget tab_2
+2024-12-05 19:36:10,557 - DEBUG - setting property geometry
+2024-12-05 19:36:10,557 - DEBUG - setting property font
+2024-12-05 19:36:10,557 - DEBUG - setting property text
+2024-12-05 19:36:10,558 - DEBUG - push QLabel label
+2024-12-05 19:36:10,558 - DEBUG - pop widget QLabel label
+2024-12-05 19:36:10,558 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,558 - DEBUG - setting property geometry
+2024-12-05 19:36:10,558 - DEBUG - setting property font
+2024-12-05 19:36:10,558 - DEBUG - setting property text
+2024-12-05 19:36:10,558 - DEBUG - push QLabel label_2
+2024-12-05 19:36:10,558 - DEBUG - pop widget QLabel label_2
+2024-12-05 19:36:10,558 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,558 - DEBUG - setting property geometry
+2024-12-05 19:36:10,558 - DEBUG - setting property title
+2024-12-05 19:36:10,558 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 19:36:10,559 - DEBUG - setting property geometry
+2024-12-05 19:36:10,559 - DEBUG - setting property font
+2024-12-05 19:36:10,559 - DEBUG - setting property text
+2024-12-05 19:36:10,559 - DEBUG - push QLabel userNameLabel1
+2024-12-05 19:36:10,559 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 19:36:10,559 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:36:10,559 - DEBUG - setting property geometry
+2024-12-05 19:36:10,559 - DEBUG - setting property font
+2024-12-05 19:36:10,559 - DEBUG - setting property text
+2024-12-05 19:36:10,559 - DEBUG - push QLabel userCart1
+2024-12-05 19:36:10,560 - DEBUG - pop widget QLabel userCart1
+2024-12-05 19:36:10,560 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:36:10,560 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 19:36:10,560 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,560 - DEBUG - setting property geometry
+2024-12-05 19:36:10,560 - DEBUG - setting property title
+2024-12-05 19:36:10,560 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 19:36:10,560 - DEBUG - setting property geometry
+2024-12-05 19:36:10,560 - DEBUG - setting property font
+2024-12-05 19:36:10,560 - DEBUG - setting property text
+2024-12-05 19:36:10,560 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 19:36:10,560 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 19:36:10,560 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:36:10,561 - DEBUG - setting property geometry
+2024-12-05 19:36:10,561 - DEBUG - setting property font
+2024-12-05 19:36:10,561 - DEBUG - setting property text
+2024-12-05 19:36:10,561 - DEBUG - push QLabel userCart1_2
+2024-12-05 19:36:10,561 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 19:36:10,561 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:36:10,561 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 19:36:10,561 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,561 - DEBUG - setting property geometry
+2024-12-05 19:36:10,561 - DEBUG - setting property title
+2024-12-05 19:36:10,562 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 19:36:10,562 - DEBUG - setting property geometry
+2024-12-05 19:36:10,562 - DEBUG - setting property font
+2024-12-05 19:36:10,562 - DEBUG - setting property text
+2024-12-05 19:36:10,562 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 19:36:10,562 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 19:36:10,562 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:36:10,563 - DEBUG - setting property geometry
+2024-12-05 19:36:10,563 - DEBUG - setting property font
+2024-12-05 19:36:10,563 - DEBUG - setting property text
+2024-12-05 19:36:10,563 - DEBUG - push QLabel userCart1_3
+2024-12-05 19:36:10,563 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 19:36:10,563 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:36:10,564 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 19:36:10,564 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,564 - DEBUG - setting property geometry
+2024-12-05 19:36:10,564 - DEBUG - setting property title
+2024-12-05 19:36:10,564 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 19:36:10,564 - DEBUG - setting property geometry
+2024-12-05 19:36:10,564 - DEBUG - setting property font
+2024-12-05 19:36:10,564 - DEBUG - setting property text
+2024-12-05 19:36:10,564 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 19:36:10,564 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 19:36:10,564 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:36:10,565 - DEBUG - setting property geometry
+2024-12-05 19:36:10,565 - DEBUG - setting property font
+2024-12-05 19:36:10,565 - DEBUG - setting property text
+2024-12-05 19:36:10,565 - DEBUG - push QLabel userCart1_4
+2024-12-05 19:36:10,565 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 19:36:10,565 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:36:10,565 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 19:36:10,565 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,565 - DEBUG - setting property geometry
+2024-12-05 19:36:10,565 - DEBUG - setting property font
+2024-12-05 19:36:10,566 - DEBUG - setting property text
+2024-12-05 19:36:10,566 - DEBUG - push QLabel label_3
+2024-12-05 19:36:10,566 - DEBUG - pop widget QLabel label_3
+2024-12-05 19:36:10,566 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,566 - DEBUG - setting property geometry
+2024-12-05 19:36:10,566 - DEBUG - setting property font
+2024-12-05 19:36:10,566 - DEBUG - setting property text
+2024-12-05 19:36:10,566 - DEBUG - push QLabel label_4
+2024-12-05 19:36:10,566 - DEBUG - pop widget QLabel label_4
+2024-12-05 19:36:10,566 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,566 - DEBUG - setting property geometry
+2024-12-05 19:36:10,567 - DEBUG - push QTableWidget tableWidget
+2024-12-05 19:36:10,567 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 19:36:10,567 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,567 - DEBUG - setting property geometry
+2024-12-05 19:36:10,567 - DEBUG - setting property text
+2024-12-05 19:36:10,567 - DEBUG - push QLabel CCTV_1
+2024-12-05 19:36:10,567 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 19:36:10,567 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:36:10,568 - DEBUG - pop widget QWidget tab_2
+2024-12-05 19:36:10,568 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:36:10,568 - DEBUG - push QWidget tab
+2024-12-05 19:36:10,568 - DEBUG - setting property geometry
+2024-12-05 19:36:10,568 - DEBUG - setting property currentIndex
+2024-12-05 19:36:10,568 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 19:36:10,568 - DEBUG - push QWidget tab_3
+2024-12-05 19:36:10,568 - DEBUG - setting property geometry
+2024-12-05 19:36:10,568 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 19:36:10,569 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 19:36:10,569 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:36:10,569 - DEBUG - setting property geometry
+2024-12-05 19:36:10,569 - DEBUG - setting property title
+2024-12-05 19:36:10,569 - DEBUG - push QGroupBox groupBox
+2024-12-05 19:36:10,569 - DEBUG - setting property geometry
+2024-12-05 19:36:10,570 - DEBUG - setting property font
+2024-12-05 19:36:10,570 - DEBUG - setting property text
+2024-12-05 19:36:10,570 - DEBUG - push QLabel label_6
+2024-12-05 19:36:10,570 - DEBUG - pop widget QLabel label_6
+2024-12-05 19:36:10,570 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:36:10,570 - DEBUG - setting property geometry
+2024-12-05 19:36:10,570 - DEBUG - setting property font
+2024-12-05 19:36:10,570 - DEBUG - setting property text
+2024-12-05 19:36:10,570 - DEBUG - setting property scaledContents
+2024-12-05 19:36:10,570 - DEBUG - setting property alignment
+2024-12-05 19:36:10,571 - DEBUG - push QLabel label_7
+2024-12-05 19:36:10,571 - DEBUG - pop widget QLabel label_7
+2024-12-05 19:36:10,571 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:36:10,571 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 19:36:10,571 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:36:10,571 - DEBUG - setting property geometry
+2024-12-05 19:36:10,571 - DEBUG - setting property title
+2024-12-05 19:36:10,571 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 19:36:10,571 - DEBUG - setting property geometry
+2024-12-05 19:36:10,571 - DEBUG - setting property font
+2024-12-05 19:36:10,572 - DEBUG - setting property text
+2024-12-05 19:36:10,572 - DEBUG - push QLabel label_8
+2024-12-05 19:36:10,572 - DEBUG - pop widget QLabel label_8
+2024-12-05 19:36:10,572 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:36:10,572 - DEBUG - setting property geometry
+2024-12-05 19:36:10,572 - DEBUG - setting property font
+2024-12-05 19:36:10,572 - DEBUG - setting property text
+2024-12-05 19:36:10,572 - DEBUG - setting property scaledContents
+2024-12-05 19:36:10,572 - DEBUG - setting property alignment
+2024-12-05 19:36:10,572 - DEBUG - push QLabel label_9
+2024-12-05 19:36:10,572 - DEBUG - pop widget QLabel label_9
+2024-12-05 19:36:10,573 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:36:10,573 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 19:36:10,573 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:36:10,573 - DEBUG - setting property geometry
+2024-12-05 19:36:10,573 - DEBUG - setting property title
+2024-12-05 19:36:10,573 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 19:36:10,573 - DEBUG - setting property geometry
+2024-12-05 19:36:10,573 - DEBUG - setting property font
+2024-12-05 19:36:10,573 - DEBUG - setting property text
+2024-12-05 19:36:10,574 - DEBUG - push QLabel label_12
+2024-12-05 19:36:10,574 - DEBUG - pop widget QLabel label_12
+2024-12-05 19:36:10,574 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:36:10,574 - DEBUG - setting property geometry
+2024-12-05 19:36:10,574 - DEBUG - setting property font
+2024-12-05 19:36:10,574 - DEBUG - setting property text
+2024-12-05 19:36:10,574 - DEBUG - setting property scaledContents
+2024-12-05 19:36:10,574 - DEBUG - setting property alignment
+2024-12-05 19:36:10,574 - DEBUG - push QLabel label_13
+2024-12-05 19:36:10,574 - DEBUG - pop widget QLabel label_13
+2024-12-05 19:36:10,574 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:36:10,575 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 19:36:10,575 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:36:10,575 - DEBUG - setting property geometry
+2024-12-05 19:36:10,575 - DEBUG - setting property title
+2024-12-05 19:36:10,575 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 19:36:10,575 - DEBUG - setting property geometry
+2024-12-05 19:36:10,575 - DEBUG - setting property font
+2024-12-05 19:36:10,575 - DEBUG - setting property text
+2024-12-05 19:36:10,575 - DEBUG - push QLabel label_16
+2024-12-05 19:36:10,575 - DEBUG - pop widget QLabel label_16
+2024-12-05 19:36:10,575 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:36:10,576 - DEBUG - setting property geometry
+2024-12-05 19:36:10,576 - DEBUG - setting property font
+2024-12-05 19:36:10,576 - DEBUG - setting property text
+2024-12-05 19:36:10,576 - DEBUG - setting property scaledContents
+2024-12-05 19:36:10,576 - DEBUG - setting property alignment
+2024-12-05 19:36:10,576 - DEBUG - push QLabel label_17
+2024-12-05 19:36:10,576 - DEBUG - pop widget QLabel label_17
+2024-12-05 19:36:10,576 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:36:10,576 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 19:36:10,576 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:36:10,577 - DEBUG - pop widget QWidget tab_3
+2024-12-05 19:36:10,577 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:36:10,577 - DEBUG - push QWidget tab_4
+2024-12-05 19:36:10,577 - DEBUG - setting property geometry
+2024-12-05 19:36:10,577 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 19:36:10,577 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 19:36:10,577 - DEBUG - new topwidget self.tab_4
+2024-12-05 19:36:10,578 - DEBUG - pop widget QWidget tab_4
+2024-12-05 19:36:10,578 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:36:10,578 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 19:36:10,578 - DEBUG - new topwidget self.tab
+2024-12-05 19:36:10,578 - DEBUG - setting property geometry
+2024-12-05 19:36:10,578 - DEBUG - setting property font
+2024-12-05 19:36:10,578 - DEBUG - setting property text
+2024-12-05 19:36:10,578 - DEBUG - push QLabel label_5
+2024-12-05 19:36:10,578 - DEBUG - pop widget QLabel label_5
+2024-12-05 19:36:10,578 - DEBUG - new topwidget self.tab
+2024-12-05 19:36:10,578 - DEBUG - setting property geometry
+2024-12-05 19:36:10,578 - DEBUG - push QDateEdit dateEdit
+2024-12-05 19:36:10,579 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 19:36:10,579 - DEBUG - new topwidget self.tab
+2024-12-05 19:36:10,579 - DEBUG - pop widget QWidget tab
+2024-12-05 19:36:10,579 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:36:10,579 - DEBUG - push QWidget tab_5
+2024-12-05 19:36:10,579 - DEBUG - setting property geometry
+2024-12-05 19:36:10,579 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 19:36:10,579 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 19:36:10,580 - DEBUG - new topwidget self.tab_5
+2024-12-05 19:36:10,580 - DEBUG - pop widget QWidget tab_5
+2024-12-05 19:36:10,580 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:36:10,580 - DEBUG - push QWidget tab_6
+2024-12-05 19:36:10,580 - DEBUG - setting property geometry
+2024-12-05 19:36:10,580 - DEBUG - setting property text
+2024-12-05 19:36:10,580 - DEBUG - push QLabel CCTV_2
+2024-12-05 19:36:10,580 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 19:36:10,580 - DEBUG - new topwidget self.tab_6
+2024-12-05 19:36:10,580 - DEBUG - pop widget QWidget tab_6
+2024-12-05 19:36:10,580 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:36:10,580 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 19:36:10,580 - DEBUG - new topwidget Dialog
+2024-12-05 19:36:10,581 - DEBUG - pop widget QDialog Dialog
+2024-12-05 19:36:10,581 - DEBUG - new topwidget None
+2024-12-05 19:37:15,304 - DEBUG - uiname is Dialog
+2024-12-05 19:37:15,305 - DEBUG - toplevel widget is QDialog
+2024-12-05 19:37:15,305 - DEBUG - setting property geometry
+2024-12-05 19:37:15,305 - DEBUG - setting property windowTitle
+2024-12-05 19:37:15,305 - DEBUG - push QDialog Dialog
+2024-12-05 19:37:15,305 - DEBUG - setting property geometry
+2024-12-05 19:37:15,305 - DEBUG - setting property currentIndex
+2024-12-05 19:37:15,306 - DEBUG - push QTabWidget tabWidget
+2024-12-05 19:37:15,306 - DEBUG - push QWidget tab_2
+2024-12-05 19:37:15,306 - DEBUG - setting property geometry
+2024-12-05 19:37:15,306 - DEBUG - setting property font
+2024-12-05 19:37:15,306 - DEBUG - setting property text
+2024-12-05 19:37:15,306 - DEBUG - push QLabel label
+2024-12-05 19:37:15,306 - DEBUG - pop widget QLabel label
+2024-12-05 19:37:15,306 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,307 - DEBUG - setting property geometry
+2024-12-05 19:37:15,307 - DEBUG - setting property font
+2024-12-05 19:37:15,307 - DEBUG - setting property text
+2024-12-05 19:37:15,307 - DEBUG - push QLabel label_2
+2024-12-05 19:37:15,307 - DEBUG - pop widget QLabel label_2
+2024-12-05 19:37:15,307 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,307 - DEBUG - setting property geometry
+2024-12-05 19:37:15,307 - DEBUG - setting property title
+2024-12-05 19:37:15,307 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 19:37:15,307 - DEBUG - setting property geometry
+2024-12-05 19:37:15,307 - DEBUG - setting property font
+2024-12-05 19:37:15,308 - DEBUG - setting property text
+2024-12-05 19:37:15,308 - DEBUG - push QLabel userNameLabel1
+2024-12-05 19:37:15,308 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 19:37:15,308 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:37:15,308 - DEBUG - setting property geometry
+2024-12-05 19:37:15,308 - DEBUG - setting property font
+2024-12-05 19:37:15,308 - DEBUG - setting property text
+2024-12-05 19:37:15,308 - DEBUG - push QLabel userCart1
+2024-12-05 19:37:15,308 - DEBUG - pop widget QLabel userCart1
+2024-12-05 19:37:15,308 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:37:15,308 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 19:37:15,308 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,308 - DEBUG - setting property geometry
+2024-12-05 19:37:15,309 - DEBUG - setting property title
+2024-12-05 19:37:15,309 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 19:37:15,309 - DEBUG - setting property geometry
+2024-12-05 19:37:15,309 - DEBUG - setting property font
+2024-12-05 19:37:15,309 - DEBUG - setting property text
+2024-12-05 19:37:15,309 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 19:37:15,309 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 19:37:15,309 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:37:15,309 - DEBUG - setting property geometry
+2024-12-05 19:37:15,309 - DEBUG - setting property font
+2024-12-05 19:37:15,310 - DEBUG - setting property text
+2024-12-05 19:37:15,310 - DEBUG - push QLabel userCart1_2
+2024-12-05 19:37:15,310 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 19:37:15,310 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:37:15,310 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 19:37:15,310 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,310 - DEBUG - setting property geometry
+2024-12-05 19:37:15,310 - DEBUG - setting property title
+2024-12-05 19:37:15,310 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 19:37:15,310 - DEBUG - setting property geometry
+2024-12-05 19:37:15,310 - DEBUG - setting property font
+2024-12-05 19:37:15,311 - DEBUG - setting property text
+2024-12-05 19:37:15,311 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 19:37:15,311 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 19:37:15,311 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:37:15,311 - DEBUG - setting property geometry
+2024-12-05 19:37:15,311 - DEBUG - setting property font
+2024-12-05 19:37:15,311 - DEBUG - setting property text
+2024-12-05 19:37:15,311 - DEBUG - push QLabel userCart1_3
+2024-12-05 19:37:15,312 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 19:37:15,312 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:37:15,312 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 19:37:15,312 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,312 - DEBUG - setting property geometry
+2024-12-05 19:37:15,312 - DEBUG - setting property title
+2024-12-05 19:37:15,312 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 19:37:15,312 - DEBUG - setting property geometry
+2024-12-05 19:37:15,312 - DEBUG - setting property font
+2024-12-05 19:37:15,312 - DEBUG - setting property text
+2024-12-05 19:37:15,312 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 19:37:15,313 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 19:37:15,313 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:37:15,313 - DEBUG - setting property geometry
+2024-12-05 19:37:15,313 - DEBUG - setting property font
+2024-12-05 19:37:15,313 - DEBUG - setting property text
+2024-12-05 19:37:15,313 - DEBUG - push QLabel userCart1_4
+2024-12-05 19:37:15,313 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 19:37:15,313 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:37:15,313 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 19:37:15,313 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,313 - DEBUG - setting property geometry
+2024-12-05 19:37:15,314 - DEBUG - setting property font
+2024-12-05 19:37:15,314 - DEBUG - setting property text
+2024-12-05 19:37:15,314 - DEBUG - push QLabel label_3
+2024-12-05 19:37:15,314 - DEBUG - pop widget QLabel label_3
+2024-12-05 19:37:15,314 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,314 - DEBUG - setting property geometry
+2024-12-05 19:37:15,314 - DEBUG - setting property font
+2024-12-05 19:37:15,314 - DEBUG - setting property text
+2024-12-05 19:37:15,314 - DEBUG - push QLabel label_4
+2024-12-05 19:37:15,314 - DEBUG - pop widget QLabel label_4
+2024-12-05 19:37:15,315 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,315 - DEBUG - setting property geometry
+2024-12-05 19:37:15,315 - DEBUG - push QTableWidget tableWidget
+2024-12-05 19:37:15,315 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 19:37:15,315 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,315 - DEBUG - setting property geometry
+2024-12-05 19:37:15,315 - DEBUG - setting property text
+2024-12-05 19:37:15,316 - DEBUG - push QLabel CCTV_1
+2024-12-05 19:37:15,316 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 19:37:15,316 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:37:15,316 - DEBUG - pop widget QWidget tab_2
+2024-12-05 19:37:15,316 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:37:15,316 - DEBUG - push QWidget tab
+2024-12-05 19:37:15,316 - DEBUG - setting property geometry
+2024-12-05 19:37:15,316 - DEBUG - setting property currentIndex
+2024-12-05 19:37:15,316 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 19:37:15,316 - DEBUG - push QWidget tab_3
+2024-12-05 19:37:15,317 - DEBUG - setting property geometry
+2024-12-05 19:37:15,317 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 19:37:15,317 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 19:37:15,317 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:37:15,317 - DEBUG - setting property geometry
+2024-12-05 19:37:15,317 - DEBUG - setting property title
+2024-12-05 19:37:15,318 - DEBUG - push QGroupBox groupBox
+2024-12-05 19:37:15,318 - DEBUG - setting property geometry
+2024-12-05 19:37:15,318 - DEBUG - setting property font
+2024-12-05 19:37:15,318 - DEBUG - setting property text
+2024-12-05 19:37:15,318 - DEBUG - push QLabel label_6
+2024-12-05 19:37:15,318 - DEBUG - pop widget QLabel label_6
+2024-12-05 19:37:15,318 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:37:15,318 - DEBUG - setting property geometry
+2024-12-05 19:37:15,318 - DEBUG - setting property font
+2024-12-05 19:37:15,319 - DEBUG - setting property text
+2024-12-05 19:37:15,319 - DEBUG - setting property scaledContents
+2024-12-05 19:37:15,319 - DEBUG - setting property alignment
+2024-12-05 19:37:15,319 - DEBUG - push QLabel label_7
+2024-12-05 19:37:15,319 - DEBUG - pop widget QLabel label_7
+2024-12-05 19:37:15,319 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:37:15,319 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 19:37:15,319 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:37:15,319 - DEBUG - setting property geometry
+2024-12-05 19:37:15,319 - DEBUG - setting property title
+2024-12-05 19:37:15,320 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 19:37:15,320 - DEBUG - setting property geometry
+2024-12-05 19:37:15,320 - DEBUG - setting property font
+2024-12-05 19:37:15,320 - DEBUG - setting property text
+2024-12-05 19:37:15,321 - DEBUG - push QLabel label_8
+2024-12-05 19:37:15,321 - DEBUG - pop widget QLabel label_8
+2024-12-05 19:37:15,321 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:37:15,321 - DEBUG - setting property geometry
+2024-12-05 19:37:15,321 - DEBUG - setting property font
+2024-12-05 19:37:15,321 - DEBUG - setting property text
+2024-12-05 19:37:15,321 - DEBUG - setting property scaledContents
+2024-12-05 19:37:15,321 - DEBUG - setting property alignment
+2024-12-05 19:37:15,321 - DEBUG - push QLabel label_9
+2024-12-05 19:37:15,321 - DEBUG - pop widget QLabel label_9
+2024-12-05 19:37:15,321 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:37:15,322 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 19:37:15,322 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:37:15,322 - DEBUG - setting property geometry
+2024-12-05 19:37:15,322 - DEBUG - setting property title
+2024-12-05 19:37:15,322 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 19:37:15,322 - DEBUG - setting property geometry
+2024-12-05 19:37:15,323 - DEBUG - setting property font
+2024-12-05 19:37:15,323 - DEBUG - setting property text
+2024-12-05 19:37:15,323 - DEBUG - push QLabel label_12
+2024-12-05 19:37:15,323 - DEBUG - pop widget QLabel label_12
+2024-12-05 19:37:15,323 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:37:15,323 - DEBUG - setting property geometry
+2024-12-05 19:37:15,323 - DEBUG - setting property font
+2024-12-05 19:37:15,324 - DEBUG - setting property text
+2024-12-05 19:37:15,324 - DEBUG - setting property scaledContents
+2024-12-05 19:37:15,324 - DEBUG - setting property alignment
+2024-12-05 19:37:15,324 - DEBUG - push QLabel label_13
+2024-12-05 19:37:15,324 - DEBUG - pop widget QLabel label_13
+2024-12-05 19:37:15,324 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:37:15,324 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 19:37:15,325 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:37:15,325 - DEBUG - setting property geometry
+2024-12-05 19:37:15,325 - DEBUG - setting property title
+2024-12-05 19:37:15,325 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 19:37:15,326 - DEBUG - setting property geometry
+2024-12-05 19:37:15,326 - DEBUG - setting property font
+2024-12-05 19:37:15,326 - DEBUG - setting property text
+2024-12-05 19:37:15,326 - DEBUG - push QLabel label_16
+2024-12-05 19:37:15,327 - DEBUG - pop widget QLabel label_16
+2024-12-05 19:37:15,327 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:37:15,327 - DEBUG - setting property geometry
+2024-12-05 19:37:15,327 - DEBUG - setting property font
+2024-12-05 19:37:15,327 - DEBUG - setting property text
+2024-12-05 19:37:15,327 - DEBUG - setting property scaledContents
+2024-12-05 19:37:15,327 - DEBUG - setting property alignment
+2024-12-05 19:37:15,327 - DEBUG - push QLabel label_17
+2024-12-05 19:37:15,328 - DEBUG - pop widget QLabel label_17
+2024-12-05 19:37:15,328 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:37:15,328 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 19:37:15,328 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:37:15,328 - DEBUG - pop widget QWidget tab_3
+2024-12-05 19:37:15,328 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:37:15,328 - DEBUG - push QWidget tab_4
+2024-12-05 19:37:15,328 - DEBUG - setting property geometry
+2024-12-05 19:37:15,329 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 19:37:15,329 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 19:37:15,329 - DEBUG - new topwidget self.tab_4
+2024-12-05 19:37:15,329 - DEBUG - pop widget QWidget tab_4
+2024-12-05 19:37:15,329 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:37:15,330 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 19:37:15,330 - DEBUG - new topwidget self.tab
+2024-12-05 19:37:15,330 - DEBUG - setting property geometry
+2024-12-05 19:37:15,330 - DEBUG - setting property font
+2024-12-05 19:37:15,330 - DEBUG - setting property text
+2024-12-05 19:37:15,330 - DEBUG - push QLabel label_5
+2024-12-05 19:37:15,330 - DEBUG - pop widget QLabel label_5
+2024-12-05 19:37:15,330 - DEBUG - new topwidget self.tab
+2024-12-05 19:37:15,331 - DEBUG - setting property geometry
+2024-12-05 19:37:15,331 - DEBUG - push QDateEdit dateEdit
+2024-12-05 19:37:15,331 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 19:37:15,331 - DEBUG - new topwidget self.tab
+2024-12-05 19:37:15,331 - DEBUG - pop widget QWidget tab
+2024-12-05 19:37:15,331 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:37:15,331 - DEBUG - push QWidget tab_5
+2024-12-05 19:37:15,332 - DEBUG - setting property geometry
+2024-12-05 19:37:15,332 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 19:37:15,333 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 19:37:15,333 - DEBUG - new topwidget self.tab_5
+2024-12-05 19:37:15,333 - DEBUG - pop widget QWidget tab_5
+2024-12-05 19:37:15,333 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:37:15,333 - DEBUG - push QWidget tab_6
+2024-12-05 19:37:15,333 - DEBUG - setting property geometry
+2024-12-05 19:37:15,334 - DEBUG - setting property text
+2024-12-05 19:37:15,334 - DEBUG - push QLabel CCTV_2
+2024-12-05 19:37:15,334 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 19:37:15,334 - DEBUG - new topwidget self.tab_6
+2024-12-05 19:37:15,334 - DEBUG - pop widget QWidget tab_6
+2024-12-05 19:37:15,334 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:37:15,334 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 19:37:15,334 - DEBUG - new topwidget Dialog
+2024-12-05 19:37:15,335 - DEBUG - pop widget QDialog Dialog
+2024-12-05 19:37:15,335 - DEBUG - new topwidget None
+2024-12-05 19:37:18,094 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-05 19:37:18,094 - INFO - - gpu enabled: True
+2024-12-05 19:37:18,094 - INFO - - half precision: True
+2024-12-05 19:37:18,094 - INFO - - max batch size: 16
+2024-12-05 19:37:18,094 - INFO - - expects BGR: True
+2024-12-05 19:37:18,900 - INFO - DeepSort Tracker initialised
+2024-12-05 19:37:18,900 - INFO - - max age: 5
+2024-12-05 19:37:18,900 - INFO - - appearance threshold: 0.2
+2024-12-05 19:37:18,901 - INFO - - nms threshold: OFF
+2024-12-05 19:37:18,901 - INFO - - max num of appearance features: None
+2024-12-05 19:37:18,901 - INFO - - overriding track class : No
+2024-12-05 19:37:18,901 - INFO - - today given : No
+2024-12-05 19:37:18,901 - INFO - - in-build embedder : Yes
+2024-12-05 19:37:18,901 - INFO - - polygon detections : No
+2024-12-05 19:37:18,902 - INFO - 서버가 시작되었습니다.
+2024-12-05 19:37:18,902 - INFO - TCP 서버 실행 중...
+2024-12-05 19:37:31,525 - INFO - TCP 서버가 중지되었습니다.
+2024-12-05 19:39:07,323 - DEBUG - uiname is Dialog
+2024-12-05 19:39:07,323 - DEBUG - toplevel widget is QDialog
+2024-12-05 19:39:07,323 - DEBUG - setting property geometry
+2024-12-05 19:39:07,323 - DEBUG - setting property windowTitle
+2024-12-05 19:39:07,323 - DEBUG - push QDialog Dialog
+2024-12-05 19:39:07,323 - DEBUG - setting property geometry
+2024-12-05 19:39:07,324 - DEBUG - setting property currentIndex
+2024-12-05 19:39:07,324 - DEBUG - push QTabWidget tabWidget
+2024-12-05 19:39:07,324 - DEBUG - push QWidget tab_2
+2024-12-05 19:39:07,324 - DEBUG - setting property geometry
+2024-12-05 19:39:07,324 - DEBUG - setting property font
+2024-12-05 19:39:07,324 - DEBUG - setting property text
+2024-12-05 19:39:07,324 - DEBUG - push QLabel label
+2024-12-05 19:39:07,325 - DEBUG - pop widget QLabel label
+2024-12-05 19:39:07,325 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,325 - DEBUG - setting property geometry
+2024-12-05 19:39:07,325 - DEBUG - setting property font
+2024-12-05 19:39:07,325 - DEBUG - setting property text
+2024-12-05 19:39:07,325 - DEBUG - push QLabel label_2
+2024-12-05 19:39:07,325 - DEBUG - pop widget QLabel label_2
+2024-12-05 19:39:07,325 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,325 - DEBUG - setting property geometry
+2024-12-05 19:39:07,326 - DEBUG - setting property title
+2024-12-05 19:39:07,326 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 19:39:07,326 - DEBUG - setting property geometry
+2024-12-05 19:39:07,326 - DEBUG - setting property font
+2024-12-05 19:39:07,326 - DEBUG - setting property text
+2024-12-05 19:39:07,326 - DEBUG - push QLabel userNameLabel1
+2024-12-05 19:39:07,326 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 19:39:07,326 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:39:07,326 - DEBUG - setting property geometry
+2024-12-05 19:39:07,327 - DEBUG - setting property font
+2024-12-05 19:39:07,327 - DEBUG - setting property text
+2024-12-05 19:39:07,327 - DEBUG - push QLabel userCart1
+2024-12-05 19:39:07,327 - DEBUG - pop widget QLabel userCart1
+2024-12-05 19:39:07,327 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:39:07,327 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 19:39:07,327 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,327 - DEBUG - setting property geometry
+2024-12-05 19:39:07,328 - DEBUG - setting property title
+2024-12-05 19:39:07,328 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 19:39:07,328 - DEBUG - setting property geometry
+2024-12-05 19:39:07,328 - DEBUG - setting property font
+2024-12-05 19:39:07,328 - DEBUG - setting property text
+2024-12-05 19:39:07,328 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 19:39:07,328 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 19:39:07,328 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:39:07,329 - DEBUG - setting property geometry
+2024-12-05 19:39:07,329 - DEBUG - setting property font
+2024-12-05 19:39:07,329 - DEBUG - setting property text
+2024-12-05 19:39:07,329 - DEBUG - push QLabel userCart1_2
+2024-12-05 19:39:07,329 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 19:39:07,329 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:39:07,330 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 19:39:07,330 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,330 - DEBUG - setting property geometry
+2024-12-05 19:39:07,330 - DEBUG - setting property title
+2024-12-05 19:39:07,330 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 19:39:07,330 - DEBUG - setting property geometry
+2024-12-05 19:39:07,330 - DEBUG - setting property font
+2024-12-05 19:39:07,331 - DEBUG - setting property text
+2024-12-05 19:39:07,331 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 19:39:07,331 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 19:39:07,331 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:39:07,331 - DEBUG - setting property geometry
+2024-12-05 19:39:07,331 - DEBUG - setting property font
+2024-12-05 19:39:07,331 - DEBUG - setting property text
+2024-12-05 19:39:07,331 - DEBUG - push QLabel userCart1_3
+2024-12-05 19:39:07,332 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 19:39:07,332 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:39:07,332 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 19:39:07,332 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,332 - DEBUG - setting property geometry
+2024-12-05 19:39:07,332 - DEBUG - setting property title
+2024-12-05 19:39:07,332 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 19:39:07,332 - DEBUG - setting property geometry
+2024-12-05 19:39:07,332 - DEBUG - setting property font
+2024-12-05 19:39:07,333 - DEBUG - setting property text
+2024-12-05 19:39:07,333 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 19:39:07,333 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 19:39:07,333 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:39:07,333 - DEBUG - setting property geometry
+2024-12-05 19:39:07,333 - DEBUG - setting property font
+2024-12-05 19:39:07,333 - DEBUG - setting property text
+2024-12-05 19:39:07,333 - DEBUG - push QLabel userCart1_4
+2024-12-05 19:39:07,334 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 19:39:07,334 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:39:07,334 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 19:39:07,334 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,334 - DEBUG - setting property geometry
+2024-12-05 19:39:07,334 - DEBUG - setting property font
+2024-12-05 19:39:07,334 - DEBUG - setting property text
+2024-12-05 19:39:07,335 - DEBUG - push QLabel label_3
+2024-12-05 19:39:07,335 - DEBUG - pop widget QLabel label_3
+2024-12-05 19:39:07,335 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,335 - DEBUG - setting property geometry
+2024-12-05 19:39:07,335 - DEBUG - setting property font
+2024-12-05 19:39:07,335 - DEBUG - setting property text
+2024-12-05 19:39:07,336 - DEBUG - push QLabel label_4
+2024-12-05 19:39:07,336 - DEBUG - pop widget QLabel label_4
+2024-12-05 19:39:07,336 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,336 - DEBUG - setting property geometry
+2024-12-05 19:39:07,336 - DEBUG - push QTableWidget tableWidget
+2024-12-05 19:39:07,337 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 19:39:07,337 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,337 - DEBUG - setting property geometry
+2024-12-05 19:39:07,337 - DEBUG - setting property text
+2024-12-05 19:39:07,337 - DEBUG - push QLabel CCTV_1
+2024-12-05 19:39:07,338 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 19:39:07,338 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:07,338 - DEBUG - pop widget QWidget tab_2
+2024-12-05 19:39:07,338 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:07,338 - DEBUG - push QWidget tab
+2024-12-05 19:39:07,338 - DEBUG - setting property geometry
+2024-12-05 19:39:07,339 - DEBUG - setting property currentIndex
+2024-12-05 19:39:07,339 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 19:39:07,339 - DEBUG - push QWidget tab_3
+2024-12-05 19:39:07,339 - DEBUG - setting property geometry
+2024-12-05 19:39:07,339 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 19:39:07,340 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 19:39:07,340 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:07,340 - DEBUG - setting property geometry
+2024-12-05 19:39:07,340 - DEBUG - setting property title
+2024-12-05 19:39:07,340 - DEBUG - push QGroupBox groupBox
+2024-12-05 19:39:07,340 - DEBUG - setting property geometry
+2024-12-05 19:39:07,340 - DEBUG - setting property font
+2024-12-05 19:39:07,341 - DEBUG - setting property text
+2024-12-05 19:39:07,341 - DEBUG - push QLabel label_6
+2024-12-05 19:39:07,341 - DEBUG - pop widget QLabel label_6
+2024-12-05 19:39:07,341 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:39:07,341 - DEBUG - setting property geometry
+2024-12-05 19:39:07,341 - DEBUG - setting property font
+2024-12-05 19:39:07,341 - DEBUG - setting property text
+2024-12-05 19:39:07,341 - DEBUG - setting property scaledContents
+2024-12-05 19:39:07,342 - DEBUG - setting property alignment
+2024-12-05 19:39:07,342 - DEBUG - push QLabel label_7
+2024-12-05 19:39:07,342 - DEBUG - pop widget QLabel label_7
+2024-12-05 19:39:07,342 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:39:07,342 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 19:39:07,342 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:07,342 - DEBUG - setting property geometry
+2024-12-05 19:39:07,342 - DEBUG - setting property title
+2024-12-05 19:39:07,343 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 19:39:07,343 - DEBUG - setting property geometry
+2024-12-05 19:39:07,343 - DEBUG - setting property font
+2024-12-05 19:39:07,343 - DEBUG - setting property text
+2024-12-05 19:39:07,343 - DEBUG - push QLabel label_8
+2024-12-05 19:39:07,344 - DEBUG - pop widget QLabel label_8
+2024-12-05 19:39:07,344 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:39:07,344 - DEBUG - setting property geometry
+2024-12-05 19:39:07,344 - DEBUG - setting property font
+2024-12-05 19:39:07,344 - DEBUG - setting property text
+2024-12-05 19:39:07,344 - DEBUG - setting property scaledContents
+2024-12-05 19:39:07,345 - DEBUG - setting property alignment
+2024-12-05 19:39:07,345 - DEBUG - push QLabel label_9
+2024-12-05 19:39:07,345 - DEBUG - pop widget QLabel label_9
+2024-12-05 19:39:07,345 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:39:07,345 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 19:39:07,345 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:07,346 - DEBUG - setting property geometry
+2024-12-05 19:39:07,346 - DEBUG - setting property title
+2024-12-05 19:39:07,346 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 19:39:07,346 - DEBUG - setting property geometry
+2024-12-05 19:39:07,346 - DEBUG - setting property font
+2024-12-05 19:39:07,346 - DEBUG - setting property text
+2024-12-05 19:39:07,346 - DEBUG - push QLabel label_12
+2024-12-05 19:39:07,347 - DEBUG - pop widget QLabel label_12
+2024-12-05 19:39:07,347 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:39:07,347 - DEBUG - setting property geometry
+2024-12-05 19:39:07,347 - DEBUG - setting property font
+2024-12-05 19:39:07,347 - DEBUG - setting property text
+2024-12-05 19:39:07,347 - DEBUG - setting property scaledContents
+2024-12-05 19:39:07,347 - DEBUG - setting property alignment
+2024-12-05 19:39:07,347 - DEBUG - push QLabel label_13
+2024-12-05 19:39:07,347 - DEBUG - pop widget QLabel label_13
+2024-12-05 19:39:07,347 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:39:07,347 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 19:39:07,347 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:07,348 - DEBUG - setting property geometry
+2024-12-05 19:39:07,348 - DEBUG - setting property title
+2024-12-05 19:39:07,348 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 19:39:07,348 - DEBUG - setting property geometry
+2024-12-05 19:39:07,348 - DEBUG - setting property font
+2024-12-05 19:39:07,348 - DEBUG - setting property text
+2024-12-05 19:39:07,348 - DEBUG - push QLabel label_16
+2024-12-05 19:39:07,348 - DEBUG - pop widget QLabel label_16
+2024-12-05 19:39:07,348 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:39:07,349 - DEBUG - setting property geometry
+2024-12-05 19:39:07,349 - DEBUG - setting property font
+2024-12-05 19:39:07,349 - DEBUG - setting property text
+2024-12-05 19:39:07,349 - DEBUG - setting property scaledContents
+2024-12-05 19:39:07,349 - DEBUG - setting property alignment
+2024-12-05 19:39:07,349 - DEBUG - push QLabel label_17
+2024-12-05 19:39:07,349 - DEBUG - pop widget QLabel label_17
+2024-12-05 19:39:07,349 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:39:07,349 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 19:39:07,350 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:07,350 - DEBUG - pop widget QWidget tab_3
+2024-12-05 19:39:07,350 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:39:07,350 - DEBUG - push QWidget tab_4
+2024-12-05 19:39:07,350 - DEBUG - setting property geometry
+2024-12-05 19:39:07,351 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 19:39:07,351 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 19:39:07,351 - DEBUG - new topwidget self.tab_4
+2024-12-05 19:39:07,352 - DEBUG - pop widget QWidget tab_4
+2024-12-05 19:39:07,352 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:39:07,352 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 19:39:07,353 - DEBUG - new topwidget self.tab
+2024-12-05 19:39:07,353 - DEBUG - setting property geometry
+2024-12-05 19:39:07,353 - DEBUG - setting property font
+2024-12-05 19:39:07,353 - DEBUG - setting property text
+2024-12-05 19:39:07,353 - DEBUG - push QLabel label_5
+2024-12-05 19:39:07,353 - DEBUG - pop widget QLabel label_5
+2024-12-05 19:39:07,354 - DEBUG - new topwidget self.tab
+2024-12-05 19:39:07,354 - DEBUG - setting property geometry
+2024-12-05 19:39:07,354 - DEBUG - push QDateEdit dateEdit
+2024-12-05 19:39:07,354 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 19:39:07,354 - DEBUG - new topwidget self.tab
+2024-12-05 19:39:07,354 - DEBUG - pop widget QWidget tab
+2024-12-05 19:39:07,354 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:07,355 - DEBUG - push QWidget tab_5
+2024-12-05 19:39:07,355 - DEBUG - setting property geometry
+2024-12-05 19:39:07,355 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 19:39:07,355 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 19:39:07,356 - DEBUG - new topwidget self.tab_5
+2024-12-05 19:39:07,356 - DEBUG - pop widget QWidget tab_5
+2024-12-05 19:39:07,356 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:07,356 - DEBUG - push QWidget tab_6
+2024-12-05 19:39:07,356 - DEBUG - setting property geometry
+2024-12-05 19:39:07,356 - DEBUG - setting property text
+2024-12-05 19:39:07,356 - DEBUG - push QLabel CCTV_2
+2024-12-05 19:39:07,356 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 19:39:07,356 - DEBUG - new topwidget self.tab_6
+2024-12-05 19:39:07,356 - DEBUG - pop widget QWidget tab_6
+2024-12-05 19:39:07,357 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:07,357 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 19:39:07,357 - DEBUG - new topwidget Dialog
+2024-12-05 19:39:07,357 - DEBUG - pop widget QDialog Dialog
+2024-12-05 19:39:07,357 - DEBUG - new topwidget None
+2024-12-05 19:39:08,549 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-05 19:39:08,550 - INFO - - gpu enabled: True
+2024-12-05 19:39:08,550 - INFO - - half precision: True
+2024-12-05 19:39:08,550 - INFO - - max batch size: 16
+2024-12-05 19:39:08,550 - INFO - - expects BGR: True
+2024-12-05 19:39:08,911 - INFO - DeepSort Tracker initialised
+2024-12-05 19:39:08,911 - INFO - - max age: 5
+2024-12-05 19:39:08,912 - INFO - - appearance threshold: 0.2
+2024-12-05 19:39:08,912 - INFO - - nms threshold: OFF
+2024-12-05 19:39:08,912 - INFO - - max num of appearance features: None
+2024-12-05 19:39:08,912 - INFO - - overriding track class : No
+2024-12-05 19:39:08,912 - INFO - - today given : No
+2024-12-05 19:39:08,912 - INFO - - in-build embedder : Yes
+2024-12-05 19:39:08,912 - INFO - - polygon detections : No
+2024-12-05 19:39:08,913 - INFO - 서버가 시작되었습니다.
+2024-12-05 19:39:08,987 - INFO - TCP 서버 실행 중...
+2024-12-05 19:39:53,911 - DEBUG - uiname is Dialog
+2024-12-05 19:39:53,911 - DEBUG - toplevel widget is QDialog
+2024-12-05 19:39:53,911 - DEBUG - setting property geometry
+2024-12-05 19:39:53,912 - DEBUG - setting property windowTitle
+2024-12-05 19:39:53,912 - DEBUG - push QDialog Dialog
+2024-12-05 19:39:53,912 - DEBUG - setting property geometry
+2024-12-05 19:39:53,912 - DEBUG - setting property currentIndex
+2024-12-05 19:39:53,912 - DEBUG - push QTabWidget tabWidget
+2024-12-05 19:39:53,912 - DEBUG - push QWidget tab_2
+2024-12-05 19:39:53,912 - DEBUG - setting property geometry
+2024-12-05 19:39:53,913 - DEBUG - setting property font
+2024-12-05 19:39:53,913 - DEBUG - setting property text
+2024-12-05 19:39:53,913 - DEBUG - push QLabel label
+2024-12-05 19:39:53,913 - DEBUG - pop widget QLabel label
+2024-12-05 19:39:53,913 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,913 - DEBUG - setting property geometry
+2024-12-05 19:39:53,913 - DEBUG - setting property font
+2024-12-05 19:39:53,913 - DEBUG - setting property text
+2024-12-05 19:39:53,913 - DEBUG - push QLabel label_2
+2024-12-05 19:39:53,913 - DEBUG - pop widget QLabel label_2
+2024-12-05 19:39:53,914 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,914 - DEBUG - setting property geometry
+2024-12-05 19:39:53,914 - DEBUG - setting property title
+2024-12-05 19:39:53,914 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 19:39:53,914 - DEBUG - setting property geometry
+2024-12-05 19:39:53,914 - DEBUG - setting property font
+2024-12-05 19:39:53,914 - DEBUG - setting property text
+2024-12-05 19:39:53,914 - DEBUG - push QLabel userNameLabel1
+2024-12-05 19:39:53,914 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 19:39:53,914 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:39:53,914 - DEBUG - setting property geometry
+2024-12-05 19:39:53,914 - DEBUG - setting property font
+2024-12-05 19:39:53,915 - DEBUG - setting property text
+2024-12-05 19:39:53,915 - DEBUG - push QLabel userCart1
+2024-12-05 19:39:53,915 - DEBUG - pop widget QLabel userCart1
+2024-12-05 19:39:53,915 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:39:53,915 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 19:39:53,915 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,915 - DEBUG - setting property geometry
+2024-12-05 19:39:53,915 - DEBUG - setting property title
+2024-12-05 19:39:53,915 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 19:39:53,915 - DEBUG - setting property geometry
+2024-12-05 19:39:53,916 - DEBUG - setting property font
+2024-12-05 19:39:53,916 - DEBUG - setting property text
+2024-12-05 19:39:53,916 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 19:39:53,916 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 19:39:53,916 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:39:53,916 - DEBUG - setting property geometry
+2024-12-05 19:39:53,916 - DEBUG - setting property font
+2024-12-05 19:39:53,916 - DEBUG - setting property text
+2024-12-05 19:39:53,916 - DEBUG - push QLabel userCart1_2
+2024-12-05 19:39:53,916 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 19:39:53,916 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:39:53,916 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 19:39:53,916 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,917 - DEBUG - setting property geometry
+2024-12-05 19:39:53,917 - DEBUG - setting property title
+2024-12-05 19:39:53,917 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 19:39:53,917 - DEBUG - setting property geometry
+2024-12-05 19:39:53,917 - DEBUG - setting property font
+2024-12-05 19:39:53,917 - DEBUG - setting property text
+2024-12-05 19:39:53,918 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 19:39:53,918 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 19:39:53,918 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:39:53,918 - DEBUG - setting property geometry
+2024-12-05 19:39:53,918 - DEBUG - setting property font
+2024-12-05 19:39:53,918 - DEBUG - setting property text
+2024-12-05 19:39:53,918 - DEBUG - push QLabel userCart1_3
+2024-12-05 19:39:53,918 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 19:39:53,918 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:39:53,918 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 19:39:53,918 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,919 - DEBUG - setting property geometry
+2024-12-05 19:39:53,919 - DEBUG - setting property title
+2024-12-05 19:39:53,919 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 19:39:53,919 - DEBUG - setting property geometry
+2024-12-05 19:39:53,919 - DEBUG - setting property font
+2024-12-05 19:39:53,919 - DEBUG - setting property text
+2024-12-05 19:39:53,919 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 19:39:53,919 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 19:39:53,919 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:39:53,919 - DEBUG - setting property geometry
+2024-12-05 19:39:53,920 - DEBUG - setting property font
+2024-12-05 19:39:53,920 - DEBUG - setting property text
+2024-12-05 19:39:53,920 - DEBUG - push QLabel userCart1_4
+2024-12-05 19:39:53,920 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 19:39:53,920 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:39:53,920 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 19:39:53,920 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,920 - DEBUG - setting property geometry
+2024-12-05 19:39:53,920 - DEBUG - setting property font
+2024-12-05 19:39:53,920 - DEBUG - setting property text
+2024-12-05 19:39:53,921 - DEBUG - push QLabel label_3
+2024-12-05 19:39:53,921 - DEBUG - pop widget QLabel label_3
+2024-12-05 19:39:53,921 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,921 - DEBUG - setting property geometry
+2024-12-05 19:39:53,921 - DEBUG - setting property font
+2024-12-05 19:39:53,921 - DEBUG - setting property text
+2024-12-05 19:39:53,921 - DEBUG - push QLabel label_4
+2024-12-05 19:39:53,921 - DEBUG - pop widget QLabel label_4
+2024-12-05 19:39:53,921 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,922 - DEBUG - setting property geometry
+2024-12-05 19:39:53,922 - DEBUG - push QTableWidget tableWidget
+2024-12-05 19:39:53,922 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 19:39:53,922 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,923 - DEBUG - setting property geometry
+2024-12-05 19:39:53,923 - DEBUG - setting property text
+2024-12-05 19:39:53,923 - DEBUG - push QLabel CCTV_1
+2024-12-05 19:39:53,923 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 19:39:53,923 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:39:53,923 - DEBUG - pop widget QWidget tab_2
+2024-12-05 19:39:53,923 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:53,924 - DEBUG - push QWidget tab
+2024-12-05 19:39:53,924 - DEBUG - setting property geometry
+2024-12-05 19:39:53,924 - DEBUG - setting property currentIndex
+2024-12-05 19:39:53,924 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 19:39:53,924 - DEBUG - push QWidget tab_3
+2024-12-05 19:39:53,925 - DEBUG - setting property geometry
+2024-12-05 19:39:53,925 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 19:39:53,925 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 19:39:53,925 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:53,926 - DEBUG - setting property geometry
+2024-12-05 19:39:53,926 - DEBUG - setting property title
+2024-12-05 19:39:53,926 - DEBUG - push QGroupBox groupBox
+2024-12-05 19:39:53,926 - DEBUG - setting property geometry
+2024-12-05 19:39:53,926 - DEBUG - setting property font
+2024-12-05 19:39:53,926 - DEBUG - setting property text
+2024-12-05 19:39:53,926 - DEBUG - push QLabel label_6
+2024-12-05 19:39:53,927 - DEBUG - pop widget QLabel label_6
+2024-12-05 19:39:53,927 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:39:53,927 - DEBUG - setting property geometry
+2024-12-05 19:39:53,927 - DEBUG - setting property font
+2024-12-05 19:39:53,927 - DEBUG - setting property text
+2024-12-05 19:39:53,928 - DEBUG - setting property scaledContents
+2024-12-05 19:39:53,928 - DEBUG - setting property alignment
+2024-12-05 19:39:53,928 - DEBUG - push QLabel label_7
+2024-12-05 19:39:53,928 - DEBUG - pop widget QLabel label_7
+2024-12-05 19:39:53,928 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:39:53,928 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 19:39:53,928 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:53,929 - DEBUG - setting property geometry
+2024-12-05 19:39:53,929 - DEBUG - setting property title
+2024-12-05 19:39:53,929 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 19:39:53,929 - DEBUG - setting property geometry
+2024-12-05 19:39:53,929 - DEBUG - setting property font
+2024-12-05 19:39:53,929 - DEBUG - setting property text
+2024-12-05 19:39:53,930 - DEBUG - push QLabel label_8
+2024-12-05 19:39:53,930 - DEBUG - pop widget QLabel label_8
+2024-12-05 19:39:53,930 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:39:53,930 - DEBUG - setting property geometry
+2024-12-05 19:39:53,930 - DEBUG - setting property font
+2024-12-05 19:39:53,930 - DEBUG - setting property text
+2024-12-05 19:39:53,930 - DEBUG - setting property scaledContents
+2024-12-05 19:39:53,930 - DEBUG - setting property alignment
+2024-12-05 19:39:53,931 - DEBUG - push QLabel label_9
+2024-12-05 19:39:53,931 - DEBUG - pop widget QLabel label_9
+2024-12-05 19:39:53,931 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:39:53,931 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 19:39:53,931 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:53,931 - DEBUG - setting property geometry
+2024-12-05 19:39:53,931 - DEBUG - setting property title
+2024-12-05 19:39:53,931 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 19:39:53,931 - DEBUG - setting property geometry
+2024-12-05 19:39:53,931 - DEBUG - setting property font
+2024-12-05 19:39:53,932 - DEBUG - setting property text
+2024-12-05 19:39:53,932 - DEBUG - push QLabel label_12
+2024-12-05 19:39:53,932 - DEBUG - pop widget QLabel label_12
+2024-12-05 19:39:53,932 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:39:53,932 - DEBUG - setting property geometry
+2024-12-05 19:39:53,932 - DEBUG - setting property font
+2024-12-05 19:39:53,932 - DEBUG - setting property text
+2024-12-05 19:39:53,932 - DEBUG - setting property scaledContents
+2024-12-05 19:39:53,932 - DEBUG - setting property alignment
+2024-12-05 19:39:53,933 - DEBUG - push QLabel label_13
+2024-12-05 19:39:53,933 - DEBUG - pop widget QLabel label_13
+2024-12-05 19:39:53,933 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:39:53,933 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 19:39:53,933 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:53,933 - DEBUG - setting property geometry
+2024-12-05 19:39:53,933 - DEBUG - setting property title
+2024-12-05 19:39:53,933 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 19:39:53,933 - DEBUG - setting property geometry
+2024-12-05 19:39:53,933 - DEBUG - setting property font
+2024-12-05 19:39:53,934 - DEBUG - setting property text
+2024-12-05 19:39:53,934 - DEBUG - push QLabel label_16
+2024-12-05 19:39:53,934 - DEBUG - pop widget QLabel label_16
+2024-12-05 19:39:53,934 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:39:53,934 - DEBUG - setting property geometry
+2024-12-05 19:39:53,934 - DEBUG - setting property font
+2024-12-05 19:39:53,934 - DEBUG - setting property text
+2024-12-05 19:39:53,934 - DEBUG - setting property scaledContents
+2024-12-05 19:39:53,935 - DEBUG - setting property alignment
+2024-12-05 19:39:53,935 - DEBUG - push QLabel label_17
+2024-12-05 19:39:53,935 - DEBUG - pop widget QLabel label_17
+2024-12-05 19:39:53,935 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:39:53,935 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 19:39:53,935 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:39:53,935 - DEBUG - pop widget QWidget tab_3
+2024-12-05 19:39:53,935 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:39:53,936 - DEBUG - push QWidget tab_4
+2024-12-05 19:39:53,936 - DEBUG - setting property geometry
+2024-12-05 19:39:53,936 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 19:39:53,937 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 19:39:53,937 - DEBUG - new topwidget self.tab_4
+2024-12-05 19:39:53,937 - DEBUG - pop widget QWidget tab_4
+2024-12-05 19:39:53,937 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:39:53,937 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 19:39:53,938 - DEBUG - new topwidget self.tab
+2024-12-05 19:39:53,938 - DEBUG - setting property geometry
+2024-12-05 19:39:53,938 - DEBUG - setting property font
+2024-12-05 19:39:53,938 - DEBUG - setting property text
+2024-12-05 19:39:53,938 - DEBUG - push QLabel label_5
+2024-12-05 19:39:53,938 - DEBUG - pop widget QLabel label_5
+2024-12-05 19:39:53,938 - DEBUG - new topwidget self.tab
+2024-12-05 19:39:53,938 - DEBUG - setting property geometry
+2024-12-05 19:39:53,938 - DEBUG - push QDateEdit dateEdit
+2024-12-05 19:39:53,938 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 19:39:53,939 - DEBUG - new topwidget self.tab
+2024-12-05 19:39:53,939 - DEBUG - pop widget QWidget tab
+2024-12-05 19:39:53,939 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:53,939 - DEBUG - push QWidget tab_5
+2024-12-05 19:39:53,939 - DEBUG - setting property geometry
+2024-12-05 19:39:53,939 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 19:39:53,940 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 19:39:53,940 - DEBUG - new topwidget self.tab_5
+2024-12-05 19:39:53,940 - DEBUG - pop widget QWidget tab_5
+2024-12-05 19:39:53,940 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:53,940 - DEBUG - push QWidget tab_6
+2024-12-05 19:39:53,940 - DEBUG - setting property geometry
+2024-12-05 19:39:53,940 - DEBUG - setting property text
+2024-12-05 19:39:53,940 - DEBUG - push QLabel CCTV_2
+2024-12-05 19:39:53,941 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 19:39:53,941 - DEBUG - new topwidget self.tab_6
+2024-12-05 19:39:53,941 - DEBUG - pop widget QWidget tab_6
+2024-12-05 19:39:53,941 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:39:53,941 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 19:39:53,941 - DEBUG - new topwidget Dialog
+2024-12-05 19:39:53,941 - DEBUG - pop widget QDialog Dialog
+2024-12-05 19:39:53,941 - DEBUG - new topwidget None
+2024-12-05 19:39:55,165 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-05 19:39:55,165 - INFO - - gpu enabled: True
+2024-12-05 19:39:55,165 - INFO - - half precision: True
+2024-12-05 19:39:55,165 - INFO - - max batch size: 16
+2024-12-05 19:39:55,165 - INFO - - expects BGR: True
+2024-12-05 19:39:55,439 - INFO - DeepSort Tracker initialised
+2024-12-05 19:39:55,439 - INFO - - max age: 5
+2024-12-05 19:39:55,439 - INFO - - appearance threshold: 0.2
+2024-12-05 19:39:55,439 - INFO - - nms threshold: OFF
+2024-12-05 19:39:55,439 - INFO - - max num of appearance features: None
+2024-12-05 19:39:55,439 - INFO - - overriding track class : No
+2024-12-05 19:39:55,439 - INFO - - today given : No
+2024-12-05 19:39:55,439 - INFO - - in-build embedder : Yes
+2024-12-05 19:39:55,439 - INFO - - polygon detections : No
+2024-12-05 19:39:55,440 - INFO - 서버가 시작되었습니다.
+2024-12-05 19:39:55,503 - INFO - TCP 서버 실행 중...
+2024-12-05 19:47:19,181 - DEBUG - uiname is Dialog
+2024-12-05 19:47:19,182 - DEBUG - toplevel widget is QDialog
+2024-12-05 19:47:19,182 - DEBUG - setting property geometry
+2024-12-05 19:47:19,182 - DEBUG - setting property windowTitle
+2024-12-05 19:47:19,182 - DEBUG - push QDialog Dialog
+2024-12-05 19:47:19,182 - DEBUG - setting property geometry
+2024-12-05 19:47:19,182 - DEBUG - setting property currentIndex
+2024-12-05 19:47:19,182 - DEBUG - push QTabWidget tabWidget
+2024-12-05 19:47:19,182 - DEBUG - push QWidget tab_2
+2024-12-05 19:47:19,183 - DEBUG - setting property geometry
+2024-12-05 19:47:19,183 - DEBUG - setting property font
+2024-12-05 19:47:19,183 - DEBUG - setting property text
+2024-12-05 19:47:19,183 - DEBUG - push QLabel label
+2024-12-05 19:47:19,183 - DEBUG - pop widget QLabel label
+2024-12-05 19:47:19,183 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,184 - DEBUG - setting property geometry
+2024-12-05 19:47:19,184 - DEBUG - setting property font
+2024-12-05 19:47:19,184 - DEBUG - setting property text
+2024-12-05 19:47:19,184 - DEBUG - push QLabel label_2
+2024-12-05 19:47:19,184 - DEBUG - pop widget QLabel label_2
+2024-12-05 19:47:19,184 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,184 - DEBUG - setting property geometry
+2024-12-05 19:47:19,184 - DEBUG - setting property title
+2024-12-05 19:47:19,185 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 19:47:19,185 - DEBUG - setting property geometry
+2024-12-05 19:47:19,185 - DEBUG - setting property font
+2024-12-05 19:47:19,185 - DEBUG - setting property text
+2024-12-05 19:47:19,185 - DEBUG - push QLabel userNameLabel1
+2024-12-05 19:47:19,185 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 19:47:19,185 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:47:19,186 - DEBUG - setting property geometry
+2024-12-05 19:47:19,186 - DEBUG - setting property font
+2024-12-05 19:47:19,186 - DEBUG - setting property text
+2024-12-05 19:47:19,186 - DEBUG - push QLabel userCart1
+2024-12-05 19:47:19,187 - DEBUG - pop widget QLabel userCart1
+2024-12-05 19:47:19,187 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:47:19,187 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 19:47:19,187 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,187 - DEBUG - setting property geometry
+2024-12-05 19:47:19,187 - DEBUG - setting property title
+2024-12-05 19:47:19,187 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 19:47:19,187 - DEBUG - setting property geometry
+2024-12-05 19:47:19,188 - DEBUG - setting property font
+2024-12-05 19:47:19,188 - DEBUG - setting property text
+2024-12-05 19:47:19,188 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 19:47:19,188 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 19:47:19,188 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:47:19,188 - DEBUG - setting property geometry
+2024-12-05 19:47:19,189 - DEBUG - setting property font
+2024-12-05 19:47:19,189 - DEBUG - setting property text
+2024-12-05 19:47:19,189 - DEBUG - push QLabel userCart1_2
+2024-12-05 19:47:19,189 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 19:47:19,189 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:47:19,189 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 19:47:19,189 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,189 - DEBUG - setting property geometry
+2024-12-05 19:47:19,189 - DEBUG - setting property title
+2024-12-05 19:47:19,190 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 19:47:19,190 - DEBUG - setting property geometry
+2024-12-05 19:47:19,190 - DEBUG - setting property font
+2024-12-05 19:47:19,190 - DEBUG - setting property text
+2024-12-05 19:47:19,190 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 19:47:19,190 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 19:47:19,190 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:47:19,190 - DEBUG - setting property geometry
+2024-12-05 19:47:19,191 - DEBUG - setting property font
+2024-12-05 19:47:19,191 - DEBUG - setting property text
+2024-12-05 19:47:19,191 - DEBUG - push QLabel userCart1_3
+2024-12-05 19:47:19,191 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 19:47:19,191 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:47:19,191 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 19:47:19,191 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,191 - DEBUG - setting property geometry
+2024-12-05 19:47:19,192 - DEBUG - setting property title
+2024-12-05 19:47:19,192 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 19:47:19,192 - DEBUG - setting property geometry
+2024-12-05 19:47:19,192 - DEBUG - setting property font
+2024-12-05 19:47:19,193 - DEBUG - setting property text
+2024-12-05 19:47:19,193 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 19:47:19,193 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 19:47:19,193 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:47:19,193 - DEBUG - setting property geometry
+2024-12-05 19:47:19,193 - DEBUG - setting property font
+2024-12-05 19:47:19,193 - DEBUG - setting property text
+2024-12-05 19:47:19,193 - DEBUG - push QLabel userCart1_4
+2024-12-05 19:47:19,193 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 19:47:19,193 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:47:19,194 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 19:47:19,194 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,194 - DEBUG - setting property geometry
+2024-12-05 19:47:19,194 - DEBUG - setting property font
+2024-12-05 19:47:19,194 - DEBUG - setting property text
+2024-12-05 19:47:19,194 - DEBUG - push QLabel label_3
+2024-12-05 19:47:19,194 - DEBUG - pop widget QLabel label_3
+2024-12-05 19:47:19,194 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,194 - DEBUG - setting property geometry
+2024-12-05 19:47:19,194 - DEBUG - setting property font
+2024-12-05 19:47:19,195 - DEBUG - setting property text
+2024-12-05 19:47:19,195 - DEBUG - push QLabel label_4
+2024-12-05 19:47:19,195 - DEBUG - pop widget QLabel label_4
+2024-12-05 19:47:19,195 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,195 - DEBUG - setting property geometry
+2024-12-05 19:47:19,195 - DEBUG - push QTableWidget tableWidget
+2024-12-05 19:47:19,195 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 19:47:19,196 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,196 - DEBUG - setting property geometry
+2024-12-05 19:47:19,196 - DEBUG - setting property text
+2024-12-05 19:47:19,196 - DEBUG - push QLabel CCTV_1
+2024-12-05 19:47:19,196 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 19:47:19,196 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:47:19,196 - DEBUG - pop widget QWidget tab_2
+2024-12-05 19:47:19,196 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:47:19,196 - DEBUG - push QWidget tab
+2024-12-05 19:47:19,196 - DEBUG - setting property geometry
+2024-12-05 19:47:19,197 - DEBUG - setting property currentIndex
+2024-12-05 19:47:19,197 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 19:47:19,197 - DEBUG - push QWidget tab_3
+2024-12-05 19:47:19,197 - DEBUG - setting property geometry
+2024-12-05 19:47:19,197 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 19:47:19,197 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 19:47:19,198 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:47:19,198 - DEBUG - setting property geometry
+2024-12-05 19:47:19,198 - DEBUG - setting property title
+2024-12-05 19:47:19,198 - DEBUG - push QGroupBox groupBox
+2024-12-05 19:47:19,198 - DEBUG - setting property geometry
+2024-12-05 19:47:19,198 - DEBUG - setting property font
+2024-12-05 19:47:19,198 - DEBUG - setting property text
+2024-12-05 19:47:19,199 - DEBUG - push QLabel label_6
+2024-12-05 19:47:19,199 - DEBUG - pop widget QLabel label_6
+2024-12-05 19:47:19,199 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:47:19,199 - DEBUG - setting property geometry
+2024-12-05 19:47:19,199 - DEBUG - setting property font
+2024-12-05 19:47:19,199 - DEBUG - setting property text
+2024-12-05 19:47:19,200 - DEBUG - setting property scaledContents
+2024-12-05 19:47:19,200 - DEBUG - setting property alignment
+2024-12-05 19:47:19,200 - DEBUG - push QLabel label_7
+2024-12-05 19:47:19,200 - DEBUG - pop widget QLabel label_7
+2024-12-05 19:47:19,201 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:47:19,201 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 19:47:19,201 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:47:19,201 - DEBUG - setting property geometry
+2024-12-05 19:47:19,202 - DEBUG - setting property title
+2024-12-05 19:47:19,202 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 19:47:19,202 - DEBUG - setting property geometry
+2024-12-05 19:47:19,202 - DEBUG - setting property font
+2024-12-05 19:47:19,203 - DEBUG - setting property text
+2024-12-05 19:47:19,203 - DEBUG - push QLabel label_8
+2024-12-05 19:47:19,203 - DEBUG - pop widget QLabel label_8
+2024-12-05 19:47:19,203 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:47:19,204 - DEBUG - setting property geometry
+2024-12-05 19:47:19,204 - DEBUG - setting property font
+2024-12-05 19:47:19,204 - DEBUG - setting property text
+2024-12-05 19:47:19,205 - DEBUG - setting property scaledContents
+2024-12-05 19:47:19,205 - DEBUG - setting property alignment
+2024-12-05 19:47:19,205 - DEBUG - push QLabel label_9
+2024-12-05 19:47:19,205 - DEBUG - pop widget QLabel label_9
+2024-12-05 19:47:19,205 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:47:19,205 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 19:47:19,205 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:47:19,205 - DEBUG - setting property geometry
+2024-12-05 19:47:19,205 - DEBUG - setting property title
+2024-12-05 19:47:19,206 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 19:47:19,206 - DEBUG - setting property geometry
+2024-12-05 19:47:19,207 - DEBUG - setting property font
+2024-12-05 19:47:19,207 - DEBUG - setting property text
+2024-12-05 19:47:19,207 - DEBUG - push QLabel label_12
+2024-12-05 19:47:19,207 - DEBUG - pop widget QLabel label_12
+2024-12-05 19:47:19,208 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:47:19,209 - DEBUG - setting property geometry
+2024-12-05 19:47:19,209 - DEBUG - setting property font
+2024-12-05 19:47:19,210 - DEBUG - setting property text
+2024-12-05 19:47:19,210 - DEBUG - setting property scaledContents
+2024-12-05 19:47:19,210 - DEBUG - setting property alignment
+2024-12-05 19:47:19,210 - DEBUG - push QLabel label_13
+2024-12-05 19:47:19,210 - DEBUG - pop widget QLabel label_13
+2024-12-05 19:47:19,210 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:47:19,210 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 19:47:19,210 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:47:19,211 - DEBUG - setting property geometry
+2024-12-05 19:47:19,211 - DEBUG - setting property title
+2024-12-05 19:47:19,211 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 19:47:19,211 - DEBUG - setting property geometry
+2024-12-05 19:47:19,211 - DEBUG - setting property font
+2024-12-05 19:47:19,212 - DEBUG - setting property text
+2024-12-05 19:47:19,212 - DEBUG - push QLabel label_16
+2024-12-05 19:47:19,212 - DEBUG - pop widget QLabel label_16
+2024-12-05 19:47:19,212 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:47:19,212 - DEBUG - setting property geometry
+2024-12-05 19:47:19,212 - DEBUG - setting property font
+2024-12-05 19:47:19,212 - DEBUG - setting property text
+2024-12-05 19:47:19,212 - DEBUG - setting property scaledContents
+2024-12-05 19:47:19,212 - DEBUG - setting property alignment
+2024-12-05 19:47:19,213 - DEBUG - push QLabel label_17
+2024-12-05 19:47:19,213 - DEBUG - pop widget QLabel label_17
+2024-12-05 19:47:19,213 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:47:19,213 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 19:47:19,213 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:47:19,213 - DEBUG - pop widget QWidget tab_3
+2024-12-05 19:47:19,213 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:47:19,214 - DEBUG - push QWidget tab_4
+2024-12-05 19:47:19,214 - DEBUG - setting property geometry
+2024-12-05 19:47:19,214 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 19:47:19,215 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 19:47:19,215 - DEBUG - new topwidget self.tab_4
+2024-12-05 19:47:19,215 - DEBUG - pop widget QWidget tab_4
+2024-12-05 19:47:19,216 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:47:19,216 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 19:47:19,216 - DEBUG - new topwidget self.tab
+2024-12-05 19:47:19,216 - DEBUG - setting property geometry
+2024-12-05 19:47:19,217 - DEBUG - setting property font
+2024-12-05 19:47:19,217 - DEBUG - setting property text
+2024-12-05 19:47:19,218 - DEBUG - push QLabel label_5
+2024-12-05 19:47:19,218 - DEBUG - pop widget QLabel label_5
+2024-12-05 19:47:19,218 - DEBUG - new topwidget self.tab
+2024-12-05 19:47:19,218 - DEBUG - setting property geometry
+2024-12-05 19:47:19,219 - DEBUG - push QDateEdit dateEdit
+2024-12-05 19:47:19,219 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 19:47:19,219 - DEBUG - new topwidget self.tab
+2024-12-05 19:47:19,219 - DEBUG - pop widget QWidget tab
+2024-12-05 19:47:19,219 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:47:19,220 - DEBUG - push QWidget tab_5
+2024-12-05 19:47:19,220 - DEBUG - setting property geometry
+2024-12-05 19:47:19,221 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 19:47:19,222 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 19:47:19,222 - DEBUG - new topwidget self.tab_5
+2024-12-05 19:47:19,222 - DEBUG - pop widget QWidget tab_5
+2024-12-05 19:47:19,222 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:47:19,223 - DEBUG - push QWidget tab_6
+2024-12-05 19:47:19,223 - DEBUG - setting property geometry
+2024-12-05 19:47:19,223 - DEBUG - setting property text
+2024-12-05 19:47:19,224 - DEBUG - push QLabel CCTV_2
+2024-12-05 19:47:19,224 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 19:47:19,224 - DEBUG - new topwidget self.tab_6
+2024-12-05 19:47:19,224 - DEBUG - pop widget QWidget tab_6
+2024-12-05 19:47:19,224 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:47:19,224 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 19:47:19,224 - DEBUG - new topwidget Dialog
+2024-12-05 19:47:19,225 - DEBUG - pop widget QDialog Dialog
+2024-12-05 19:47:19,225 - DEBUG - new topwidget None
+2024-12-05 19:47:20,795 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-05 19:47:20,795 - INFO - - gpu enabled: True
+2024-12-05 19:47:20,795 - INFO - - half precision: True
+2024-12-05 19:47:20,795 - INFO - - max batch size: 16
+2024-12-05 19:47:20,795 - INFO - - expects BGR: True
+2024-12-05 19:47:21,183 - INFO - DeepSort Tracker initialised
+2024-12-05 19:47:21,184 - INFO - - max age: 5
+2024-12-05 19:47:21,184 - INFO - - appearance threshold: 0.2
+2024-12-05 19:47:21,184 - INFO - - nms threshold: OFF
+2024-12-05 19:47:21,184 - INFO - - max num of appearance features: None
+2024-12-05 19:47:21,184 - INFO - - overriding track class : No
+2024-12-05 19:47:21,184 - INFO - - today given : No
+2024-12-05 19:47:21,184 - INFO - - in-build embedder : Yes
+2024-12-05 19:47:21,184 - INFO - - polygon detections : No
+2024-12-05 19:47:21,184 - INFO - 서버가 시작되었습니다.
+2024-12-05 19:47:21,270 - INFO - TCP 서버 실행 중...
+2024-12-05 19:48:21,287 - INFO - 앞으로 저장될 비디오 경로: ./video_output/output_20241205_194921.avi
+2024-12-05 19:49:21,301 - INFO - 앞으로 저장될 비디오 경로: ./video_output/output_20241205_195021.avi
+2024-12-05 19:59:27,880 - DEBUG - uiname is Dialog
+2024-12-05 19:59:27,881 - DEBUG - toplevel widget is QDialog
+2024-12-05 19:59:27,881 - DEBUG - setting property geometry
+2024-12-05 19:59:27,881 - DEBUG - setting property windowTitle
+2024-12-05 19:59:27,881 - DEBUG - push QDialog Dialog
+2024-12-05 19:59:27,881 - DEBUG - setting property geometry
+2024-12-05 19:59:27,881 - DEBUG - setting property currentIndex
+2024-12-05 19:59:27,881 - DEBUG - push QTabWidget tabWidget
+2024-12-05 19:59:27,881 - DEBUG - push QWidget tab_2
+2024-12-05 19:59:27,881 - DEBUG - setting property geometry
+2024-12-05 19:59:27,881 - DEBUG - setting property font
+2024-12-05 19:59:27,882 - DEBUG - setting property text
+2024-12-05 19:59:27,882 - DEBUG - push QLabel label
+2024-12-05 19:59:27,882 - DEBUG - pop widget QLabel label
+2024-12-05 19:59:27,882 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,882 - DEBUG - setting property geometry
+2024-12-05 19:59:27,882 - DEBUG - setting property font
+2024-12-05 19:59:27,882 - DEBUG - setting property text
+2024-12-05 19:59:27,882 - DEBUG - push QLabel label_2
+2024-12-05 19:59:27,882 - DEBUG - pop widget QLabel label_2
+2024-12-05 19:59:27,882 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,882 - DEBUG - setting property geometry
+2024-12-05 19:59:27,882 - DEBUG - setting property title
+2024-12-05 19:59:27,883 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 19:59:27,883 - DEBUG - setting property geometry
+2024-12-05 19:59:27,883 - DEBUG - setting property font
+2024-12-05 19:59:27,883 - DEBUG - setting property text
+2024-12-05 19:59:27,883 - DEBUG - push QLabel userNameLabel1
+2024-12-05 19:59:27,883 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 19:59:27,883 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:59:27,883 - DEBUG - setting property geometry
+2024-12-05 19:59:27,883 - DEBUG - setting property font
+2024-12-05 19:59:27,883 - DEBUG - setting property text
+2024-12-05 19:59:27,883 - DEBUG - push QLabel userCart1
+2024-12-05 19:59:27,884 - DEBUG - pop widget QLabel userCart1
+2024-12-05 19:59:27,884 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 19:59:27,884 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 19:59:27,884 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,884 - DEBUG - setting property geometry
+2024-12-05 19:59:27,884 - DEBUG - setting property title
+2024-12-05 19:59:27,884 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 19:59:27,884 - DEBUG - setting property geometry
+2024-12-05 19:59:27,884 - DEBUG - setting property font
+2024-12-05 19:59:27,884 - DEBUG - setting property text
+2024-12-05 19:59:27,884 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 19:59:27,884 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 19:59:27,884 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:59:27,884 - DEBUG - setting property geometry
+2024-12-05 19:59:27,884 - DEBUG - setting property font
+2024-12-05 19:59:27,885 - DEBUG - setting property text
+2024-12-05 19:59:27,885 - DEBUG - push QLabel userCart1_2
+2024-12-05 19:59:27,885 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 19:59:27,885 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 19:59:27,885 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 19:59:27,885 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,885 - DEBUG - setting property geometry
+2024-12-05 19:59:27,885 - DEBUG - setting property title
+2024-12-05 19:59:27,885 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 19:59:27,885 - DEBUG - setting property geometry
+2024-12-05 19:59:27,885 - DEBUG - setting property font
+2024-12-05 19:59:27,885 - DEBUG - setting property text
+2024-12-05 19:59:27,886 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 19:59:27,886 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 19:59:27,886 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:59:27,886 - DEBUG - setting property geometry
+2024-12-05 19:59:27,886 - DEBUG - setting property font
+2024-12-05 19:59:27,886 - DEBUG - setting property text
+2024-12-05 19:59:27,886 - DEBUG - push QLabel userCart1_3
+2024-12-05 19:59:27,886 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 19:59:27,886 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 19:59:27,886 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 19:59:27,887 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,887 - DEBUG - setting property geometry
+2024-12-05 19:59:27,887 - DEBUG - setting property title
+2024-12-05 19:59:27,887 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 19:59:27,887 - DEBUG - setting property geometry
+2024-12-05 19:59:27,887 - DEBUG - setting property font
+2024-12-05 19:59:27,887 - DEBUG - setting property text
+2024-12-05 19:59:27,887 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 19:59:27,887 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 19:59:27,887 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:59:27,887 - DEBUG - setting property geometry
+2024-12-05 19:59:27,887 - DEBUG - setting property font
+2024-12-05 19:59:27,887 - DEBUG - setting property text
+2024-12-05 19:59:27,888 - DEBUG - push QLabel userCart1_4
+2024-12-05 19:59:27,888 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 19:59:27,888 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 19:59:27,888 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 19:59:27,888 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,888 - DEBUG - setting property geometry
+2024-12-05 19:59:27,888 - DEBUG - setting property font
+2024-12-05 19:59:27,888 - DEBUG - setting property text
+2024-12-05 19:59:27,888 - DEBUG - push QLabel label_3
+2024-12-05 19:59:27,888 - DEBUG - pop widget QLabel label_3
+2024-12-05 19:59:27,888 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,888 - DEBUG - setting property geometry
+2024-12-05 19:59:27,888 - DEBUG - setting property font
+2024-12-05 19:59:27,888 - DEBUG - setting property text
+2024-12-05 19:59:27,888 - DEBUG - push QLabel label_4
+2024-12-05 19:59:27,888 - DEBUG - pop widget QLabel label_4
+2024-12-05 19:59:27,889 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,889 - DEBUG - setting property geometry
+2024-12-05 19:59:27,889 - DEBUG - push QTableWidget tableWidget
+2024-12-05 19:59:27,889 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 19:59:27,889 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,889 - DEBUG - setting property geometry
+2024-12-05 19:59:27,889 - DEBUG - setting property text
+2024-12-05 19:59:27,889 - DEBUG - push QLabel CCTV_1
+2024-12-05 19:59:27,889 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 19:59:27,889 - DEBUG - new topwidget self.tab_2
+2024-12-05 19:59:27,889 - DEBUG - pop widget QWidget tab_2
+2024-12-05 19:59:27,889 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:59:27,890 - DEBUG - push QWidget tab
+2024-12-05 19:59:27,890 - DEBUG - setting property geometry
+2024-12-05 19:59:27,890 - DEBUG - setting property currentIndex
+2024-12-05 19:59:27,890 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 19:59:27,890 - DEBUG - push QWidget tab_3
+2024-12-05 19:59:27,890 - DEBUG - setting property geometry
+2024-12-05 19:59:27,890 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 19:59:27,890 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 19:59:27,891 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:59:27,891 - DEBUG - setting property geometry
+2024-12-05 19:59:27,891 - DEBUG - setting property title
+2024-12-05 19:59:27,891 - DEBUG - push QGroupBox groupBox
+2024-12-05 19:59:27,891 - DEBUG - setting property geometry
+2024-12-05 19:59:27,891 - DEBUG - setting property font
+2024-12-05 19:59:27,891 - DEBUG - setting property text
+2024-12-05 19:59:27,891 - DEBUG - push QLabel label_6
+2024-12-05 19:59:27,891 - DEBUG - pop widget QLabel label_6
+2024-12-05 19:59:27,891 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:59:27,891 - DEBUG - setting property geometry
+2024-12-05 19:59:27,892 - DEBUG - setting property font
+2024-12-05 19:59:27,892 - DEBUG - setting property text
+2024-12-05 19:59:27,892 - DEBUG - setting property scaledContents
+2024-12-05 19:59:27,892 - DEBUG - setting property alignment
+2024-12-05 19:59:27,892 - DEBUG - push QLabel label_7
+2024-12-05 19:59:27,892 - DEBUG - pop widget QLabel label_7
+2024-12-05 19:59:27,892 - DEBUG - new topwidget self.groupBox
+2024-12-05 19:59:27,892 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 19:59:27,892 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:59:27,892 - DEBUG - setting property geometry
+2024-12-05 19:59:27,892 - DEBUG - setting property title
+2024-12-05 19:59:27,892 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 19:59:27,892 - DEBUG - setting property geometry
+2024-12-05 19:59:27,892 - DEBUG - setting property font
+2024-12-05 19:59:27,893 - DEBUG - setting property text
+2024-12-05 19:59:27,893 - DEBUG - push QLabel label_8
+2024-12-05 19:59:27,893 - DEBUG - pop widget QLabel label_8
+2024-12-05 19:59:27,893 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:59:27,893 - DEBUG - setting property geometry
+2024-12-05 19:59:27,893 - DEBUG - setting property font
+2024-12-05 19:59:27,893 - DEBUG - setting property text
+2024-12-05 19:59:27,893 - DEBUG - setting property scaledContents
+2024-12-05 19:59:27,893 - DEBUG - setting property alignment
+2024-12-05 19:59:27,893 - DEBUG - push QLabel label_9
+2024-12-05 19:59:27,893 - DEBUG - pop widget QLabel label_9
+2024-12-05 19:59:27,893 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 19:59:27,893 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 19:59:27,893 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:59:27,893 - DEBUG - setting property geometry
+2024-12-05 19:59:27,894 - DEBUG - setting property title
+2024-12-05 19:59:27,894 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 19:59:27,894 - DEBUG - setting property geometry
+2024-12-05 19:59:27,894 - DEBUG - setting property font
+2024-12-05 19:59:27,894 - DEBUG - setting property text
+2024-12-05 19:59:27,894 - DEBUG - push QLabel label_12
+2024-12-05 19:59:27,894 - DEBUG - pop widget QLabel label_12
+2024-12-05 19:59:27,894 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:59:27,894 - DEBUG - setting property geometry
+2024-12-05 19:59:27,894 - DEBUG - setting property font
+2024-12-05 19:59:27,894 - DEBUG - setting property text
+2024-12-05 19:59:27,894 - DEBUG - setting property scaledContents
+2024-12-05 19:59:27,894 - DEBUG - setting property alignment
+2024-12-05 19:59:27,894 - DEBUG - push QLabel label_13
+2024-12-05 19:59:27,895 - DEBUG - pop widget QLabel label_13
+2024-12-05 19:59:27,895 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 19:59:27,895 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 19:59:27,895 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:59:27,895 - DEBUG - setting property geometry
+2024-12-05 19:59:27,895 - DEBUG - setting property title
+2024-12-05 19:59:27,895 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 19:59:27,895 - DEBUG - setting property geometry
+2024-12-05 19:59:27,895 - DEBUG - setting property font
+2024-12-05 19:59:27,895 - DEBUG - setting property text
+2024-12-05 19:59:27,895 - DEBUG - push QLabel label_16
+2024-12-05 19:59:27,895 - DEBUG - pop widget QLabel label_16
+2024-12-05 19:59:27,895 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:59:27,895 - DEBUG - setting property geometry
+2024-12-05 19:59:27,896 - DEBUG - setting property font
+2024-12-05 19:59:27,896 - DEBUG - setting property text
+2024-12-05 19:59:27,896 - DEBUG - setting property scaledContents
+2024-12-05 19:59:27,896 - DEBUG - setting property alignment
+2024-12-05 19:59:27,896 - DEBUG - push QLabel label_17
+2024-12-05 19:59:27,896 - DEBUG - pop widget QLabel label_17
+2024-12-05 19:59:27,896 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 19:59:27,896 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 19:59:27,896 - DEBUG - new topwidget self.tab_3
+2024-12-05 19:59:27,896 - DEBUG - pop widget QWidget tab_3
+2024-12-05 19:59:27,896 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:59:27,897 - DEBUG - push QWidget tab_4
+2024-12-05 19:59:27,897 - DEBUG - setting property geometry
+2024-12-05 19:59:27,897 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 19:59:27,897 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 19:59:27,897 - DEBUG - new topwidget self.tab_4
+2024-12-05 19:59:27,898 - DEBUG - pop widget QWidget tab_4
+2024-12-05 19:59:27,898 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 19:59:27,898 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 19:59:27,898 - DEBUG - new topwidget self.tab
+2024-12-05 19:59:27,898 - DEBUG - setting property geometry
+2024-12-05 19:59:27,898 - DEBUG - setting property font
+2024-12-05 19:59:27,898 - DEBUG - setting property text
+2024-12-05 19:59:27,898 - DEBUG - push QLabel label_5
+2024-12-05 19:59:27,898 - DEBUG - pop widget QLabel label_5
+2024-12-05 19:59:27,898 - DEBUG - new topwidget self.tab
+2024-12-05 19:59:27,899 - DEBUG - setting property geometry
+2024-12-05 19:59:27,899 - DEBUG - push QDateEdit dateEdit
+2024-12-05 19:59:27,899 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 19:59:27,899 - DEBUG - new topwidget self.tab
+2024-12-05 19:59:27,899 - DEBUG - pop widget QWidget tab
+2024-12-05 19:59:27,899 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:59:27,899 - DEBUG - push QWidget tab_5
+2024-12-05 19:59:27,899 - DEBUG - setting property geometry
+2024-12-05 19:59:27,899 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 19:59:27,900 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 19:59:27,900 - DEBUG - new topwidget self.tab_5
+2024-12-05 19:59:27,900 - DEBUG - pop widget QWidget tab_5
+2024-12-05 19:59:27,900 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:59:27,900 - DEBUG - push QWidget tab_6
+2024-12-05 19:59:27,900 - DEBUG - setting property geometry
+2024-12-05 19:59:27,900 - DEBUG - setting property text
+2024-12-05 19:59:27,900 - DEBUG - push QLabel CCTV_2
+2024-12-05 19:59:27,900 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 19:59:27,900 - DEBUG - new topwidget self.tab_6
+2024-12-05 19:59:27,901 - DEBUG - pop widget QWidget tab_6
+2024-12-05 19:59:27,901 - DEBUG - new topwidget self.tabWidget
+2024-12-05 19:59:27,901 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 19:59:27,901 - DEBUG - new topwidget Dialog
+2024-12-05 19:59:27,901 - DEBUG - pop widget QDialog Dialog
+2024-12-05 19:59:27,901 - DEBUG - new topwidget None
+2024-12-05 19:59:29,194 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-05 19:59:29,194 - INFO - - gpu enabled: True
+2024-12-05 19:59:29,194 - INFO - - half precision: True
+2024-12-05 19:59:29,194 - INFO - - max batch size: 16
+2024-12-05 19:59:29,194 - INFO - - expects BGR: True
+2024-12-05 19:59:29,460 - INFO - DeepSort Tracker initialised
+2024-12-05 19:59:29,460 - INFO - - max age: 5
+2024-12-05 19:59:29,460 - INFO - - appearance threshold: 0.2
+2024-12-05 19:59:29,460 - INFO - - nms threshold: OFF
+2024-12-05 19:59:29,460 - INFO - - max num of appearance features: None
+2024-12-05 19:59:29,460 - INFO - - overriding track class : No
+2024-12-05 19:59:29,460 - INFO - - today given : No
+2024-12-05 19:59:29,460 - INFO - - in-build embedder : Yes
+2024-12-05 19:59:29,460 - INFO - - polygon detections : No
+2024-12-05 19:59:29,460 - INFO - 서버가 시작되었습니다.
+2024-12-05 19:59:29,461 - INFO - TCP 서버 실행 중...
+2024-12-05 20:00:40,049 - DEBUG - uiname is Dialog
+2024-12-05 20:00:40,049 - DEBUG - toplevel widget is QDialog
+2024-12-05 20:00:40,050 - DEBUG - setting property geometry
+2024-12-05 20:00:40,050 - DEBUG - setting property windowTitle
+2024-12-05 20:00:40,050 - DEBUG - push QDialog Dialog
+2024-12-05 20:00:40,050 - DEBUG - setting property geometry
+2024-12-05 20:00:40,050 - DEBUG - setting property currentIndex
+2024-12-05 20:00:40,050 - DEBUG - push QTabWidget tabWidget
+2024-12-05 20:00:40,050 - DEBUG - push QWidget tab_2
+2024-12-05 20:00:40,050 - DEBUG - setting property geometry
+2024-12-05 20:00:40,051 - DEBUG - setting property font
+2024-12-05 20:00:40,051 - DEBUG - setting property text
+2024-12-05 20:00:40,051 - DEBUG - push QLabel label
+2024-12-05 20:00:40,051 - DEBUG - pop widget QLabel label
+2024-12-05 20:00:40,051 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,051 - DEBUG - setting property geometry
+2024-12-05 20:00:40,051 - DEBUG - setting property font
+2024-12-05 20:00:40,051 - DEBUG - setting property text
+2024-12-05 20:00:40,051 - DEBUG - push QLabel label_2
+2024-12-05 20:00:40,051 - DEBUG - pop widget QLabel label_2
+2024-12-05 20:00:40,051 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,051 - DEBUG - setting property geometry
+2024-12-05 20:00:40,051 - DEBUG - setting property title
+2024-12-05 20:00:40,052 - DEBUG - push QGroupBox userGroupBox1
+2024-12-05 20:00:40,052 - DEBUG - setting property geometry
+2024-12-05 20:00:40,052 - DEBUG - setting property font
+2024-12-05 20:00:40,052 - DEBUG - setting property text
+2024-12-05 20:00:40,052 - DEBUG - push QLabel userNameLabel1
+2024-12-05 20:00:40,052 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-05 20:00:40,052 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 20:00:40,052 - DEBUG - setting property geometry
+2024-12-05 20:00:40,052 - DEBUG - setting property font
+2024-12-05 20:00:40,052 - DEBUG - setting property text
+2024-12-05 20:00:40,052 - DEBUG - push QLabel userCart1
+2024-12-05 20:00:40,052 - DEBUG - pop widget QLabel userCart1
+2024-12-05 20:00:40,052 - DEBUG - new topwidget self.userGroupBox1
+2024-12-05 20:00:40,052 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-05 20:00:40,052 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,053 - DEBUG - setting property geometry
+2024-12-05 20:00:40,053 - DEBUG - setting property title
+2024-12-05 20:00:40,053 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-05 20:00:40,053 - DEBUG - setting property geometry
+2024-12-05 20:00:40,053 - DEBUG - setting property font
+2024-12-05 20:00:40,053 - DEBUG - setting property text
+2024-12-05 20:00:40,053 - DEBUG - push QLabel userNameLabel1_2
+2024-12-05 20:00:40,053 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-05 20:00:40,053 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 20:00:40,053 - DEBUG - setting property geometry
+2024-12-05 20:00:40,053 - DEBUG - setting property font
+2024-12-05 20:00:40,053 - DEBUG - setting property text
+2024-12-05 20:00:40,053 - DEBUG - push QLabel userCart1_2
+2024-12-05 20:00:40,054 - DEBUG - pop widget QLabel userCart1_2
+2024-12-05 20:00:40,054 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-05 20:00:40,054 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-05 20:00:40,054 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,054 - DEBUG - setting property geometry
+2024-12-05 20:00:40,054 - DEBUG - setting property title
+2024-12-05 20:00:40,054 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-05 20:00:40,054 - DEBUG - setting property geometry
+2024-12-05 20:00:40,054 - DEBUG - setting property font
+2024-12-05 20:00:40,054 - DEBUG - setting property text
+2024-12-05 20:00:40,054 - DEBUG - push QLabel userNameLabel1_3
+2024-12-05 20:00:40,054 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-05 20:00:40,055 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 20:00:40,055 - DEBUG - setting property geometry
+2024-12-05 20:00:40,055 - DEBUG - setting property font
+2024-12-05 20:00:40,055 - DEBUG - setting property text
+2024-12-05 20:00:40,055 - DEBUG - push QLabel userCart1_3
+2024-12-05 20:00:40,055 - DEBUG - pop widget QLabel userCart1_3
+2024-12-05 20:00:40,055 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-05 20:00:40,055 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-05 20:00:40,056 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,056 - DEBUG - setting property geometry
+2024-12-05 20:00:40,056 - DEBUG - setting property title
+2024-12-05 20:00:40,056 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-05 20:00:40,056 - DEBUG - setting property geometry
+2024-12-05 20:00:40,056 - DEBUG - setting property font
+2024-12-05 20:00:40,056 - DEBUG - setting property text
+2024-12-05 20:00:40,056 - DEBUG - push QLabel userNameLabel1_4
+2024-12-05 20:00:40,056 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-05 20:00:40,057 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 20:00:40,057 - DEBUG - setting property geometry
+2024-12-05 20:00:40,057 - DEBUG - setting property font
+2024-12-05 20:00:40,057 - DEBUG - setting property text
+2024-12-05 20:00:40,057 - DEBUG - push QLabel userCart1_4
+2024-12-05 20:00:40,057 - DEBUG - pop widget QLabel userCart1_4
+2024-12-05 20:00:40,057 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-05 20:00:40,057 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-05 20:00:40,057 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,057 - DEBUG - setting property geometry
+2024-12-05 20:00:40,057 - DEBUG - setting property font
+2024-12-05 20:00:40,058 - DEBUG - setting property text
+2024-12-05 20:00:40,058 - DEBUG - push QLabel label_3
+2024-12-05 20:00:40,058 - DEBUG - pop widget QLabel label_3
+2024-12-05 20:00:40,058 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,058 - DEBUG - setting property geometry
+2024-12-05 20:00:40,058 - DEBUG - setting property font
+2024-12-05 20:00:40,058 - DEBUG - setting property text
+2024-12-05 20:00:40,058 - DEBUG - push QLabel label_4
+2024-12-05 20:00:40,058 - DEBUG - pop widget QLabel label_4
+2024-12-05 20:00:40,058 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,058 - DEBUG - setting property geometry
+2024-12-05 20:00:40,058 - DEBUG - push QTableWidget tableWidget
+2024-12-05 20:00:40,059 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-05 20:00:40,059 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,059 - DEBUG - setting property geometry
+2024-12-05 20:00:40,059 - DEBUG - setting property text
+2024-12-05 20:00:40,059 - DEBUG - push QLabel CCTV_1
+2024-12-05 20:00:40,059 - DEBUG - pop widget QLabel CCTV_1
+2024-12-05 20:00:40,059 - DEBUG - new topwidget self.tab_2
+2024-12-05 20:00:40,059 - DEBUG - pop widget QWidget tab_2
+2024-12-05 20:00:40,059 - DEBUG - new topwidget self.tabWidget
+2024-12-05 20:00:40,060 - DEBUG - push QWidget tab
+2024-12-05 20:00:40,060 - DEBUG - setting property geometry
+2024-12-05 20:00:40,060 - DEBUG - setting property currentIndex
+2024-12-05 20:00:40,060 - DEBUG - push QTabWidget tabWidget_2
+2024-12-05 20:00:40,060 - DEBUG - push QWidget tab_3
+2024-12-05 20:00:40,060 - DEBUG - setting property geometry
+2024-12-05 20:00:40,060 - DEBUG - push QTableWidget tableWidget_2
+2024-12-05 20:00:40,061 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-05 20:00:40,061 - DEBUG - new topwidget self.tab_3
+2024-12-05 20:00:40,061 - DEBUG - setting property geometry
+2024-12-05 20:00:40,061 - DEBUG - setting property title
+2024-12-05 20:00:40,061 - DEBUG - push QGroupBox groupBox
+2024-12-05 20:00:40,061 - DEBUG - setting property geometry
+2024-12-05 20:00:40,061 - DEBUG - setting property font
+2024-12-05 20:00:40,061 - DEBUG - setting property text
+2024-12-05 20:00:40,062 - DEBUG - push QLabel label_6
+2024-12-05 20:00:40,062 - DEBUG - pop widget QLabel label_6
+2024-12-05 20:00:40,062 - DEBUG - new topwidget self.groupBox
+2024-12-05 20:00:40,062 - DEBUG - setting property geometry
+2024-12-05 20:00:40,062 - DEBUG - setting property font
+2024-12-05 20:00:40,062 - DEBUG - setting property text
+2024-12-05 20:00:40,062 - DEBUG - setting property scaledContents
+2024-12-05 20:00:40,062 - DEBUG - setting property alignment
+2024-12-05 20:00:40,062 - DEBUG - push QLabel label_7
+2024-12-05 20:00:40,062 - DEBUG - pop widget QLabel label_7
+2024-12-05 20:00:40,062 - DEBUG - new topwidget self.groupBox
+2024-12-05 20:00:40,062 - DEBUG - pop widget QGroupBox groupBox
+2024-12-05 20:00:40,062 - DEBUG - new topwidget self.tab_3
+2024-12-05 20:00:40,062 - DEBUG - setting property geometry
+2024-12-05 20:00:40,063 - DEBUG - setting property title
+2024-12-05 20:00:40,063 - DEBUG - push QGroupBox groupBox_2
+2024-12-05 20:00:40,063 - DEBUG - setting property geometry
+2024-12-05 20:00:40,063 - DEBUG - setting property font
+2024-12-05 20:00:40,063 - DEBUG - setting property text
+2024-12-05 20:00:40,063 - DEBUG - push QLabel label_8
+2024-12-05 20:00:40,063 - DEBUG - pop widget QLabel label_8
+2024-12-05 20:00:40,063 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 20:00:40,063 - DEBUG - setting property geometry
+2024-12-05 20:00:40,063 - DEBUG - setting property font
+2024-12-05 20:00:40,063 - DEBUG - setting property text
+2024-12-05 20:00:40,063 - DEBUG - setting property scaledContents
+2024-12-05 20:00:40,063 - DEBUG - setting property alignment
+2024-12-05 20:00:40,064 - DEBUG - push QLabel label_9
+2024-12-05 20:00:40,064 - DEBUG - pop widget QLabel label_9
+2024-12-05 20:00:40,064 - DEBUG - new topwidget self.groupBox_2
+2024-12-05 20:00:40,064 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-05 20:00:40,064 - DEBUG - new topwidget self.tab_3
+2024-12-05 20:00:40,064 - DEBUG - setting property geometry
+2024-12-05 20:00:40,064 - DEBUG - setting property title
+2024-12-05 20:00:40,064 - DEBUG - push QGroupBox groupBox_3
+2024-12-05 20:00:40,064 - DEBUG - setting property geometry
+2024-12-05 20:00:40,064 - DEBUG - setting property font
+2024-12-05 20:00:40,064 - DEBUG - setting property text
+2024-12-05 20:00:40,065 - DEBUG - push QLabel label_12
+2024-12-05 20:00:40,065 - DEBUG - pop widget QLabel label_12
+2024-12-05 20:00:40,065 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 20:00:40,065 - DEBUG - setting property geometry
+2024-12-05 20:00:40,065 - DEBUG - setting property font
+2024-12-05 20:00:40,065 - DEBUG - setting property text
+2024-12-05 20:00:40,065 - DEBUG - setting property scaledContents
+2024-12-05 20:00:40,065 - DEBUG - setting property alignment
+2024-12-05 20:00:40,065 - DEBUG - push QLabel label_13
+2024-12-05 20:00:40,066 - DEBUG - pop widget QLabel label_13
+2024-12-05 20:00:40,066 - DEBUG - new topwidget self.groupBox_3
+2024-12-05 20:00:40,066 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-05 20:00:40,066 - DEBUG - new topwidget self.tab_3
+2024-12-05 20:00:40,066 - DEBUG - setting property geometry
+2024-12-05 20:00:40,066 - DEBUG - setting property title
+2024-12-05 20:00:40,066 - DEBUG - push QGroupBox groupBox_4
+2024-12-05 20:00:40,066 - DEBUG - setting property geometry
+2024-12-05 20:00:40,066 - DEBUG - setting property font
+2024-12-05 20:00:40,066 - DEBUG - setting property text
+2024-12-05 20:00:40,067 - DEBUG - push QLabel label_16
+2024-12-05 20:00:40,067 - DEBUG - pop widget QLabel label_16
+2024-12-05 20:00:40,067 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 20:00:40,067 - DEBUG - setting property geometry
+2024-12-05 20:00:40,067 - DEBUG - setting property font
+2024-12-05 20:00:40,067 - DEBUG - setting property text
+2024-12-05 20:00:40,067 - DEBUG - setting property scaledContents
+2024-12-05 20:00:40,067 - DEBUG - setting property alignment
+2024-12-05 20:00:40,067 - DEBUG - push QLabel label_17
+2024-12-05 20:00:40,067 - DEBUG - pop widget QLabel label_17
+2024-12-05 20:00:40,067 - DEBUG - new topwidget self.groupBox_4
+2024-12-05 20:00:40,067 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-05 20:00:40,067 - DEBUG - new topwidget self.tab_3
+2024-12-05 20:00:40,067 - DEBUG - pop widget QWidget tab_3
+2024-12-05 20:00:40,067 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 20:00:40,067 - DEBUG - push QWidget tab_4
+2024-12-05 20:00:40,068 - DEBUG - setting property geometry
+2024-12-05 20:00:40,068 - DEBUG - push QTableWidget tableWidget_3
+2024-12-05 20:00:40,068 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-05 20:00:40,068 - DEBUG - new topwidget self.tab_4
+2024-12-05 20:00:40,068 - DEBUG - pop widget QWidget tab_4
+2024-12-05 20:00:40,068 - DEBUG - new topwidget self.tabWidget_2
+2024-12-05 20:00:40,068 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-05 20:00:40,068 - DEBUG - new topwidget self.tab
+2024-12-05 20:00:40,068 - DEBUG - setting property geometry
+2024-12-05 20:00:40,068 - DEBUG - setting property font
+2024-12-05 20:00:40,068 - DEBUG - setting property text
+2024-12-05 20:00:40,069 - DEBUG - push QLabel label_5
+2024-12-05 20:00:40,069 - DEBUG - pop widget QLabel label_5
+2024-12-05 20:00:40,069 - DEBUG - new topwidget self.tab
+2024-12-05 20:00:40,069 - DEBUG - setting property geometry
+2024-12-05 20:00:40,069 - DEBUG - push QDateEdit dateEdit
+2024-12-05 20:00:40,069 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-05 20:00:40,069 - DEBUG - new topwidget self.tab
+2024-12-05 20:00:40,069 - DEBUG - pop widget QWidget tab
+2024-12-05 20:00:40,069 - DEBUG - new topwidget self.tabWidget
+2024-12-05 20:00:40,069 - DEBUG - push QWidget tab_5
+2024-12-05 20:00:40,069 - DEBUG - setting property geometry
+2024-12-05 20:00:40,070 - DEBUG - push QTableWidget tableWidget_4
+2024-12-05 20:00:40,070 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-05 20:00:40,071 - DEBUG - new topwidget self.tab_5
+2024-12-05 20:00:40,071 - DEBUG - pop widget QWidget tab_5
+2024-12-05 20:00:40,071 - DEBUG - new topwidget self.tabWidget
+2024-12-05 20:00:40,071 - DEBUG - push QWidget tab_6
+2024-12-05 20:00:40,071 - DEBUG - setting property geometry
+2024-12-05 20:00:40,071 - DEBUG - setting property text
+2024-12-05 20:00:40,071 - DEBUG - push QLabel CCTV_2
+2024-12-05 20:00:40,071 - DEBUG - pop widget QLabel CCTV_2
+2024-12-05 20:00:40,071 - DEBUG - new topwidget self.tab_6
+2024-12-05 20:00:40,072 - DEBUG - pop widget QWidget tab_6
+2024-12-05 20:00:40,072 - DEBUG - new topwidget self.tabWidget
+2024-12-05 20:00:40,072 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-05 20:00:40,072 - DEBUG - new topwidget Dialog
+2024-12-05 20:00:40,072 - DEBUG - pop widget QDialog Dialog
+2024-12-05 20:00:40,072 - DEBUG - new topwidget None
+2024-12-05 20:00:41,213 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-05 20:00:41,213 - INFO - - gpu enabled: True
+2024-12-05 20:00:41,213 - INFO - - half precision: True
+2024-12-05 20:00:41,213 - INFO - - max batch size: 16
+2024-12-05 20:00:41,213 - INFO - - expects BGR: True
+2024-12-05 20:00:41,478 - INFO - DeepSort Tracker initialised
+2024-12-05 20:00:41,478 - INFO - - max age: 5
+2024-12-05 20:00:41,478 - INFO - - appearance threshold: 0.2
+2024-12-05 20:00:41,478 - INFO - - nms threshold: OFF
+2024-12-05 20:00:41,478 - INFO - - max num of appearance features: None
+2024-12-05 20:00:41,478 - INFO - - overriding track class : No
+2024-12-05 20:00:41,478 - INFO - - today given : No
+2024-12-05 20:00:41,478 - INFO - - in-build embedder : Yes
+2024-12-05 20:00:41,478 - INFO - - polygon detections : No
+2024-12-05 20:00:41,479 - INFO - 서버가 시작되었습니다.
+2024-12-05 20:00:41,542 - INFO - TCP 서버 실행 중...
+2024-12-05 20:00:46,746 - INFO - 클라이언트 연결: ('192.168.0.100', 56052)
+2024-12-05 20:00:46,746 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 56052)
+2024-12-05 20:00:46,747 - DEBUG - 클라이언트 ('192.168.0.100', 56052)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:46,747 - ERROR - 클라이언트 ('192.168.0.100', 56052) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:46,747 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 56052)
+2024-12-05 20:00:48,834 - INFO - 클라이언트 연결: ('192.168.0.100', 56062)
+2024-12-05 20:00:48,834 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 56062)
+2024-12-05 20:00:48,834 - DEBUG - 클라이언트 ('192.168.0.100', 56062)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:48,835 - ERROR - 클라이언트 ('192.168.0.100', 56062) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:48,835 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 56062)
+2024-12-05 20:00:50,854 - INFO - 클라이언트 연결: ('192.168.0.100', 56078)
+2024-12-05 20:00:50,858 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 56078)
+2024-12-05 20:00:50,858 - DEBUG - 클라이언트 ('192.168.0.100', 56078)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:50,858 - ERROR - 클라이언트 ('192.168.0.100', 56078) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:50,858 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 56078)
+2024-12-05 20:00:52,900 - INFO - 클라이언트 연결: ('192.168.0.100', 42206)
+2024-12-05 20:00:52,901 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 42206)
+2024-12-05 20:00:52,901 - DEBUG - 클라이언트 ('192.168.0.100', 42206)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:52,901 - ERROR - 클라이언트 ('192.168.0.100', 42206) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:52,902 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 42206)
+2024-12-05 20:00:54,945 - INFO - 클라이언트 연결: ('192.168.0.100', 42210)
+2024-12-05 20:00:54,945 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 42210)
+2024-12-05 20:00:54,949 - DEBUG - 클라이언트 ('192.168.0.100', 42210)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:54,949 - ERROR - 클라이언트 ('192.168.0.100', 42210) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:54,949 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 42210)
+2024-12-05 20:00:57,170 - INFO - 클라이언트 연결: ('192.168.0.100', 42224)
+2024-12-05 20:00:57,171 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 42224)
+2024-12-05 20:00:57,171 - DEBUG - 클라이언트 ('192.168.0.100', 42224)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:57,171 - ERROR - 클라이언트 ('192.168.0.100', 42224) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:57,171 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 42224)
+2024-12-05 20:00:59,436 - INFO - 클라이언트 연결: ('192.168.0.100', 42230)
+2024-12-05 20:00:59,437 - INFO - 클라이언트 스레드 시작: ('192.168.0.100', 42230)
+2024-12-05 20:00:59,437 - DEBUG - 클라이언트 ('192.168.0.100', 42230)에서 수신된 데이터: {'camera_id': 21, 'apple_defective': 3, 'apple_fair': 3, 'peach_defective': 3, 'peach_fair': 3, 'pomegranate_defective': 2, 'pomegranate_fair': 3, 'mandarin_defective': 3, 'mandarin_fair': 3}
+2024-12-05 20:00:59,437 - ERROR - 클라이언트 ('192.168.0.100', 42230) 처리 중 오류 발생: 'Queue' object is not iterable
+2024-12-05 20:00:59,437 - INFO - 클라이언트 스레드 종료: ('192.168.0.100', 42230)
+2024-12-05 20:01:41,504 - INFO - 앞으로 저장될 비디오 경로: ./video_output/output_20241205_200241.avi
+2024-12-06 10:03:28,442 - DEBUG - uiname is Dialog
+2024-12-06 10:03:28,445 - DEBUG - toplevel widget is QDialog
+2024-12-06 10:03:28,445 - DEBUG - setting property geometry
+2024-12-06 10:03:28,445 - DEBUG - setting property windowTitle
+2024-12-06 10:03:28,446 - DEBUG - push QDialog Dialog
+2024-12-06 10:03:28,446 - DEBUG - setting property geometry
+2024-12-06 10:03:28,447 - DEBUG - setting property currentIndex
+2024-12-06 10:03:28,447 - DEBUG - push QTabWidget tabWidget
+2024-12-06 10:03:28,448 - DEBUG - push QWidget tab_2
+2024-12-06 10:03:28,448 - DEBUG - setting property geometry
+2024-12-06 10:03:28,449 - DEBUG - setting property font
+2024-12-06 10:03:28,449 - DEBUG - setting property text
+2024-12-06 10:03:28,450 - DEBUG - push QLabel label
+2024-12-06 10:03:28,450 - DEBUG - pop widget QLabel label
+2024-12-06 10:03:28,451 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,451 - DEBUG - setting property geometry
+2024-12-06 10:03:28,452 - DEBUG - setting property font
+2024-12-06 10:03:28,452 - DEBUG - setting property text
+2024-12-06 10:03:28,452 - DEBUG - push QLabel label_2
+2024-12-06 10:03:28,453 - DEBUG - pop widget QLabel label_2
+2024-12-06 10:03:28,453 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,453 - DEBUG - setting property geometry
+2024-12-06 10:03:28,454 - DEBUG - setting property title
+2024-12-06 10:03:28,455 - DEBUG - push QGroupBox userGroupBox1
+2024-12-06 10:03:28,455 - DEBUG - setting property geometry
+2024-12-06 10:03:28,456 - DEBUG - setting property font
+2024-12-06 10:03:28,456 - DEBUG - setting property text
+2024-12-06 10:03:28,457 - DEBUG - push QLabel userNameLabel1
+2024-12-06 10:03:28,457 - DEBUG - pop widget QLabel userNameLabel1
+2024-12-06 10:03:28,457 - DEBUG - new topwidget self.userGroupBox1
+2024-12-06 10:03:28,458 - DEBUG - setting property geometry
+2024-12-06 10:03:28,458 - DEBUG - setting property font
+2024-12-06 10:03:28,459 - DEBUG - setting property text
+2024-12-06 10:03:28,459 - DEBUG - push QLabel userCart1
+2024-12-06 10:03:28,459 - DEBUG - pop widget QLabel userCart1
+2024-12-06 10:03:28,460 - DEBUG - new topwidget self.userGroupBox1
+2024-12-06 10:03:28,460 - DEBUG - pop widget QGroupBox userGroupBox1
+2024-12-06 10:03:28,460 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,461 - DEBUG - setting property geometry
+2024-12-06 10:03:28,461 - DEBUG - setting property title
+2024-12-06 10:03:28,461 - DEBUG - push QGroupBox userGroupBox1_2
+2024-12-06 10:03:28,461 - DEBUG - setting property geometry
+2024-12-06 10:03:28,461 - DEBUG - setting property font
+2024-12-06 10:03:28,461 - DEBUG - setting property text
+2024-12-06 10:03:28,461 - DEBUG - push QLabel userNameLabel1_2
+2024-12-06 10:03:28,462 - DEBUG - pop widget QLabel userNameLabel1_2
+2024-12-06 10:03:28,462 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-06 10:03:28,462 - DEBUG - setting property geometry
+2024-12-06 10:03:28,462 - DEBUG - setting property font
+2024-12-06 10:03:28,462 - DEBUG - setting property text
+2024-12-06 10:03:28,462 - DEBUG - push QLabel userCart1_2
+2024-12-06 10:03:28,462 - DEBUG - pop widget QLabel userCart1_2
+2024-12-06 10:03:28,462 - DEBUG - new topwidget self.userGroupBox1_2
+2024-12-06 10:03:28,462 - DEBUG - pop widget QGroupBox userGroupBox1_2
+2024-12-06 10:03:28,462 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,462 - DEBUG - setting property geometry
+2024-12-06 10:03:28,462 - DEBUG - setting property title
+2024-12-06 10:03:28,462 - DEBUG - push QGroupBox userGroupBox1_3
+2024-12-06 10:03:28,463 - DEBUG - setting property geometry
+2024-12-06 10:03:28,463 - DEBUG - setting property font
+2024-12-06 10:03:28,463 - DEBUG - setting property text
+2024-12-06 10:03:28,463 - DEBUG - push QLabel userNameLabel1_3
+2024-12-06 10:03:28,463 - DEBUG - pop widget QLabel userNameLabel1_3
+2024-12-06 10:03:28,463 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-06 10:03:28,463 - DEBUG - setting property geometry
+2024-12-06 10:03:28,463 - DEBUG - setting property font
+2024-12-06 10:03:28,463 - DEBUG - setting property text
+2024-12-06 10:03:28,463 - DEBUG - push QLabel userCart1_3
+2024-12-06 10:03:28,463 - DEBUG - pop widget QLabel userCart1_3
+2024-12-06 10:03:28,463 - DEBUG - new topwidget self.userGroupBox1_3
+2024-12-06 10:03:28,463 - DEBUG - pop widget QGroupBox userGroupBox1_3
+2024-12-06 10:03:28,464 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,464 - DEBUG - setting property geometry
+2024-12-06 10:03:28,464 - DEBUG - setting property title
+2024-12-06 10:03:28,464 - DEBUG - push QGroupBox userGroupBox1_4
+2024-12-06 10:03:28,464 - DEBUG - setting property geometry
+2024-12-06 10:03:28,464 - DEBUG - setting property font
+2024-12-06 10:03:28,464 - DEBUG - setting property text
+2024-12-06 10:03:28,464 - DEBUG - push QLabel userNameLabel1_4
+2024-12-06 10:03:28,464 - DEBUG - pop widget QLabel userNameLabel1_4
+2024-12-06 10:03:28,464 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-06 10:03:28,464 - DEBUG - setting property geometry
+2024-12-06 10:03:28,464 - DEBUG - setting property font
+2024-12-06 10:03:28,465 - DEBUG - setting property text
+2024-12-06 10:03:28,465 - DEBUG - push QLabel userCart1_4
+2024-12-06 10:03:28,465 - DEBUG - pop widget QLabel userCart1_4
+2024-12-06 10:03:28,465 - DEBUG - new topwidget self.userGroupBox1_4
+2024-12-06 10:03:28,465 - DEBUG - pop widget QGroupBox userGroupBox1_4
+2024-12-06 10:03:28,465 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,465 - DEBUG - setting property geometry
+2024-12-06 10:03:28,465 - DEBUG - setting property font
+2024-12-06 10:03:28,465 - DEBUG - setting property text
+2024-12-06 10:03:28,465 - DEBUG - push QLabel label_3
+2024-12-06 10:03:28,465 - DEBUG - pop widget QLabel label_3
+2024-12-06 10:03:28,465 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,465 - DEBUG - setting property geometry
+2024-12-06 10:03:28,465 - DEBUG - setting property font
+2024-12-06 10:03:28,466 - DEBUG - setting property text
+2024-12-06 10:03:28,466 - DEBUG - push QLabel label_4
+2024-12-06 10:03:28,466 - DEBUG - pop widget QLabel label_4
+2024-12-06 10:03:28,466 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,466 - DEBUG - setting property geometry
+2024-12-06 10:03:28,466 - DEBUG - push QTableWidget tableWidget
+2024-12-06 10:03:28,467 - DEBUG - pop widget QTableWidget tableWidget
+2024-12-06 10:03:28,467 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,467 - DEBUG - setting property geometry
+2024-12-06 10:03:28,467 - DEBUG - setting property text
+2024-12-06 10:03:28,467 - DEBUG - push QLabel CCTV_1
+2024-12-06 10:03:28,467 - DEBUG - pop widget QLabel CCTV_1
+2024-12-06 10:03:28,467 - DEBUG - new topwidget self.tab_2
+2024-12-06 10:03:28,467 - DEBUG - pop widget QWidget tab_2
+2024-12-06 10:03:28,467 - DEBUG - new topwidget self.tabWidget
+2024-12-06 10:03:28,467 - DEBUG - push QWidget tab
+2024-12-06 10:03:28,467 - DEBUG - setting property geometry
+2024-12-06 10:03:28,467 - DEBUG - setting property currentIndex
+2024-12-06 10:03:28,468 - DEBUG - push QTabWidget tabWidget_2
+2024-12-06 10:03:28,468 - DEBUG - push QWidget tab_3
+2024-12-06 10:03:28,468 - DEBUG - setting property geometry
+2024-12-06 10:03:28,468 - DEBUG - push QTableWidget tableWidget_2
+2024-12-06 10:03:28,468 - DEBUG - pop widget QTableWidget tableWidget_2
+2024-12-06 10:03:28,468 - DEBUG - new topwidget self.tab_3
+2024-12-06 10:03:28,468 - DEBUG - setting property geometry
+2024-12-06 10:03:28,469 - DEBUG - setting property title
+2024-12-06 10:03:28,469 - DEBUG - push QGroupBox groupBox
+2024-12-06 10:03:28,469 - DEBUG - setting property geometry
+2024-12-06 10:03:28,469 - DEBUG - setting property font
+2024-12-06 10:03:28,469 - DEBUG - setting property text
+2024-12-06 10:03:28,469 - DEBUG - push QLabel label_6
+2024-12-06 10:03:28,469 - DEBUG - pop widget QLabel label_6
+2024-12-06 10:03:28,469 - DEBUG - new topwidget self.groupBox
+2024-12-06 10:03:28,469 - DEBUG - setting property geometry
+2024-12-06 10:03:28,469 - DEBUG - setting property font
+2024-12-06 10:03:28,469 - DEBUG - setting property text
+2024-12-06 10:03:28,470 - DEBUG - setting property scaledContents
+2024-12-06 10:03:28,470 - DEBUG - setting property alignment
+2024-12-06 10:03:28,470 - DEBUG - push QLabel label_7
+2024-12-06 10:03:28,470 - DEBUG - pop widget QLabel label_7
+2024-12-06 10:03:28,470 - DEBUG - new topwidget self.groupBox
+2024-12-06 10:03:28,470 - DEBUG - pop widget QGroupBox groupBox
+2024-12-06 10:03:28,470 - DEBUG - new topwidget self.tab_3
+2024-12-06 10:03:28,470 - DEBUG - setting property geometry
+2024-12-06 10:03:28,470 - DEBUG - setting property title
+2024-12-06 10:03:28,470 - DEBUG - push QGroupBox groupBox_2
+2024-12-06 10:03:28,470 - DEBUG - setting property geometry
+2024-12-06 10:03:28,471 - DEBUG - setting property font
+2024-12-06 10:03:28,471 - DEBUG - setting property text
+2024-12-06 10:03:28,471 - DEBUG - push QLabel label_8
+2024-12-06 10:03:28,471 - DEBUG - pop widget QLabel label_8
+2024-12-06 10:03:28,472 - DEBUG - new topwidget self.groupBox_2
+2024-12-06 10:03:28,472 - DEBUG - setting property geometry
+2024-12-06 10:03:28,472 - DEBUG - setting property font
+2024-12-06 10:03:28,473 - DEBUG - setting property text
+2024-12-06 10:03:28,473 - DEBUG - setting property scaledContents
+2024-12-06 10:03:28,473 - DEBUG - setting property alignment
+2024-12-06 10:03:28,473 - DEBUG - push QLabel label_9
+2024-12-06 10:03:28,473 - DEBUG - pop widget QLabel label_9
+2024-12-06 10:03:28,473 - DEBUG - new topwidget self.groupBox_2
+2024-12-06 10:03:28,473 - DEBUG - pop widget QGroupBox groupBox_2
+2024-12-06 10:03:28,473 - DEBUG - new topwidget self.tab_3
+2024-12-06 10:03:28,473 - DEBUG - setting property geometry
+2024-12-06 10:03:28,473 - DEBUG - setting property title
+2024-12-06 10:03:28,473 - DEBUG - push QGroupBox groupBox_3
+2024-12-06 10:03:28,473 - DEBUG - setting property geometry
+2024-12-06 10:03:28,474 - DEBUG - setting property font
+2024-12-06 10:03:28,474 - DEBUG - setting property text
+2024-12-06 10:03:28,474 - DEBUG - push QLabel label_12
+2024-12-06 10:03:28,474 - DEBUG - pop widget QLabel label_12
+2024-12-06 10:03:28,474 - DEBUG - new topwidget self.groupBox_3
+2024-12-06 10:03:28,474 - DEBUG - setting property geometry
+2024-12-06 10:03:28,474 - DEBUG - setting property font
+2024-12-06 10:03:28,474 - DEBUG - setting property text
+2024-12-06 10:03:28,474 - DEBUG - setting property scaledContents
+2024-12-06 10:03:28,474 - DEBUG - setting property alignment
+2024-12-06 10:03:28,474 - DEBUG - push QLabel label_13
+2024-12-06 10:03:28,474 - DEBUG - pop widget QLabel label_13
+2024-12-06 10:03:28,474 - DEBUG - new topwidget self.groupBox_3
+2024-12-06 10:03:28,474 - DEBUG - pop widget QGroupBox groupBox_3
+2024-12-06 10:03:28,475 - DEBUG - new topwidget self.tab_3
+2024-12-06 10:03:28,475 - DEBUG - setting property geometry
+2024-12-06 10:03:28,475 - DEBUG - setting property title
+2024-12-06 10:03:28,475 - DEBUG - push QGroupBox groupBox_4
+2024-12-06 10:03:28,475 - DEBUG - setting property geometry
+2024-12-06 10:03:28,475 - DEBUG - setting property font
+2024-12-06 10:03:28,475 - DEBUG - setting property text
+2024-12-06 10:03:28,475 - DEBUG - push QLabel label_16
+2024-12-06 10:03:28,475 - DEBUG - pop widget QLabel label_16
+2024-12-06 10:03:28,475 - DEBUG - new topwidget self.groupBox_4
+2024-12-06 10:03:28,475 - DEBUG - setting property geometry
+2024-12-06 10:03:28,475 - DEBUG - setting property font
+2024-12-06 10:03:28,476 - DEBUG - setting property text
+2024-12-06 10:03:28,476 - DEBUG - setting property scaledContents
+2024-12-06 10:03:28,476 - DEBUG - setting property alignment
+2024-12-06 10:03:28,476 - DEBUG - push QLabel label_17
+2024-12-06 10:03:28,476 - DEBUG - pop widget QLabel label_17
+2024-12-06 10:03:28,476 - DEBUG - new topwidget self.groupBox_4
+2024-12-06 10:03:28,476 - DEBUG - pop widget QGroupBox groupBox_4
+2024-12-06 10:03:28,476 - DEBUG - new topwidget self.tab_3
+2024-12-06 10:03:28,477 - DEBUG - pop widget QWidget tab_3
+2024-12-06 10:03:28,477 - DEBUG - new topwidget self.tabWidget_2
+2024-12-06 10:03:28,477 - DEBUG - push QWidget tab_4
+2024-12-06 10:03:28,477 - DEBUG - setting property geometry
+2024-12-06 10:03:28,477 - DEBUG - push QTableWidget tableWidget_3
+2024-12-06 10:03:28,478 - DEBUG - pop widget QTableWidget tableWidget_3
+2024-12-06 10:03:28,478 - DEBUG - new topwidget self.tab_4
+2024-12-06 10:03:28,478 - DEBUG - pop widget QWidget tab_4
+2024-12-06 10:03:28,478 - DEBUG - new topwidget self.tabWidget_2
+2024-12-06 10:03:28,478 - DEBUG - pop widget QTabWidget tabWidget_2
+2024-12-06 10:03:28,478 - DEBUG - new topwidget self.tab
+2024-12-06 10:03:28,478 - DEBUG - setting property geometry
+2024-12-06 10:03:28,478 - DEBUG - setting property font
+2024-12-06 10:03:28,478 - DEBUG - setting property text
+2024-12-06 10:03:28,479 - DEBUG - push QLabel label_5
+2024-12-06 10:03:28,479 - DEBUG - pop widget QLabel label_5
+2024-12-06 10:03:28,479 - DEBUG - new topwidget self.tab
+2024-12-06 10:03:28,479 - DEBUG - setting property geometry
+2024-12-06 10:03:28,479 - DEBUG - push QDateEdit dateEdit
+2024-12-06 10:03:28,479 - DEBUG - pop widget QDateEdit dateEdit
+2024-12-06 10:03:28,479 - DEBUG - new topwidget self.tab
+2024-12-06 10:03:28,479 - DEBUG - pop widget QWidget tab
+2024-12-06 10:03:28,480 - DEBUG - new topwidget self.tabWidget
+2024-12-06 10:03:28,480 - DEBUG - push QWidget tab_5
+2024-12-06 10:03:28,480 - DEBUG - setting property geometry
+2024-12-06 10:03:28,480 - DEBUG - push QTableWidget tableWidget_4
+2024-12-06 10:03:28,481 - DEBUG - pop widget QTableWidget tableWidget_4
+2024-12-06 10:03:28,481 - DEBUG - new topwidget self.tab_5
+2024-12-06 10:03:28,481 - DEBUG - pop widget QWidget tab_5
+2024-12-06 10:03:28,481 - DEBUG - new topwidget self.tabWidget
+2024-12-06 10:03:28,481 - DEBUG - push QWidget tab_6
+2024-12-06 10:03:28,482 - DEBUG - setting property geometry
+2024-12-06 10:03:28,482 - DEBUG - setting property text
+2024-12-06 10:03:28,482 - DEBUG - push QLabel CCTV_2
+2024-12-06 10:03:28,482 - DEBUG - pop widget QLabel CCTV_2
+2024-12-06 10:03:28,482 - DEBUG - new topwidget self.tab_6
+2024-12-06 10:03:28,482 - DEBUG - pop widget QWidget tab_6
+2024-12-06 10:03:28,482 - DEBUG - new topwidget self.tabWidget
+2024-12-06 10:03:28,482 - DEBUG - pop widget QTabWidget tabWidget
+2024-12-06 10:03:28,482 - DEBUG - new topwidget Dialog
+2024-12-06 10:03:28,482 - DEBUG - pop widget QDialog Dialog
+2024-12-06 10:03:28,482 - DEBUG - new topwidget None
+2024-12-06 10:03:30,254 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-06 10:03:30,254 - INFO - - gpu enabled: True
+2024-12-06 10:03:30,255 - INFO - - half precision: True
+2024-12-06 10:03:30,255 - INFO - - max batch size: 16
+2024-12-06 10:03:30,255 - INFO - - expects BGR: True
+2024-12-06 10:03:30,528 - INFO - DeepSort Tracker initialised
+2024-12-06 10:03:30,528 - INFO - - max age: 5
+2024-12-06 10:03:30,528 - INFO - - appearance threshold: 0.2
+2024-12-06 10:03:30,528 - INFO - - nms threshold: OFF
+2024-12-06 10:03:30,528 - INFO - - max num of appearance features: None
+2024-12-06 10:03:30,528 - INFO - - overriding track class : No
+2024-12-06 10:03:30,528 - INFO - - today given : No
+2024-12-06 10:03:30,529 - INFO - - in-build embedder : Yes
+2024-12-06 10:03:30,529 - INFO - - polygon detections : No
+2024-12-06 10:03:30,529 - INFO - 서버가 시작되었습니다.
+2024-12-06 10:03:30,905 - INFO - TCP 서버 실행 중...
+2024-12-06 10:04:31,339 - INFO - 앞으로 저장될 비디오 경로: ./video_output/output_20241206_100531.avi
