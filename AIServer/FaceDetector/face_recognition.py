@@ -34,6 +34,7 @@ VIDEO_DIRECTORY_PATH = "data/video/"
 
 SERVER_IP = '192.168.0.100'
 SERVER_PORT = 5001
+CAMERA_ID = 2
 # -----------------------------------------------------
 
 logging.basicConfig(
@@ -77,12 +78,13 @@ class FaceRecognition(threading.Thread):
 
 
 class TCPSender(threading.Thread):
-    def __init__(self, server_ip, server_port, name_queue):
+    def __init__(self, server_ip, server_port, camera_id, name_queue):
         super().__init__()
         self.server_ip = server_ip
         self.server_port = server_port
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client_socket.connect((self.server_ip, self.server_port))
+        self.camera_id = camera_id
         logger.info(f"Connected to {self.server_ip}:{self.server_port}")
 
         self.name_queue = name_queue
@@ -95,23 +97,17 @@ class TCPSender(threading.Thread):
                 name = self.name_queue.get(timeout=1)
                 logger.info("Received from queue: %s", name)
 
+                data = {"camera_id": self.camera_id, "member_id": name}
+                self.client_socket.send(json.dumps(data).encode())
+                logger.info(f"Data is sent : {data}")
+
             except queue.Empty:
                 logger.warning("Queue is empty.")
                 continue
 
-            while len(name):
-                try:
-                    data = {"camera_id": 2,
-                            "member_id": name}
-                    self.client_socket.send(json.dumps(data).encode())
-                    logger.info(f"Data is sent : {data}")
-                    time.sleep(1)
-
-                except (BrokenPipeError, socket.error) as e:
-                    logger.error("Error in FaceRecognition thread: %s", e)
-                    time.sleep(1)
-                    break
-
+            except (BrokenPipeError, socket.error) as e:
+                logger.error("Error in TCPSender thread: %s", e)
+                break
 
     def stop(self):
         self.running = False
@@ -123,12 +119,12 @@ def main():
     name_queue = queue.Queue()
 
     recognition_thread = FaceRecognition(DATABASE_DRECTORY_PATH,name_queue)
-    tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, name_queue)
+    #tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, CAMERA_ID, name_queue)
 
     recognition_thread.start()
-    tcp_thread.start()
+    #tcp_thread.start()
 
-    tcp_thread.join()
+    #tcp_thread.join()
 
     logger.info("Application shutting down")
     cv2.destroyAllWindows()
