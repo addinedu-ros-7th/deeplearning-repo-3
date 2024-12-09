@@ -9,7 +9,14 @@ class ThreadManager:
         self.data_processor_threads = {}
         self.data_queues = {}
         self.visitors = {}
+        self.fruits = {}
         self.lock = threading.Lock()
+
+        self.available_carts = queue.Queue()
+        self.using_carts = queue.Queue()
+
+        for cam_num in range(1,4):
+            self.available_carts.put(cam_num)
 
     def add_camera(self, camera_id, client, port):
         """카메라 스레드 추가 및 시작"""
@@ -27,7 +34,7 @@ class ThreadManager:
 
         # DataProcessorThread 생성
         data_processor_thread = DataProcessorThread(
-            camera_id, data_queue, self.visitors, self.lock
+            camera_id, data_queue, self.visitors, self.lock, self
         )
         data_processor_thread.start()
         self.data_processor_threads[camera_id] = data_processor_thread
@@ -47,6 +54,23 @@ class ThreadManager:
         del self.data_queues[camera_id]
 
         print(f"카메라 {camera_id}: 종료 완료")
+
+    def assign_cart_cam(self):
+        with self.lock:
+            if not self.available_carts.empty():
+                return self.available_carts.get()
+            else:
+                return None
+            
+    def release_cart_cam(self, cam_num):
+        with self.lock:
+            self.available_carts.put(cam_num)
+
+    def get_using_carts(self):
+        with self.lock:
+            all_carts = {1,2,3,4}
+            available_carts = set(list(self.available_carts.queue))
+            return list(all_carts - available_carts)
 
     def stop_all(self):
         """모든 스레드 중지"""

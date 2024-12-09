@@ -1,6 +1,7 @@
 class Cart:
-    def __init__(self, cart_id):
+    def __init__(self, cart_id, cart_cam):
         self.cart_id = cart_id
+        self.cart_cam = cart_cam
         self.data = {}
 
     def update(self, new_data):

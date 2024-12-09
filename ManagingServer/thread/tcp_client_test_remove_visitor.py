@@ -22,9 +22,9 @@ try:
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
         print(f"데이터 송신: {data}")
-        time.sleep(0.1)  # 10초 대기
+        time.sleep(1)  # 10초 대기
         data = {
-            "member_id": 3
+            "member_id": 2
         }
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
