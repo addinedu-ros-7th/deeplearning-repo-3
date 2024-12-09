@@ -2,6 +2,7 @@ import queue
 from CameraThread import CameraThread
 from DataProcessorThread import DataProcessorThread
 import threading
+import mysql.connector
 
 class ThreadManager:
     def __init__(self):
@@ -9,7 +10,6 @@ class ThreadManager:
         self.data_processor_threads = {}
         self.data_queues = {}
         self.visitors = {}
-        self.fruits = {}
         self.lock = threading.Lock()
 
         self.available_carts = queue.Queue()
@@ -17,6 +17,23 @@ class ThreadManager:
 
         for cam_num in range(1,4):
             self.available_carts.put(cam_num)
+
+        self.fruits = {}
+        conn = self.connect_f2mbase()
+        cursor = conn.cursor()
+        cursor.execute("select fruit_id, stock from fruit")
+        for fruit_id, stock in cursor.fetchall():
+            self.fruits[fruit_id] = stock
+
+    
+    def connect_f2mbase(self):
+        conn = mysql.connector.connect(
+            host = "localhost",
+            user = "root",
+            password = "1111",
+            database="f2mbase"
+        )
+        return conn
 
     def add_camera(self, camera_id, client, port):
         """카메라 스레드 추가 및 시작"""
@@ -34,7 +51,7 @@ class ThreadManager:
 
         # DataProcessorThread 생성
         data_processor_thread = DataProcessorThread(
-            camera_id, data_queue, self.visitors, self.lock, self
+            camera_id, data_queue, self
         )
         data_processor_thread.start()
         self.data_processor_threads[camera_id] = data_processor_thread

@@ -3,9 +3,7 @@ import json
 import time
 
 server_ip = '127.0.0.1'  # 서버 IP
-server_port = 5001       # 서버 포트
-
-
+server_port = 5003       # 서버 포트
 
 try:
     # 서버에 연결
@@ -16,16 +14,7 @@ try:
 
     try:
         # JSON 데이터 생성
-        data = {
-            "member_id": 2
-        }
-        # 데이터 송신
-        client_socket.send(json.dumps(data).encode())
-        print(f"데이터 송신: {data}")
-        time.sleep(0.1)  # 10초 대기
-        data = {
-            "member_id": 1
-        }
+        data = {1: 3, 2: 4, 3: 7, 4: 10}      #{fruit_id: stock, fruit_id: stock}
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
         print(f"데이터 송신: {data}")
