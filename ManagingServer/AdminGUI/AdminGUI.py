@@ -153,6 +153,8 @@ class WindowClass(QMainWindow, from_class):
         if track_id not in self.person_states:
             self.person_states[track_id] = Person(track_id)
             self.person_states[track_id].detected = True
+            # 마지막에 들어온 visit_id db에서 찾아서 넣어주기
+            self.person_states[track_id].visit_id = True
             print(f"Person {track_id} entered")
 
     @pyqtSlot(int)

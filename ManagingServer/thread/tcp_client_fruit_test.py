@@ -14,7 +14,7 @@ try:
 
     try:
         # JSON 데이터 생성
-        data = {1: 3, 2: 4, 3: 7, 4: 10}      #{fruit_id: stock, fruit_id: stock}
+        data = {1: 10, 2: 10, 3: 10, 4: 10}      #{fruit_id: stock, fruit_id: stock}
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
         print(f"데이터 송신: {data}")

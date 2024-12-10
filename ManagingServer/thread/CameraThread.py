@@ -6,12 +6,13 @@ from logger_config import setup_logger
 logger = setup_logger()
 
 class CameraThread(threading.Thread):
-    def __init__(self, camera_id, client, server_port, data_queue):
+    def __init__(self, camera_id, client, server_port, data_queue, res_data_queue):
         super().__init__()
         self.camera_id = camera_id
         self.client = client
         self.server_port = server_port
         self.data_queue = data_queue
+        self.res_data_queue = res_data_queue
         self._is_running = True
         self.socket = None
 
@@ -38,6 +39,14 @@ class CameraThread(threading.Thread):
                                 break
                             logger.info(f"카메라 {self.camera_id}: 데이터 수신 -> {data}")
                             self.data_queue.put(data)
+
+                            if not self.res_data_queue.empty():
+                                response = self.res_data_queue.get()
+                                logger.info(f"카메라 {self.camera_id}: 응답 준비 -> {response}")
+
+                                # 응답 전송
+                                client_socket.sendall(response.encode())
+                                logger.info(f"카메라 {self.camera_id}: 응답 전송 완료 -> {response}")
 
                     except Exception as e:
                         logger.error(f"카메라 {self.camera_id}: 클라이언트 통신 중 오류 발생 -> {str(e)}")
