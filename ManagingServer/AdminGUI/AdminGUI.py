@@ -10,12 +10,13 @@ from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
 from DBConnector import DBThread
 from PoseDetector import VideoThread
-from TcpServer import TcpServerThread
-from logger_config import setup_logger
-from custom_classes import *
-from shared_queue import *
+# from TcpServer import TcpServerThread
+# from logger_config import setup_logger
+# from custom_classes import *
+# from shared_queue import *
+from ManagingServer.thread.custom_classes import Person,Visitor,Event
 
-logger = setup_logger()
+#logger = setup_logger()
 
 # UI 파일을 로드하여 from_class로 정의
 from_class = uic.loadUiType("AdminGUI.ui")[0]
@@ -43,17 +44,17 @@ class WindowClass(QMainWindow, from_class):
         self.thread.file_path.connect(self.save_video_path)  # 경로 신호 연결
         self.thread.start()  # 스레드 실행
 
-        # tcp thread 시작
-        self.tcp_server_thread = TcpServerThread(
-            host = "0.0.0.0",
-            port = 8080,
-        )
+        # # tcp thread 시작
+        # self.tcp_server_thread = TcpServerThread(
+        #     host = "0.0.0.0",
+        #     port = 8080,
+        # )
 
-        self.tcp_server_thread.start()
-        logger.info("서버가 시작되었습니다.")
+        # self.tcp_server_thread.start()
+        # logger.info("서버가 시작되었습니다.")
         
-        cart = Cart(21,1)
-        shared_cart_queue.put(cart)
+        # cart = Cart(21,1)
+        # shared_cart_queue.put(cart)
         
 
         # DB 스레드 초기화
