@@ -14,7 +14,7 @@ from PoseDetector import VideoThread
 # from logger_config import setup_logger
 # from custom_classes import *
 # from shared_queue import *
-from ManagingServer.thread.custom_classes import Person,Visitor,Event
+from thread.custom_classes import Person,Visitor,Event
 
 #logger = setup_logger()
 
