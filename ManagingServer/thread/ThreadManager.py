@@ -3,20 +3,22 @@ from CameraThread import CameraThread
 from DataProcessorThread import DataProcessorThread
 import threading
 import mysql.connector
+from custom_classes import *
+from logger_config import setup_logger
+
+logger = setup_logger()
 
 class ThreadManager:
     def __init__(self):
         self.camera_threads = {}
         self.data_processor_threads = {}
         self.data_queues = {}
+        self.res_data_queues = {}
         self.visitors = {}
         self.lock = threading.Lock()
 
-        self.available_carts = queue.Queue()
-        self.using_carts = queue.Queue()
-
-        for cam_num in range(1,4):
-            self.available_carts.put(cam_num)
+        self.available_carts = set(range(1,5))
+        self.using_carts = set()
 
         self.fruits = {}
         conn = self.connect_f2mbase()
@@ -24,6 +26,33 @@ class ThreadManager:
         cursor.execute("select fruit_id, stock from fruit")
         for fruit_id, stock in cursor.fetchall():
             self.fruits[fruit_id] = stock
+
+        cursor.execute("""
+            SELECT vi.member_id, vi.visit_id, c.cart_id, c.cart_cam, cf.fruit_id, cf.quantity
+            FROM visit_info vi
+            LEFT JOIN cart c ON vi.visit_id = c.visit_id
+            LEFT JOIN cart_fruit cf ON c.cart_id = cf.cart_id
+            WHERE vi.out_dttm IS NULL
+        """)
+
+        data = cursor.fetchall()
+        for row in data:
+            member_id, visit_id, cart_id, cart_cam, fruit_id, quantity = row
+            if visit_id not in self.visitors:
+                if cart_id and cart_cam:
+                    c = Cart(cart_id, cart_cam)
+                    self.using_carts.add(cart_cam)
+                else:
+                    Cart(None, None)
+                v = Visitor(visit_id, member_id, c)
+                self.visitors[visit_id] = v
+            if fruit_id and quantity:
+                self.visitors[visit_id].cart.data[fruit_id] = quantity
+
+        self.available_carts -= self.using_carts
+
+        for v in self.visitors.values():
+            logger.info(v)
 
     
     def connect_f2mbase(self):
@@ -44,14 +73,18 @@ class ThreadManager:
         data_queue = queue.Queue()
         self.data_queues[camera_id] = data_queue
 
+        res_data_queue = queue.Queue()
+        self.res_data_queues[camera_id] = res_data_queue
+
+
         # CameraThread 생성
-        camera_thread = CameraThread(camera_id, client, port, data_queue)
+        camera_thread = CameraThread(camera_id, client, port, data_queue, res_data_queue)
         camera_thread.start()
         self.camera_threads[camera_id] = camera_thread
 
         # DataProcessorThread 생성
         data_processor_thread = DataProcessorThread(
-            camera_id, data_queue, self
+            camera_id, data_queue, res_data_queue, self
         )
         data_processor_thread.start()
         self.data_processor_threads[camera_id] = data_processor_thread
@@ -73,21 +106,31 @@ class ThreadManager:
         print(f"카메라 {camera_id}: 종료 완료")
 
     def assign_cart_cam(self):
+        """사용 가능한 카트 할당"""
         with self.lock:
-            if not self.available_carts.empty():
-                return self.available_carts.get()
-            else:
-                return None
-            
-    def release_cart_cam(self, cam_num):
+            if not self.available_carts:
+                return None  # 사용 가능한 카트가 없음
+            cart_cam = self.available_carts.pop()
+            self.using_carts.add(cart_cam)
+            return cart_cam
+
+    def release_cart_cam(self, cart_cam):
+        """사용 중인 카트를 반환"""
         with self.lock:
-            self.available_carts.put(cam_num)
+            if cart_cam in self.using_carts:
+                self.using_carts.remove(cart_cam)
+                self.available_carts.add(cart_cam)
 
     def get_using_carts(self):
+        """현재 사용 중인 카트 반환"""
         with self.lock:
-            all_carts = {1,2,3,4}
-            available_carts = set(list(self.available_carts.queue))
-            return list(all_carts - available_carts)
+            return list(self.using_carts)
+        
+    def convert_keys_to_int(self, d):
+        """딕셔너리의 모든 키를 int로 변환"""
+        if isinstance(d, dict):
+            return {int(k): self.convert_keys_to_int(v) for k, v in d.items()}
+        return d  # 값이 딕셔너리가 아니면 그대로 반환
 
     def stop_all(self):
         """모든 스레드 중지"""

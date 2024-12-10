@@ -15,10 +15,10 @@ try:
     try:
         # JSON 데이터 생성
         data = {
-            "1": {"apple": 3, "banana": 4},
-            "2": {"apple": 2, "pear": 5},
-            "3": {"orange": 1},
-            "4": {"grape": 6}
+            "1": {"1": 3, "2": 4, "3": 2},
+            "2": {"1": 2},
+            "3": {"4": 1},
+            "4": {"4": 6}
         }
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
