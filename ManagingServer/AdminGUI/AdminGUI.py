@@ -72,6 +72,7 @@ class WindowClass(QMainWindow, from_class):
         self.db_thread.selling_log_signal.connect(self.update_selling_log)
         self.db_thread.visit_log_signal.connect(self.update_visit_log)
         self.db_thread.event_log_signal.connect(self.update_event_log)
+        self.db_thread.selling_sum_signal.connect(self.update_selling_sum)
         self.db_thread.start()
 
     #-------------------------------------------------------------------로그 GUI 관련 함수
@@ -105,6 +106,12 @@ class WindowClass(QMainWindow, from_class):
         for row_idx, row_data in enumerate(data):
             for col_idx, col_data in enumerate(row_data):
                 self.event_table.setItem(row_idx, col_idx, QTableWidgetItem(str(col_data)))
+
+    def update_selling_sum (self,data) :
+        """매장 총 매출 업데이트"""
+        #print(f"Received selling_sum: {data}")
+        self.sellingsum.setText(f"{data}원")
+        self.sellingsum2.setText(f"{data}원")
 
     def closeEvent(self, event):
         """윈도우 종료 시 DB 스레드 종료"""

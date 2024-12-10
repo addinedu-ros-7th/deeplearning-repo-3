@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -279,7 +279,7 @@
       <string>매장 총 매출 :</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="sellingsum">
      <property name="geometry">
       <rect>
        <x>750</x>
@@ -350,7 +350,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -421,7 +421,7 @@
          <string>누적 매출액</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="sellingsum2">
         <property name="geometry">
          <rect>
           <x>30</x>

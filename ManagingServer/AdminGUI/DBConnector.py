@@ -89,6 +89,19 @@ class DBThread(QThread):
                 event_log = list(cursor.fetchall())  # 튜플 리스트를 일반 리스트로 변환
                 self.event_log_signal.emit(event_log)
 
+                query = """
+                    SELECT SUM(fruit.price * cart_fruit.quantity)
+                    FROM cart_fruit
+                    INNER JOIN fruit ON cart_fruit.fruit_id = fruit.fruit_id
+                    INNER JOIN cart ON cart_fruit.cart_id = cart.cart_id
+                """
+                
+                cursor.execute(query)
+                selling_sum = cursor.fetchall()
+                selling_sum = selling_sum[0][0]
+                #print(type(selling_sum),selling_sum)
+                self.selling_sum_signal.emit(int(selling_sum))
+
                 conn.close()
             except pymysql.MySQLError as e:
                 print(f"DB Error: {e}")
@@ -96,7 +109,7 @@ class DBThread(QThread):
                 print(f"Unexpected Error: {e}")
             
             # 스레드 간 딜레이
-            self.msleep(5000)
+            self.msleep(3000)
 
     def stop(self):
         self.running = False
