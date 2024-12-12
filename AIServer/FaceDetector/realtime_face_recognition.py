@@ -166,7 +166,7 @@ def search_identity(
             detector_backend=detector_backend,
             distance_metric=distance_metric,
             enforce_detection=False,
-            threshold=15,
+            threshold=18,
             silent=True
         )
 

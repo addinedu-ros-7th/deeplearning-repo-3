@@ -1,6 +1,12 @@
 from deepface import DeepFace
 import realtime_face_recognition
-import logging
+
+from PyQt5.QtGui import QPixmap, QImage
+from PyQt5.QtCore import Qt, QThread, pyqtSignal
+from PyQt5.QtGui import QPixmap
+
+from commons.logger import logger
+
 import threading
 import queue
 import time
@@ -10,14 +16,7 @@ import cv2
 import sys
 import os
 import glob
-
-"""NOTE-------------------------------------------------
-- DeepFace.find(
-            ...
-            threshold=20
-            ...)
- ERROR - Error in FaceRecognition thread: not enough values to unpack (expected 3, got 2)
------------------------------------------------------"""
+import numpy as np
 
 #-------------------Variable Setting-------------------
 # Input data source : "camera", "video", "image"
@@ -37,48 +36,62 @@ SERVER_PORT = 5001
 CAMERA_ID = 2
 # -----------------------------------------------------
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    #level=logging.INFO,q
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-)
-logger = logging.getLogger(__name__)
 
+logger = logger()
+member_queue = queue.Queue()
 
-class FaceRecognition(threading.Thread):
-    def __init__(self, db_path, name_queue):
+class CameraThread(QThread):
+    update = pyqtSignal(np.ndarray)
+    signin_signal = pyqtSignal(int)
+
+    def __init__(self, db_path=DATABASE_DRECTORY_PATH, member_queue=member_queue):
         super().__init__()
         self.models = ["VGG-Face", "Facenet", "Facenet512", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         self.backends = ["opencv", "ssd", "dlib", "mtcnn", "retinaface"]
         self.metrics = ["cosine", "euclidean", "euclidean_l2"]
         self.db_path = db_path
-        self.name_queue = name_queue
+        self.member_queue = member_queue
         self.running = True
-
-    
-    def run(self):
-        logger.info("FaceRecognition thread started: %s", threading.currentThread().getName())
-        try:
-            result = realtime_face_recognition.analysis(db_path=self.db_path,
-                                     model_name=self.models[2],
-                                     detector_backend=self.backends[4],
-                                     distance_metric=self.metrics[1],
-                                     time_threshold=3,
-                                     name_queue=self.name_queue
-                                     )
-            self.stop()
-        except Exception as e:
-            logger.error("Error in FaceRecognition thread: %s", e)
         
+    def run(self):
+        logger.info("Starting camera")
+        cap = cv2.VideoCapture(CAM_NUM)
+
+        while True:
+            has_frame, frame = cap.read()
+            if not has_frame:
+                logger.warning("Failed to capture frame from the camera. Check camera connection or configuration.")
+                break
+            self.update.emit(frame)
+
+            # Perform face recognization with DeepFace Module before running below lines---------------------------
+            member_id=11    # member id for test
+            if member_id:
+                logger.info(f"member id : {member_id}")
+                try:
+                    self.signin_signal.emit(member_id)
+
+                except Exception as e:
+                    logger.error("Error in Signin thread: %s", e)
+                    break
+
+            #self.member_queue.put(member_id)
+            #logger.info(f"Current queue: {list(member_queue.queue)}")
+            #-------------------------------------------------------------------------------------------------------
+
+            if not self.running:
+                break
+            
+        cap.release()
 
     def stop(self):
         self.running = False
-        logger.info("FaceRecognition thread stopping")
+        logger.info("Signin thread stopping")
 
 
-class TCPSender(threading.Thread):
-    def __init__(self, server_ip, server_port, camera_id, name_queue):
+class TCPSender(QThread):
+
+    def __init__(self, server_ip, server_port, camera_id, member_queue=member_queue):
         super().__init__()
         self.server_ip = server_ip
         self.server_port = server_port
@@ -87,14 +100,14 @@ class TCPSender(threading.Thread):
         self.camera_id = camera_id
         logger.info(f"Connected to {self.server_ip}:{self.server_port}")
 
-        self.name_queue = name_queue
+        self.member_queue = member_queue
         self.running = True
     
     def run(self):
         logger.info("TCPSender thread started: %s", threading.currentThread().getName())
         while self.running: 
             try:
-                name = self.name_queue.get(timeout=1)
+                name = self.member_queue.get(timeout=1)
                 logger.info("Received from queue: %s", name)
 
                 data = {"camera_id": self.camera_id, "member_id": name}
@@ -114,21 +127,3 @@ class TCPSender(threading.Thread):
         logger.info("TCPSender thread stopping")
 
 
-def main():
-    logger.info("Application starting")
-    name_queue = queue.Queue()
-
-    recognition_thread = FaceRecognition(DATABASE_DRECTORY_PATH,name_queue)
-    #tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, CAMERA_ID, name_queue)
-
-    recognition_thread.start()
-    #tcp_thread.start()
-
-    #tcp_thread.join()
-
-    logger.info("Application shutting down")
-    cv2.destroyAllWindows()
-
-
-if __name__ == "__main__":
-    main()
