@@ -1,0 +1,856 @@
+2024-12-09 16:29:19,930 - INFO - TCP 서버 실행 중...
+2024-12-09 16:29:19,931 - INFO - TCP 서버 실행 중...
+2024-12-09 16:29:19,931 - INFO - TCP 서버 실행 중...
+2024-12-09 16:29:43,368 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 43184)
+2024-12-09 16:29:43,368 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:29:43,368 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:29:44,369 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 43184)
+2024-12-09 16:30:10,357 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 44504)
+2024-12-09 16:30:10,357 - INFO - 카메라 Cart: 데이터 수신 -> [{"cart_cam_num": 1, "fruits": {"apple": 3, "banana": 4}}, {"cart_cam_num": 2, "fruits": {"apple": 4, "pear": 1}}, {"cart_cam_num": 3, "fruits": null}, {"cart_cam_num": 4, "fruits": null}]
+2024-12-09 16:30:10,357 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:30:10,357 - ERROR - 처리 중 오류: 'list' object has no attribute 'items'
+2024-12-09 16:30:11,358 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 44504)
+2024-12-09 16:32:03,010 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 58240)
+2024-12-09 16:32:03,010 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:32:03,010 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:32:04,011 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 58240)
+2024-12-09 16:36:15,326 - INFO - TCP 서버 실행 중...
+2024-12-09 16:36:15,327 - INFO - TCP 서버 실행 중...
+2024-12-09 16:36:15,327 - INFO - TCP 서버 실행 중...
+2024-12-09 16:36:20,428 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 39734)
+2024-12-09 16:36:20,428 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:36:20,428 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:36:20,428 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:36:21,429 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 39734)
+2024-12-09 16:36:37,012 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 40898)
+2024-12-09 16:36:37,012 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:36:37,012 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:36:38,013 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 40898)
+2024-12-09 16:37:09,144 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 55900)
+2024-12-09 16:37:09,145 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:37:09,145 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:37:10,145 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 55900)
+2024-12-09 16:37:37,970 - INFO - TCP 서버 실행 중...
+2024-12-09 16:37:37,971 - INFO - TCP 서버 실행 중...
+2024-12-09 16:37:37,971 - INFO - TCP 서버 실행 중...
+2024-12-09 16:37:42,780 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 39966)
+2024-12-09 16:37:42,780 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:37:42,780 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:37:42,780 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:37:43,781 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 39966)
+2024-12-09 16:37:45,418 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 49164)
+2024-12-09 16:37:45,419 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:37:45,419 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:37:46,419 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 49164)
+2024-12-09 16:40:17,478 - INFO - TCP 서버 실행 중...
+2024-12-09 16:40:17,478 - INFO - TCP 서버 실행 중...
+2024-12-09 16:40:17,479 - INFO - TCP 서버 실행 중...
+2024-12-09 16:40:21,253 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 37346)
+2024-12-09 16:40:21,253 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:40:21,254 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:40:21,254 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:40:22,254 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 37346)
+2024-12-09 16:40:23,270 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 60416)
+2024-12-09 16:40:23,270 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:40:23,270 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:40:24,270 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 60416)
+2024-12-09 16:40:50,143 - INFO - TCP 서버 실행 중...
+2024-12-09 16:40:50,143 - INFO - TCP 서버 실행 중...
+2024-12-09 16:40:50,143 - INFO - TCP 서버 실행 중...
+2024-12-09 16:40:54,036 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 54272)
+2024-12-09 16:40:54,037 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:40:54,037 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:40:54,037 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:40:55,038 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 54272)
+2024-12-09 16:40:56,084 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 38644)
+2024-12-09 16:40:56,084 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:40:56,084 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:40:57,085 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 38644)
+2024-12-09 16:42:30,280 - INFO - TCP 서버 실행 중...
+2024-12-09 16:42:30,280 - INFO - TCP 서버 실행 중...
+2024-12-09 16:42:30,280 - INFO - TCP 서버 실행 중...
+2024-12-09 16:42:34,417 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 49340)
+2024-12-09 16:42:34,417 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:42:34,417 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:42:34,417 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:42:35,418 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 49340)
+2024-12-09 16:42:36,648 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 56242)
+2024-12-09 16:42:36,648 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:42:36,649 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:42:36,649 - INFO - cart_cam Type: <class 'str'>, using_carts Types: [<class 'int'>, <class 'int'>]
+2024-12-09 16:42:36,649 - INFO - cart_cam Type: <class 'str'>, using_carts Types: [<class 'int'>, <class 'int'>]
+2024-12-09 16:42:36,649 - INFO - cart_cam Type: <class 'str'>, using_carts Types: [<class 'int'>, <class 'int'>]
+2024-12-09 16:42:36,649 - INFO - cart_cam Type: <class 'str'>, using_carts Types: [<class 'int'>, <class 'int'>]
+2024-12-09 16:42:37,649 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 56242)
+2024-12-09 16:43:42,398 - INFO - TCP 서버 실행 중...
+2024-12-09 16:43:42,398 - INFO - TCP 서버 실행 중...
+2024-12-09 16:43:42,399 - INFO - TCP 서버 실행 중...
+2024-12-09 16:43:46,051 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 48960)
+2024-12-09 16:43:46,051 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:43:46,051 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:43:46,051 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:43:47,052 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 48960)
+2024-12-09 16:43:48,162 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 49318)
+2024-12-09 16:43:48,163 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:43:48,163 - INFO - 사용 중인 cart_cam: [1, 4]
+2024-12-09 16:43:48,163 - INFO - Cart Cam 1 업데이트: {'apple': 3, 'banana': 4}, Visitor ID: 1
+2024-12-09 16:43:49,163 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 49318)
+2024-12-09 16:45:30,405 - INFO - TCP 서버 실행 중...
+2024-12-09 16:45:30,405 - INFO - TCP 서버 실행 중...
+2024-12-09 16:45:30,406 - INFO - TCP 서버 실행 중...
+2024-12-09 16:45:35,326 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 52410)
+2024-12-09 16:45:35,327 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:45:35,327 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:45:35,327 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:45:35,427 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 3}
+2024-12-09 16:45:35,427 - INFO - Visitor 객체 생성: 3, 1, 1, 2
+2024-12-09 16:45:35,427 - INFO - Visitor 추가: 3 -> Visit ID 1
+2024-12-09 16:45:36,428 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 52410)
+2024-12-09 16:45:39,204 - INFO - 카메라 Cart: 클라이언트 연결 -> ('127.0.0.1', 44478)
+2024-12-09 16:45:39,204 - INFO - 카메라 Cart: 데이터 수신 -> {"1": {"apple": 3, "banana": 4}, "2": {"apple": 2, "pear": 5}, "3": {"orange": 1}, "4": {"grape": 6}}
+2024-12-09 16:45:39,205 - INFO - 사용 중인 cart_cam: [1, 2, 4]
+2024-12-09 16:45:39,205 - INFO - Cart Cam 2 업데이트: {'apple': 2, 'pear': 5}, Visitor ID: 1
+2024-12-09 16:45:40,205 - INFO - 카메라 Cart: 클라이언트 연결 종료 -> ('127.0.0.1', 44478)
+2024-12-09 16:46:10,136 - INFO - TCP 서버 실행 중...
+2024-12-09 16:46:10,137 - INFO - TCP 서버 실행 중...
+2024-12-09 16:46:10,137 - INFO - TCP 서버 실행 중...
+2024-12-09 16:46:15,749 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 59698)
+2024-12-09 16:46:15,749 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:46:15,749 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:46:15,749 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:46:15,849 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 3}
+2024-12-09 16:46:15,850 - INFO - Visitor 객체 생성: 3, 1, 1, 2
+2024-12-09 16:46:15,850 - INFO - Visitor 추가: 3 -> Visit ID 1
+2024-12-09 16:46:16,850 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 59698)
+2024-12-09 16:55:03,531 - INFO - TCP 서버 실행 중...
+2024-12-09 16:55:03,531 - INFO - TCP 서버 실행 중...
+2024-12-09 16:55:03,531 - INFO - TCP 서버 실행 중...
+2024-12-09 16:55:47,254 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 53294)
+2024-12-09 16:55:47,254 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:55:47,254 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:55:47,254 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:55:57,256 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:55:57,257 - ERROR - 처리 중 오류: ThreadManager.release_cart_cam() takes 2 positional arguments but 3 were given
+2024-12-09 16:55:58,258 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 53294)
+2024-12-09 16:56:21,869 - INFO - TCP 서버 실행 중...
+2024-12-09 16:56:21,870 - INFO - TCP 서버 실행 중...
+2024-12-09 16:56:21,870 - INFO - TCP 서버 실행 중...
+2024-12-09 16:56:46,344 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 59402)
+2024-12-09 16:56:46,344 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:56:46,345 - INFO - Visitor 객체 생성: 2, 1, 1, 1
+2024-12-09 16:56:46,345 - INFO - Visitor 추가: 2 -> Visit ID 1
+2024-12-09 16:56:47,345 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 16:56:47,346 - INFO - Visitor 삭제: 2 -> Visit ID 1
+2024-12-09 16:56:48,346 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 59402)
+2024-12-09 19:00:13,846 - INFO - TCP 서버 실행 중...
+2024-12-09 19:00:13,847 - INFO - TCP 서버 실행 중...
+2024-12-09 19:00:13,847 - INFO - TCP 서버 실행 중...
+2024-12-09 19:00:25,358 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 49076)
+2024-12-09 19:00:25,359 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 19:00:25,366 - ERROR - 처리 중 오류: Could not process parameters: int(2), it must be of type list, tuple or dict
+2024-12-09 19:00:25,459 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 1}
+2024-12-09 19:00:25,467 - ERROR - 처리 중 오류: Could not process parameters: int(1), it must be of type list, tuple or dict
+2024-12-09 19:00:26,460 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 49076)
+2024-12-09 19:02:29,500 - INFO - TCP 서버 실행 중...
+2024-12-09 19:02:29,500 - INFO - TCP 서버 실행 중...
+2024-12-09 19:02:29,501 - INFO - TCP 서버 실행 중...
+2024-12-09 19:02:36,409 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 47674)
+2024-12-09 19:02:36,409 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 19:02:36,415 - ERROR - 처리 중 오류: 1046 (3D000): No database selected
+2024-12-09 19:02:36,509 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 1}
+2024-12-09 19:02:36,516 - ERROR - 처리 중 오류: 1046 (3D000): No database selected
+2024-12-09 19:02:37,510 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 47674)
+2024-12-09 19:03:08,941 - INFO - TCP 서버 실행 중...
+2024-12-09 19:03:08,942 - INFO - TCP 서버 실행 중...
+2024-12-09 19:03:08,942 - INFO - TCP 서버 실행 중...
+2024-12-09 19:03:12,238 - INFO - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 37460)
+2024-12-09 19:03:12,238 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 2}
+2024-12-09 19:03:12,248 - INFO - Visitor 객체 생성: 2, 3, 1, 1
+2024-12-09 19:03:12,248 - INFO - Visitor 추가: 2 -> Visit ID 3
+2024-12-09 19:03:12,338 - INFO - 카메라 Face: 데이터 수신 -> {"member_id": 1}
+2024-12-09 19:03:12,346 - INFO - Visitor 객체 생성: 1, 4, 2, 2
+2024-12-09 19:03:12,346 - INFO - Visitor 추가: 1 -> Visit ID 4
+2024-12-09 19:03:13,339 - INFO - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 37460)
+2024-12-09 19:04:28,044 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 49076)
+2024-12-09 19:04:28,045 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": {"1": 3, "2": 4}, "2": {"1": 2, "5": 5}, "3": {"4": 1}, "4": {"3": 6}}
+2024-12-09 19:04:29,045 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 49076)
+2024-12-09 19:35:39,847 - INFO - TCP 서버 실행 중...
+2024-12-09 19:35:39,847 - INFO - TCP 서버 실행 중...
+2024-12-09 19:35:39,847 - INFO - TCP 서버 실행 중...
+2024-12-09 19:36:30,095 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 42698)
+2024-12-09 19:36:30,095 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7, "4": 6}
+2024-12-09 19:36:30,103 - ERROR - 처리 중 오류: 'DataProcessorThread' object has no attribute 'data'
+2024-12-09 19:36:31,096 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 42698)
+2024-12-09 19:37:59,951 - INFO - TCP 서버 실행 중...
+2024-12-09 19:37:59,952 - INFO - TCP 서버 실행 중...
+2024-12-09 19:37:59,952 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:06,538 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:06,538 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:06,538 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:10,376 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 42496)
+2024-12-09 19:38:10,376 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7, "4": 6}
+2024-12-09 19:38:10,387 - ERROR - 처리 중 오류: 'CMySQLCursor' object has no attribute 'commit'
+2024-12-09 19:38:11,377 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 42496)
+2024-12-09 19:38:50,824 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:50,824 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:50,825 - INFO - TCP 서버 실행 중...
+2024-12-09 19:38:56,440 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 57284)
+2024-12-09 19:38:56,440 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7, "4": 6}
+2024-12-09 19:38:57,441 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 57284)
+2024-12-09 19:39:31,449 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 42204)
+2024-12-09 19:39:31,449 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7}
+2024-12-09 19:39:32,450 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 42204)
+2024-12-09 19:40:09,232 - INFO - TCP 서버 실행 중...
+2024-12-09 19:40:09,232 - INFO - TCP 서버 실행 중...
+2024-12-09 19:40:09,232 - INFO - TCP 서버 실행 중...
+2024-12-09 19:40:13,499 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 51234)
+2024-12-09 19:40:13,500 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7}
+2024-12-09 19:40:14,500 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 51234)
+2024-12-09 19:41:15,593 - INFO - TCP 서버 실행 중...
+2024-12-09 19:41:15,593 - INFO - TCP 서버 실행 중...
+2024-12-09 19:41:15,593 - INFO - TCP 서버 실행 중...
+2024-12-09 19:41:20,248 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 44294)
+2024-12-09 19:41:20,248 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7}
+2024-12-09 19:41:21,249 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 44294)
+2024-12-09 19:45:16,033 - INFO - TCP 서버 실행 중...
+2024-12-09 19:45:16,034 - INFO - TCP 서버 실행 중...
+2024-12-09 19:45:16,035 - INFO - TCP 서버 실행 중...
+2024-12-09 19:45:20,699 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 57428)
+2024-12-09 19:45:20,699 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7}
+2024-12-09 19:45:21,700 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 57428)
+2024-12-09 19:45:56,850 - INFO - 카메라 Fruit: 클라이언트 연결 -> ('127.0.0.1', 58540)
+2024-12-09 19:45:56,850 - INFO - 카메라 Fruit: 데이터 수신 -> {"1": 3, "2": 4, "3": 7, "4": 10}
+2024-12-09 19:45:57,851 - INFO - 카메라 Fruit: 클라이언트 연결 종료 -> ('127.0.0.1', 58540)
+2024-12-12 19:00:48,950 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:00:48,951 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:00:48,951 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:00:48,952 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:00:53,958 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:00:53,984 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:00:56,869 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 35752)
+2024-12-12 19:00:56,869 - TcpServerLogger - INFO - CameraThread.py:35 - client_socket.recv
+2024-12-12 19:00:56,869 - TcpServerLogger - INFO - CameraThread.py:42 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "data": [{"member_id": 1, "action": "visit"}]}
+2024-12-12 19:00:56,869 - TcpServerLogger - ERROR - CameraThread.py:61 - 카메라 Face: 클라이언트 통신 중 오류 발생 -> string indices must be integers
+2024-12-12 19:00:58,985 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:00:59,004 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:01:04,010 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:01:04,020 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:09,935 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:02:09,935 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:02:09,935 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:02:09,940 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:14,718 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 48078)
+2024-12-12 19:02:14,719 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "data": [{"member_id": 1, "action": "visit"}]}
+2024-12-12 19:02:14,719 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:02:14,728 - TcpServerLogger - INFO - DataProcessorThread.py:199 - Visitor 객체 생성: 1, 18, 14, 1
+2024-12-12 19:02:14,728 - TcpServerLogger - INFO - DataProcessorThread.py:204 - Visitor 추가: 1 -> Visit ID 18
+2024-12-12 19:02:14,945 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:14,947 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:15,719 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 48078)
+2024-12-12 19:02:19,953 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:19,957 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:24,962 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:24,965 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:29,970 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:30,032 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:34,860 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('127.0.0.1', 49506)
+2024-12-12 19:02:34,860 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "data": [{"member_id": 2, "action": "visit"}]}
+2024-12-12 19:02:34,861 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:02:34,871 - TcpServerLogger - INFO - DataProcessorThread.py:199 - Visitor 객체 생성: 2, 19, 15, 2
+2024-12-12 19:02:34,871 - TcpServerLogger - INFO - DataProcessorThread.py:204 - Visitor 추가: 2 -> Visit ID 19
+2024-12-12 19:02:35,038 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:35,041 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:35,861 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('127.0.0.1', 49506)
+2024-12-12 19:02:40,046 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:40,094 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:45,100 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:45,104 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:50,110 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:50,113 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:51,787 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 60798)
+2024-12-12 19:02:52,383 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 11}
+2024-12-12 19:02:52,383 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:02:52,384 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:02:53,382 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 60798)
+2024-12-12 19:02:53,406 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 60810)
+2024-12-12 19:02:54,391 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 60810)
+2024-12-12 19:02:54,412 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 60820)
+2024-12-12 19:02:55,118 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:02:55,122 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:02:55,397 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 60820)
+2024-12-12 19:02:55,402 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 60830)
+2024-12-12 19:02:56,403 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 60830)
+2024-12-12 19:02:56,420 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 60840)
+2024-12-12 19:02:57,420 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 60840)
+2024-12-12 19:02:57,422 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44832)
+2024-12-12 19:02:58,423 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44832)
+2024-12-12 19:02:58,434 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44844)
+2024-12-12 19:02:59,428 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44844)
+2024-12-12 19:02:59,442 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44850)
+2024-12-12 19:03:00,128 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:00,132 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:00,432 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44850)
+2024-12-12 19:03:00,444 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44852)
+2024-12-12 19:03:01,442 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44852)
+2024-12-12 19:03:01,444 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44856)
+2024-12-12 19:03:02,450 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44856)
+2024-12-12 19:03:02,453 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44866)
+2024-12-12 19:03:03,459 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44866)
+2024-12-12 19:03:03,461 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44880)
+2024-12-12 19:03:04,463 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44880)
+2024-12-12 19:03:04,465 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44882)
+2024-12-12 19:03:05,137 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:05,140 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:05,469 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44882)
+2024-12-12 19:03:05,471 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44892)
+2024-12-12 19:03:06,476 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44892)
+2024-12-12 19:03:06,480 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44896)
+2024-12-12 19:03:07,481 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44896)
+2024-12-12 19:03:07,483 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58210)
+2024-12-12 19:03:08,487 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58210)
+2024-12-12 19:03:08,496 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58222)
+2024-12-12 19:03:09,490 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58222)
+2024-12-12 19:03:09,492 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58224)
+2024-12-12 19:03:10,146 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:10,192 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:10,503 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58224)
+2024-12-12 19:03:10,507 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58230)
+2024-12-12 19:03:11,509 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58230)
+2024-12-12 19:03:11,517 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58232)
+2024-12-12 19:03:12,514 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58232)
+2024-12-12 19:03:12,517 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58238)
+2024-12-12 19:03:13,518 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58238)
+2024-12-12 19:03:13,522 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 58250)
+2024-12-12 19:03:13,676 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 58250)
+2024-12-12 19:03:15,198 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:15,204 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:20,209 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:20,212 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:25,218 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:25,226 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:29,038 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43566)
+2024-12-12 19:03:29,629 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:03:29,629 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:03:29,629 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:03:30,232 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:30,235 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:30,629 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43566)
+2024-12-12 19:03:30,634 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43576)
+2024-12-12 19:03:31,634 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43576)
+2024-12-12 19:03:31,637 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43582)
+2024-12-12 19:03:32,637 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43582)
+2024-12-12 19:03:32,640 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43598)
+2024-12-12 19:03:33,642 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43598)
+2024-12-12 19:03:33,648 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43612)
+2024-12-12 19:03:34,650 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43612)
+2024-12-12 19:03:34,652 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43614)
+2024-12-12 19:03:35,238 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:35,240 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:35,656 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43614)
+2024-12-12 19:03:35,660 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43620)
+2024-12-12 19:03:36,661 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43620)
+2024-12-12 19:03:36,664 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43634)
+2024-12-12 19:03:37,665 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43634)
+2024-12-12 19:03:37,668 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35998)
+2024-12-12 19:03:38,670 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35998)
+2024-12-12 19:03:38,675 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36012)
+2024-12-12 19:03:39,674 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36012)
+2024-12-12 19:03:39,686 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36014)
+2024-12-12 19:03:40,246 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:40,300 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:40,678 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36014)
+2024-12-12 19:03:40,697 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36028)
+2024-12-12 19:03:41,683 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36028)
+2024-12-12 19:03:41,689 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36042)
+2024-12-12 19:03:42,687 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36042)
+2024-12-12 19:03:42,704 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36052)
+2024-12-12 19:03:43,692 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36052)
+2024-12-12 19:03:43,695 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36068)
+2024-12-12 19:03:44,700 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36068)
+2024-12-12 19:03:44,702 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36070)
+2024-12-12 19:03:45,305 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:45,314 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:45,709 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36070)
+2024-12-12 19:03:45,710 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36080)
+2024-12-12 19:03:46,716 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36080)
+2024-12-12 19:03:46,720 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 36086)
+2024-12-12 19:03:47,720 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 36086)
+2024-12-12 19:03:47,725 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46160)
+2024-12-12 19:03:48,726 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46160)
+2024-12-12 19:03:48,736 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46176)
+2024-12-12 19:03:49,731 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46176)
+2024-12-12 19:03:49,734 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46178)
+2024-12-12 19:03:50,319 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:50,347 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:50,737 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46178)
+2024-12-12 19:03:50,747 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46184)
+2024-12-12 19:03:51,750 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46184)
+2024-12-12 19:03:51,753 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46186)
+2024-12-12 19:03:52,754 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46186)
+2024-12-12 19:03:52,761 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46198)
+2024-12-12 19:03:53,762 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46198)
+2024-12-12 19:03:53,764 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46212)
+2024-12-12 19:03:54,766 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46212)
+2024-12-12 19:03:54,768 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46214)
+2024-12-12 19:03:55,352 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:03:55,368 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:03:55,770 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46214)
+2024-12-12 19:03:55,772 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46218)
+2024-12-12 19:03:56,775 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46218)
+2024-12-12 19:03:56,777 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46230)
+2024-12-12 19:03:57,779 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46230)
+2024-12-12 19:03:57,781 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 43348)
+2024-12-12 19:03:58,449 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 43348)
+2024-12-12 19:04:00,373 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:00,473 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:05,477 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:05,507 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:10,513 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:10,611 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:15,616 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:15,832 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:20,837 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:20,952 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:25,957 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:25,990 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:30,996 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:31,202 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:36,205 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:36,311 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:41,316 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:41,321 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:46,327 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:46,347 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:51,353 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:51,467 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:04:56,472 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:04:56,486 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:01,492 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:01,609 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:06,614 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:06,727 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:11,732 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:11,844 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:16,850 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:16,965 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:21,971 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:22,087 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:27,092 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:27,205 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:32,210 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:32,215 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:37,220 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:37,241 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:42,247 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:42,274 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:47,280 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:47,482 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:52,483 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:52,616 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:05:57,621 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:05:57,722 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:02,727 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:02,843 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:07,848 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:07,890 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:12,895 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:12,898 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:17,904 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:17,999 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:23,005 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:23,118 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:28,124 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:28,236 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:33,242 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:33,356 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:38,361 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:38,577 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:43,583 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:43,702 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:48,708 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:48,818 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:53,823 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:53,938 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:06:58,944 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:06:58,959 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:03,965 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:04,077 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:09,082 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:09,201 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:14,207 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:14,324 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:19,329 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:19,436 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:24,441 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:24,453 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:29,458 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:29,471 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:34,477 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:34,593 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:39,597 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:39,712 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:44,718 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:44,831 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:49,837 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:49,850 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:54,856 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:54,936 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:07:59,942 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:07:59,999 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:05,004 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:05,112 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:10,117 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:10,226 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:15,232 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:15,252 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:20,258 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:20,364 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:25,370 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:25,484 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:30,489 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:30,530 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:35,535 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:35,621 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:40,627 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:40,639 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:45,644 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:45,657 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:50,663 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:50,666 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:55,672 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:08:55,694 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:08:57,588 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57634)
+2024-12-12 19:08:58,175 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:08:58,176 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:08:58,176 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:08:59,178 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57634)
+2024-12-12 19:08:59,180 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57636)
+2024-12-12 19:09:00,187 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57636)
+2024-12-12 19:09:00,208 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57640)
+2024-12-12 19:09:00,699 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:00,820 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:01,198 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57640)
+2024-12-12 19:09:01,263 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57652)
+2024-12-12 19:09:02,209 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57652)
+2024-12-12 19:09:02,213 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57658)
+2024-12-12 19:09:03,215 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57658)
+2024-12-12 19:09:03,221 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57666)
+2024-12-12 19:09:04,223 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57666)
+2024-12-12 19:09:04,228 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57682)
+2024-12-12 19:09:05,229 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57682)
+2024-12-12 19:09:05,244 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57696)
+2024-12-12 19:09:05,825 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:05,945 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:06,241 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57696)
+2024-12-12 19:09:06,244 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 57704)
+2024-12-12 19:09:07,247 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 57704)
+2024-12-12 19:09:07,252 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44194)
+2024-12-12 19:09:08,257 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44194)
+2024-12-12 19:09:08,264 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44204)
+2024-12-12 19:09:09,265 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44204)
+2024-12-12 19:09:09,267 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44212)
+2024-12-12 19:09:10,280 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44212)
+2024-12-12 19:09:10,286 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44222)
+2024-12-12 19:09:10,951 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:11,053 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:11,285 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44222)
+2024-12-12 19:09:11,289 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44228)
+2024-12-12 19:09:12,293 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44228)
+2024-12-12 19:09:12,302 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44230)
+2024-12-12 19:09:13,299 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44230)
+2024-12-12 19:09:13,312 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44242)
+2024-12-12 19:09:14,309 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44242)
+2024-12-12 19:09:14,313 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44258)
+2024-12-12 19:09:15,311 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44258)
+2024-12-12 19:09:15,314 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44262)
+2024-12-12 19:09:16,059 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:16,174 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:16,317 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44262)
+2024-12-12 19:09:16,319 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 44276)
+2024-12-12 19:09:17,321 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 44276)
+2024-12-12 19:09:17,324 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54296)
+2024-12-12 19:09:18,325 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54296)
+2024-12-12 19:09:18,327 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54300)
+2024-12-12 19:09:19,332 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54300)
+2024-12-12 19:09:19,334 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54316)
+2024-12-12 19:09:20,335 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54316)
+2024-12-12 19:09:20,339 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54332)
+2024-12-12 19:09:21,179 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:21,189 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:21,344 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54332)
+2024-12-12 19:09:21,349 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54334)
+2024-12-12 19:09:22,351 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54334)
+2024-12-12 19:09:22,357 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54340)
+2024-12-12 19:09:23,356 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54340)
+2024-12-12 19:09:23,358 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54356)
+2024-12-12 19:09:24,363 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54356)
+2024-12-12 19:09:24,366 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54368)
+2024-12-12 19:09:25,368 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54368)
+2024-12-12 19:09:25,370 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54380)
+2024-12-12 19:09:26,194 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:26,207 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:26,371 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54380)
+2024-12-12 19:09:26,374 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 54384)
+2024-12-12 19:09:27,375 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 54384)
+2024-12-12 19:09:27,387 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35764)
+2024-12-12 19:09:28,380 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35764)
+2024-12-12 19:09:28,388 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35766)
+2024-12-12 19:09:29,383 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35766)
+2024-12-12 19:09:29,385 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35782)
+2024-12-12 19:09:30,346 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35782)
+2024-12-12 19:09:31,213 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:31,225 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:34,033 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35796)
+2024-12-12 19:09:34,620 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:09:34,620 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:09:34,621 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35796)
+2024-12-12 19:09:34,621 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:09:34,625 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35798)
+2024-12-12 19:09:35,628 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35798)
+2024-12-12 19:09:35,631 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35802)
+2024-12-12 19:09:36,230 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:36,250 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:36,639 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35802)
+2024-12-12 19:09:36,644 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 35812)
+2024-12-12 19:09:37,645 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 35812)
+2024-12-12 19:09:37,647 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48308)
+2024-12-12 19:09:38,652 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48308)
+2024-12-12 19:09:38,654 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48320)
+2024-12-12 19:09:39,657 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48320)
+2024-12-12 19:09:39,663 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48330)
+2024-12-12 19:09:40,661 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48330)
+2024-12-12 19:09:40,666 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48342)
+2024-12-12 19:09:41,256 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:41,393 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:41,669 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48342)
+2024-12-12 19:09:41,671 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48354)
+2024-12-12 19:09:42,679 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48354)
+2024-12-12 19:09:42,687 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48370)
+2024-12-12 19:09:43,684 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48370)
+2024-12-12 19:09:43,687 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48384)
+2024-12-12 19:09:44,688 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48384)
+2024-12-12 19:09:44,692 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48386)
+2024-12-12 19:09:45,695 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48386)
+2024-12-12 19:09:45,697 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48388)
+2024-12-12 19:09:46,346 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 48388)
+2024-12-12 19:09:46,399 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:46,401 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:51,406 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:51,409 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:09:56,415 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:09:56,523 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:01,529 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:01,545 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:06,551 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:06,656 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:11,662 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:11,667 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:16,672 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:16,695 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:21,700 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:21,712 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:26,717 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:26,730 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:31,735 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:31,847 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:36,853 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:36,967 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:41,973 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:42,096 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:47,102 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:47,104 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:48,336 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 33632)
+2024-12-12 19:10:48,916 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:10:48,916 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:10:48,917 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:10:49,010 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 33632)
+2024-12-12 19:10:52,110 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:52,113 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:10:57,118 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:10:57,139 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:02,145 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:02,150 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:07,155 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:07,159 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:12,165 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:12,192 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:17,198 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:17,210 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:22,215 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:22,330 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:27,336 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:27,339 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:32,345 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:32,365 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:37,371 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:37,384 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:42,389 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:42,399 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:47,405 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:47,409 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:52,415 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:52,441 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:11:57,446 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:11:57,456 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:02,462 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:02,470 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:07,475 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:07,492 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:12,497 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:12,506 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:17,511 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:17,534 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:22,540 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:22,543 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:27,548 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:27,559 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:32,565 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:32,577 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:37,582 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:37,595 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:42,601 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:42,715 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:47,721 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:47,835 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:52,841 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:52,956 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:12:57,957 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:12:57,979 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:02,985 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:03,094 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:08,100 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:08,213 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:13,218 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:13,351 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:18,357 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:18,458 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:23,463 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:23,470 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:28,476 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:28,594 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:33,600 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:33,608 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:38,613 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:38,615 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:41,228 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 42596)
+2024-12-12 19:13:41,822 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:13:41,823 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:13:41,823 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:13:41,888 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 42596)
+2024-12-12 19:13:43,616 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:43,620 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:48,625 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:48,661 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:53,667 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:53,678 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:13:58,684 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:13:58,698 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:03,704 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:03,816 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:08,817 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:08,833 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:13,839 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:13,854 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:18,859 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:18,873 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:23,879 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:23,993 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:28,999 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:29,113 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:34,118 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:34,128 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:39,133 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:39,156 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:42,243 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 37814)
+2024-12-12 19:14:42,834 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:14:42,835 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:14:42,835 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:14:42,906 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 37814)
+2024-12-12 19:14:44,162 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:44,266 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:49,272 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:49,385 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:54,391 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:54,507 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:14:59,512 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:14:59,625 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:04,630 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:04,646 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:09,651 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:09,660 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:14,666 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:14,781 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:19,786 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:19,804 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:24,805 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:24,918 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:29,923 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:29,928 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:34,933 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:34,954 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:39,959 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:40,073 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:45,078 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:45,092 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:50,093 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:50,110 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:15:55,116 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:15:55,200 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:00,205 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:00,246 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:05,252 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:05,256 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:10,259 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:10,266 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:15,271 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:15,274 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:20,280 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:20,319 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:25,324 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:25,334 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:16:26,751 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 41372)
+2024-12-12 19:16:27,336 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:16:27,337 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:16:27,337 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:16:30,339 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:16:30,352 - TcpServerLogger - INFO - DataSendThread.py:27 - 192.168.0.74에 연결되었습니다.
+2024-12-12 19:18:54,566 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 41372)
+2024-12-12 19:18:57,339 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46884)
+2024-12-12 19:18:57,925 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:18:57,926 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:18:57,926 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:18:57,927 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46884)
+2024-12-12 19:18:57,927 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46898)
+2024-12-12 19:18:58,936 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46898)
+2024-12-12 19:18:58,938 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46910)
+2024-12-12 19:18:59,940 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46910)
+2024-12-12 19:18:59,943 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46918)
+2024-12-12 19:19:00,945 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46918)
+2024-12-12 19:19:00,978 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 46932)
+2024-12-12 19:19:01,876 - TcpServerLogger - INFO - CameraThread.py:37 - 카메라 Face: 클라이언트 연결 종료 -> ('192.168.0.74', 46932)
+2024-12-12 19:19:10,148 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 48796)
+2024-12-12 19:19:10,728 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:19:10,729 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:19:10,729 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:26:09,514 - TcpServerLogger - INFO - ThreadManager.py:65 - Visitor(visit_id=18, member_id=1, cart=Cart(cart_id=14, cart_cam=1, data={}))
+2024-12-12 19:26:09,514 - TcpServerLogger - INFO - ThreadManager.py:65 - Visitor(visit_id=19, member_id=2, cart=Cart(cart_id=15, cart_cam=2, data={}))
+2024-12-12 19:26:09,515 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:26:09,515 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:26:09,515 - TcpServerLogger - INFO - CameraThread.py:25 - TCP 서버 실행 중...
+2024-12-12 19:26:09,518 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:26:14,523 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:26:14,561 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:26:19,567 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:26:19,678 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:26:24,683 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:26:24,696 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:26:29,702 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:26:29,816 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:26:34,822 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:26:34,938 - TcpServerLogger - ERROR - DataSendThread.py:43 - 연결 오류: [Errno 111] Connection refused. 5초 후 재시도...
+2024-12-12 19:26:35,961 - TcpServerLogger - INFO - CameraThread.py:31 - 카메라 Face: 클라이언트 연결 -> ('192.168.0.74', 38984)
+2024-12-12 19:26:36,543 - TcpServerLogger - INFO - CameraThread.py:40 - 카메라 Face: 데이터 수신 -> {"camera_id": "Face", "member_id": 1}
+2024-12-12 19:26:36,544 - TcpServerLogger - INFO - CameraThread.py:45 - 카메라 Face: priority num 1
+2024-12-12 19:26:36,545 - TcpServerLogger - ERROR - DataProcessorThread.py:41 - 처리 중 오류: 'data'
+2024-12-12 19:26:39,943 - TcpServerLogger - INFO - DataSendThread.py:49 - 클라이언트 소켓 닫음.
+2024-12-12 19:26:40,061 - TcpServerLogger - INFO - DataSendThread.py:27 - 192.168.0.74에 연결되었습니다.
