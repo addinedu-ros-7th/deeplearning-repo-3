@@ -88,13 +88,14 @@ class YOLOThread(Thread):
         return label_mapping.get(label, (0, 0))
 
     def assign_cart(self, x_center):
+        print(x_center)
         if x_center < 160:
             return 1
-        elif x_center < 320:
+        elif x_center < 220:
             return 2
-        elif x_center < 480:
+        elif x_center < 300:
             return 3
-        elif x_center < 640:
+        elif x_center < 360:
             return 4
         return None
 
@@ -117,7 +118,7 @@ class EmitThread(Thread):
                         {
                             "cart_cam": cart_id,
                             "fruits": [
-                                {f"fruit{fruit_id}": count for (fruit_id, _), count in fruits.items()}
+                                {fruit_id: count for (fruit_id, _), count in fruits.items()}
                             ]
                         }
                         for cart_id, fruits in self.shared_data.detections_dict.items()
@@ -146,7 +147,7 @@ if __name__ == '__main__':
     yolo_thread_cam2.start()
 
     server_ip = '192.168.0.100'
-    server_port = 5003
+    server_port = 5002
 
     emit_thread_cam2 = EmitThread(shared_data_cam2, server_ip, server_port)
     emit_thread_cam2.start()
