@@ -4,7 +4,7 @@ import logging
 def setup_logger():
     logging.basicConfig(
         level=logging.DEBUG,
-        format="%(asctime)s - %(levelname)s - %(message)s",
+        format="%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s",
         handlers=[
             logging.FileHandler("server.log"),  # 로그를 파일로 저장
             logging.StreamHandler()  # 터미널에 출력

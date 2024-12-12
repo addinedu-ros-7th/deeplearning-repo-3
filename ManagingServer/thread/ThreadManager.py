@@ -1,6 +1,7 @@
 import queue
 from CameraThread import CameraThread
 from DataProcessorThread import DataProcessorThread
+from DataSendThread import DataSendThread
 import threading
 import mysql.connector
 from custom_classes import *
@@ -10,16 +11,24 @@ logger = setup_logger()
 
 class ThreadManager:
     def __init__(self):
+        # 3대의 카메라 통신 thread
         self.camera_threads = {}
-        self.data_processor_threads = {}
-        self.data_queues = {}
-        self.res_data_queues = {}
+        # print(DataProcessorThread.__module__)
+
+
+        # 카메라 통신으로 받은 데이터 저장하는 큐
+        self.data_queue = queue.PriorityQueue()
+        self.res_data_queue = queue.Queue()
+
+        # Visitor 객체들 저장하는 dict. {visit_id: Visitor}
         self.visitors = {}
         self.lock = threading.Lock()
 
+        # cart 일단 1-4번 사용 가능으로 초기화
         self.available_carts = set(range(1,5))
         self.using_carts = set()
 
+        # DB에 있는 과일 현황 업데이트
         self.fruits = {}
         conn = self.connect_f2mbase()
         cursor = conn.cursor()
@@ -35,6 +44,7 @@ class ThreadManager:
             WHERE vi.out_dttm IS NULL
         """)
 
+        # DB정보에 따라서 현재 매장 내 Visitor와 연결된 cart 업데이트
         data = cursor.fetchall()
         for row in data:
             member_id, visit_id, cart_id, cart_cam, fruit_id, quantity = row
@@ -63,6 +73,14 @@ class ThreadManager:
             database="f2mbase"
         )
         return conn
+    
+    def add_dataprocessor(self):
+        data_processor_thread = DataProcessorThread(self.data_queue, self.res_data_queue, self)
+        data_processor_thread.start()
+
+    def add_datasender(self, dest_ip, dest_port):
+        data_send_thread = DataSendThread(dest_ip, dest_port, self.res_data_queue)
+        data_send_thread.start()
 
     def add_camera(self, camera_id, client, port):
         """카메라 스레드 추가 및 시작"""
@@ -70,24 +88,14 @@ class ThreadManager:
             print(f"카메라 {camera_id}는 이미 추가되어 있습니다.")
             return
 
-        data_queue = queue.Queue()
-        self.data_queues[camera_id] = data_queue
-
-        res_data_queue = queue.Queue()
-        self.res_data_queues[camera_id] = res_data_queue
+        # data_queue = queue.Queue()
+        # self.data_queues[camera_id] = data_queue
 
 
         # CameraThread 생성
-        camera_thread = CameraThread(camera_id, client, port, data_queue, res_data_queue)
+        camera_thread = CameraThread(camera_id, client, port, self.data_queue)
         camera_thread.start()
         self.camera_threads[camera_id] = camera_thread
-
-        # DataProcessorThread 생성
-        data_processor_thread = DataProcessorThread(
-            camera_id, data_queue, res_data_queue, self
-        )
-        data_processor_thread.start()
-        self.data_processor_threads[camera_id] = data_processor_thread
 
         print(f"카메라 {camera_id}: 스레드 시작")
 

@@ -14,7 +14,10 @@ try:
 
     try:
         # JSON 데이터 생성
-        data = {1: 10, 2: 10, 3: 10, 4: 10}      #{fruit_id: stock, fruit_id: stock}
+        data = {"camera_id": "Fruit", "data": [{"fruit_id": 1, "fair": 1, "quantity": 10}, 
+                                               {"fruit_id": 2, "fair": 1, "quantity": 10}, 
+                                               {"fruit_id": 3, "fair": 1, "quantity": 10}, 
+                                               {"fruit_id": 4, "fair": 1, "quantity": 10}]}
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
         print(f"데이터 송신: {data}")
