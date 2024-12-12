@@ -38,13 +38,12 @@ CAMERA_ID = 2
 
 
 logger = logger()
-member_queue = queue.Queue()
 
 class CameraThread(QThread):
     update = pyqtSignal(np.ndarray)
     signin_signal = pyqtSignal(int)
 
-    def __init__(self, db_path=DATABASE_DRECTORY_PATH, member_queue=member_queue):
+    def __init__(self, member_queue, db_path=DATABASE_DRECTORY_PATH):
         super().__init__()
         self.models = ["VGG-Face", "Facenet", "Facenet512", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         self.backends = ["opencv", "ssd", "dlib", "mtcnn", "retinaface"]
@@ -67,9 +66,11 @@ class CameraThread(QThread):
             # Perform face recognization with DeepFace Module before running below lines---------------------------
             member_id=11    # member id for test
             if member_id:
+                self.member_queue.put(member_id)
                 logger.info(f"member id : {member_id}")
                 try:
                     self.signin_signal.emit(member_id)
+                    break
 
                 except Exception as e:
                     logger.error("Error in Signin thread: %s", e)

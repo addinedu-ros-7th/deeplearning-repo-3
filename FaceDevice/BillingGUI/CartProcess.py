@@ -17,26 +17,27 @@ import numpy as np
 
 logger = logger()
 
+
 class CartThread(QThread):
     cart_signal = pyqtSignal(dict)
 
-    def __init__(self):
+    def __init__(self, cart_queue):
         super().__init__()
 
-        self.cart_queue = queue.Queue()
+        #self.cart_queue = queue.Queue()
+        self.cart_queue = cart_queue
         self.running = True
 
     def run(self):
-        data = {"items": [{"Item": "Apple", "Count": 1, "Price": 1000},
-                          {"Item": "Peach", "Count": 1, "Price": 1000}], 
-                "total_price": 2000}
-        print(type(data))
-        self.cart_queue.put(data)
+        #data = {"items": [{"Item": "Apple", "Count": 1, "Price": 1000},
+        #                  {"Item": "Peach", "Count": 1, "Price": 1000}], 
+        #        "total_price": 2000}
+        #print(type(data))
+        #self.cart_queue.put(data)
         while self.running:
             try:
                 #test
                 cart = self.cart_queue.get(timeout=1)
-                print(cart)
                 self.cart_signal.emit(cart)
                 break
                 

@@ -11,6 +11,9 @@ from commons.logger import logger
 
 from SignInProcess import CameraThread
 from CartProcess import CartThread
+from TCPSenderThread import TCPSenderThread
+from TCPServerThread import TCPServerThread
+import queue
 
 logger = logger()
 
@@ -24,15 +27,23 @@ class SigninWindowClass(QMainWindow, signinwindow):
         super().__init__()
         self.setWindowTitle("F2M.BillingGUI")
         self.setupUi(self)
+        self.member_queue = queue.Queue()
+        self.cart_queue = queue.Queue()
 
-        self.camera_thread = CameraThread()
+        self.camera_thread = CameraThread(self.member_queue)
         self.camera_thread.update.connect(self.camera_update)
         self.camera_thread.signin_signal.connect(self.notice_signin)
         self.camera_thread.start()
-    
+
+        self.tcp_sender_thread = TCPSenderThread(self.member_queue)
+        self.tcp_sender_thread.run()
+        
+        self.tcp_server_thread = TCPServerThread(self.cart_queue)
+        self.tcp_server_thread.run()
+
     def goto_next_window(self):
         self.hide()
-        self.next_window = CartWindowClass()
+        self.next_window = CartWindowClass(self.cart_queue)
         #self.next_window.exec() # wait next window closing
         #self.show()             # re-show when next window is closed
 
@@ -52,29 +63,36 @@ class SigninWindowClass(QMainWindow, signinwindow):
         if member is not None:
             self.SigninTextLable.setText(f"Hello, {member}!")
             self.camera_thread.stop()
-            self.goto_next_window()
+            time.sleep(50)
+            try:
+                cart = self.cart_queue.get(timeout=3)
+                print(cart)
+                self.goto_next_window()
+            except Exception as e :
+                logger.info(f"Cart Queue from Server is None: {e}")
+            
         else:
             self.SigninTextLable.setText("Unregistered user")
 
 
 class CartWindowClass(QWidget, cartwindow):
-    def __init__(self):
+    def __init__(self, cart_queue):
         super().__init__()
         self.setupUi(self)
         self.show()
+        self.cart_queue = cart_queue
 
         self.CartTable.setRowCount(0)
         self.CartTable.setColumnCount(3)
         self.CartTable.setHorizontalHeaderLabels(["Item", "Count", "Price"])
 
-        self.cart_thread = CartThread()
+        self.cart_thread = CartThread(self.cart_queue)
         self.cart_thread.cart_signal.connect(self.listup_cart)
         self.cart_thread.run()
         #self.GoBackButton.clicked.connect(self.goto_before_window)
         self.MakePaymentButton.clicked.connect(self.goto_next_window)
 
     #def goto_before_window(self):
-
         
     def goto_next_window(self):
         self.hide()
