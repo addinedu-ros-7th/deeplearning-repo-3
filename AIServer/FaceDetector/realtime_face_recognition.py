@@ -13,8 +13,16 @@ import cv2
 # project dependencies
 from deepface import DeepFace
 from deepface.commons.logger import Logger
+import logging
 
-logger = Logger()
+logging.basicConfig(
+    #level=logging.DEBUG,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+logger = logging.getLogger(__name__)
+
 
 # dependency configuration
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
@@ -37,8 +45,10 @@ def analysis(
     name_queue: queue.Queue = queue.Queue(),
 ):
     
-    # initialize models
+    logger.info("Initializing analysis module")
     build_facial_recognition_model(model_name=model_name)
+    
+    logger.info(f"Creating embeddings from databases: {db_path}")
     # call a dummy find function for db_path once to create embeddings before starting webcam
     _ = search_identity(
         detected_face=np.zeros([224, 224, 3]),
@@ -52,11 +62,13 @@ def analysis(
     freeze = False
     num_frames_with_faces = 0
     tic = time.time()
-    logger.info("Open Webcam")
+    
+    logger.info("Starting camera")
     cap = cv2.VideoCapture(source)  # webcam
     while True:
         has_frame, img = cap.read()
         if not has_frame:
+            logger.warning("Failed to capture frame from the camera. Check camera connection or configuration.")
             break
 
         raw_img = img.copy()
@@ -68,7 +80,6 @@ def analysis(
             )
 
             detected_faces = extract_facial_areas(img=img, faces_coordinates=faces_coordinates)
-
             img = highlight_facial_areas(img=img, faces_coordinates=faces_coordinates)
             img = countdown_to_freeze(
                 img=img,
@@ -81,6 +92,7 @@ def analysis(
 
             freeze = num_frames_with_faces > 0 and num_frames_with_faces % frame_threshold == 0
             if freeze:
+                logger.info("Face detected. Starting facial recognition analysis")
                 # add analyze results into img - derive from raw_img
                 img = highlight_facial_areas(
                     img=raw_img, faces_coordinates=faces_coordinates, anti_spoofing=anti_spoofing
@@ -103,27 +115,28 @@ def analysis(
 
                 if target_name:
                     name_queue.put(target_name)
-                    logger.info(f"Put target name: {list(name_queue.queue)}")
+                    logger.info(f"Recognized member added to queue. Current queue: {list(name_queue.queue)}")
 
                 # freeze the img after analysis
                 freezed_img = img.copy()
 
                 # start counter for freezing
                 tic = time.time()
-                logger.info("freezed")
+                logger.info("Image frozen for feedback (Freeze duration: %d seconds)", time_threshold)
 
         elif freeze is True and time.time() - tic > time_threshold:
             freeze = False
             freezed_img = None
             # reset counter for freezing
             tic = time.time()
-            logger.info("freeze released")
+            logger.info("Resuming face detection")
 
         freezed_img = countdown_to_release(img=freezed_img, tic=tic, time_threshold=time_threshold)
 
         cv2.imshow("img", img if freezed_img is None else freezed_img)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):  # press q to quit
+            logger.info("releasing camera resources and shutting down")
             break
 
     # kill open cv things
@@ -136,7 +149,7 @@ def build_facial_recognition_model(model_name: str) -> None:
     logger.info(f"{model_name} is built")
 
 
-#Search an identity in facial database.
+# Search an identity in facial database.
 def search_identity(
     detected_face: np.ndarray,
     db_path: str,
@@ -145,7 +158,6 @@ def search_identity(
     distance_metric: str,
 ) -> Tuple[Optional[str], Optional[np.ndarray]]:
     target_path = None
-    logger.info("Search an identity in facial database")
     try:
         dfs = DeepFace.find(
             img_path=detected_face,
@@ -154,11 +166,11 @@ def search_identity(
             detector_backend=detector_backend,
             distance_metric=distance_metric,
             enforce_detection=False,
-            #threshold=20,
+            threshold=18,
             silent=True
         )
 
-        # print(dfs)
+        #print(dfs)
     except ValueError as err:
         if f"No item found in {db_path}" in str(err):
             logger.warn(
@@ -168,19 +180,18 @@ def search_identity(
             dfs = []
         else:
             raise err
-    if len(dfs) == 0:
-        # you may consider to return unknown person's image here
-        return None, None
 
-    # detected face is coming from parent, safe to access 1st index
     df = dfs[0]
 
+    if len(df) == 0:
+        logger.info("member: Unknown")
+        return None, detected_face, "Unknown"
     #print("Recognized Faces-----")
     #print(df)
     #print("---------------------")
 
     if df.shape[0] == 0:
-        return None, None
+        return None, None, None
 
     candidate = df.iloc[0]
     target_path = candidate["identity"]
@@ -188,7 +199,7 @@ def search_identity(
     target_name = target_path.split("/")[1]
     threshold = candidate["threshold"]
     distance = candidate["distance"]
-    logger.info(f"Find : {target_name} ( {threshold} / {distance} )")
+    logger.info(f"member: {target_name} ( {threshold} / {distance} )")
 
     # load found identity image - extracted if possible
     target_objs = DeepFace.extract_faces(
@@ -256,7 +267,6 @@ def countdown_to_freeze(
 def countdown_to_release(
     img: Optional[np.ndarray], tic: float, time_threshold: int
 ) -> Optional[np.ndarray]:
-    # do not take any action if it is not frozen yet
     if img is None:
         return img
     toc = time.time()
@@ -281,7 +291,6 @@ def grab_facial_areas(
         face_objs = DeepFace.extract_faces(
             img_path=img,
             detector_backend=detector_backend,
-            # you may consider to extract with larger expanding value
             expand_percentage=0,
             anti_spoofing=anti_spoofing,
         )
@@ -298,7 +307,7 @@ def grab_facial_areas(
             if face_obj["facial_area"]["w"] > threshold
         ]
         return faces
-    except:  # to avoid exception if no face detected
+    except:
         return []
 
 
@@ -342,9 +351,6 @@ def perform_facial_recognition(
             w=w,
             h=h,
         )
-
-        # print("User Info : ", target_name)
-
     return img, target_name
 
 
