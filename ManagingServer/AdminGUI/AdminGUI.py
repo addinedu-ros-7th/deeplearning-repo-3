@@ -10,10 +10,11 @@ from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
 from DBConnector import DBThread
 from PoseDetector import VideoThread
-# from TcpServer import TcpServerThread
+
+from thread.ThreadManager import ThreadManager
 # from logger_config import setup_logger
 # from custom_classes import *
-# from shared_queue import *
+
 from thread.custom_classes import Person,Visitor,Event
 
 #logger = setup_logger()
@@ -44,17 +45,17 @@ class WindowClass(QMainWindow, from_class):
         self.thread.file_path.connect(self.save_video_path)  # 경로 신호 연결
         self.thread.start()  # 스레드 실행
 
-        # # tcp thread 시작
-        # self.tcp_server_thread = TcpServerThread(
-        #     host = "0.0.0.0",
-        #     port = 8080,
-        # )
+        self.thread_manager = ThreadManager()
 
-        # self.tcp_server_thread.start()
-        # logger.info("서버가 시작되었습니다.")
-        
-        # cart = Cart(21,1)
-        # shared_cart_queue.put(cart)
+        # DataProcessorThread 시작
+        self.thread_manager.add_dataprocessor()
+
+        # 카메라 추가
+        self.thread_manager.add_camera(camera_id="Face", client="0.0.0.0", port=5001)
+        self.thread_manager.add_camera(camera_id="Cart", client="0.0.0.0", port=5002)
+        self.thread_manager.add_camera(camera_id="Fruit", client="0.0.0.0", port=5003)
+
+        self.thread_manager.add_datasender(dest_ip="192.168.0.74", dest_port=5005)
         
 
         # DB 스레드 초기화
@@ -188,6 +189,7 @@ class WindowClass(QMainWindow, from_class):
     def closeEvent(self, event):
         """윈도우 종료 시 호출 - 비디오 스레드 정지"""
         self.thread.stop()
+        self.thread_manager.stop_all()
         if hasattr(self, "tcp_server_thread") and self.tcp_server_thread.is_alive():
             self.tcp_server_thread.stop()  # TCP 서버 종료 플래그 설정
             self.tcp_server_thread.join()  # 스레드가 종료될 때까지 대기

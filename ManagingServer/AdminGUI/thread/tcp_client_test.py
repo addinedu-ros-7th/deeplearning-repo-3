@@ -16,20 +16,17 @@ try:
 
     try:
         # JSON 데이터 생성
-        data = {
-            "member_id": 2
-        }
-        # 데이터 송신
-        client_socket.send(json.dumps(data).encode())
-        print(f"데이터 송신: {data}")
-        time.sleep(0.1)  # 10초 대기
-        data = {
-            "member_id": 1
-        }
+        data = {"camera_id": "Face", 
+                "data": [{"member_id": 2, "action": "visit"}]}
         # 데이터 송신
         client_socket.send(json.dumps(data).encode())
         print(f"데이터 송신: {data}")
         time.sleep(1)  # 10초 대기
+        # data = {"camera_id": "Face", 
+        #         "data": [{"member_id": 2, "action": "visit"}]}
+        # # 데이터 송신
+        # client_socket.send(json.dumps(data).encode())
+        # print(f"데이터 송신: {data}")
     except (BrokenPipeError, socket.error) as e:
         print(f"송신 오류 발생: {e}. 연결 종료.")
 
