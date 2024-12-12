@@ -38,13 +38,12 @@ CAMERA_ID = 2
 
 
 logger = logger()
-member_queue = queue.Queue()
 
 class CameraThread(QThread):
     update = pyqtSignal(np.ndarray)
     signin_signal = pyqtSignal(int)
 
-    def __init__(self, db_path=DATABASE_DRECTORY_PATH, member_queue=member_queue):
+    def __init__(self, member_queue, db_path=DATABASE_DRECTORY_PATH):
         super().__init__()
         self.models = ["VGG-Face", "Facenet", "Facenet512", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         self.backends = ["opencv", "ssd", "dlib", "mtcnn", "retinaface"]
@@ -67,9 +66,11 @@ class CameraThread(QThread):
             # Perform face recognization with DeepFace Module before running below lines---------------------------
             member_id=11    # member id for test
             if member_id:
+                self.member_queue.put(member_id)
                 logger.info(f"member id : {member_id}")
                 try:
                     self.signin_signal.emit(member_id)
+                    break
 
                 except Exception as e:
                     logger.error("Error in Signin thread: %s", e)
@@ -87,43 +88,3 @@ class CameraThread(QThread):
     def stop(self):
         self.running = False
         logger.info("Signin thread stopping")
-
-
-class TCPSender(QThread):
-
-    def __init__(self, server_ip, server_port, camera_id, member_queue=member_queue):
-        super().__init__()
-        self.server_ip = server_ip
-        self.server_port = server_port
-        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.client_socket.connect((self.server_ip, self.server_port))
-        self.camera_id = camera_id
-        logger.info(f"Connected to {self.server_ip}:{self.server_port}")
-
-        self.member_queue = member_queue
-        self.running = True
-    
-    def run(self):
-        logger.info("TCPSender thread started: %s", threading.currentThread().getName())
-        while self.running: 
-            try:
-                name = self.member_queue.get(timeout=1)
-                logger.info("Received from queue: %s", name)
-
-                data = {"camera_id": self.camera_id, "member_id": name}
-                self.client_socket.send(json.dumps(data).encode())
-                logger.info(f"Data is sent : {data}")
-
-            except queue.Empty:
-                logger.warning("Queue is empty.")
-                continue
-
-            except (BrokenPipeError, socket.error) as e:
-                logger.error("Error in TCPSender thread: %s", e)
-                break
-
-    def stop(self):
-        self.running = False
-        logger.info("TCPSender thread stopping")
-
-

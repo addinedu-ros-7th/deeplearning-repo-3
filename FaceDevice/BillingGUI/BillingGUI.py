@@ -1,17 +1,19 @@
 import sys
 import cv2
 import numpy as np
-
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel, QTableWidgetItem
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
-
+import time
 from commons.logger import logger
 #from commons.database import database
 
-from SignInProcess import CameraThread, TCPSender
-#from CheckCartProcess import ListupCart
+from SignInProcess import CameraThread
+from CartProcess import CartThread
+from TCPSenderThread import TCPSenderThread
+from TCPServerThread import TCPServerThread
+import queue
 
 logger = logger()
 
@@ -25,18 +27,26 @@ class SigninWindowClass(QMainWindow, signinwindow):
         super().__init__()
         self.setWindowTitle("F2M.BillingGUI")
         self.setupUi(self)
+        self.member_queue = queue.Queue()
+        self.cart_queue = queue.Queue()
 
-        self.camera_thread = CameraThread()
+        self.camera_thread = CameraThread(self.member_queue)
         self.camera_thread.update.connect(self.camera_update)
         self.camera_thread.signin_signal.connect(self.notice_signin)
         self.camera_thread.start()
-    """
+
+        self.tcp_sender_thread = TCPSenderThread(self.member_queue)
+        self.tcp_sender_thread.run()
+        
+        self.tcp_server_thread = TCPServerThread(self.cart_queue)
+        self.tcp_server_thread.run()
+
     def goto_next_window(self):
         self.hide()
-        self.next_window = CartWindowClass()
+        self.next_window = CartWindowClass(self.cart_queue)
         #self.next_window.exec() # wait next window closing
         #self.show()             # re-show when next window is closed
-    """
+
     @pyqtSlot(np.ndarray)
     def camera_update(self, img):
         raw_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -49,43 +59,67 @@ class SigninWindowClass(QMainWindow, signinwindow):
 
     @pyqtSlot(int)
     def notice_signin(self, member):
-        print(f"received : {member}")
+        logger.info(f"received : {member}")
         if member is not None:
             self.SigninTextLable.setText(f"Hello, {member}!")
             self.camera_thread.stop()
-            #self.goto_next_window()
+            time.sleep(50)
+            try:
+                cart = self.cart_queue.get(timeout=3)
+                print(cart)
+                self.goto_next_window()
+            except Exception as e :
+                logger.info(f"Cart Queue from Server is None: {e}")
+            
         else:
             self.SigninTextLable.setText("Unregistered user")
 
-"""
+
 class CartWindowClass(QWidget, cartwindow):
+    def __init__(self, cart_queue):
+        super().__init__()
+        self.setupUi(self)
+        self.show()
+        self.cart_queue = cart_queue
+
+        self.CartTable.setRowCount(0)
+        self.CartTable.setColumnCount(3)
+        self.CartTable.setHorizontalHeaderLabels(["Item", "Count", "Price"])
+
+        self.cart_thread = CartThread(self.cart_queue)
+        self.cart_thread.cart_signal.connect(self.listup_cart)
+        self.cart_thread.run()
+        #self.GoBackButton.clicked.connect(self.goto_before_window)
+        self.MakePaymentButton.clicked.connect(self.goto_next_window)
+
+    #def goto_before_window(self):
+        
+    def goto_next_window(self):
+        self.hide()
+        self.next_window = PaymentWindowClass()
+
+    @pyqtSlot(dict)
+    def listup_cart(self, cart):
+        print(type(cart))
+        items = cart["items"]
+        total_price = cart["total_price"]
+        print(total_price)
+        self.cart_thread.stop()
+
+        self.CartTable.setRowCount(len(items))
+        for i, item in enumerate(items):
+            self.CartTable.setItem(i, 0, QTableWidgetItem(item["Item"]))
+            self.CartTable.setItem(i, 1, QTableWidgetItem(str(item["Count"])))
+            self.CartTable.setItem(i, 2, QTableWidgetItem(str(item["Price"])))
+    
+class PaymentWindowClass(QWidget, paymentwindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.show()
-
-        #self.cart_thread.cart_signal.connect(self.notice_payment)
-        #self.MakePaymentButton.clicked.connect(self.make_payment)
-
-    # @pyqtSlot()
-    # def cart_list(self):
-        # AdminGUI로부터 member의 cart 데이터를 수신하여 디스플레이
-        # received data type : json 
-        # ex: { fruit1: 3, fruit2 : 4, fruit3 :  5} 
-
-    
-    def notice_payment(self):
-        self.PaymentTextBox.setText("Please make payment")
-
-
-    def make_payment(self):
-        self.ResultTextBox.setText("Success!")
-
-"""
 
 if __name__=='__main__':
     app = QApplication(sys.argv)
     signin_window = SigninWindowClass()
     signin_window.show()
     app.exec_()
-

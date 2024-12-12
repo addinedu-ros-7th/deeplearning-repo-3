@@ -22,7 +22,7 @@
      <height>61</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="ButtonList">
     <item row="0" column="0">
      <widget class="QPushButton" name="GoBackButton">
       <property name="font">
@@ -49,21 +49,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QTableView" name="CartList">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>381</width>
-     <height>211</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-    </font>
-   </property>
-  </widget>
   <widget class="QLabel" name="TextLable">
    <property name="geometry">
     <rect>
@@ -83,6 +68,16 @@
    </property>
    <property name="text">
     <string>Please make Payment</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="CartTable">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>381</width>
+     <height>231</height>
+    </rect>
    </property>
   </widget>
  </widget>
