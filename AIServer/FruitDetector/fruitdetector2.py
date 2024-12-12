@@ -95,9 +95,12 @@ class EmitThread(Thread):
             time.sleep(10)
             with self.shared_data.lock:
                 # 공유 데이터를 JSON 형식으로 변환
-                data_to_send = [
-                    {"fruit_id": fruit_id, "fair": fair, "quantity": count} for (fruit_id, fair), count in self.shared_data.detections_dict.items()
-                ]
+                data_to_send = {
+                    "camera_id" : "Fruit",
+                    "data" : [
+                        {"fruit_id": fruit_id, "fair": fair, "quantity": count} for (fruit_id, fair), count in self.shared_data.detections_dict.items()
+                    ]
+                }
             try:
                 # 서버에 연결하여 데이터 전송
                 print("시도")
