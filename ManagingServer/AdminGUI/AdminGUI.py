@@ -10,12 +10,9 @@ from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
 from DBConnector import DBThread
 from PoseDetector import VideoThread
-
-from thread.ThreadManager import ThreadManager
-# from logger_config import setup_logger
-# from custom_classes import *
-
 from thread.custom_classes import Person,Visitor,Event
+from thread.ThreadManager import ThreadManager
+import pymysql
 
 #logger = setup_logger()
 
@@ -154,9 +151,43 @@ class WindowClass(QMainWindow, from_class):
         if track_id not in self.person_states:
             self.person_states[track_id] = Person(track_id)
             self.person_states[track_id].detected = True
-            # 마지막에 들어온 visit_id db에서 찾아서 넣어주기
-            self.person_states[track_id].visit_id = True
-            print(f"Person {track_id} entered")
+            
+            try:
+                # MySQL 데이터베이스 연결
+                conn = pymysql.connect(
+                    host="localhost",
+                    user="root",
+                    password="whdgh29k05",
+                    db="FruitShopDB",
+                    charset="utf8mb4"
+                )
+                cursor = conn.cursor()
+
+                # 방문 기록에서 가장 최근 visit_id 가져오기
+                query = """
+                    SELECT visit_info.visit_id
+                    FROM visit_info
+                    ORDER BY visit_id DESC
+                    LIMIT 1;
+                """
+                cursor.execute(query)
+                result = cursor.fetchone()  # 결과가 한 줄일 경우 fetchone 사용
+                if result:
+                    visit_id = result[0]
+                    self.person_states[track_id].visit_id = visit_id
+                    print(f"Person {track_id}, {visit_id} entered")
+                else:
+                    print("No visit_id found in cart_fruit table")
+
+            except pymysql.MySQLError as e:
+                print(f"MySQL Error: {e}")
+
+            finally:
+                # 커서 및 연결 닫기
+                if 'cursor' in locals():
+                    cursor.close()
+                if 'conn' in locals() and conn.open:
+                    conn.close()
 
     @pyqtSlot(int)
     def person_posed(self, track_id):
@@ -183,7 +214,7 @@ class WindowClass(QMainWindow, from_class):
     def save_video_path(self, path):
         """앞으로 저장될 비디오 경로를 업데이트"""
         self.saved_video_path = path
-        logger.info(f"앞으로 저장될 비디오 경로: {path}")
+        print(f"앞으로 저장될 비디오 경로: {path}")
 
     # 윈도우 종료 시 비디오 스레드 중지
     def closeEvent(self, event):

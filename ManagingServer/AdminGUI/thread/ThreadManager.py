@@ -1,11 +1,10 @@
 import queue
-from CameraThread import CameraThread
-from DataProcessorThread import DataProcessorThread
-from DataSendThread import DataSendThread
+from .CameraThread import CameraThread
+from .DataProcessorThread import DataProcessorThread
 import threading
 import mysql.connector
-from custom_classes import *
-from logger_config import setup_logger
+from .custom_classes import *
+from .logger_config import setup_logger
 
 logger = setup_logger()
 
@@ -69,8 +68,8 @@ class ThreadManager:
         conn = mysql.connector.connect(
             host = "localhost",
             user = "root",
-            password = "1111",
-            database="f2mbase"
+            password = "whdgh29k05",
+            database="FruitShopDB"
         )
         return conn
     

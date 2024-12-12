@@ -13,10 +13,6 @@ import torch.nn as nn
 
 def convert_to_neck_relative_coordinates(keypoints_array):
     """
-    이 함수는 (17,3) 형태의 키포인트 배열(각 키포인트: [x, y, confidence])을 받아,
-    목(neck)을 기준점으로 하는 상대 좌표계로 변환하고 어깨 폭을 스케일로 한 정규화를 수행합니다.
-    여기서 keypoints_array[0]은 목, [5]는 왼어깨, [6]은 오른어깨 키포인트를 의미합니다.
-    
     Steps:
     1. 목 위치를 origin으로 하여 전체 키포인트를 평행이동
     2. 왼어깨와 오른어깨 사이 거리(scale)를 구함
@@ -162,7 +158,7 @@ class VideoThread(QThread):
 
     def run(self):
         # 웹캠(카메라) 열기
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(2)
 
         while self._run_flag:
             ret, frame = cap.read()

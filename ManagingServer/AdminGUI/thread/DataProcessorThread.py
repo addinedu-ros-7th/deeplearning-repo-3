@@ -3,8 +3,8 @@ import queue
 import json
 import mysql.connector
 from datetime import datetime
-from custom_classes import *
-from logger_config import setup_logger
+from .custom_classes import *
+from .logger_config import setup_logger
 
 logger = setup_logger()
 
