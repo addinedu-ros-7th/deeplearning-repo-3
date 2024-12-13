@@ -52,7 +52,7 @@ class WindowClass(QMainWindow, from_class):
         self.thread_manager.add_camera(camera_id="Cart", client="0.0.0.0", port=5002)
         self.thread_manager.add_camera(camera_id="Fruit", client="0.0.0.0", port=5003)
 
-        self.thread_manager.add_datasender(dest_ip="192.168.0.74", dest_port=5005)
+        #self.thread_manager.add_datasender(dest_ip="192.168.0.74", dest_port=5005)
         
 
         # DB 스레드 초기화
@@ -60,12 +60,13 @@ class WindowClass(QMainWindow, from_class):
             "host": "localhost",
             "user": "root",
             "password": "whdgh29k05",
-            "db": "FruitShopDB",
+            "db": "f2mdatabase",
             "charset": "utf8mb4",
         })
 
         # QDateEdit 신호 연결
         self.dateEdit.dateChanged.connect(self.filter_by_date)
+        self.seeAllDaybtn.clicked.connect(self.reset_date)
 
         # 테이블 업데이트 신호 연결
         self.db_thread.selling_log_signal.connect(self.update_selling_log)
@@ -74,7 +75,17 @@ class WindowClass(QMainWindow, from_class):
         self.db_thread.selling_sum_signal.connect(self.update_selling_sum)
         self.db_thread.start()
 
+        # 카트데이터와 매대 데이터 업데이트
+        self.shelves_carts = ShelvesAndCarts(self.thread_manager)
+        self.shelves_carts.carts.connect(self.update_carts)
+        self.shelves_carts.shelves.connect(self.update_shelves)
+        self.shelves_carts.start()
+
     #-------------------------------------------------------------------로그 GUI 관련 함수
+
+    def reset_date(self):
+        none = None
+        self.db_thread.set_date_filter(none)
 
     def filter_by_date(self):
         """선택된 날짜를 기준으로 데이터 필터링"""
@@ -149,16 +160,13 @@ class WindowClass(QMainWindow, from_class):
     def person_entered(self, track_id):
         """사람이 들어왔을 때 호출"""
         if track_id not in self.person_states:
-            self.person_states[track_id] = Person(track_id)
-            self.person_states[track_id].detected = True
-            
             try:
                 # MySQL 데이터베이스 연결
                 conn = pymysql.connect(
                     host="localhost",
                     user="root",
                     password="whdgh29k05",
-                    db="FruitShopDB",
+                    db="f2mdatabase",
                     charset="utf8mb4"
                 )
                 cursor = conn.cursor()
@@ -174,7 +182,7 @@ class WindowClass(QMainWindow, from_class):
                 result = cursor.fetchone()  # 결과가 한 줄일 경우 fetchone 사용
                 if result:
                     visit_id = result[0]
-                    self.person_states[track_id].visit_id = visit_id
+                    #self.person_states[track_id].visit_id = visit_id
                     print(f"Person {track_id}, {visit_id} entered")
                 else:
                     print("No visit_id found in cart_fruit table")
@@ -188,6 +196,9 @@ class WindowClass(QMainWindow, from_class):
                     cursor.close()
                 if 'conn' in locals() and conn.open:
                     conn.close()
+
+            self.person_states[track_id] = Person(track_id,visit_id )
+            self.person_states[track_id].detected = True
 
     @pyqtSlot(int)
     def person_posed(self, track_id):
@@ -226,6 +237,33 @@ class WindowClass(QMainWindow, from_class):
             self.tcp_server_thread.join()  # 스레드가 종료될 때까지 대기
 
         event.accept()
+
+    #---------------------------------------------------------------------- 카트 및 매대관련 함수
+    def update_carts(self, data):
+        print("cart",data)
+    
+    def update_shelves(self,data):
+        print("shelves",data)
+         
+     
+        
+
+class ShelvesAndCarts(QThread):
+    carts = pyqtSignal(dict)
+    shelves = pyqtSignal(dict)
+    
+    def __init__(self, thread_manager):
+        super().__init__()
+        self.running = True
+        self.thread_manager = thread_manager
+
+    def run (self):
+        while self.running:
+            self.shelves.emit (self.thread_manager.visitors)
+            self.carts.emit (self.thread_manager.fruits)
+            self.msleep(1000)
+
+
 
 # 메인 함수
 if __name__ == "__main__":
