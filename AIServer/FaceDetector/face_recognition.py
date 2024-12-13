@@ -34,7 +34,7 @@ VIDEO_DIRECTORY_PATH = "data/video/"
 
 SERVER_IP = '192.168.0.100'
 SERVER_PORT = 5001
-CAMERA_ID = 2
+CAMERA_ID = "Face"
 # -----------------------------------------------------
 
 logging.basicConfig(
@@ -97,7 +97,7 @@ class TCPSender(threading.Thread):
                 name = self.name_queue.get(timeout=1)
                 logger.info("Received from queue: %s", name)
 
-                data = {"camera_id": self.camera_id, "member_id": name}
+                data = {"camera_id": self.camera_id, "data": [{"member_id": name,  "action": "visit"}]}
                 self.client_socket.send(json.dumps(data).encode())
                 logger.info(f"Data is sent : {data}")
 
@@ -119,12 +119,12 @@ def main():
     name_queue = queue.Queue()
 
     recognition_thread = FaceRecognition(DATABASE_DRECTORY_PATH,name_queue)
-    #tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, CAMERA_ID, name_queue)
+    tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, CAMERA_ID, name_queue)
 
     recognition_thread.start()
-    #tcp_thread.start()
+    tcp_thread.start()
 
-    #tcp_thread.join()
+    tcp_thread.join()
 
     logger.info("Application shutting down")
     cv2.destroyAllWindows()
