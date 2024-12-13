@@ -1,10 +1,11 @@
 import queue
-from .CameraThread import CameraThread
-from .DataProcessorThread import DataProcessorThread
+from CameraThread import CameraThread
+from DataProcessorThread import DataProcessorThread
+from DataSendThread import DataSendThread
 import threading
 import mysql.connector
-from .custom_classes import *
-from .logger_config import setup_logger
+from custom_classes import *
+from logger_config import setup_logger
 
 logger = setup_logger()
 
@@ -36,27 +37,44 @@ class ThreadManager:
             self.fruits[fruit_id] = stock
 
         cursor.execute("""
-            SELECT vi.member_id, vi.visit_id, c.cart_id, c.cart_cam, cf.fruit_id, cf.quantity
-            FROM visit_info vi
-            LEFT JOIN cart c ON vi.visit_id = c.visit_id
-            LEFT JOIN cart_fruit cf ON c.cart_id = cf.cart_id
-            WHERE vi.out_dttm IS NULL
+            SELECT 
+                m.member_name,
+                vi.member_id,
+                vi.visit_id,
+                c.cart_id,
+                c.cart_cam,
+                cf.fruit_id,
+                cf.quantity,
+                f.fruit_name,
+                f.price
+            FROM 
+                members m
+            LEFT JOIN 
+                visit_info vi ON m.member_id = vi.member_id
+            LEFT JOIN 
+                cart c ON vi.visit_id = c.visit_id
+            LEFT JOIN 
+                cart_fruit cf ON c.cart_id = cf.cart_id
+            LEFT JOIN 
+                fruit f ON cf.fruit_id = f.fruit_id
+            WHERE 
+                vi.out_dttm IS NULL;
         """)
 
         # DB정보에 따라서 현재 매장 내 Visitor와 연결된 cart 업데이트
         data = cursor.fetchall()
         for row in data:
-            member_id, visit_id, cart_id, cart_cam, fruit_id, quantity = row
+            member_name, member_id, visit_id, cart_id, cart_cam, fruit_id, quantity, fruit_name, price = row
             if visit_id not in self.visitors:
                 if cart_id and cart_cam:
                     c = Cart(cart_id, cart_cam)
                     self.using_carts.add(cart_cam)
                 else:
                     Cart(None, None)
-                v = Visitor(visit_id, member_id, c)
+                v = Visitor(visit_id, member_id, member_name, c)
                 self.visitors[visit_id] = v
-            if fruit_id and quantity:
-                self.visitors[visit_id].cart.data[fruit_id] = quantity
+            if fruit_id:
+                self.visitors[visit_id].cart.data[fruit_id] = [fruit_name, quantity, price]
 
         self.available_carts -= self.using_carts
 
@@ -68,8 +86,8 @@ class ThreadManager:
         conn = mysql.connector.connect(
             host = "localhost",
             user = "root",
-            password = "whdgh29k05",
-            database="FruitShopDB"
+            password = "1111",
+            database="f2mbase"
         )
         return conn
     

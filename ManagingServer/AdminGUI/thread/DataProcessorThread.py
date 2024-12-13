@@ -3,8 +3,8 @@ import queue
 import json
 import mysql.connector
 from datetime import datetime
-from .custom_classes import *
-from .logger_config import setup_logger
+from custom_classes import *
+from logger_config import setup_logger
 
 logger = setup_logger()
 
@@ -25,8 +25,8 @@ class DataProcessorThread(threading.Thread):
             try:
                 data = self.data_queue.get(timeout=1)[1]
                 parsed_data = json.loads(data)
-                
-                print(parsed_data)
+                logger.info("get data from data_queue")
+                logger.info(f"data from data_queue: {parsed_data}")
                 if parsed_data["camera_id"] == "Face":
                     self.process_face_cam(parsed_data["data"])
                 elif parsed_data["camera_id"] == "Cart":
@@ -140,15 +140,17 @@ class DataProcessorThread(threading.Thread):
 
                         for fruit_id in new_fruit_ids:
                             cursor.execute("insert into cart_fruit (cart_id, fruit_id, quantity) values (%s, %s, %s)", (visitor.cart.cart_id, fruit_id, fruits[fruit_id]))
+                            cursor.execute("select fruit_name, price from fruit where fruit_id=%s", (fruit_id,))
+                            results = cursor.fetchall()
+                            visitor.cart.data[fruit_id] = [results[0][0], fruits[fruit_id], results[0][1]]
                             logger.info(f"insert into cart_fruit ({visitor.cart.cart_id, fruit_id, fruits[fruit_id]})")
                         conn.commit()
 
                         for fruit_id in common_fruit_ids:
                             cursor.execute("update cart_fruit set quantity=%s where fruit_id=%s and cart_id=%s", (fruits[fruit_id], fruit_id, visitor.cart.cart_id))
+                            visitor.cart.data[fruit_id][1] = fruits[fruit_id]
                             logger.info(f"update cart_fruit {fruits[fruit_id]} where fruit_id={fruit_id} and cart_id={visitor.cart.cart_id} ")
                         conn.commit()
-                        
-                        visitor.cart.update(fruits)
 
                         logger.info(
                             f"Cart Cam {cart_cam} 업데이트: {fruits}, "
@@ -156,7 +158,7 @@ class DataProcessorThread(threading.Thread):
                             f"Visitor cart data: {visitor.cart.data}"
                         )
                     else:
-                        visitor.cart.update({})
+                        visitor.cart.data = {}
                         cursor.execute("delete from cart_fruit where cart_id=%s", (visitor.cart.cart_id))
                         logger.info(
                             f"Cart Cam {cart_cam} no fruits, "
@@ -169,20 +171,24 @@ class DataProcessorThread(threading.Thread):
 
 
     def process_face_cam(self, data):
+        logger.info(f"process_face_cam got data: {data}")
         data = data[0]
-        print(f"process_face_cam accepted data {data}")
+        logger.info(f"make it to dict {data}")
         member_id = data["member_id"]
         action = data["action"]
+        logger.info(f"member_id = {member_id}, action = {action}")
 
         conn = self.thread_manager.connect_f2mbase()
         cursor = conn.cursor()
-
+        
+        logger.info("looking for visitor")
         visitor = next(
             (v for v in self.visitors.values() if v.member_id == member_id),
             None,
         )
 
         if not visitor:
+            logger.info("No visitor")
             cursor.execute("insert into visit_info (member_id, in_dttm) values (%s, %s)", (member_id, datetime.now()))
             conn.commit()
 
@@ -210,32 +216,43 @@ class DataProcessorThread(threading.Thread):
             cursor.close()
             conn.close()
         else:
+            logger.info(f"There's visitor: {visitor}")
             # 에러
             if visitor.cart.purchase == 0:
-                res = {}
+                res = []
+                # conn = self.thread_manager.connect_f2mbase()
+                # cursor = conn.cursor()
+                # # 해당 visitor의 cart에서 정보 가져오기.
+                # cursor.execute("select f.fruit_name, f.price, cf.quantity \
+                #                from cart_fruit cf \
+                #                join fruit f on cf.fruit_id = f.fruit_id \
+                #                where cf.cart_id=%s", (visitor.cart.cart_id,))
+                
+                # results = cursor.fetchall()
+                # if results:
+                #     logger.info(f"Visitor's cart_fruit results available")
+                #     res_data = []
+                #     for fruit_name, price, quantity in results:
+                #         res_data.append({"Item": fruit_name, "Count": quantity, "Price": price})
+                #     res["Items"] = res_data
+                #     logger.info(res)
+                # cursor.close()
+                # conn.close()
+
+                if visitor.cart.data:
+                    for value in visitor.cart.data.values():
+                        res.append({"fruit_name": value[0], "count": value[1], "price": value[2]})
+
+
                 conn = self.thread_manager.connect_f2mbase()
                 cursor = conn.cursor()
-                # 해당 visitor의 cart에서 정보 가져오기.
-                cursor.execute("select f.fruit_name, f.price, cf.quantity \
-                               from cart_fruit cf \
-                               join fruit f on cf.fruit_id = f.fruit_id \
-                               where cf.cart_id=%s", (visitor.cart.cart_id))
-                
-                results = cursor.fetchall()
-                if results:
-                    res_data = []
-                    for fruit_name, price, quantity in results:
-                        res_data.append({"Item": fruit_name, "Count": quantity, "Price": price})
-                    res["Items"] = res_data
+                cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
+                conn.commit()
                 cursor.close()
                 conn.close()
 
-                res = visitor.cart.data
-                logger.info(f"res: {res}")
-
-                #visitor.cart.purchase = 1
+                visitor.cart.purchase = 1
                 # response queue에 put
-
                 self.res_data_queue.put(res)
 
             # 두번째 request의 경우
@@ -243,7 +260,7 @@ class DataProcessorThread(threading.Thread):
                 if action == "yes":
                     conn = self.thread_manager.connect_f2mbase()
                     cursor = conn.cursor()
-                    cursor.execute("update cart set purchase=%s where cart_id=%s", (2, visitor.cart.cart_id))
+                    cursor.execute("update cart set purchased=%s where cart_id=%s", (2, visitor.cart.cart_id))
                     conn.close()
                     cursor.close()
 

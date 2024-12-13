@@ -2,7 +2,7 @@ class Cart:
     def __init__(self, cart_id, cart_cam):
         self.cart_id = cart_id
         self.cart_cam = cart_cam
-        self.data = {}
+        self.data = {}  # {fruit_id: [name, stock, price], fruit_id: [name, stock, price]...}
         self.purchase = 0
 
     def update(self, new_data):
@@ -26,9 +26,10 @@ class Event:
         self.data = {}
 
 class Visitor:
-    def __init__(self, visit_id, member_id, cart):
+    def __init__(self, visit_id, member_id, member_name, cart):
         self.visit_id = visit_id
         self.member_id = member_id
+        self.member_name = member_name
         self.cart = cart
 
     def __str__(self):
