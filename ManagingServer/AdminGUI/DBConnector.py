@@ -102,19 +102,6 @@ class DBThread(QThread):
                 #print(type(selling_sum),selling_sum)
                 self.selling_sum_signal.emit(int(selling_sum))
 
-                query = """
-                    SELECT event_info.event_id, '이벤트' AS type, members.member_name,
-                           event_info.file_path, event_info.event_dttm
-                    FROM event_info
-                    INNER JOIN visit_info ON event_info.visit_id = visit_info.visit_id
-                    INNER JOIN members ON visit_info.member_id = members.member_id
-                """
-
-                
-                cursor.execute(query)
-                event_log = list(cursor.fetchall())  # 튜플 리스트를 일반 리스트로 변환
-                self.shelves_product.emit(event_log)
-
                 conn.close()
             except pymysql.MySQLError as e:
                 print(f"DB Error: {e}")

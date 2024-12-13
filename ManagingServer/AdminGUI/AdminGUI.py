@@ -240,10 +240,76 @@ class WindowClass(QMainWindow, from_class):
 
     #---------------------------------------------------------------------- 카트 및 매대관련 함수
     def update_carts(self, data):
-        print("cart",data)
+        #print(data)
+        label_pairs = [
+        (self.userNameLabel1, self.userCart1),
+        (self.userNameLabel2, self.userCart2),
+        (self.userNameLabel3, self.userCart3),
+        (self.userNameLabel4, self.userCart4)
+        ]
+        
+        # data 딕셔너리의 값들(Visitor 객체)을 리스트로 변환
+        visitors_list = list(data.values())
+
+        # 방문자 정보를 최대 4명까지 표시
+        for i in range(4):
+            if i < len(visitors_list):
+                visitor = visitors_list[i]
+                # 사용자 정보 (member_id 혹은 visit_id 이용)
+                user_text = f"회원ID: {visitor.member_id}, 방문ID: {visitor.visit_id}"
+
+                # 카트 데이터 출력 포맷: 예) "apple_fair : 3개 (가격:1300원)"
+                cart_lines = []
+                for item_key, item_info in visitor.cart.data.items():
+                    # item_info 예: ['apple_fair', 3, 1300]
+                    item_name = item_info[0]
+                    item_count = item_info[1]
+                    item_price = item_info[2]
+                    cart_lines.append(f"{item_name} : {item_count}개 (가격:{item_price}원)")
+                
+                cart_text = "\n".join(cart_lines)
+
+                # 라벨에 텍스트 설정
+                label_pairs[i][0].setText(user_text)  # 사용자명 라벨
+                label_pairs[i][1].setText(cart_text)  # 카트 정보 라벨
+            else:
+                # 해당 인덱스에 방문자가 없다면 라벨을 비움
+                label_pairs[i][0].setText("")
+                label_pairs[i][1].setText("")
     
     def update_shelves(self,data):
-        print("shelves",data)
+        #print("shelves",data)
+        apple_normal = data.get(0, 0)
+        apple_defective = data.get(1, 0)
+
+        persimmon_normal = data.get(2, 0)
+        persimmon_defective = data.get(3, 0)
+
+        peach_normal = data.get(4, 0)
+        peach_defective = data.get(5, 0)
+
+        pomegranate_normal = data.get(6, 0)
+        pomegranate_defective = data.get(7, 0)
+
+        # 테이블에 들어갈 데이터 (품종, 상한개수, 정상개수)
+        table_data = [
+            ("사과", apple_defective, apple_normal),
+            ("감", persimmon_defective, persimmon_normal),
+            ("복숭아", peach_defective, peach_normal),
+            ("석류", pomegranate_defective, pomegranate_normal),
+        ]
+
+        # QTableWidget 초기화
+        # 열: 품종 / 상한 개수 / 정상 개수 총 3열
+        self.shelves_table.setRowCount(len(table_data))
+        self.shelves_table.setColumnCount(3)
+        self.shelves_table.setHorizontalHeaderLabels(["품종", "상한 개수", "정상 개수"])
+
+        # 테이블에 데이터 삽입
+        for row_idx, (fruit, defective, normal) in enumerate(table_data):
+            self.shelves_table.setItem(row_idx, 0, QTableWidgetItem(str(fruit)))
+            self.shelves_table.setItem(row_idx, 1, QTableWidgetItem(str(defective)))
+            self.shelves_table.setItem(row_idx, 2, QTableWidgetItem(str(normal)))
          
      
         
@@ -259,8 +325,8 @@ class ShelvesAndCarts(QThread):
 
     def run (self):
         while self.running:
-            self.shelves.emit (self.thread_manager.visitors)
-            self.carts.emit (self.thread_manager.fruits)
+            self.shelves.emit (self.thread_manager.fruits)
+            self.carts.emit (self.thread_manager.visitors)
             self.msleep(1000)
 
 

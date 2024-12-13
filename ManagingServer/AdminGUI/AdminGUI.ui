@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -33,7 +33,7 @@
      <property name="geometry">
       <rect>
        <x>750</x>
-       <y>340</y>
+       <y>330</y>
        <width>231</width>
        <height>31</height>
       </rect>
@@ -82,7 +82,7 @@
        <rect>
         <x>20</x>
         <y>30</y>
-        <width>141</width>
+        <width>311</width>
         <height>41</height>
        </rect>
       </property>
@@ -100,13 +100,13 @@
        <rect>
         <x>20</x>
         <y>80</y>
-        <width>201</width>
+        <width>311</width>
         <height>161</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -126,12 +126,12 @@
      <property name="title">
       <string>User2</string>
      </property>
-     <widget class="QLabel" name="userNameLabel1_2">
+     <widget class="QLabel" name="userNameLabel2">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>30</y>
-        <width>141</width>
+        <width>311</width>
         <height>41</height>
        </rect>
       </property>
@@ -144,18 +144,18 @@
        <string>사용자 이름</string>
       </property>
      </widget>
-     <widget class="QLabel" name="userCart1_2">
+     <widget class="QLabel" name="userCart2">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>80</y>
-        <width>201</width>
+        <width>311</width>
         <height>161</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -163,7 +163,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="userGroupBox1_3">
+    <widget class="QGroupBox" name="userGroupBox3">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -175,12 +175,12 @@
      <property name="title">
       <string>User3</string>
      </property>
-     <widget class="QLabel" name="userNameLabel1_3">
+     <widget class="QLabel" name="userNameLabel3">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>30</y>
-        <width>141</width>
+        <width>311</width>
         <height>41</height>
        </rect>
       </property>
@@ -193,18 +193,18 @@
        <string>사용자 이름</string>
       </property>
      </widget>
-     <widget class="QLabel" name="userCart1_3">
+     <widget class="QLabel" name="userCart3">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>80</y>
-        <width>201</width>
+        <width>311</width>
         <height>161</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -224,12 +224,12 @@
      <property name="title">
       <string>User4</string>
      </property>
-     <widget class="QLabel" name="userNameLabel1_4">
+     <widget class="QLabel" name="userNameLabel4">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>30</y>
-        <width>141</width>
+        <width>311</width>
         <height>41</height>
        </rect>
       </property>
@@ -242,18 +242,18 @@
        <string>사용자 이름</string>
       </property>
      </widget>
-     <widget class="QLabel" name="userCart1_4">
+     <widget class="QLabel" name="userCart4">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>80</y>
-        <width>201</width>
+        <width>311</width>
         <height>161</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -297,7 +297,7 @@
       <string>900000원</string>
      </property>
     </widget>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="shelves_table">
      <property name="geometry">
       <rect>
        <x>750</x>
@@ -325,8 +325,8 @@
     <widget class="QLabel" name="CCTV_1">
      <property name="geometry">
       <rect>
-       <x>760</x>
-       <y>110</y>
+       <x>750</x>
+       <y>100</y>
        <width>331</width>
        <height>211</height>
       </rect>
