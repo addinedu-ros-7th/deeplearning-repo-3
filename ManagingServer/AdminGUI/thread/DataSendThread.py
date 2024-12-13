@@ -30,14 +30,17 @@ class DataSendThread(threading.Thread):
                     try:
                         # JSON 데이터 생성 및 송신
                         data = self.res_data_queue.get(timeout=1)
+                        # data = {1: 4, 2: 1, 3: 9, 4: 1}
+                        logger.info(f"get data out from res_data_queue: {data}")
                         self.socket.send(json.dumps(data).encode())
                         logger.info(f"데이터 송신: {data}")
                     except Empty:
                         # 데이터 큐가 비었을 경우 무시
+                        logger.info("Empty res_data_queue")
                         continue
-                    except (BrokenPipeError, socket.error) as e:
-                        logger.error(f"송신 오류 발생: {e}. 연결 종료 후 재시도.")
-                        break  # 내부 while 종료 후 재연결 시도
+                            # except (BrokenPipeError, socket.error) as e:
+                            #     logger.error(f"송신 오류 발생: {e}. 연결 종료 후 재시도.")
+                            #     break  # 내부 while 종료 후 재연결 시도
 
             except (socket.error, ConnectionRefusedError) as e:
                 logger.error(f"연결 오류: {e}. 5초 후 재시도...")

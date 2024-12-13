@@ -16,6 +16,7 @@ if __name__ == "__main__":
         thread_manager.add_camera(camera_id="Fruit", client="0.0.0.0", port=5003)
 
         thread_manager.add_datasender(dest_ip="192.168.0.74", dest_port=5005)
+        # thread_manager.add_datasender(dest_ip="localhost", dest_port=6000)
 
 
     except KeyboardInterrupt:

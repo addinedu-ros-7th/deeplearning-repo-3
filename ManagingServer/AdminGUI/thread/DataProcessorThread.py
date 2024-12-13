@@ -41,6 +41,11 @@ class DataProcessorThread(threading.Thread):
                 logger.error(f"처리 중 오류: {str(e)}")
 
     def process_fruit_cam(self, data):
+        """
+        data = [{"fruit_id":1, "stock": 3},
+                {"fruit_id":2, "stock": 2},
+                {"fruit_id":3, "stock": 2}]
+        """
         with self.lock:
             conn = self.thread_manager.connect_f2mbase()
 
@@ -60,7 +65,7 @@ class DataProcessorThread(threading.Thread):
                 cursor.execute(query, tuple(zero_fruit_ids))
 
             # 과일 매대 재고 업데이트
-            fruit_quantities = [(item["quantity"], item["fruit_id"]) for item in data]
+            fruit_quantities = [(item["stock"], item["fruit_id"]) for item in data]
             if fruit_quantities:
                 query = "INSERT INTO fruit (stock, fruit_id) VALUES (%s, %s) " \
                         "ON DUPLICATE KEY UPDATE stock=VALUES(stock)"
@@ -70,7 +75,7 @@ class DataProcessorThread(threading.Thread):
             conn.close()
 
             # 업데이트 된 상태 다시 ThreadManager fruit 딕셔너리에 저장
-            self.fruits = {item["fruit_id"]: item["quantity"] for item in data}
+            self.fruits = {item["fruit_id"]: item["stock"] for item in data}
 
 
 
@@ -139,8 +144,8 @@ class DataProcessorThread(threading.Thread):
                         conn.commit()
 
                         for fruit_id in common_fruit_ids:
-                            cursor.execute("update fruit set stock=%s where fruit_id=%s", (fruits[fruit_id], fruit_id))
-                            logger.info(f"update cart_fruit ({fruits[fruit_id], fruit_id})")
+                            cursor.execute("update cart_fruit set quantity=%s where fruit_id=%s and cart_id=%s", (fruits[fruit_id], fruit_id, visitor.cart.cart_id))
+                            logger.info(f"update cart_fruit {fruits[fruit_id]} where fruit_id={fruit_id} and cart_id={visitor.cart.cart_id} ")
                         conn.commit()
                         
                         visitor.cart.update(fruits)
@@ -187,7 +192,7 @@ class DataProcessorThread(threading.Thread):
 
             cart_cam = self.thread_manager.assign_cart_cam()
 
-            cursor.execute("insert into cart (visit_id, cart_cam) values (%s, %s)", (visit_id, cart_cam))
+            cursor.execute("insert into cart (visit_id, cart_cam, purchased) values (%s, %s, %s)", (visit_id, cart_cam, 0))
             conn.commit()
 
             cursor.execute("select max(cart_id) from cart where visit_id=%s", (visit_id,))
@@ -225,7 +230,10 @@ class DataProcessorThread(threading.Thread):
                 cursor.close()
                 conn.close()
 
-                visitor.cart.purchase = 1
+                res = visitor.cart.data
+                logger.info(f"res: {res}")
+
+                #visitor.cart.purchase = 1
                 # response queue에 put
 
                 self.res_data_queue.put(res)
