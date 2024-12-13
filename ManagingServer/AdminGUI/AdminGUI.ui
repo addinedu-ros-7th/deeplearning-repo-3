@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -687,6 +687,19 @@
        <month>12</month>
        <day>6</day>
       </date>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="seeAllDaybtn">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>30</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>See All Day</string>
      </property>
     </widget>
    </widget>

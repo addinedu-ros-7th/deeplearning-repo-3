@@ -41,8 +41,8 @@ class DBThread(QThread):
                 self.selling_log_signal.emit(selling_log)
 
                 # 방문 로그 데이터 가져오기
-                query = """
-                    (
+                query = f"""
+                    SELECT * FROM (
                         SELECT 
                             visit_info.visit_id, 
                             '입장' AS type, 
@@ -51,9 +51,9 @@ class DBThread(QThread):
                         FROM visit_info
                         INNER JOIN members ON visit_info.member_id = members.member_id
                         WHERE visit_info.in_dttm IS NOT NULL
-                    )
-                    UNION ALL
-                    (
+
+                        UNION ALL
+
                         SELECT 
                             visit_info.visit_id, 
                             '퇴장' AS type, 
@@ -62,12 +62,12 @@ class DBThread(QThread):
                         FROM visit_info
                         INNER JOIN members ON visit_info.member_id = members.member_id
                         WHERE visit_info.out_dttm IS NOT NULL
-                    )
-                    ORDER BY event_time;
+                    ) AS combined_logs
                 """
                 if self.date_filter:
                     query += f" WHERE DATE(event_time) = '{self.date_filter}'"
-                #print(query)
+                query += " ORDER BY event_time;"
+                
                 cursor.execute(query)
                 visit_log = list(cursor.fetchall())  # 튜플 리스트를 일반 리스트로 변환
                 #print("visit log : ",visit_log)
@@ -81,8 +81,8 @@ class DBThread(QThread):
                     INNER JOIN visit_info ON event_info.visit_id = visit_info.visit_id
                     INNER JOIN members ON visit_info.member_id = members.member_id
                 """
-                if self.date_filter:
-                    query += f" WHERE DATE(event_info.event_dttm) = '{self.date_filter}'"
+                # if self.date_filter:
+                #     query += f" WHERE DATE(event_info.event_dttm) = '{self.date_filter}'"
 
                 
                 cursor.execute(query)
@@ -102,6 +102,19 @@ class DBThread(QThread):
                 #print(type(selling_sum),selling_sum)
                 self.selling_sum_signal.emit(int(selling_sum))
 
+                query = """
+                    SELECT event_info.event_id, '이벤트' AS type, members.member_name,
+                           event_info.file_path, event_info.event_dttm
+                    FROM event_info
+                    INNER JOIN visit_info ON event_info.visit_id = visit_info.visit_id
+                    INNER JOIN members ON visit_info.member_id = members.member_id
+                """
+
+                
+                cursor.execute(query)
+                event_log = list(cursor.fetchall())  # 튜플 리스트를 일반 리스트로 변환
+                self.shelves_product.emit(event_log)
+
                 conn.close()
             except pymysql.MySQLError as e:
                 print(f"DB Error: {e}")
@@ -109,7 +122,7 @@ class DBThread(QThread):
                 print(f"Unexpected Error: {e}")
             
             # 스레드 간 딜레이
-            self.msleep(3000)
+            self.msleep(1000)
 
     def stop(self):
         self.running = False

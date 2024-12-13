@@ -4,7 +4,7 @@ import json
 import time
 from queue import Empty
 
-from logger_config import setup_logger
+from .logger_config import setup_logger
 
 logger = setup_logger()
 
