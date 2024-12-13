@@ -3,8 +3,8 @@ import queue
 import json
 import mysql.connector
 from datetime import datetime
-from .custom_classes import *
-from .logger_config import setup_logger
+from custom_classes import *
+from logger_config import setup_logger
 
 logger = setup_logger()
 
@@ -25,7 +25,6 @@ class DataProcessorThread(threading.Thread):
             try:
                 data = self.data_queue.get(timeout=1)[1]
                 parsed_data = json.loads(data)
-                logger.info("get data from data_queue")
                 logger.info(f"data from data_queue: {parsed_data}")
                 if parsed_data["camera_id"] == "Face":
                     self.process_face_cam(parsed_data["data"])
@@ -53,29 +52,36 @@ class DataProcessorThread(threading.Thread):
 
             # ThreadManager의 fruit 딕셔너리 안에 저장되어 있는 이전 과일 매대 상태
             previous_fruit_ids = set(self.fruits.keys())
+            logger.info(f"previous_fruit_ids: {previous_fruit_ids}")
             # 방금 받은 과일 매대 상태
             current_fruit_ids = set(map(int, [item["fruit_id"] for item in data]))
+            logger.info(f"current_fruit_ids: {current_fruit_ids}")
 
             # 이전엔 있었는데 지금은 없는 과일 재고 0으로 설정
             zero_fruit_ids = previous_fruit_ids - current_fruit_ids
+            logger.info(f"zero_fruit_ids: {zero_fruit_ids}")
 
             if zero_fruit_ids:
                 query = "UPDATE fruit SET stock=0 WHERE fruit_id IN (%s)" % (
                     ", ".join(["%s"] * len(zero_fruit_ids)))
                 cursor.execute(query, tuple(zero_fruit_ids))
+                logger.info(f"{zero_fruit_ids} updated to 0")
+
 
             # 과일 매대 재고 업데이트
-            fruit_quantities = [(item["stock"], item["fruit_id"]) for item in data]
+            fruit_quantities = [(item["quantity"], item["fruit_id"]) for item in data]
+            logger.info(f"73: fruit_quantities: {fruit_quantities}")
             if fruit_quantities:
-                query = "INSERT INTO fruit (stock, fruit_id) VALUES (%s, %s) " \
-                        "ON DUPLICATE KEY UPDATE stock=VALUES(stock)"
+                query = "UPDATE fruit SET stock=%s where fruit_id=%s"
                 cursor.executemany(query, fruit_quantities)
+                logger.info(f"78: query executed")
             conn.commit()
             cursor.close()
             conn.close()
 
             # 업데이트 된 상태 다시 ThreadManager fruit 딕셔너리에 저장
-            self.fruits = {item["fruit_id"]: item["stock"] for item in data}
+            self.fruits = {item["fruit_id"]: item["quantity"] for item in data}
+            logger.info(f"85: self.fruits = {self.fruits}")
 
 
 
@@ -159,10 +165,12 @@ class DataProcessorThread(threading.Thread):
                         )
                     else:
                         visitor.cart.data = {}
-                        cursor.execute("delete from cart_fruit where cart_id=%s", (visitor.cart.cart_id))
+                        logger.info(f"visitor.cart.cart_id: {visitor.cart.cart_id}")
+                        cursor.execute("delete from cart_fruit where cart_id=%s", (visitor.cart.cart_id,))
+                        conn.commit()
                         logger.info(
                             f"Cart Cam {cart_cam} no fruits, "
-                            f"Visitor ID: {visitor.visit_id}"
+                            f"Visitor ID: {visitor.visit_id} "
                             f"Visitor cart data: {visitor.cart.data}"
                         )
 
@@ -244,14 +252,14 @@ class DataProcessorThread(threading.Thread):
                         res.append({"fruit_name": value[0], "count": value[1], "price": value[2]})
 
 
-                conn = self.thread_manager.connect_f2mbase()
-                cursor = conn.cursor()
-                cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
-                conn.commit()
-                cursor.close()
-                conn.close()
+                # conn = self.thread_manager.connect_f2mbase()
+                # cursor = conn.cursor()
+                # cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
+                # conn.commit()
+                # cursor.close()
+                # conn.close()
 
-                visitor.cart.purchase = 1
+                #visitor.cart.purchase = 1
                 # response queue에 put
                 self.res_data_queue.put(res)
 
