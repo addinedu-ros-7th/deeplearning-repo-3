@@ -51,40 +51,38 @@ class CameraThread(QThread):
         self.db_path = db_path
         self.member_queue = member_queue
         self.running = True
+        logger.info("CameraThread starting: %s", threading.currentThread().getName())
         
     def run(self):
-        logger.info("Starting camera")
+        logger.info("CameraThread running: %s", threading.currentThread().getName())
         cap = cv2.VideoCapture(CAM_NUM)
 
-        while True:
-            has_frame, frame = cap.read()
-            if not has_frame:
-                logger.warning("Failed to capture frame from the camera. Check camera connection or configuration.")
-                break
-            self.update.emit(frame)
-
-            # Perform face recognization with DeepFace Module before running below lines---------------------------
-            member_id=11    # member id for test
-            if member_id:
-                self.member_queue.put(member_id)
-                logger.info(f"member id : {member_id}")
-                try:
-                    self.signin_signal.emit(member_id)
+        while self.running:
+            try:
+                has_frame, frame = cap.read()
+                if not has_frame:
+                    logger.warning("Failed to capture frame from the camera. Check camera connection or configuration.")
                     break
+                self.update.emit(frame)
+                #logger.info(f"Emit frame as update signal : {type(frame)}")
 
-                except Exception as e:
-                    logger.error("Error in Signin thread: %s", e)
+                # Perform face recognization with DeepFace Module before running below lines---------------------------
+                member_id = 1
+                if member_id:
+                    logger.info(f"Face Detected : {member_id}")
+                    self.member_queue.put(member_id)
+                    logger.info(f"Put member_id to queue: {member_id}")
+                    self.signin_signal.emit(member_id)
+                    logger.info(f"Emit member_id as signin signal : {member_id}")
                     break
 
             #self.member_queue.put(member_id)
             #logger.info(f"Current queue: {list(member_queue.queue)}")
             #-------------------------------------------------------------------------------------------------------
-
-            if not self.running:
-                break
-            
-        cap.release()
+            except Exception as e:
+                logger.error("Error in CameraThread running: %s", e)
+                self.running = False 
 
     def stop(self):
         self.running = False
-        logger.info("Signin thread stopping")
+        logger.info("CameraThread stopping")

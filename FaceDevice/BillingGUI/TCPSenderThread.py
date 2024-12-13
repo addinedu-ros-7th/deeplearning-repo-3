@@ -29,37 +29,28 @@ class TCPSenderThread(threading.Thread):
         self.data_queue = data_queue
         self.running = True
         self.socket = None
+        logger.info("TCPSenderThread starting: %s", threading.currentThread().getName())
 
     def run(self):
-        logger.info("TCPSender thread started: %s", threading.currentThread().getName())
+        logger.info("TCPSenderThread running: %s", threading.currentThread().getName())
         while self.running: 
-            try:
+            if not self.data_queue.empty():
                 self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 self.client_socket.connect((self.server_ip, self.server_port))
-                logger.info(f"Connected to {self.server_ip}:{self.server_port}")
+                #logger.info(f"Connected to {self.server_ip}:{self.server_port}")
 
-                while self.running:
-                    try:
-                        data = self.data_queue.get(timeout=1)
-                        #logger.info("Get data form queue: %s", data)
+                data = self.data_queue.get(timeout=1)
+                logger.info("Get data from queue: %s", data)
+                dict_data = {"camera_id": self.camera_id, "data":[{"member_id": data, "action":"visit"}]}
 
-                        data = {"camera_id": self.camera_id, "member_id": data}
-                        self.client_socket.send(json.dumps(data).encode())
-                        logger.info(f"Send data : {data}")
+                self.client_socket.send(json.dumps(dict_data).encode())
+                logger.info(f"Send data : {dict_data}")
 
-                    except queue.Empty:
-                        #logger.warning("Queue is empty.")
-                        break
-
-            except (BrokenPipeError, socket.error) as e:
-                logger.error("Error in TCPSender thread: %s", e)
-                time.sleep(5)
+            else:
+                #logger.info("Waiting Face recognition")
+                time.sleep(1)
+                continue
             
-            finally:
-                if self.socket:
-                    self.socket.close()
-                    logger.info("Client Socket closed")
-
     def stop(self):
         self.running = False
-        logger.info("TCPSender thread stopping")
+        logger.info("TCPSenderThread stopping")

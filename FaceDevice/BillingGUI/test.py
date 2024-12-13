@@ -12,6 +12,7 @@ from PyQt5.QtTest import QTest
 
 from commons.logger import logger
 from test_signin import CameraThread
+#from test_TCPsender import TCPSenderThread
 from test_TCPserver import TCPServerThread
 from CartProcess import CartThread
 
@@ -40,6 +41,7 @@ class SigninWindowClass(QMainWindow, signinwindow):
         self.camera_thread.signin_signal.connect(self.notice_signin)
         self.camera_thread.start()
 
+        #self.tcp_sender_thread = TCPSenderThread(self.member_queue)
         self.tcpserver_thread = TCPServerThread(self.cart_queue)
         self.tcpserver_thread.start()
     
@@ -50,11 +52,16 @@ class SigninWindowClass(QMainWindow, signinwindow):
     def sleep(self):
         QTest.qWait(1000)
 
-
     @pyqtSlot(np.ndarray)
-    def camera_update(self, frame):
-        if frame:
+    def camera_update(self, img):
             logger.info("frame in camera_update method")
+            raw_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            h, w, c = raw_img.shape
+            qimage = QImage(raw_img.data, w, h, w*c, QImage.Format_RGB888)
+
+            pixmap = QPixmap.fromImage(qimage)
+            pixmap = pixmap.scaled(640, 480, Qt.KeepAspectRatio)
+            self.CameraLabel.setPixmap(pixmap)
 
     @pyqtSlot(int)
     def notice_signin(self, member_id):
@@ -73,18 +80,19 @@ class SigninWindowClass(QMainWindow, signinwindow):
                 except Exception as e:
                     logger.info(f"Error in cart_queue : {e}")
 
-        
+
 class CartWindowClass(QWidget, cartwindow):
     def __init__(self, cart):
         super().__init__()
         self.setupUi(self)
         self.show()
-        self.cart = cart
+
         self.CartTable.setRowCount(0)
         self.CartTable.setColumnCount(3)
         self.CartTable.setHorizontalHeaderLabels(["Item", "Count", "Price"])
 
         self.MakePaymentButton.clicked.connect(self.goto_next_window)
+        self.cart = cart
         if self.cart :
             self.listup_cart()
 
