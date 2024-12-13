@@ -27,17 +27,23 @@ class DataSendThread(threading.Thread):
                 logger.info(f"{self.dest_ip}에 연결되었습니다.")
 
                 while self._is_running:
-                    try:
                         # JSON 데이터 생성 및 송신
+                    if not self.res_data_queue.empty():
                         data = self.res_data_queue.get(timeout=1)
                         # data = {1: 4, 2: 1, 3: 9, 4: 1}
                         logger.info(f"get data out from res_data_queue: {data}")
                         self.socket.send(json.dumps(data).encode())
+                        time.sleep(0.1)
                         logger.info(f"데이터 송신: {data}")
-                    except Empty:
-                        # 데이터 큐가 비었을 경우 무시
-                        logger.info("Empty res_data_queue")
+                    else: 
+                        time.sleep(0.5)
                         continue
+                    
+                    
+                    # except Empty:
+                    #     # 데이터 큐가 비었을 경우 무시
+                    #     logger.info("Empty res_data_queue")
+                    #     continue
                             # except (BrokenPipeError, socket.error) as e:
                             #     logger.error(f"송신 오류 발생: {e}. 연결 종료 후 재시도.")
                             #     break  # 내부 while 종료 후 재연결 시도
@@ -46,14 +52,15 @@ class DataSendThread(threading.Thread):
                 logger.error(f"연결 오류: {e}. 5초 후 재시도...")
                 time.sleep(5)  # 재연결 대기
 
-            finally:
-                if self.socket:
-                    self.socket.close()
-                    logger.info("클라이언트 소켓 닫음.")
+            # finally:
+            #     if self.socket:
+            #         self.socket.close()
+            #         logger.info("클라이언트 소켓 닫음.")
 
     def stop(self):
         """스레드 중지"""
         self._is_running = False
         if self.socket:
             self.socket.close()
+        print('Thread stopping')
         logger.info("스레드 중지 요청.")

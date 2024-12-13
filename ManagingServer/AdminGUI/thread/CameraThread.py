@@ -17,53 +17,44 @@ class CameraThread(threading.Thread):
 
     def run(self):
         """카메라와의 TCP 통신"""
-        try:
-            self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
-            self.server_socket.bind((self.client, self.server_port))
-            self.server_socket.listen() # 서버가 연결을 수락한 상태
-            logger.info("TCP 서버 실행 중...")
 
-            while self._is_running:
-                try:
-                    # 데이터 수신
-                    client_socket, addr = self.server_socket.accept()   # 연결 받아들임. (데이터를 보내고 받을 수 있는 새로운 소켓 객체, 연결의 다른 끝에 있는 소켓에 바인드 된 주소)
-                    logger.info(f"카메라 {self.camera_id}: 클라이언트 연결 -> {addr}")
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
+        self.server_socket.bind((self.client, self.server_port))
+        self.server_socket.listen() # 서버가 연결을 수락한 상태
+        logger.info("TCP 서버 실행 중...")
 
-                    try:
-                        while True:
-                            data = client_socket.recv(1024).decode()
-                            if not data:
-                                logger.info(f"카메라 {self.camera_id}: 클라이언트 연결 종료 -> {addr}")
-                                break
+        while self._is_running:
+            # 데이터 수신
+            client_socket, addr = self.server_socket.accept()   # 연결 받아들임. (데이터를 보내고 받을 수 있는 새로운 소켓 객체, 연결의 다른 끝에 있는 소켓에 바인드 된 주소)
+            logger.info(f"카메라 {self.camera_id}: 클라이언트 연결 -> {addr}")
 
-                            logger.info(f"카메라 {self.camera_id}: 데이터 수신 -> {data}")
+            try:
+                while True:
+                    data = client_socket.recv(1024).decode()
+                    if not data:
+                        # logger.info("카메라 {self.camera_id}: no data -> {addr}")
+                        time.sleep(1)
+                        continue
 
-                            # 우선순위에 따라 큐에 데이터 put
-                            if self.camera_id == "Face":
-                                self.data_queue.put((1, data))
-                                logger.info(f"카메라 {self.camera_id}: priority num 1")
-                            elif self.camera_id == "Purchase":
-                                self.data_queue.put((1, data))
-                                logger.info(f"카메라 {self.camera_id}: priority num 1")
-                            elif self.camera_id == "Cart":
-                                self.data_queue.put((2, data))
-                                logger.info(f"카메라 {self.camera_id}: priority num 2")
-                            elif self.camera_id == "Fruit":
-                                self.data_queue.put((3, data))
-                                logger.info(f"카메라 {self.camera_id}: priority num 3")
+                    logger.info(f"카메라 {self.camera_id}: 데이터 수신 -> {data}")
 
-                    except Exception as e:
-                        logger.error(f"카메라 {self.camera_id}: 클라이언트 통신 중 오류 발생 -> {str(e)}")
-                    finally:
-                        client_socket.close()
-                except Exception as e:
-                    logger.error(f"클라이언트 연결 처리 중 오류 발생: {str(e)}")
-        except Exception as e:
-            logger.critical(f"서버 시작 중 오류 발생: {str(e)}")
-        finally:
-            """초기화 중 오류, 클라이언트 통신 중 오류, 정상 종료 시"""
-            self.cleanup()
+                    # 우선순위에 따라 큐에 데이터 put
+                    if self.camera_id == "Face":
+                        self.data_queue.put((1, data))
+                        logger.info(f"카메라 {self.camera_id}: priority num 1")
+                    elif self.camera_id == "Cart":
+                        self.data_queue.put((2, data))
+                        logger.info(f"카메라 {self.camera_id}: priority num 2")
+                    elif self.camera_id == "Fruit":
+                        self.data_queue.put((3, data))
+                        logger.info(f"카메라 {self.camera_id}: priority num 3")
+
+            except Exception as e:
+                logger.error(f"카메라 {self.camera_id}: 클라이언트 통신 중 오류 발생 -> {str(e)}")
+                client_socket.close()
+            # finally:
+            #     #client_socket.close()
 
     def send_data(self, message):
         """데이터 전송"""
