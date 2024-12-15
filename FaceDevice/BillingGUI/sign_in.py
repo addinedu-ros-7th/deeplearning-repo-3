@@ -1,17 +1,13 @@
+import threading
 import cv2
 import numpy as np
-import sys
-import queue
 
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem
 from PyQt5.QtGui import QPixmap, QImage
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
+from PyQt5.QtCore import Qt, QThread, pyqtSignal
 
 from commons.logger import logger
-#from commons.database import database
+from commons import dir_utils
 
-CAM_NUM = 0
 
 logger = logger()
 
@@ -19,15 +15,14 @@ class CameraThread(QThread):
     update = pyqtSignal(np.ndarray)
     signin_signal = pyqtSignal(int)
 
-    def __init__(self, member_qeuue):
-        super().__init__()
-        self.member_queue = member_qeuue
+    def __init__(self, parent=None):
+        super(CameraThread, self).__init__(parent)
         self.running = True
 
-        logger.info("CameraThread starting")
-    
     def run(self):
-        cap = cv2.VideoCapture(CAM_NUM)
+        logger.info("CameraThread is starting")
+        cap = cv2.VideoCapture(0)
+
         while self.running:
             try:
                 has_frame, frame = cap.read()
@@ -35,22 +30,19 @@ class CameraThread(QThread):
                     logger.warning("Failed to capture frame from the camera. Check camera connection or configuration.")
                     break
                 self.update.emit(frame)
-                logger.info(f"Emit frame as update signal : {type(frame)}")
 
+                # Perform face recognization with DeepFace Module before running below lines---------------------------
                 member_id = 1
                 if member_id:
                     logger.info(f"Face Detected : {member_id}")
-                    self.member_queue.put(member_id)
-                    logger.info(f"Put member_id to queue: {member_id}")
                     self.signin_signal.emit(member_id)
-                    logger.info(f"Emit member_id as signin signal : {member_id}")
                     break
-                
+                #-------------------------------------------------------------------------------------------------------
+            
             except Exception as e:
                 logger.error("Error in CameraThread running: %s", e)
-                self.running = False
-
+                self.running = False 
 
     def stop(self):
         self.running = False
-        logger.info("CameraThread stopping")    
+        logger.info("CameraThread has been stopped")
