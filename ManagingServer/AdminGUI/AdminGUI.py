@@ -11,7 +11,12 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
 from DBConnector import DBThread
 from PoseDetector import VideoThread
 from thread.custom_classes import Person,Visitor,Event
-from thread.ThreadManager import ThreadManager
+
+from PyQt5.QtNetwork import QHostAddress
+
+from TcpServer import TcpServer, DataRecvThread
+from DataProcessor import DataProcessor
+
 import pymysql
 
 #logger = setup_logger()
@@ -42,17 +47,33 @@ class WindowClass(QMainWindow, from_class):
         self.thread.file_path.connect(self.save_video_path)  # 경로 신호 연결
         self.thread.start()  # 스레드 실행
 
-        self.thread_manager = ThreadManager()
+        # Camera data processor
+        dataProcessor = DataProcessor()
 
-        # DataProcessorThread 시작
-        self.thread_manager.add_dataprocessor()
+        # Face Cam Network setting
+        faceDataRecvThread = DataRecvThread("Face")
+        face_server = TcpServer(host=QHostAddress.Any, port=5001, camera_id="Face")
+        face_server.startServer()
 
-        # 카메라 추가
-        self.thread_manager.add_camera(camera_id="Face", client="0.0.0.0", port=5001)
-        self.thread_manager.add_camera(camera_id="Cart", client="0.0.0.0", port=5002)
-        self.thread_manager.add_camera(camera_id="Fruit", client="0.0.0.0", port=5003)
+        face_server.newConnection.connect(faceDataRecvThread.startThread)
+        faceDataRecvThread.dataRecv.connect(dataProcessor.faceProcessor)
 
-        #self.thread_manager.add_datasender(dest_ip="192.168.0.74", dest_port=5005)
+        # Fruit Cam Network setting
+        fruitDataRecvThread = DataRecvThread("Fruit")
+        fruit_server = TcpServer(host=QHostAddress.Any, port=5002, camera_id="Fruit")
+        fruit_server.startServer()
+
+        fruit_server.newConnection.connect(fruitDataRecvThread.startThread)
+        fruitDataRecvThread.dataRecv.connect(dataProcessor.fruitProcessor)
+
+        # Cart Cam Network setting
+        cartDataRecvThread = DataRecvThread("Cart")
+        cart_server = TcpServer(host=QHostAddress.Any, port=5003, camera_id="Cart")
+        cart_server.startServer()
+
+        cart_server.newConnection.connect(cartDataRecvThread.startThread)
+        cartDataRecvThread.dataRecv.connect(dataProcessor.cartProcessor)
+
         
 
         # DB 스레드 초기화
