@@ -31,8 +31,9 @@ class TcpServer(QTcpServer):
 
         print(f"New client connected: {self.client_socket.peerAddress().toString()}:{self.client_socket.peerPort()}")
         self.newConnection.emit(self.client_socket)
-        self.client_socket.disconnected.connect(self.closeClient)
         self.client_socket.errorOccurred.connect(lambda error: self.closeErrorClient(error))
+        self.client_socket.disconnected.connect(self.closeClient)
+        
 
     def closeClient(self):
         self.client_socket.close()
@@ -71,6 +72,7 @@ class DataRecvThread(QThread):
             while self.client_socket.bytesAvailable():
                 # PySide2.QtCore.QIODevice.readAll():
                 #   Reads all remaining data from the device, and returns it as a byte array.
+                print("bytes available")
                 data = self.client_socket.readAll().data().decode('utf-8')
                 print(f"raw data {data} received")
                 json_data = json.loads(data)

@@ -67,6 +67,7 @@ class DataProcessor(QObject):
 
     def faceProcessor(self, client_socket: QTcpSocket, data):
         print(f"faceProcessor got {data}")
+        data = data["data"][0]
         member_id = data["member_id"]
         action = data["action"]
         logger.info(f"member_id = {member_id}, action = {action}")
