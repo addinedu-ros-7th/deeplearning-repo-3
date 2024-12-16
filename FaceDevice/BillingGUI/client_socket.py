@@ -13,27 +13,26 @@ class ClientThread(QThread):
         super(ClientThread, self).__init__(parent)
         self.server_host = client["SERVER_HOST"]
         self.server_port = client["SERVER_PORT"]
-
-        self.camera_thread  = camera_thread
-        self.running = True
-        
         try:
             self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.client_socket.connect((self.server_host, self.server_port))
             logger.error("Client Socket has been connected")
-            
+
         except Exception as e :
             self.client_socket.close()
             logger.error(f"Client socket setup failed : {e}")
 
+        self.camera_thread  = camera_thread        
+        self.recv_thread = RecvThread(self.client_socket)
+        self.running = True
 
     def run(self):
         if self.running:
             logger.info("ClientThread is starting")
             self.camera_thread.start()
+            self.recv_thread.start()
             self.exec_()
     
-
     def send(self, data, status):
         if status:
             dict_data = {"camera_id": "Face", "data": [{"member_id": data, "action": "visit"}]}
@@ -47,7 +46,6 @@ class ClientThread(QThread):
         self.client_socket.send(send_data)
         logger.info(f"Data has been send to AdminGUI : {dict_data}")
 
-
     def stop(self):
         self.running = False
         if self.camera_thread.isRunning():
@@ -56,3 +54,31 @@ class ClientThread(QThread):
         self.quit()
         self.wait()
         logger.info("ClientThread has been stopped")
+
+
+class RecvThread(QThread):
+    cart_signal = pyqtSignal(str)
+
+    def __init__(self, client_socket, parent=None):
+        super(RecvThread, self).__init__(parent)
+        self.client_socket = client_socket
+        self.running = True
+
+    def run(self):
+        logger.info("recv thread running")
+        while self.running:
+            try:
+                data = self.client_socket.recv(1024).decode()
+                #data = """[{"fruit_name": "Apple", "count": 1, "price": 1000}, {"fruit_name": "Peach", "count": 1, "price": 1000}]"""
+                if data is None:
+                    continue
+                self.cart_signal.emit(data)
+                logger.info(f"Data has been received from AdminGUI: {data}")
+                #break
+            except Exception as e:
+                logger.info(f"Error receiving data : {e}")
+        self.exec_()
+
+    def stop(self):
+        self.running = False
+        logger.info("RecvThread has been stopped")

@@ -15,7 +15,6 @@ from commons.logger import logger
 
 from sign_in import CameraThread
 from client_socket import ClientThread
-from server_socket import ServerThread
 
 logger = logger()
 
@@ -40,10 +39,6 @@ class SigninWindowClass(QMainWindow, signinwindow):
 
         self.client_thread = ClientThread(self.camera_thread)
         self.client_thread.start()
-
-        self.server_thread = ServerThread()
-        self.server_thread.cart_signal.connect(self.goto_next_window)
-        self.server_thread.start()
 
     def closeEvent(self, event):
         if self.client_thread.isRunning():
