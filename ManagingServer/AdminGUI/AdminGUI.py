@@ -50,7 +50,7 @@ class WindowClass(QMainWindow, from_class):
         self.thread.start()  # 스레드 실행
 
         # Camera data processor
-        dataProcessor = DataProcessor()
+        self.dataProcessor = DataProcessor()
 
         # Face Cam Network setting
         faceDataRecvThread = DataRecvThread("Face")
@@ -58,7 +58,7 @@ class WindowClass(QMainWindow, from_class):
         face_server.startServer()
 
         face_server.newConnection.connect(faceDataRecvThread.startThread)
-        faceDataRecvThread.dataRecv.connect(dataProcessor.faceProcessor)
+        faceDataRecvThread.dataRecv.connect(self.dataProcessor.faceProcessor)
 
         # Fruit Cam Network setting
         fruitDataRecvThread = DataRecvThread("Fruit")
@@ -66,7 +66,7 @@ class WindowClass(QMainWindow, from_class):
         fruit_server.startServer()
 
         fruit_server.newConnection.connect(fruitDataRecvThread.startThread)
-        fruitDataRecvThread.dataRecv.connect(dataProcessor.fruitProcessor)
+        fruitDataRecvThread.dataRecv.connect(self.dataProcessor.fruitProcessor)
 
         # Cart Cam Network setting
         cartDataRecvThread = DataRecvThread("Cart")
@@ -74,7 +74,7 @@ class WindowClass(QMainWindow, from_class):
         cart_server.startServer()
 
         cart_server.newConnection.connect(cartDataRecvThread.startThread)
-        cartDataRecvThread.dataRecv.connect(dataProcessor.cartProcessor)
+        cartDataRecvThread.dataRecv.connect(self.dataProcessor.cartProcessor)
 
         
 
@@ -99,7 +99,7 @@ class WindowClass(QMainWindow, from_class):
         self.db_thread.start()
 
         # 카트데이터와 매대 데이터 업데이트
-        self.shelves_carts = ShelvesAndCarts(self.thread_manager)
+        self.shelves_carts = ShelvesAndCarts(self.dataProcessor)
         self.shelves_carts.carts.connect(self.update_carts)
         self.shelves_carts.shelves.connect(self.update_shelves)
         self.shelves_carts.start()

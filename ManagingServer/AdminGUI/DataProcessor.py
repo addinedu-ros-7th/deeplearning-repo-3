@@ -312,8 +312,8 @@ class DataProcessor(QObject):
         conn = mysql.connector.connect(
             host = "localhost",
             user = "root",
-            password = "1111",
-            database="f2mbase"
+            password = "whdgh29k05",
+            database="f2mdatabase"
         )
         return conn
         
