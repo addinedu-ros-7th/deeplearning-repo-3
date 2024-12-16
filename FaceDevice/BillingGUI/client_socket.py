@@ -16,22 +16,20 @@ class ClientThread(QThread):
 
         self.camera_thread  = camera_thread
         self.running = True
-
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as self.client_socket:
-            try:
-                if (self.client_socket.connect((self.server_host, self.server_port)) == -1):
-                    logger.error("Client Socket connect() failed")
-                    self.client_socket.close()
-                    return
-            except Exception as e :
-                logger.error(f"Client socket connect() failed : {e}")
-                return
+        
+        try:
+            self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.client_socket.connect((self.server_host, self.server_port))
+            logger.error("Client Socket has been connected")
+            
+        except Exception as e :
+            self.client_socket.close()
+            logger.error(f"Client socket setup failed : {e}")
 
 
     def run(self):
         if self.running:
             logger.info("ClientThread is starting")
-            logger.info("Connection to AdminCUI is success")
             self.camera_thread.start()
             self.exec_()
     
@@ -41,8 +39,11 @@ class ClientThread(QThread):
             dict_data = {"camera_id": "Face", "data": [{"member_id": data, "action": "visit"}]}
         else:
             dict_data = {"camera_id": "Purchase", "data": [{"member_id": data, "action": "yes"}]}
+        print(f"dict_data : {dict_data} , data type :  {type(dict_data)}")
 
         send_data = json.dumps(dict_data).encode()
+        print(f"send_data : {send_data} , data type :  {type(send_data)}")
+
         self.client_socket.send(send_data)
         logger.info(f"Data has been send to AdminGUI : {dict_data}")
 
