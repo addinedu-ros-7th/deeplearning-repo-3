@@ -13,8 +13,9 @@ from PyQt5.QtTest import QTest
 from commons.logger import logger
 #from commons.database import database
 
-from sign_in import CameraThread
+#from sign_in import CameraThread
 from client_socket import ClientThread
+from server_socket_for_img import ServerThread as CameraThread
 
 logger = logger()
 
@@ -30,15 +31,17 @@ class SigninWindowClass(QMainWindow, signinwindow):
         self.setupUi(self)
         self.show()
         logger.info("open main window============================")
-        self.member_queue = queue.Queue()
-        self.cart_queue = queue.Queue()
+        self.member = None
 
         self.camera_thread = CameraThread()
         self.camera_thread.update.connect(self.camera_update)
         self.camera_thread.signin_signal.connect(self.notice_signin)
+        self.camera_thread.start()
 
-        self.client_thread = ClientThread(self.camera_thread)
-        self.client_thread.start()
+        #self.client_thread = ClientThread(self.camera_thread)
+        #self.client_thread.cart_signal.connect(self.goto_next_window)
+        #self.client_thread.start()
+
 
     def closeEvent(self, event):
         if self.client_thread.isRunning():
@@ -67,8 +70,6 @@ class SigninWindowClass(QMainWindow, signinwindow):
     def goto_next_window(self, cart_str):
         self.hide()
         self.next_window = CartWindowClass(cart_str, self)
-        #self.next_window.exec() # wait next window closing
-        #self.show()             # re-show when next window is closed
 
 
 class CartWindowClass(QWidget, cartwindow):
@@ -92,6 +93,7 @@ class CartWindowClass(QWidget, cartwindow):
     #def goto_before_window(self):
         
     def goto_next_window(self):
+        self.signin_window.client_thread.send(self.signin_window.member, True)
         self.hide()
         self.next_window = PaymentWindowClass(self.signin_window)
 
