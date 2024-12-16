@@ -13,6 +13,8 @@ from PoseDetector import VideoThread
 from thread.custom_classes import Person,Visitor,Event
 from thread.ThreadManager import ThreadManager
 import pymysql
+from datetime import datetime
+
 
 #logger = setup_logger()
 
@@ -80,6 +82,8 @@ class WindowClass(QMainWindow, from_class):
         self.shelves_carts.carts.connect(self.update_carts)
         self.shelves_carts.shelves.connect(self.update_shelves)
         self.shelves_carts.start()
+
+        self.saved_video_path = ""
 
     #-------------------------------------------------------------------로그 GUI 관련 함수
 
@@ -205,6 +209,38 @@ class WindowClass(QMainWindow, from_class):
         """사람이 포즈를 취했을 때 호출"""
         if track_id in self.person_states:
             self.person_states[track_id].posed = True
+            try:
+                # 현재 시간 가져오기
+                event_dttm = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+                # MySQL 데이터베이스 연결
+                conn = pymysql.connect(
+                    host="localhost",
+                    user="root",
+                    password="whdgh29k05",
+                    db="f2mdatabase",
+                    charset="utf8mb4"
+                )
+                cursor = conn.cursor()
+
+                # 방문 기록에서 가장 최근 visit_id 가져오기
+                # (이미 self.person_states[track_id].visit_id로 visit_id를 가지고 있다고 가정)
+                query = f"""
+                    INSERT INTO event_info (visit_id, event_status, event_dttm, file_path) VALUES
+                    ({self.person_states[track_id].visit_id}, 1, '{event_dttm}', '{self.saved_video_path}')
+                """
+                cursor.execute(query)
+                conn.commit()  # 변경사항 커밋
+
+            except pymysql.MySQLError as e:
+                print(f"MySQL Error: {e}")
+
+            finally:
+                if 'cursor' in locals():
+                    cursor.close()
+                if 'conn' in locals() and conn.open:
+                    conn.close()
+
             print(f"Person {track_id} posed")
 
     @pyqtSlot(int)
