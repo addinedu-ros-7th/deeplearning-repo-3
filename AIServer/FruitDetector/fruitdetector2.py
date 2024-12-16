@@ -13,7 +13,7 @@ class SharedData:
     def __init__(self):
         # 쓰레드 간 데이터 접근 동기화를 위한 Lock
         self.lock = Lock()
-        # 감지된 데이터를 저장할 딕셔너리
+        # 감지된 데이터를 저장할 딕셔너리 {fruit_id: count}
         self.detections_dict = {}
 
 # YOLO 감지 작업을 수행하는 쓰레드 클래스
@@ -39,9 +39,8 @@ class YOLOThread(Thread):
             for box in results[0].boxes:
                 cls_id = int(box.cls[0].item())  # 클래스 ID
                 label = results[0].names[cls_id]  # 클래스 이름
-                fruit_id, fair = self.parse_label(label)  # 클래스 이름을 fruit_id와 상태로 변환
-                key = (fruit_id, fair)
-                current_detections[key] = current_detections.get(key, 0) + 1
+                fruit_id = self.parse_label(label)  # 클래스 이름을 fruit_id로 변환
+                current_detections[fruit_id] = current_detections.get(fruit_id, 0) + 1
 
             # 공유 데이터를 업데이트 (Lock 사용)
             with self.shared_data.lock:
@@ -50,9 +49,8 @@ class YOLOThread(Thread):
             # 결과를 디스플레이에 표시
             display_frame = frame.copy()
             y_pos = 20
-            for (fruit_id, fair), count in current_detections.items():
-                fair_text = "fair" if fair else "defective"
-                label_text = f"Fruit ID {fruit_id} ({fair_text}): {count}"
+            for fruit_id, count in current_detections.items():
+                label_text = f"Fruit ID {fruit_id}: {count}"
                 cv2.putText(display_frame, label_text, (10, y_pos), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0), 2)
                 y_pos += 30
@@ -71,14 +69,15 @@ class YOLOThread(Thread):
         self.running = False
 
     def parse_label(self, label):
-        # 클래스 이름을 fruit_id와 상태로 매핑
+        # 클래스 이름을 fruit_id로 매핑
+        # 요청한 형태에 맞추어 fruit_id를 단일 정수로 매핑합니다.
         label_mapping = {
-            "apple_defective": (1, 0), "apple_fair": (1, 1),
-            "peach_defective": (2, 0), "peach_fair": (2, 1),
-            "pomegranate_defective": (3, 0), "pomegranate_fair": (3, 1),
-            "mandarin_defective": (4, 0), "mandarin_fair": (4, 1)
+            "apple_defective": 0, "apple_fair": 1,
+            "mandarin_defective": 2, "mandarin_fair": 3,
+            "peach_defective": 4, "peach_fair": 5,
+            "pomegranate_defective": 6, "pomegranate_fair": 7
         }
-        return label_mapping.get(label, (0, 0))
+        return label_mapping.get(label, -1)  # 매칭 안될 경우 -1
 
 # 감지 데이터를 서버로 전송하는 쓰레드 클래스
 class EmitThread(Thread):
@@ -95,11 +94,10 @@ class EmitThread(Thread):
             time.sleep(10)
             with self.shared_data.lock:
                 # 공유 데이터를 JSON 형식으로 변환
+                # {“camera_id”: “Fruit”, “data”: [{"fruit_id":1, "stock": 3}, ...]}
                 data_to_send = {
-                    "camera_id" : "Fruit",
-                    "data" : [
-                        {"fruit_id": fruit_id, "fair": fair, "quantity": count} for (fruit_id, fair), count in self.shared_data.detections_dict.items()
-                    ]
+                    "camera_id": "Fruit",
+                    "data": [{"fruit_id": fruit_id, "stock": count} for fruit_id, count in self.shared_data.detections_dict.items()]
                 }
             try:
                 # 서버에 연결하여 데이터 전송
@@ -131,7 +129,7 @@ if __name__ == '__main__':
 
     # 서버 설정
     server_ip = '192.168.0.100'  # 서버 IP
-    server_port = 5003       # 서버 포트
+    server_port = 5003           # 서버 포트
 
     # 데이터 전송 쓰레드 시작
     emit_thread_cam2 = EmitThread(shared_data_cam2, server_ip, server_port)
