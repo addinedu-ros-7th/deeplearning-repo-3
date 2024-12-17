@@ -166,7 +166,7 @@ if __name__ == '__main__':
     yolo_thread_cam2.start()
 
     # 서버 설정
-    server_ip = '192.168.0.100'  # 서버 IP
+    server_ip = '192.168.0.202'  # 서버 IP
     server_port = 5003           # 서버 포트
 
     # 데이터 전송 쓰레드 시작
