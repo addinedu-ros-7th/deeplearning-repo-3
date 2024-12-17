@@ -235,7 +235,6 @@ class DataProcessor(QObject):
         logger.info(f"사용 중인 cart_cam: {using_carts}")
         #with self.lock:
         for cart in data:
-            # cart = {"cart_cam": 1, "fruits": [{1: 3, 2: 4, 3: 5}]}
             cart_cam = cart["cart_cam"]
             logger.info(f"data's cart_cam: {cart_cam}")
             # fruits = {1: 3, 2: 4, 3: 5}
@@ -260,7 +259,7 @@ class DataProcessor(QObject):
                 cursor = conn.cursor()
 
                 if fruits:
-                    current_fruit_ids = set(fruits.keys())
+                    current_fruit_ids = set(map(int, fruits.keys()))
                     previous_fruit_ids = set(visitor.cart.data.keys())
                     
 
