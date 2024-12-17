@@ -22,6 +22,23 @@ class YOLOThread(Thread):
         self.cap = cap
         self.running = True
 
+        # fruit_name: fruit_id 매핑 (DB 스키마에 따른 매핑)
+        # fruit_id 기준
+        # apple_defective=0, apple_fair=1
+        # mandarin_defective=2, mandarin_fair=3
+        # peach_defective=4, peach_fair=5
+        # pomegranate_defective=6, pomegranate_fair=7
+        self.label_mapping = {
+            "apple_defective": 0,
+            "apple_fair": 1,
+            "mandarin_defective": 2,
+            "mandarin_fair": 3,
+            "peach_defective": 4,
+            "peach_fair": 5,
+            "pomegranate_defective": 6,
+            "pomegranate_fair": 7
+        }
+
     def run(self):
         while self.running:
             ret, frame = self.cap.read()
@@ -38,7 +55,11 @@ class YOLOThread(Thread):
             for box in results[0].boxes:
                 cls_id = int(box.cls[0].item())
                 label = results[0].names[cls_id]
-                fruit_id, fair = self.parse_label(label)
+                
+                # fruit_id 매핑
+                fruit_id = self.parse_label(label)
+                if fruit_id is None:
+                    continue
 
                 # 박스의 중심 좌표 계산
                 x_center = (box.xywh[0][0].item() + box.xywh[0][2].item()) / 2
@@ -47,8 +68,7 @@ class YOLOThread(Thread):
                 cart_id = self.assign_cart(x_center)
 
                 if cart_id:
-                    key = (fruit_id, fair)
-                    current_detections[cart_id][key] = current_detections[cart_id].get(key, 0) + 1
+                    current_detections[cart_id][fruit_id] = current_detections[cart_id].get(fruit_id, 0) + 1
 
                 # 바운딩 박스 좌표 및 신뢰도 추출
                 x1, y1, x2, y2 = map(int, box.xyxy[0])  # 좌표 변환
@@ -70,10 +90,10 @@ class YOLOThread(Thread):
                 cv2.line(display_frame, (x, 0), (x, height), (255, 0, 0), 2)
 
             y_pos = 20
+            # 화면 표시시 fruit_id를 직접 출력하거나, 필요하다면 fruit_id->라벨 변환 테이블을 둘 수도 있음
             for cart_id, fruits in current_detections.items():
-                for (fruit_id, fair), count in fruits.items():
-                    fair_text = "fair" if fair else "defective"
-                    label_text = f"Cart {cart_id} - Fruit ID {fruit_id} ({fair_text}): {count}"
+                for fruit_id, count in fruits.items():
+                    label_text = f"Cart {cart_id} - Fruit ID {fruit_id}: {count}"
                     cv2.putText(display_frame, label_text, (10, y_pos),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                     y_pos += 30
@@ -90,16 +110,9 @@ class YOLOThread(Thread):
         self.running = False
 
     def parse_label(self, label):
-        label_mapping = {
-            "apple_defective": (1, 0), "apple_fair": (1, 1),
-            "mandarin_defective": (2, 0), "mandarin_fair": (2, 1),
-            "peach_defective": (3, 0), "peach_fair": (3, 1),
-            "pomegranate_defective": (4, 0), "pomegranate_fair": (4, 1)
-        }
-        return label_mapping.get(label, (0, 0))
+        return self.label_mapping.get(label, None)
 
     def assign_cart(self, x_center):
-        #print(x_center)
         if x_center < 120:
             return 1
         elif x_center < 220:
@@ -152,7 +165,7 @@ class EmitThread(Thread):
                             {
                                 "cart_cam": cart_id,
                                 "fruits": [
-                                    {fruit_id: count for (fruit_id, _), count in self.shared_data.detections_dict.get(cart_id, {}).items()}
+                                    {fruit_id: count for fruit_id, count in self.shared_data.detections_dict.get(cart_id, {}).items()}
                                     if self.shared_data.detections_dict.get(cart_id) else {}
                                 ]
                             }
@@ -183,7 +196,7 @@ if __name__ == '__main__':
 
     cap2 = cv2.VideoCapture(0)
     if not cap2.isOpened():
-        print("Error: Camera 2 (index 2) could not be opened.")
+        print("Error: Camera 2 (index 0) could not be opened.")
         exit(1)
 
     yolo_thread_cam2 = YOLOThread(shared_data_cam2, cap2)
