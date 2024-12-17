@@ -3,6 +3,7 @@ import sys
 
 import numpy as np
 import socket
+import json
 import cv2
 import time
 import datetime
@@ -16,11 +17,11 @@ from recognition import RecognitionHandler
 
 logger = logger()
 
-class ClientSocket(threading.Thread):
+class ClientThread(threading.Thread):
     def __init__(self):
         super().__init__()
-        #self.server_ip = "192.168.0.74"
-        self.server_ip = "192.168.45.95"
+        self.server_ip = "192.168.0.74"
+        #self.server_ip = "192.168.45.95"
         self.server_port = 5005
 
         try:
@@ -43,38 +44,23 @@ class ClientSocket(threading.Thread):
 
 
     def send_images(self, frame):
-        #capture = cv2.VideoCapture(0)
-        #capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        #capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        #logger.info(f"Received frmae: {type(frame)}")
+        capture = cv2.VideoCapture(0)
+        capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        logger.info(f"Received frame: {type(frame)}")
         try:
             resize_frame = cv2.resize(frame, dsize=(640, 480), interpolation=cv2.INTER_AREA)
             encode_param=[int(cv2.IMWRITE_JPEG_QUALITY),90]
             result, imgencode = cv2.imencode('.jpg', resize_frame, encode_param)
             data = np.array(imgencode)
             stringData = base64.b64encode(data)
-            length = str(len(stringData))
-            #logger.info("Try to send data to server")
-            self.client_socket.sendall(length.encode('utf-8').ljust(64))
-            self.client_socket.send(stringData)
-            #logger.info("string data has been send")
-            #logger.info("current frame has been send")"""
-            """
-            while capture.isOpened():
-                ret, frame = capture.read()
-                resize_frame = cv2.resize(frame, dsize=(640, 480), interpolation=cv2.INTER_AREA)
-                
-                encode_param=[int(cv2.IMWRITE_JPEG_QUALITY),90]
-                result, imgencode = cv2.imencode('.jpg', resize_frame, encode_param)
-                data = np.array(imgencode)
-                stringData = base64.b64encode(data)
-                length = str(len(stringData))
+            #length = str(len(stringData))
 
-                #logger.info("Try to send data to server")
-                self.client_socket.sendall(length.encode('utf-8').ljust(64))
-                self.client_socket.send(stringData)
-                #logger.info("string data has been send")
-                #logger.info("current frame has been send")"""
+            header = f"img|{len(stringData)}".encode('utf-8').ljust(64)
+
+            self.client_socket.send(header)
+            #self.client_socket.sendall(length.encode('utf-8').ljust(64))
+            self.client_socket.send(stringData)
 
         except Exception as e:
             logger.error(f"Error in sending image : {e}")
@@ -82,32 +68,55 @@ class ClientSocket(threading.Thread):
             time.sleep(1)
             #self.connect_server()
             #self.send_images()
-    
+
+
+    def send_data(self, target_id, target_name):
+        logger.info(f"Received data: {target_id} {target_name}")
+        try:
+            dict_data = {"member_id" : target_id, "member_name" : target_name}
+            json_data = json.dumps(dict_data).encode('utf-8')
+
+            header = f"json|{len(json_data)}".encode('utf-8').ljust(64)
+
+            self.client_socket.send(header)
+            self.client_socket.send(json_data)
+            logger.info("Data sent successfully")
+        except Exception as e:
+            logger.error(f"Error in sending data: {e}")
+            self.client_socket.close()
+            time.sleep(1)
+
+
     def run(self):
         try:
-            logger.info("Performing analysis")
             while self.running:
-                
+                #result = self.recognition_handler.analysis(db_path=self.db_path)
                 result = self.recognition_handler.analysis(db_path=self.db_path)
-                if result is not None:
+                time.sleep(0.5)
+                if result:
                     #logger.info(f"result : {type(result)}")
-                    self.send_images(result)
+                    target_id, target_name, frame = result
+                    self.send_images(frame)
+                    self.send_data(target_id, target_name)
                 else :
                     logger.warning("No image returned from analysis")
                     continue
 
         except Exception as e:
-            logger.error("Error in CameraThread: %s", e)
+            logger.error("Error in ClientThread running: %s", e)
             self.client_socket.close()
             logger.info("ClientThread has stopped")
     
     def stop(self):
+        if self.recognition_handler.running == True:
+            self.recognition_handler.running = False
         self.running = False
+        self.client_socket.close()
         logger.info(f"ClientThread has stopped")
 
 
 def main():
-    client_thread = ClientSocket()
+    client_thread = ClientThread()
     client_thread.start()
 
 if __name__ == "__main__":

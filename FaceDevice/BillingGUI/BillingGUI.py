@@ -57,14 +57,22 @@ class SigninWindowClass(QMainWindow, signinwindow):
         pixmap = pixmap.scaled(640, 480, Qt.KeepAspectRatio)
         self.CameraLabel.setPixmap(pixmap)
 
-    @pyqtSlot(int)
+    @pyqtSlot(dict)
     def notice_signin(self, member):
-        if member:
-            self.SigninTextLable.setText(f"Hello, {member}!")
-            logger.info(f"Sign in : {member}")
-            self.client_thread.send(member, False)
+        if member is not None:
+            member_id = member["member_id"]
+            member_name = member["member_name"]
+            if member_id != "Unknown":
+                self.SigninTextLable.setText(f"Hello, {member_name}!")
+                logger.info(f"Sign in : {member_id} {member_name}")
+                #self.client_thread.send(member_id, False)
+            else:
+                self.SigninTextLable.setText(f"Unregistered user")
+                QTest.qWait(1000)
+                self.SigninTextLable.setText(f"Show your face here")
+                
         else:
-            self.SigninTextLable.setText("Unregistered user")
+            self.SigninTextLable.setText("Received data is none")
 
     @pyqtSlot(str)
     def goto_next_window(self, cart_str):
