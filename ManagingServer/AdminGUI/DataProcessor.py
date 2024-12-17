@@ -12,6 +12,9 @@ logger = setup_logger()
 class DataProcessor(QObject):
     def __init__(self):
         super().__init__()
+        self.processors = {"Face": self.faceProcessor, 
+                           "Fruit": self.fruitProcessor, 
+                           "Cart": self.cartProcessor}
         self.lock = threading.Lock
         self.visitors = {}
         self.fruits = {}
@@ -65,7 +68,7 @@ class DataProcessor(QObject):
             logger.info(v)
 
 
-    def faceProcessor(self, client_socket: QTcpSocket, data):
+    def faceProcessor(self, data):
         print(f"faceProcessor got {data}")
         data = data["data"][0]
         member_id = data["member_id"]
@@ -113,6 +116,7 @@ class DataProcessor(QObject):
             logger.info(f"There's visitor: {visitor}")
 
             if visitor.cart.purchase == 0:
+                print("entered purchase == 0")
                 res = []
                 # conn = self.connectF2Mbase()
                 # cursor = conn.cursor()
@@ -149,8 +153,10 @@ class DataProcessor(QObject):
                 # response queue에 put
 
                 res.append({"fruit_name":"apple_fair", "count":10, "price": 1300})
+                print(f"res = {res}")
                 res = json.dumps(res).encode('utf-8')
                 client_socket.write(res)
+                print(f"send data to client: {client_socket.peerAddress().toString()}:{client_socket.peerPort()}")
 
             # 두번째 request의 경우
             elif visitor.cart.purchase == 1:
@@ -169,53 +175,54 @@ class DataProcessor(QObject):
                     # 아니오를 눌렀을 경우 계산하려고 얼굴 인식하기 전으로 visitor 객체 상태 초기화
                     visitor.cart.purchase = 0    
 
-    def fruitProcessor(self, client_socket: QTcpSocket, data):
+    def fruitProcessor(self, data):
         """
         data = [{"fruit_id":1, "stock": 3},
                 {"fruit_id":2, "stock": 2},
                 {"fruit_id":3, "stock": 2}]
         """
-        with self.lock:
-            conn = self.connectF2Mbase()
+        data = data["data"]
+        # with self.lock:
+        conn = self.connectF2Mbase()
 
-            cursor = conn.cursor()
+        cursor = conn.cursor()
 
-            # ThreadManager의 fruit 딕셔너리 안에 저장되어 있는 이전 과일 매대 상태
-            previous_fruit_ids = set(self.fruits.keys())
-            logger.info(f"previous_fruit_ids: {previous_fruit_ids}")
-            # 방금 받은 과일 매대 상태
-            current_fruit_ids = set(map(int, [item["fruit_id"] for item in data]))
-            logger.info(f"current_fruit_ids: {current_fruit_ids}")
+        # ThreadManager의 fruit 딕셔너리 안에 저장되어 있는 이전 과일 매대 상태
+        previous_fruit_ids = set(self.fruits.keys())
+        logger.info(f"previous_fruit_ids: {previous_fruit_ids}")
+        # 방금 받은 과일 매대 상태
+        current_fruit_ids = set(map(int, [item["fruit_id"] for item in data]))
+        logger.info(f"current_fruit_ids: {current_fruit_ids}")
 
-            # 이전엔 있었는데 지금은 없는 과일 재고 0으로 설정
-            zero_fruit_ids = previous_fruit_ids - current_fruit_ids
-            logger.info(f"zero_fruit_ids: {zero_fruit_ids}")
+        # 이전엔 있었는데 지금은 없는 과일 재고 0으로 설정
+        zero_fruit_ids = previous_fruit_ids - current_fruit_ids
+        logger.info(f"zero_fruit_ids: {zero_fruit_ids}")
 
-            if zero_fruit_ids:
-                query = "UPDATE fruit SET stock=0 WHERE fruit_id IN (%s)" % (
-                    ", ".join(["%s"] * len(zero_fruit_ids)))
-                cursor.execute(query, tuple(zero_fruit_ids))
-                logger.info(f"{zero_fruit_ids} updated to 0")
-
-
-            # 과일 매대 재고 업데이트
-            fruit_quantities = [(item["quantity"], item["fruit_id"]) for item in data]
-            logger.info(f"73: fruit_quantities: {fruit_quantities}")
-            if fruit_quantities:
-                query = "UPDATE fruit SET stock=%s where fruit_id=%s"
-                cursor.executemany(query, fruit_quantities)
-                logger.info(f"78: query executed")
-            conn.commit()
-            cursor.close()
-            conn.close()
-
-            # 업데이트 된 상태 다시 ThreadManager fruit 딕셔너리에 저장
-            self.fruits = {item["fruit_id"]: item["quantity"] for item in data}
-            logger.info(f"85: self.fruits = {self.fruits}")
+        if zero_fruit_ids:
+            query = "UPDATE fruit SET stock=0 WHERE fruit_id IN (%s)" % (
+                ", ".join(["%s"] * len(zero_fruit_ids)))
+            cursor.execute(query, tuple(zero_fruit_ids))
+            logger.info(f"{zero_fruit_ids} updated to 0")
 
 
+        # 과일 매대 재고 업데이트
+        fruit_quantities = [(item["stock"], item["fruit_id"]) for item in data]
+        logger.info(f"73: fruit_quantities: {fruit_quantities}")
+        if fruit_quantities:
+            query = "UPDATE fruit SET stock=%s where fruit_id=%s"
+            cursor.executemany(query, fruit_quantities)
+            logger.info(f"78: query executed")
+        conn.commit()
+        cursor.close()
+        conn.close()
 
-    def cartProcessor(self, client_socket: QTcpSocket, data):
+        # 업데이트 된 상태 다시 ThreadManager fruit 딕셔너리에 저장
+        self.fruits = {item["fruit_id"]: item["stock"] for item in data}
+        logger.info(f"85: self.fruits = {self.fruits}")
+
+
+
+    def cartProcessor(self, data):
         """        
         data = [{"cart_cam": 1,
                  "fruits": [ 

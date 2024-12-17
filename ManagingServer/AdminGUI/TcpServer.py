@@ -1,16 +1,15 @@
-from PyQt5.QtCore import pyqtSignal, QThread
-from PyQt5.QtNetwork import QTcpServer, QTcpSocket
+from PyQt5.QtCore import pyqtSignal, QThread, QMetaObject, Qt
+from PyQt5.QtNetwork import QTcpServer, QTcpSocket, QAbstractSocket
 import json
 
 class TcpServer(QTcpServer):
-    newConnection = pyqtSignal(QTcpSocket)
-
-    def __init__(self, host, port, camera_id, parent=None):
+    def __init__(self, host, port, camera_id, dataProcessor, parent=None):
         super().__init__(parent)
         self.host = host
         self.port = port
         self.camera_id = camera_id
-        self.client_socket = None
+        self.dataProcessor = dataProcessor[self.camera_id]
+        self.client_threads = []
 
     def startServer(self):
         if not self.listen(self.host, self.port):
@@ -23,63 +22,98 @@ class TcpServer(QTcpServer):
     #     sets the socket descriptor and then stores the QTcpSocket in an internal list of pending connections. 
     #     Finally newConnection() is emitted.
     def incomingConnection(self, socket_descriptor):
-        self.client_socket = QTcpSocket()
+        client_thread = DataRecvThread(self.camera_id, socket_descriptor)
 
-        if not self.client_socket.setSocketDescriptor(socket_descriptor):
-            print(f"Error occured while setSocketDescriptor in {self.camera_id} Server")
-            return  # incomingConnection 종료, 어차피 listen 계속 돌아가서 또 호출됨
+        client_thread.finished.connect(lambda: self.client_threads.remove(client_thread))
+        client_thread.finished.connect(client_thread.deleteLater)
+        client_thread.dataRecv.connect(self.dataProcessor)
 
-        print(f"New client connected: {self.client_socket.peerAddress().toString()}:{self.client_socket.peerPort()}")
-        self.newConnection.emit(self.client_socket)
-        self.client_socket.errorOccurred.connect(lambda error: self.closeErrorClient(error))
-        self.client_socket.disconnected.connect(self.closeClient)
+        self.client_threads.append(client_thread)
+        print(f"{self.camera_id}'s client num: {len(self.client_threads)}")
+        client_thread.start()
         
-
-    def closeClient(self):
-        self.client_socket.close()
-        print(f"Client disconnected. Close Client.")
-
-    def closeErrorClient(self, error):
-        self.client_socket.close()
-        print(f"Client error: {error}. Close Client.")
-
     def stopServer(self):
-        if self.client_socket:
-            self.client_socket.disconnectFromHost()
-            self.client_socket.waitForDisconnected()
-
+        for thread in self.client_threads:
+            thread.stop()
+            thread.wait()   # 스레드 종료 대기
+        self.client_threads.clear()
         super().close()
         print(f"{self.camera_id} Server stopped.")
 
 
 class DataRecvThread(QThread):
-    dataRecv = pyqtSignal(QTcpSocket, dict)
+    dataRecv = pyqtSignal(dict)
 
-    def __init__(self, camera_id, parent=None):
+    def __init__(self, camera_id, socket_descriptor, parent=None):
         super().__init__(parent)
         self.camera_id = camera_id
+        self.socket_descriptor = socket_descriptor
         self.client_socket = None
-        self.running = False
-
-    def startThread(self, client_socket: QTcpSocket):
-        self.client_socket = client_socket
-        self.running = True
-        self.start()
 
     def run(self):
         print(f"{self.camera_id}'s DataRecvThread started...")
-        while self.running:
-            while self.client_socket.bytesAvailable():
-                # PySide2.QtCore.QIODevice.readAll():
-                #   Reads all remaining data from the device, and returns it as a byte array.
-                print("bytes available")
-                data = self.client_socket.readAll().data().decode('utf-8')
-                print(f"raw data {data} received")
-                json_data = json.loads(data)
-                print(f"JSON parsed: {json_data}")
-                self.dataRecv.emit(self.client_socket, json_data)
+        self.client_socket = QTcpSocket()
+
+        if not self.client_socket.setSocketDescriptor(self.socket_descriptor):
+            print(f"Error occured while setSocketDescriptor in {self.camera_id} Server")
+            return # 스레드 실행 종료. finished 시그널 emit -> 스레드 객체 메모리에서 해제
+        
+        print(f"New client connected: {self.client_socket.peerAddress().toString()}:{self.client_socket.peerPort()}")
+
+        self.client_socket.readyRead.connect(self.readData)
+        self.client_socket.disconnected.connect(self.clientDisconnected)
+        self.client_socket.errorOccurred.connect(lambda error: self.clientError(error))
+
+        self.exec_()
+           
+
+    def readData(self):
+        if not self.client_socket or self.client_socket.state() != QTcpSocket.ConnectedState:
+            print("Socket is invalid or disconnected.")
+            return
+        while self.client_socket.bytesAvailable():
+            # PySide2.QtCore.QIODevice.readAll():
+            #   Reads all remaining data from the device, and returns it as a byte array.
+            print("bytes available")
+            data = self.client_socket.readAll().data().decode('utf-8')
+            print(f"raw data {data} received")
+            json_data = json.loads(data)
+            print(f"JSON parsed: {json_data}")
+            self.dataRecv.emit(json_data)
 
     def stop(self):
-        self.running = False
+        self.quit()
+        print(f"Quit Thread's event loop")
+        if self.client_socket:
+            self.client_socket.close()
+            self.client_socket.disconnectFromHost()
+            self.client_socket.deleteLater() # Schedules this object for deletion.
+            self.client_socket = None
+        
         print(f"{self.camera_id}'s DataRecvThread stopped.")
+
+    def clientDisconnected(self):
+        self.quit()
+        print(f"Quit Thread's event loop")
+        if self.client_socket:
+            self.client_socket.close()
+            self.client_socket.deleteLater()
+            print(f"{self.camera_id}'s client disconnected. Close Client.")
+        
+        print(f"Quit Thread")
+
+    def clientError(self, error):
+        self.quit()
+        print(f"Quit Thread's event loop")
+        if error == QAbstractSocket.RemoteHostClosedError:
+            print("Error ignored: RemoteHostClosedError already handled")
+            return
+        #self.client_socket.close()
+        if self.client_socket:
+            self.client_socket.readyRead.disconnect()
+            self.client_socket.close()
+            self.client_socket.deleteLater()
+            print(f"{self.camera_id}'s client error: {error}. Close Client.")
+        
+
        
