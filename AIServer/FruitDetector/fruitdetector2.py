@@ -118,9 +118,9 @@ if __name__ == '__main__':
     shared_data_cam2 = SharedData()
 
     # 카메라 초기화
-    cap2 = cv2.VideoCapture(2)
+    cap2 = cv2.VideoCapture(0)
     if not cap2.isOpened():
-        print("Error: Camera 2 (index 2) could not be opened.")
+        print("Error: Camera 0 (index 0) could not be opened.")
         exit(1)
 
     # YOLO 감지 쓰레드 시작
