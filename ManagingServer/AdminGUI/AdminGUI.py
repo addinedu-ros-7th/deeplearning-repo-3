@@ -51,16 +51,16 @@ class WindowClass(QMainWindow, from_class):
 
         # Camera data processor
         self.dataProcessor = DataProcessor()
-        face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=self.dataProcessor.processors)
-        face_server.startServer()
+        self.face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=self.dataProcessor.processors)
+        self.face_server.startServer()
 
 
-        cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=self.dataProcessor.processors)
-        cart_server.startServer()
+        self.cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=self.dataProcessor.processors)
+        self.cart_server.startServer()
 
 
-        fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=self.dataProcessor.processors)
-        fruit_server.startServer()
+        self.fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=self.dataProcessor.processors)
+        self.fruit_server.startServer()
 
         # Face Cam Network setting
         # faceDataRecvThread = DataRecvThread("Face")

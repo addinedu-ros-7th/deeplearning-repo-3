@@ -224,95 +224,92 @@ class DataProcessor(QObject):
 
     def cartProcessor(self, data):
         """        
-        data = [{"cart_cam": 1,
-                 "fruits": [ 
-                    {1: 3, 2: 4, 3: 5}
-                 ]},
-                 {"cart_cam": 2,
-                  "fruits": [
-                    {1: 2, 2: 3, 3: 5}
-                 ]}
-                 ]
+        data = [
+                {"cart_cam": 1, "fruits": [{"2": 1, "4": 1}]}, 
+                {"cart_cam": 2, "fruits": [{"2": 1, "4": 1}]}, 
+                {"cart_cam": 3, "fruits": [{}]}, 
+                {"cart_cam": 4, "fruits": [{}]}
+                ]
         """
         using_carts = self.get_using_carts()
         logger.info(f"사용 중인 cart_cam: {using_carts}")
-        with self.lock:
-            for cart in data:
-                # cart = {"cart_cam": 1, "fruits": [{1: 3, 2: 4, 3: 5}]}
-                cart_cam = cart["cart_cam"]
-                logger.info(f"data's cart_cam: {cart_cam}")
-                # fruits = {1: 3, 2: 4, 3: 5}
-                # empty 라면 {}
-                fruits = cart["fruits"][0] # 리스트에서 dict 꺼냄
-                logger.info(f"data's fruits: {fruits}")
-                if cart_cam in using_carts:  # 사용 중인 카트만 처리
-                    cart_cam = cart_cam
-                    # 해당 cart_cam을 사용하는 방문자를 찾음
-                    visitor = next(
-                        (v for v in self.visitors.values() if v.cart.cart_cam == cart_cam),
-                        None,
+        #with self.lock:
+        for cart in data:
+            # cart = {"cart_cam": 1, "fruits": [{1: 3, 2: 4, 3: 5}]}
+            cart_cam = cart["cart_cam"]
+            logger.info(f"data's cart_cam: {cart_cam}")
+            # fruits = {1: 3, 2: 4, 3: 5}
+            # empty 라면 {}
+            fruits = cart["fruits"][0] # 리스트에서 dict 꺼냄
+            logger.info(f"data's fruits: {fruits}")
+            if cart_cam in using_carts:  # 사용 중인 카트만 처리
+                cart_cam = cart_cam
+                # 해당 cart_cam을 사용하는 방문자를 찾음
+                visitor = next(
+                    (v for v in self.visitors.values() if v.cart.cart_cam == cart_cam),
+                    None,
+                )
+
+                if not visitor:
+                    logger.warning(f"Visitor not found for cart_cam {cart_cam}")
+                    continue
+
+                
+                logger.info(f"visit_id: {visitor.visit_id}, cart_cam: {visitor.cart.cart_cam}")
+                conn = self.connectF2Mbase()
+                cursor = conn.cursor()
+
+                if fruits:
+                    current_fruit_ids = set(fruits.keys())
+                    previous_fruit_ids = set(visitor.cart.data.keys())
+                    
+
+                    zero_fruit_ids = previous_fruit_ids - current_fruit_ids
+                    logger.info(f"zero_fruit_ids: {zero_fruit_ids}")
+
+                    new_fruit_ids = current_fruit_ids - previous_fruit_ids
+                    logger.info(f"new_fruit_ids: {new_fruit_ids}")
+
+                    common_fruit_ids = previous_fruit_ids & current_fruit_ids
+                    logger.info(f"common_fruit_ids: {common_fruit_ids}")
+
+                    for fruit_id in zero_fruit_ids:
+                        cursor.execute("delete from cart_fruit where cart_id=%s and fruit_id=%s", (visitor.cart.cart_id, fruit_id))
+                        logger.info(f"delete from cart_fruit ({visitor.cart.cart_id, fruit_id})")
+                    conn.commit()
+
+                    for fruit_id in new_fruit_ids:
+                        cursor.execute("insert into cart_fruit (cart_id, fruit_id, quantity) values (%s, %s, %s)", (visitor.cart.cart_id, fruit_id, fruits[fruit_id]))
+                        cursor.execute("select fruit_name, price from fruit where fruit_id=%s", (fruit_id,))
+                        results = cursor.fetchall()
+                        visitor.cart.data[fruit_id] = [results[0][0], fruits[fruit_id], results[0][1]]
+                        logger.info(f"insert into cart_fruit ({visitor.cart.cart_id, fruit_id, fruits[fruit_id]})")
+                    conn.commit()
+
+                    for fruit_id in common_fruit_ids:
+                        cursor.execute("update cart_fruit set quantity=%s where fruit_id=%s and cart_id=%s", (fruits[fruit_id], fruit_id, visitor.cart.cart_id))
+                        visitor.cart.data[fruit_id][1] = fruits[fruit_id]
+                        logger.info(f"update cart_fruit {fruits[fruit_id]} where fruit_id={fruit_id} and cart_id={visitor.cart.cart_id} ")
+                    conn.commit()
+
+                    logger.info(
+                        f"Cart Cam {cart_cam} 업데이트: {fruits}, "
+                        f"Visitor ID: {visitor.visit_id}"
+                        f"Visitor cart data: {visitor.cart.data}"
+                    )
+                else:
+                    visitor.cart.data = {}
+                    logger.info(f"visitor.cart.cart_id: {visitor.cart.cart_id}")
+                    cursor.execute("delete from cart_fruit where cart_id=%s", (visitor.cart.cart_id,))
+                    conn.commit()
+                    logger.info(
+                        f"Cart Cam {cart_cam} no fruits, "
+                        f"Visitor ID: {visitor.visit_id} "
+                        f"Visitor cart data: {visitor.cart.data}"
                     )
 
-                    if not visitor:
-                        logger.warning(f"Visitor not found for cart_cam {cart_cam}")
-                        continue
-
-                    
-                    logger.info(f"visit_id: {visitor.visit_id}, cart_cam: {visitor.cart.cart_cam}")
-                    conn = self.connectF2Mbase()
-                    cursor = conn.cursor()
-
-                    if fruits:
-                        current_fruit_ids = set(fruits.keys())
-                        previous_fruit_ids = set(visitor.cart.data.keys())
-                        
-
-                        zero_fruit_ids = previous_fruit_ids - current_fruit_ids
-                        logger.info(f"zero_fruit_ids: {zero_fruit_ids}")
-
-                        new_fruit_ids = current_fruit_ids - previous_fruit_ids
-                        logger.info(f"new_fruit_ids: {new_fruit_ids}")
-
-                        common_fruit_ids = previous_fruit_ids & current_fruit_ids
-                        logger.info(f"common_fruit_ids: {common_fruit_ids}")
-
-                        for fruit_id in zero_fruit_ids:
-                            cursor.execute("delete from cart_fruit where cart_id=%s and fruit_id=%s", (visitor.cart.cart_id, fruit_id))
-                            logger.info(f"delete from cart_fruit ({visitor.cart.cart_id, fruit_id})")
-                        conn.commit()
-
-                        for fruit_id in new_fruit_ids:
-                            cursor.execute("insert into cart_fruit (cart_id, fruit_id, quantity) values (%s, %s, %s)", (visitor.cart.cart_id, fruit_id, fruits[fruit_id]))
-                            cursor.execute("select fruit_name, price from fruit where fruit_id=%s", (fruit_id,))
-                            results = cursor.fetchall()
-                            visitor.cart.data[fruit_id] = [results[0][0], fruits[fruit_id], results[0][1]]
-                            logger.info(f"insert into cart_fruit ({visitor.cart.cart_id, fruit_id, fruits[fruit_id]})")
-                        conn.commit()
-
-                        for fruit_id in common_fruit_ids:
-                            cursor.execute("update cart_fruit set quantity=%s where fruit_id=%s and cart_id=%s", (fruits[fruit_id], fruit_id, visitor.cart.cart_id))
-                            visitor.cart.data[fruit_id][1] = fruits[fruit_id]
-                            logger.info(f"update cart_fruit {fruits[fruit_id]} where fruit_id={fruit_id} and cart_id={visitor.cart.cart_id} ")
-                        conn.commit()
-
-                        logger.info(
-                            f"Cart Cam {cart_cam} 업데이트: {fruits}, "
-                            f"Visitor ID: {visitor.visit_id}"
-                            f"Visitor cart data: {visitor.cart.data}"
-                        )
-                    else:
-                        visitor.cart.data = {}
-                        logger.info(f"visitor.cart.cart_id: {visitor.cart.cart_id}")
-                        cursor.execute("delete from cart_fruit where cart_id=%s", (visitor.cart.cart_id,))
-                        conn.commit()
-                        logger.info(
-                            f"Cart Cam {cart_cam} no fruits, "
-                            f"Visitor ID: {visitor.visit_id} "
-                            f"Visitor cart data: {visitor.cart.data}"
-                        )
-
-                    cursor.close()
-                    conn.close()
+                cursor.close()
+                conn.close()
 
 
     def connectF2Mbase(self):
@@ -327,21 +324,21 @@ class DataProcessor(QObject):
 
     def assign_cart_cam(self):
         """사용 가능한 카트 할당"""
-        with self.lock:
-            if not self.available_carts:
-                return None  # 사용 가능한 카트가 없음
-            cart_cam = self.available_carts.pop()
-            self.using_carts.add(cart_cam)
-            return cart_cam
+        #with self.lock:
+        if not self.available_carts:
+            return None  # 사용 가능한 카트가 없음
+        cart_cam = self.available_carts.pop()
+        self.using_carts.add(cart_cam)
+        return cart_cam
 
     def release_cart_cam(self, cart_cam):
         """사용 중인 카트를 반환"""
-        with self.lock:
-            if cart_cam in self.using_carts:
-                self.using_carts.remove(cart_cam)
-                self.available_carts.add(cart_cam)
+        #with self.lock:
+        if cart_cam in self.using_carts:
+            self.using_carts.remove(cart_cam)
+            self.available_carts.add(cart_cam)
 
     def get_using_carts(self):
         """현재 사용 중인 카트 반환"""
-        with self.lock:
-            return list(self.using_carts)
+        #with self.lock:
+        return list(self.using_carts)

@@ -14,6 +14,8 @@ class TcpServer(QTcpServer):
     def startServer(self):
         if not self.listen(self.host, self.port):
             print(f"Server failed to start: {self.errorString()}")
+        if self.isListening():
+            print(f"Listening to {self.camera_id}")
         print(f"{self.camera_id} Server started on port {self.port}")
 
     # PySide2.QtNetwork.QTcpServer.incomingConnection(handle):
