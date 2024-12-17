@@ -36,25 +36,38 @@ class YOLOThread(Thread):
 
             # 감지 결과를 처리하여 딕셔너리에 저장
             current_detections = {}
+            display_frame = frame.copy()
             for box in results[0].boxes:
                 cls_id = int(box.cls[0].item())  # 클래스 ID
                 label = results[0].names[cls_id]  # 클래스 이름
                 fruit_id = self.parse_label(label)  # 클래스 이름을 fruit_id로 변환
+
+                # 현재 감지된 항목 수 증가
                 current_detections[fruit_id] = current_detections.get(fruit_id, 0) + 1
+
+                # 바운딩 박스 정보
+                x1, y1, x2, y2 = map(int, box.xyxy[0])  # 바운딩 박스 좌표
+                conf = box.conf[0].item()  # 신뢰도
+
+                # 바운딩 박스와 라벨 그리기
+                cv2.rectangle(display_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                label_text = f"{label} ({conf:.2f})"
+                cv2.putText(display_frame, label_text, (x1, y1 - 10), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
             # 공유 데이터를 업데이트 (Lock 사용)
             with self.shared_data.lock:
                 self.shared_data.detections_dict = current_detections
 
-            # 결과를 디스플레이에 표시
-            display_frame = frame.copy()
+            # 현재 감지 결과를 화면에 표시
             y_pos = 20
             for fruit_id, count in current_detections.items():
                 label_text = f"Fruit ID {fruit_id}: {count}"
                 cv2.putText(display_frame, label_text, (10, y_pos), 
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0), 2)
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                 y_pos += 30
-            cv2.imshow("Cam2 YOLO Detection Count", display_frame)
+
+            cv2.imshow("Cam2 YOLO Detection", display_frame)
 
             # 'q' 키를 눌러 쓰레드 중지
             if cv2.waitKey(1) & 0xFF == ord('q'):

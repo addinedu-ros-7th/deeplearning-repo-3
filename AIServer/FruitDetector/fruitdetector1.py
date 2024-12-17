@@ -28,9 +28,12 @@ class YOLOThread(Thread):
             if not ret:
                 break
 
+            # YOLO 모델을 사용하여 객체 감지 수행
             results = model.predict(source=frame, imgsz=640, conf=0.5, verbose=False)
 
             current_detections = {1: {}, 2: {}, 3: {}, 4: {}}  # 4개의 장바구니로 초기화
+
+            display_frame = frame.copy()  # 원본 프레임 복사
 
             for box in results[0].boxes:
                 cls_id = int(box.cls[0].item())
@@ -47,10 +50,18 @@ class YOLOThread(Thread):
                     key = (fruit_id, fair)
                     current_detections[cart_id][key] = current_detections[cart_id].get(key, 0) + 1
 
+                # 바운딩 박스 좌표 및 신뢰도 추출
+                x1, y1, x2, y2 = map(int, box.xyxy[0])  # 좌표 변환
+                conf = box.conf[0].item()  # 신뢰도
+
+                # 바운딩 박스와 라벨 그리기
+                label_text = f"{label} ({conf:.2f})"
+                cv2.rectangle(display_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)  # 초록색 바운딩 박스
+                cv2.putText(display_frame, label_text, (x1, y1 - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)  # 라벨 표시
+
             with self.shared_data.lock:
                 self.shared_data.detections_dict = current_detections
-
-            display_frame = frame.copy()
 
             # 화면에 구역 나누기 시각화
             height, width, _ = display_frame.shape
@@ -89,7 +100,7 @@ class YOLOThread(Thread):
 
     def assign_cart(self, x_center):
         print(x_center)
-        if x_center < 160:
+        if x_center < 120:
             return 1
         elif x_center < 220:
             return 2
@@ -169,7 +180,7 @@ class EmitThread(Thread):
 if __name__ == '__main__':
     shared_data_cam2 = SharedData()
 
-    cap2 = cv2.VideoCapture(2)
+    cap2 = cv2.VideoCapture(0)
     if not cap2.isOpened():
         print("Error: Camera 2 (index 2) could not be opened.")
         exit(1)
@@ -177,7 +188,7 @@ if __name__ == '__main__':
     yolo_thread_cam2 = YOLOThread(shared_data_cam2, cap2)
     yolo_thread_cam2.start()
 
-    server_ip = '192.168.0.100'
+    server_ip = '192.168.0.202'
     server_port = 5002
 
     emit_thread_cam2 = EmitThread(shared_data_cam2, server_ip, server_port)
