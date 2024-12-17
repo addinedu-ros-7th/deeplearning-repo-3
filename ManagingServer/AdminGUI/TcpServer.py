@@ -85,38 +85,25 @@ class DataRecvThread(QThread):
             self.dataRecv.emit(json_data)
 
     def stop(self):
-        self.quit()
-        print(f"Quit Thread's event loop")
         if self.client_socket:
+            print(f"close and delete client_socket")
+            self.client_socket.blockSignals(True)
             self.client_socket.close()
-            self.client_socket.disconnectFromHost()
             self.client_socket.deleteLater() # Schedules this object for deletion.
             self.client_socket = None
-        
+        self.quit() # 이벤트 루프 종료, finished 시그널 emit
         print(f"{self.camera_id}'s DataRecvThread stopped.")
 
     def clientDisconnected(self):
-        self.quit()
-        print(f"Quit Thread's event loop")
-        if self.client_socket:
-            self.client_socket.close()
-            self.client_socket.deleteLater()
-            print(f"{self.camera_id}'s client disconnected. Close Client.")
-        
-        print(f"Quit Thread")
+        self.stop()
 
     def clientError(self, error):
-        self.quit()
-        print(f"Quit Thread's event loop")
         if error == QAbstractSocket.RemoteHostClosedError:
             print("Error ignored: RemoteHostClosedError already handled")
             return
         #self.client_socket.close()
         if self.client_socket:
-            self.client_socket.readyRead.disconnect()
-            self.client_socket.close()
-            self.client_socket.deleteLater()
-            print(f"{self.camera_id}'s client error: {error}. Close Client.")
+            self.stop()
         
 
        
