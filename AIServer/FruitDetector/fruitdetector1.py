@@ -92,9 +92,9 @@ class YOLOThread(Thread):
     def parse_label(self, label):
         label_mapping = {
             "apple_defective": (1, 0), "apple_fair": (1, 1),
-            "peach_defective": (2, 0), "peach_fair": (2, 1),
-            "pomegranate_defective": (3, 0), "pomegranate_fair": (3, 1),
-            "mandarin_defective": (4, 0), "mandarin_fair": (4, 1)
+            "mandarin_defective": (2, 0), "mandarin_fair": (2, 1),
+            "peach_defective": (3, 0), "peach_fair": (3, 1),
+            "pomegranate_defective": (4, 0), "pomegranate_fair": (4, 1)
         }
         return label_mapping.get(label, (0, 0))
 
