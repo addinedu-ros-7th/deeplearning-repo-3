@@ -87,33 +87,58 @@ class EmitThread(Thread):
         self.server_ip = server_ip  # 서버 IP 주소
         self.server_port = server_port  # 서버 포트 번호
         self.running = True  # 쓰레드 실행 상태 플래그
+        self.connected = False  # 초기 연결 상태 플래그
+
+    def connect_to_server(self):
+        """서버에 연결을 시도하고 성공 여부를 반환"""
+        while self.running and not self.connected:
+            try:
+                print("서버에 연결 시도 중...")
+                self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.client_socket.settimeout(5)  # 타임아웃 설정 (5초)
+                self.client_socket.connect((self.server_ip, self.server_port))
+                self.connected = True
+                print(f"서버에 연결되었습니다. {self.server_ip}:{self.server_port}")
+            except (socket.timeout, socket.error) as e:
+                print(f"서버 연결 실패: {e}. 5초 후 재시도...")
+                time.sleep(5)  # 5초 대기 후 재시도
 
     def run(self):
+        # 서버 연결 시도
+        self.connect_to_server()
+
         while self.running:
-            # 주기적으로 데이터 전송 (10초 간격)
-            time.sleep(10)
-            with self.shared_data.lock:
-                # 공유 데이터를 JSON 형식으로 변환
-                # {“camera_id”: “Fruit”, “data”: [{"fruit_id":1, "stock": 3}, ...]}
-                data_to_send = {
-                    "camera_id": "Fruit",
-                    "data": [{"fruit_id": fruit_id, "stock": count} for fruit_id, count in self.shared_data.detections_dict.items()]
-                }
+            # 연결이 끊어졌을 경우 재연결 시도
+            if not self.connected:
+                self.connect_to_server()
+
+            # 연결된 상태에서 데이터 전송
             try:
-                # 서버에 연결하여 데이터 전송
-                print("시도")
-                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-                    client_socket.connect((self.server_ip, self.server_port))
-                    client_socket.sendall(json.dumps(data_to_send).encode())
-                    print(f"데이터 전송: {data_to_send}")
-            except (socket.error, ConnectionRefusedError) as e:
-                print(f"소켓 오류 발생: {e}")
+                time.sleep(1)  # 10초 간격으로 데이터 전송
+
+                with self.shared_data.lock:
+                    # 공유 데이터를 JSON 형식으로 변환
+                    data_to_send = {
+                        "camera_id": "Fruit",
+                        "data": [{"fruit_id": fruit_id, "stock": count}
+                                 for fruit_id, count in self.shared_data.detections_dict.items()]
+                    }
+                self.client_socket.sendall(json.dumps(data_to_send).encode())
+                print(f"데이터 전송: {data_to_send}")
+            except (socket.error, BrokenPipeError) as e:
+                print(f"데이터 전송 오류: {e}. 서버 연결 끊김.")
+                self.connected = False  # 연결 상태 플래그를 False로 설정
 
     def stop(self):
         # 쓰레드 실행 상태 플래그 비활성화
         self.running = False
 
+        if hasattr(self, "client_socket") and self.client_socket:
+            self.client_socket.close()
+            print("소켓이 닫혔습니다.")
+
 if __name__ == '__main__':
+
     # 공유 데이터 객체 생성
     shared_data_cam2 = SharedData()
 
