@@ -22,6 +22,7 @@ class TcpServer(QTcpServer):
     #     sets the socket descriptor and then stores the QTcpSocket in an internal list of pending connections. 
     #     Finally newConnection() is emitted.
     def incomingConnection(self, socket_descriptor):
+        print("incomingConnection")
         client_thread = DataRecvThread(self.camera_id, socket_descriptor)
 
         client_thread.finished.connect(lambda: self.client_threads.remove(client_thread))

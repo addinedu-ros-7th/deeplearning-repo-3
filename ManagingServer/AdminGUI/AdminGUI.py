@@ -51,30 +51,39 @@ class WindowClass(QMainWindow, from_class):
 
         # Camera data processor
         self.dataProcessor = DataProcessor()
-
-        # Face Cam Network setting
-        faceDataRecvThread = DataRecvThread("Face")
-        face_server = TcpServer(host=QHostAddress.Any, port=5001, camera_id="Face")
+        face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=self.dataProcessor.processors)
         face_server.startServer()
 
-        face_server.newConnection.connect(faceDataRecvThread.startThread)
-        faceDataRecvThread.dataRecv.connect(self.dataProcessor.faceProcessor)
 
-        # Fruit Cam Network setting
-        fruitDataRecvThread = DataRecvThread("Fruit")
-        fruit_server = TcpServer(host=QHostAddress.Any, port=5002, camera_id="Fruit")
-        fruit_server.startServer()
-
-        fruit_server.newConnection.connect(fruitDataRecvThread.startThread)
-        fruitDataRecvThread.dataRecv.connect(self.dataProcessor.fruitProcessor)
-
-        # Cart Cam Network setting
-        cartDataRecvThread = DataRecvThread("Cart")
-        cart_server = TcpServer(host=QHostAddress.Any, port=5003, camera_id="Cart")
+        cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=self.dataProcessor.processors)
         cart_server.startServer()
 
-        cart_server.newConnection.connect(cartDataRecvThread.startThread)
-        cartDataRecvThread.dataRecv.connect(self.dataProcessor.cartProcessor)
+
+        fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=self.dataProcessor.processors)
+        fruit_server.startServer()
+
+        # Face Cam Network setting
+        # faceDataRecvThread = DataRecvThread("Face")
+        # face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=self.dataProcessor.processors)
+        # face_server.startServer()
+
+        # face_server.newConnection.connect(faceDataRecvThread.startThread)
+        # faceDataRecvThread.dataRecv.connect(self.dataProcessor.faceProcessor)
+
+        # # Fruit Cam Network setting
+        # fruitDataRecvThread = DataRecvThread("Fruit")
+        # fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=self.dataProcessor.processors)
+
+        # fruit_server.newConnection.connect(fruitDataRecvThread.startThread)
+        # fruitDataRecvThread.dataRecv.connect(self.dataProcessor.fruitProcessor)
+
+        # # Cart Cam Network setting
+        # cartDataRecvThread = DataRecvThread("Cart")
+        # cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=self.dataProcessor.processors)
+        # cart_server.startServer()
+
+        # cart_server.newConnection.connect(cartDataRecvThread.startThread)
+        # cartDataRecvThread.dataRecv.connect(self.dataProcessor.cartProcessor)
 
         
 
