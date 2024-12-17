@@ -158,7 +158,7 @@ class VideoThread(QThread):
 
     def run(self):
         # 웹캠(카메라) 열기
-        cap = cv2.VideoCapture(2)
+        cap = cv2.VideoCapture(0)
 
         while self._run_flag:
             ret, frame = cap.read()

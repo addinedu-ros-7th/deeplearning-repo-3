@@ -105,6 +105,11 @@ class WindowClass(QMainWindow, from_class):
         self.shelves_carts.start()
 
         self.saved_video_path = ""
+        self.defective_count = 0
+        self.fair_count = 0
+
+
+        self.event_table.setColumnWidth(3, 400)
 
     #-------------------------------------------------------------------로그 GUI 관련 함수
 
@@ -120,12 +125,14 @@ class WindowClass(QMainWindow, from_class):
         # DB 스레드에 필터 요청
         self.db_thread.set_date_filter(formatted_date)
 
-    def update_selling_log(self, data):
+    def update_selling_log(self, data, data2):
         """판매 로그를 테이블 위젯에 업데이트"""
         self.selling_table.setRowCount(len(data))
         for row_idx, row_data in enumerate(data):
             for col_idx, col_data in enumerate(row_data):
                 self.selling_table.setItem(row_idx, col_idx, QTableWidgetItem(str(col_data)))
+
+        self.selledFruit.setText(str(data2)+"개")
 
     def update_visit_log(self, data):
         """방문 로그 업데이트"""
@@ -313,7 +320,41 @@ class WindowClass(QMainWindow, from_class):
             if i < len(visitors_list):
                 visitor = visitors_list[i]
                 # 사용자 정보 (member_id 혹은 visit_id 이용)
-                user_text = f"회원ID: {visitor.member_id}, 방문ID: {visitor.visit_id}"
+                user_text = ""
+
+                try:
+                    # MySQL 데이터베이스 연결
+                    conn = pymysql.connect(
+                        host="localhost",
+                        user="root",
+                        password="whdgh29k05",
+                        db="f2mdatabase",
+                        charset="utf8mb4"
+                    )
+                    cursor = conn.cursor()
+
+                    # 방문 기록에서 가장 최근 visit_id 가져오기
+                    # (이미 self.person_states[track_id].visit_id로 visit_id를 가지고 있다고 가정)
+                    query = f"""
+                        SELECT m.member_name 
+                        FROM visit_info v
+                        INNER JOIN members m ON v.member_id = m.member_id
+                        WHERE v.visit_id = {visitor.visit_id}
+                    """
+                    cursor.execute(query)
+                    result = cursor.fetchone()[0]
+                    user_text = result
+                    #print("person name is", result)
+
+                except pymysql.MySQLError as e:
+                    print(f"MySQL Error: {e}")
+
+                finally:
+                    if 'cursor' in locals():
+                        cursor.close()
+                    if 'conn' in locals() and conn.open:
+                        conn.close()
+
 
                 # 카트 데이터 출력 포맷: 예) "apple_fair : 3개 (가격:1300원)"
                 cart_lines = []
@@ -356,6 +397,13 @@ class WindowClass(QMainWindow, from_class):
             ("석류", pomegranate_defective, pomegranate_normal),
         ]
 
+        # 전체 상한 개수와 정상 개수 계산
+        self.defective_counts = sum(defective for _, defective, _ in table_data)
+        self.fair_counts = sum(normal for _, _, normal in table_data) + sum(defective for _, defective, _ in table_data)
+
+        self.fairLabel.setText(str(self.fair_counts) + "개")
+        self.defectiveLabel.setText(str(self.defective_counts) + "개")
+
         # QTableWidget 초기화
         # 열: 품종 / 상한 개수 / 정상 개수 총 3열
         self.shelves_table.setRowCount(len(table_data))
@@ -367,9 +415,7 @@ class WindowClass(QMainWindow, from_class):
             self.shelves_table.setItem(row_idx, 0, QTableWidgetItem(str(fruit)))
             self.shelves_table.setItem(row_idx, 1, QTableWidgetItem(str(defective)))
             self.shelves_table.setItem(row_idx, 2, QTableWidgetItem(str(normal)))
-         
-     
-        
+
 
 class ShelvesAndCarts(QThread):
     carts = pyqtSignal(dict)
