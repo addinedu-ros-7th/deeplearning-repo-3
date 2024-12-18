@@ -71,14 +71,15 @@ class DataProcessor(QObject):
     def faceProcessor(self, data):
         print(f"faceProcessor got {data}")
         data = data["data"][0]
-        member_id = data["member_id"]
+        member_id = int(data["member_id"])
         action = data["action"]
         logger.info(f"member_id = {member_id}, action = {action}")
 
-        # conn = self.connectF2Mbase()
-        # cursor = conn.cursor()
+        conn = self.connectF2Mbase()
+        cursor = conn.cursor()
         
         logger.info("looking for visitor")
+
         visitor = next(
             (v for v in self.visitors.values() if v.member_id == member_id),
             None,
@@ -117,40 +118,41 @@ class DataProcessor(QObject):
 
             if visitor.cart.purchase == 0:
                 print("entered purchase == 0")
-                res = []
-                # conn = self.connectF2Mbase()
-                # cursor = conn.cursor()
-                # # 해당 visitor의 cart에서 정보 가져오기.
-                # cursor.execute("select f.fruit_name, f.price, cf.quantity \
-                #                from cart_fruit cf \
-                #                join fruit f on cf.fruit_id = f.fruit_id \
-                #                where cf.cart_id=%s", (visitor.cart.cart_id,))
+                res = {}
+                conn = self.connectF2Mbase()
+                cursor = conn.cursor()
+                # 해당 visitor의 cart에서 정보 가져오기.
+                cursor.execute("select f.fruit_name, f.price, cf.quantity \
+                               from cart_fruit cf \
+                               join fruit f on cf.fruit_id = f.fruit_id \
+                               where cf.cart_id=%s", (visitor.cart.cart_id,))
                 
-                # results = cursor.fetchall()
-                # if results:
-                #     logger.info(f"Visitor's cart_fruit results available")
-                #     res_data = []
-                #     for fruit_name, price, quantity in results:
-                #         res_data.append({"Item": fruit_name, "Count": quantity, "Price": price})
-                #     res["Items"] = res_data
-                #     logger.info(res)
-                # cursor.close()
-                # conn.close()
+                results = cursor.fetchall()
+                if results:
+                    logger.info(f"Visitor's cart_fruit results available")
+                    res_data = []
+                    for fruit_name, price, quantity in results:
+                        res_data.append({"Item": fruit_name, "Count": quantity, "Price": price})
+                        logger.info (res_data)
+                    res["Items"] = res_data
+                    logger.info(res)
+                cursor.close()
+                conn.close()
 
-                # if visitor.cart.data:
-                #     for value in visitor.cart.data.values():
-                #         res.append({"fruit_name": value[0], "count": value[1], "price": value[2]})
+                if visitor.cart.data:
+                    for value in visitor.cart.data.values():
+                        res.append({"fruit_name": value[0], "count": value[1], "price": value[2]})
 
 
-                # conn = self.connectF2Mbase()
-                # cursor = conn.cursor()
-                # cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
-                # conn.commit()
-                # cursor.close()
-                # conn.close()
+                conn = self.connectF2Mbase()
+                cursor = conn.cursor()
+                cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
+                conn.commit()
+                cursor.close()
+                conn.close()
 
-                #visitor.cart.purchase = 1
-                # response queue에 put
+                visitor.cart.purchase = 1
+                #response queue에 put
 
                 res.append({"fruit_name":"apple_fair", "count":10, "price": 1300})
                 print(f"res = {res}")
@@ -231,10 +233,11 @@ class DataProcessor(QObject):
                 {"cart_cam": 4, "fruits": [{}]}
                 ]
         """
+        logger.info(f"fruitProcessor got data {data}")
         using_carts = self.get_using_carts()
         logger.info(f"사용 중인 cart_cam: {using_carts}")
         #with self.lock:
-        for cart in data:
+        for cart in data["data"]:
             cart_cam = cart["cart_cam"]
             logger.info(f"data's cart_cam: {cart_cam}")
             # fruits = {1: 3, 2: 4, 3: 5}
@@ -278,17 +281,17 @@ class DataProcessor(QObject):
                     conn.commit()
 
                     for fruit_id in new_fruit_ids:
-                        cursor.execute("insert into cart_fruit (cart_id, fruit_id, quantity) values (%s, %s, %s)", (visitor.cart.cart_id, fruit_id, fruits[fruit_id]))
+                        cursor.execute("insert into cart_fruit (cart_id, fruit_id, quantity) values (%s, %s, %s)", (visitor.cart.cart_id, fruit_id, fruits[str(fruit_id)]))
                         cursor.execute("select fruit_name, price from fruit where fruit_id=%s", (fruit_id,))
                         results = cursor.fetchall()
-                        visitor.cart.data[fruit_id] = [results[0][0], fruits[fruit_id], results[0][1]]
-                        logger.info(f"insert into cart_fruit ({visitor.cart.cart_id, fruit_id, fruits[fruit_id]})")
+                        visitor.cart.data[fruit_id] = [results[0][0], fruits[str(fruit_id)], results[0][1]]
+                        logger.info(f"insert into cart_fruit ({visitor.cart.cart_id, fruit_id, fruits[str(fruit_id)]})")
                     conn.commit()
 
                     for fruit_id in common_fruit_ids:
-                        cursor.execute("update cart_fruit set quantity=%s where fruit_id=%s and cart_id=%s", (fruits[fruit_id], fruit_id, visitor.cart.cart_id))
-                        visitor.cart.data[fruit_id][1] = fruits[fruit_id]
-                        logger.info(f"update cart_fruit {fruits[fruit_id]} where fruit_id={fruit_id} and cart_id={visitor.cart.cart_id} ")
+                        cursor.execute("update cart_fruit set quantity=%s where fruit_id=%s and cart_id=%s", (fruits[str(fruit_id)], fruit_id, visitor.cart.cart_id))
+                        visitor.cart.data[fruit_id][1] = fruits[str(fruit_id)]
+                        logger.info(f"update cart_fruit {fruits[str(fruit_id)]} where fruit_id={fruit_id} and cart_id={visitor.cart.cart_id} ")
                     conn.commit()
 
                     logger.info(

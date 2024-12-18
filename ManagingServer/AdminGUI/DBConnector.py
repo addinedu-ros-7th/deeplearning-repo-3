@@ -34,9 +34,10 @@ class DBThread(QThread):
                     INNER JOIN cart ON cart_fruit.cart_id = cart.cart_id
                     INNER JOIN visit_info ON cart.visit_id = visit_info.visit_id
                     INNER JOIN members ON visit_info.member_id = members.member_id
+                    WHERE cart.purchased =2
                 """
                 if self.date_filter:
-                    query += f" WHERE DATE(cart.pur_dttm) = '{self.date_filter}'"
+                    query += f" AND DATE(cart.pur_dttm) = '{self.date_filter}'"
 
                 cursor.execute(query)
                 selling_log = list(cursor.fetchall())  # 튜플 리스트를 일반 리스트로 변환
@@ -111,11 +112,15 @@ class DBThread(QThread):
                     FROM cart_fruit
                     INNER JOIN fruit ON cart_fruit.fruit_id = fruit.fruit_id
                     INNER JOIN cart ON cart_fruit.cart_id = cart.cart_id
+                    WHERE cart.purchased = 2
                 """
                 
                 cursor.execute(query)
                 selling_sum = cursor.fetchall()
+                
                 selling_sum = selling_sum[0][0]
+                if selling_sum == None:
+                    selling_sum = 0
                 #print(type(selling_sum),selling_sum)
                 self.selling_sum_signal.emit(int(selling_sum))
 
