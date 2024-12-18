@@ -11,15 +11,17 @@ if __name__ == "__main__":
     app = QCoreApplication(sys.argv)
 
     dataProcessor = DataProcessor()
-    face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=dataProcessor.processors)
+
+
+    face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=dataProcessor)
     face_server.startServer()
 
 
-    cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=dataProcessor.processors)
+    cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=dataProcessor)
     cart_server.startServer()
 
 
-    fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=dataProcessor.processors)
+    fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=dataProcessor)
     fruit_server.startServer()
 
     app.aboutToQuit.connect(face_server.stopServer)

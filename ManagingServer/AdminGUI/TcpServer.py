@@ -8,7 +8,7 @@ class TcpServer(QTcpServer):
         self.host = host
         self.port = port
         self.camera_id = camera_id
-        self.dataProcessor = dataProcessor[self.camera_id]
+        self.dataProcessor = dataProcessor
         self.client_threads = []
 
     def startServer(self):
@@ -29,7 +29,10 @@ class TcpServer(QTcpServer):
 
         client_thread.finished.connect(lambda: self.client_threads.remove(client_thread))
         client_thread.finished.connect(client_thread.deleteLater)
-        client_thread.dataRecv.connect(self.dataProcessor)
+        client_thread.dataRecv.connect(self.dataProcessor.processors[self.camera_id])
+
+        if self.camera_id == "Face":
+            self.dataProcessor.dataSendSignal.connect(client_thread.sendData, Qt.QueuedConnection)
 
         self.client_threads.append(client_thread)
         print(f"{self.camera_id}'s client num: {len(self.client_threads)}")
@@ -83,6 +86,19 @@ class DataRecvThread(QThread):
             json_data = json.loads(data)
             print(f"JSON parsed: {json_data}")
             self.dataRecv.emit(json_data)
+
+    def sendData(self, data):
+        print(f"DataRecvThread's sendData got data {data}")
+        if not self.client_socket or self.client_socket.state() != QTcpSocket.ConnectedState:
+            print("Socket is invalid or disconnected.")
+            return
+
+        data = json.dumps(data).encode('utf-8')
+        result = self.client_socket.write(data)
+
+        if result == -1:
+            print("In DataRecvThread's sendData, failed to write data to the socket")
+
 
     def stop(self):
         if self.client_socket:

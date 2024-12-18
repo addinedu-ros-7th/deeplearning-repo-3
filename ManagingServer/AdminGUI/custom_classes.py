@@ -14,7 +14,8 @@ class Cart:
     def __str__(self):
         return (
             f"Cart(cart_id={self.cart_id}, cart_cam={self.cart_cam}, "
-            f"data={self.data})"
+            f"data={self.data}), "
+            f"purchase={self.purchase}"
         )
 
     def __repr__(self):
