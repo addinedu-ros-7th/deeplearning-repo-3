@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QObject
+from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtNetwork import QTcpSocket
 import threading
 import json
@@ -10,6 +10,8 @@ from logger_config import setup_logger
 logger = setup_logger()
 
 class DataProcessor(QObject):
+    dataSendSignal = pyqtSignal(list)
+
     def __init__(self):
         super().__init__()
         self.processors = {"Face": self.faceProcessor, 
@@ -32,7 +34,7 @@ class DataProcessor(QObject):
             self.fruits[fruit_id] = stock
 
         cursor.execute("""
-            SELECT  m.member_name, vi.member_id, vi.visit_id, c.cart_id, c.cart_cam, cf.fruit_id, cf.quantity, f.fruit_name, f.price
+            SELECT  m.member_name, vi.member_id, vi.visit_id, c.cart_id, c.purchased, c.cart_cam, cf.fruit_id, cf.quantity, f.fruit_name, f.price
             FROM 
                 members m
             LEFT JOIN 
@@ -50,10 +52,11 @@ class DataProcessor(QObject):
         # DB정보에 따라서 현재 매장 내 Visitor와 연결된 cart 업데이트
         data = cursor.fetchall()
         for row in data:
-            member_name, member_id, visit_id, cart_id, cart_cam, fruit_id, quantity, fruit_name, price = row
+            member_name, member_id, visit_id, cart_id, purchase, cart_cam, fruit_id, quantity, fruit_name, price = row
             if visit_id not in self.visitors:
                 if cart_id and cart_cam:
                     c = Cart(cart_id, cart_cam)
+                    c.purchase = purchase
                     self.using_carts.add(cart_cam)
                 else:
                     Cart(None, None)
@@ -114,10 +117,12 @@ class DataProcessor(QObject):
             conn.close()
         else:
             logger.info(f"There's visitor: {visitor}")
+            logger.info(f"visitor's puchase state: {visitor.cart.purchase}")
 
             if visitor.cart.purchase == 0:
                 print("entered purchase == 0")
                 res = []
+
                 # conn = self.connectF2Mbase()
                 # cursor = conn.cursor()
                 # # 해당 visitor의 cart에서 정보 가져오기.
@@ -129,50 +134,59 @@ class DataProcessor(QObject):
                 # results = cursor.fetchall()
                 # if results:
                 #     logger.info(f"Visitor's cart_fruit results available")
-                #     res_data = []
+                #     res_data = {}
                 #     for fruit_name, price, quantity in results:
-                #         res_data.append({"Item": fruit_name, "Count": quantity, "Price": price})
-                #     res["Items"] = res_data
+                #         res_data["Item"] = fruit_name
+                #         res_data["Count"] = quantity,
+                #         res_data["Price"] = price
+                #         res.append(res_data)
+
                 #     logger.info(res)
                 # cursor.close()
                 # conn.close()
 
-                # if visitor.cart.data:
-                #     for value in visitor.cart.data.values():
-                #         res.append({"fruit_name": value[0], "count": value[1], "price": value[2]})
+                if visitor.cart.data:
+                    for value in visitor.cart.data.values():
+                        res.append({"fruit_name": value[0], "count": value[1], "price": value[2]})
 
 
-                # conn = self.connectF2Mbase()
-                # cursor = conn.cursor()
-                # cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
-                # conn.commit()
-                # cursor.close()
-                # conn.close()
+                conn = self.connectF2Mbase()
+                cursor = conn.cursor()
+                cursor.execute("update cart set purchased=1 where cart_id=%s", (visitor.cart.cart_id,))
+                conn.commit()
+                cursor.close()
+                conn.close()
 
-                #visitor.cart.purchase = 1
-                # response queue에 put
+                visitor.cart.purchase = 1
 
-                res.append({"fruit_name":"apple_fair", "count":10, "price": 1300})
                 print(f"res = {res}")
-                res = json.dumps(res).encode('utf-8')
-                client_socket.write(res)
-                print(f"send data to client: {client_socket.peerAddress().toString()}:{client_socket.peerPort()}")
+                self.dataSendSignal.emit(res)
 
             # 두번째 request의 경우
             elif visitor.cart.purchase == 1:
                 if action == "yes":
+                    print("entered yes")
                     conn = self.connectF2Mbase()
                     cursor = conn.cursor()
                     cursor.execute("update cart set purchased=%s where cart_id=%s", (2, visitor.cart.cart_id))
+                    conn.commit()
                     conn.close()
                     cursor.close()
 
                     # 계산을 끝낸 고객은 visitors에서 객체 삭제
                     logger.info(f"visitor {visitor.visit_id} deleted from visitors")
                     del self.visitors[visitor.visit_id]
-                    self.res_data_queue.put(["submitted"])
+
                 else:
+                    print("entered no")
                     # 아니오를 눌렀을 경우 계산하려고 얼굴 인식하기 전으로 visitor 객체 상태 초기화
+                    conn = self.connectF2Mbase()
+                    cursor = conn.cursor()
+                    cursor.execute("update cart set purchased=%s where cart_id=%s", (0, visitor.cart.cart_id))
+                    conn.commit()
+                    conn.close()
+                    cursor.close()
+
                     visitor.cart.purchase = 0    
 
     def fruitProcessor(self, data):
@@ -315,8 +329,8 @@ class DataProcessor(QObject):
         conn = mysql.connector.connect(
             host = "localhost",
             user = "root",
-            password = "whdgh29k05",
-            database="f2mdatabase"
+            password = "1111",
+            database="f2mbase"
         )
         return conn
         
