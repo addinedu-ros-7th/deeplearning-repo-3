@@ -38,6 +38,7 @@ class RecognitionHandler():
         self.initialized = False
         self.target_id = None
         self.target_name = None
+        self.send_signal = False
         self.running = True
 
         # status various
@@ -80,12 +81,13 @@ class RecognitionHandler():
         distance_metric="cosine",
         enable_face_analysis=True,
         source=0,
-        time_threshold=5,
+        time_threshold=3,
         frame_threshold=5,
         anti_spoofing: bool = False,
     ):
         logger.info("Analysis is starting")
         while self.running:
+            self.send_signal = False
             has_frame, img = self.cap.read()
             if not has_frame:
                 logger.warning("Failed to capture frame from the camera. Check camera connection or configuration.")
@@ -141,11 +143,13 @@ class RecognitionHandler():
                     logger.info("Image frozen for feedback (Freeze duration: %d seconds)", time_threshold)
 
             elif self.freeze is True and time.time() - self.tic > time_threshold:
+                print(f">>>>>>>>>>>>>>>>>>>>> d2-2 {self.freeze} {self.running}")
                 self.freeze = False
                 self.freezed_img = None
                 # reset counter for freezing
                 self.tic = time.time()
-                logger.info("Resuming face detection")
+                self.send_signal = True
+                #logger.info("Resuming face detection")
 
             self.freezed_img = countdown_to_release(img=self.freezed_img, tic=self.tic, time_threshold=time_threshold)
 
@@ -158,8 +162,14 @@ class RecognitionHandler():
             return self.target_id, self.target_name, img if self.freezed_img is None else self.freezed_img
             
         # kill open cv things
-        self.cap.release()
+        #self.cap.release()
         #return img if freezed_img is None else freezed_img
+
+    def close(self):
+        if self.cap.isOpened():
+            self.cap.release()
+        if self.running:
+            self.running = False
 
 
 def build_facial_recognition_model(model_name: str) -> None:

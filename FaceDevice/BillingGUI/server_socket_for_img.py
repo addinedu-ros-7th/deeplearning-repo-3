@@ -74,7 +74,7 @@ class ServerThread(QThread):
                     self.signin_signal.emit(data)
 
             except Exception as e:
-                logger.error(f"Error in receiving data : {e}")
+                #logger.error(f"Error in receiving data : {e}")
                 continue
 
 

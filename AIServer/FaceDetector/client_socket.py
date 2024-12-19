@@ -47,7 +47,7 @@ class ClientThread(threading.Thread):
         capture = cv2.VideoCapture(0)
         capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
         capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        logger.info(f"Received frame: {type(frame)}")
+        #logger.info(f"Received frame: {type(frame)}")
         try:
             resize_frame = cv2.resize(frame, dsize=(640, 480), interpolation=cv2.INTER_AREA)
             encode_param=[int(cv2.IMWRITE_JPEG_QUALITY),90]
@@ -69,18 +69,19 @@ class ClientThread(threading.Thread):
             #self.connect_server()
             #self.send_images()
 
-
+            
     def send_data(self, target_id, target_name):
-        logger.info(f"Received data: {target_id} {target_name}")
+        #logger.info(f"Received data: {target_id} {target_name}")
         try:
             dict_data = {"member_id" : target_id, "member_name" : target_name}
             json_data = json.dumps(dict_data).encode('utf-8')
 
             header = f"json|{len(json_data)}".encode('utf-8').ljust(64)
-
-            self.client_socket.send(header)
-            self.client_socket.send(json_data)
-            logger.info("Data sent successfully")
+    
+            if self.recognition_handler.send_signal:
+                self.client_socket.send(header)
+                self.client_socket.send(json_data)
+                logger.info(f"Data sent successfully : {json}")
         except Exception as e:
             logger.error(f"Error in sending data: {e}")
             self.client_socket.close()
@@ -108,8 +109,7 @@ class ClientThread(threading.Thread):
             logger.info("ClientThread has stopped")
     
     def stop(self):
-        if self.recognition_handler.running == True:
-            self.recognition_handler.running = False
+        self.recognition_handler.close()
         self.running = False
         self.client_socket.close()
         logger.info(f"ClientThread has stopped")

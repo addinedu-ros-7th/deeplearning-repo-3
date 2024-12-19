@@ -36,11 +36,11 @@ class SigninWindowClass(QMainWindow, signinwindow):
         self.camera_thread = CameraThread()
         self.camera_thread.update.connect(self.camera_update)
         self.camera_thread.signin_signal.connect(self.notice_signin)
-        self.camera_thread.start()
+        #self.camera_thread.start()
 
-        #self.client_thread = ClientThread(self.camera_thread)
-        #self.client_thread.cart_signal.connect(self.goto_next_window)
-        #self.client_thread.start()
+        self.client_thread = ClientThread(self.camera_thread)
+        self.client_thread.cart_signal.connect(self.goto_next_window)
+        self.client_thread.start()
 
 
     def closeEvent(self, event):
@@ -65,7 +65,7 @@ class SigninWindowClass(QMainWindow, signinwindow):
             if member_id != "Unknown":
                 self.SigninTextLable.setText(f"Hello, {member_name}!")
                 logger.info(f"Sign in : {member_id} {member_name}")
-                #self.client_thread.send(member_id, False)
+                self.client_thread.send(member_id, False)
             else:
                 self.SigninTextLable.setText(f"Unregistered user")
                 QTest.qWait(1000)
