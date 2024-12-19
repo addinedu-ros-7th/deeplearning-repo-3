@@ -37,7 +37,7 @@ class ClientThread(QThread):
             self.exec_()
     
     def send(self, data, status):
-        if status:
+        if status == False:
             dict_data = {"camera_id": "Face", "data": [{"member_id": data, "action": "visit"}]}
         else:
             dict_data = {"camera_id": "Purchase", "data": [{"member_id": data, "action": "yes"}]}
@@ -51,9 +51,6 @@ class ClientThread(QThread):
 
     def stop(self):
         self.running = False
-        print(self.camera_thread.running)
-        if self.camera_thread.running():
-            self.camera_thread.stop()
         if self.recv_thread.running:
             self.recv_thread.stop()
         self.quit()

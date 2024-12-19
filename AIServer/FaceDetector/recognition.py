@@ -85,7 +85,6 @@ class RecognitionHandler():
         frame_threshold=5,
         anti_spoofing: bool = False,
     ):
-        logger.info("Analysis is starting")
         while self.running:
             self.send_signal = False
             has_frame, img = self.cap.read()
@@ -143,7 +142,6 @@ class RecognitionHandler():
                     logger.info("Image frozen for feedback (Freeze duration: %d seconds)", time_threshold)
 
             elif self.freeze is True and time.time() - self.tic > time_threshold:
-                print(f">>>>>>>>>>>>>>>>>>>>> d2-2 {self.freeze} {self.running}")
                 self.freeze = False
                 self.freezed_img = None
                 # reset counter for freezing

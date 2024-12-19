@@ -9,6 +9,7 @@ import time
 import datetime
 import base64
 import threading
+import queue
 
 from commons import dir_utils
 from commons.logger import logger
@@ -40,6 +41,9 @@ class ClientThread(threading.Thread):
             distance_metric=modeling["metrics"][1],
             time_threshold=3
             )
+        self.resp = queue.Queue()
+        self.recv_thread = RecvThread(self.resp, self.client_socket)
+        self.recv_thread.start()
         self.running = True
 
 
@@ -90,15 +94,24 @@ class ClientThread(threading.Thread):
 
     def run(self):
         try:
+            
             while self.running:
+                logger.info("Analysis is starting")
                 #result = self.recognition_handler.analysis(db_path=self.db_path)
                 result = self.recognition_handler.analysis(db_path=self.db_path)
-                time.sleep(0.5)
                 if result:
                     #logger.info(f"result : {type(result)}")
                     target_id, target_name, frame = result
                     self.send_images(frame)
                     self.send_data(target_id, target_name)
+                    time.sleep(0.5)                    
+                    if not self.resp.empty():
+                        logger.info(">>>>>>>>>>cam stop")
+                        time.sleep(5)
+                        logger.info(">>>>>>>>>>>>>cam start")
+                        resp = self.resp.get(timeout=1)
+                        logger.info(">>>>>>>>>>> get queue")
+
                 else :
                     logger.warning("No image returned from analysis")
                     continue
@@ -109,10 +122,37 @@ class ClientThread(threading.Thread):
             logger.info("ClientThread has stopped")
     
     def stop(self):
+        if self.recv_thread.running:
+            self.recv_thread.stop()
         self.recognition_handler.close()
         self.running = False
         self.client_socket.close()
         logger.info(f"ClientThread has stopped")
+
+
+class RecvThread(threading.Thread):
+    def __init__(self, resp, client_socket):
+        super().__init__()
+        self.client_socket = client_socket
+        self.resp = resp
+        self.running = True
+
+    def run(self):
+        logger.info("RecvThread is starting")
+        while self.running:
+            try:
+                result = self.client_socket.recv(1024).decode()
+                if result is None:
+                    continue
+                self.resp.put(result)
+            except Exception as e:
+                #logger.info(f"Error receiving data : {e}")
+                continue
+        #self.exec_()
+
+    def stop(self):
+        self.running = False
+        logger.info("RecvThread has been stopped")
 
 
 def main():

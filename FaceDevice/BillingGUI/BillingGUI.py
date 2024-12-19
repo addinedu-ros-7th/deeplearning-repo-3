@@ -31,8 +31,9 @@ class SigninWindowClass(QMainWindow, signinwindow):
         self.setupUi(self)
         self.show()
         logger.info("open main window============================")
-        self.member = None
-
+        self.member_id = None
+        self.member_name = None
+        self.SigninTextLable.setText(f"Show your face here")
         self.camera_thread = CameraThread()
         self.camera_thread.update.connect(self.camera_update)
         self.camera_thread.signin_signal.connect(self.notice_signin)
@@ -60,15 +61,22 @@ class SigninWindowClass(QMainWindow, signinwindow):
     @pyqtSlot(dict)
     def notice_signin(self, member):
         if member is not None:
-            member_id = member["member_id"]
-            member_name = member["member_name"]
-            if member_id != "Unknown":
-                self.SigninTextLable.setText(f"Hello, {member_name}!")
-                logger.info(f"Sign in : {member_id} {member_name}")
-                self.client_thread.send(member_id, False)
+            self.member_id = member["member_id"]
+            self.member_name = member["member_name"]
+            if self.member_id != "Unknown":
+                self.SigninTextLable.setText(f"Hello, {self.member_name}!")
+                logger.info("UI update!!!!!!!!!!!!!!!!")
+                self.camera_thread.send()
+                self.client_thread.send(self.member_id, False)
+                QTest.qWait(3000)
+                logger.info(f"Sign in : {self.member_id} {self.member_name}")
+                
+                
             else:
                 self.SigninTextLable.setText(f"Unregistered user")
-                QTest.qWait(1000)
+                logger.info("UI Update")
+                self.camera_thread.send()
+                QTest.qWait(3000)
                 self.SigninTextLable.setText(f"Show your face here")
                 
         else:
@@ -101,7 +109,7 @@ class CartWindowClass(QWidget, cartwindow):
     #def goto_before_window(self):
         
     def goto_next_window(self):
-        self.signin_window.client_thread.send(self.signin_window.member, True)
+        self.signin_window.client_thread.send(self.signin_window.member_id, True)
         self.hide()
         self.next_window = PaymentWindowClass(self.signin_window)
 
@@ -127,6 +135,9 @@ class PaymentWindowClass(QWidget, paymentwindow):
 
     def goto_main_window(self):
         self.hide()
+        self.member_id = None
+        self.member_name = None
+        self.signin_window.SigninTextLable.setText(f"Show your face here")
         self.signin_window.show()
 
 

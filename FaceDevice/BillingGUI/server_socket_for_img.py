@@ -77,6 +77,15 @@ class ServerThread(QThread):
                 #logger.error(f"Error in receiving data : {e}")
                 continue
 
+    def send(self):
+        result = "result updating".encode('utf-8')
+        #print(f"send_data : {send_data} , data type :  {type(send_data)}")
+        try:
+            self.client_socket.send(result)
+            logger.info(f"Data has been send to client : {result}")
+        except Exception as e:
+            logger.info("Server response failed")
+
 
     def stop(self):
         self.running = False
