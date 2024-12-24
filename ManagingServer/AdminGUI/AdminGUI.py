@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import torch
 from deep_sort_realtime.deepsort_tracker import DeepSort
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem, QMessageBox
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot , QDate
 from DBConnector import DBThread
@@ -51,15 +51,15 @@ class WindowClass(QMainWindow, from_class):
 
         # Camera data processor
         self.dataProcessor = DataProcessor()
-        self.face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=self.dataProcessor.processors)
+        self.face_server = TcpServer(host=QHostAddress.AnyIPv4, port=5001, camera_id="Face", dataProcessor=self.dataProcessor)
         self.face_server.startServer()
 
 
-        self.cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=self.dataProcessor.processors)
+        self.cart_server = TcpServer(host=QHostAddress.AnyIPv4, port=5002, camera_id="Cart", dataProcessor=self.dataProcessor)
         self.cart_server.startServer()
 
 
-        self.fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=self.dataProcessor.processors)
+        self.fruit_server = TcpServer(host=QHostAddress.AnyIPv4, port=5003, camera_id="Fruit", dataProcessor=self.dataProcessor)
         self.fruit_server.startServer()
 
         # Face Cam Network setting
@@ -277,6 +277,14 @@ class WindowClass(QMainWindow, from_class):
                     cursor.close()
                 if 'conn' in locals() and conn.open:
                     conn.close()
+
+            # 알림 팝업 표시
+            QMessageBox.warning(
+                self,
+                "경고",
+                "도난 의심 행위가 감지되었습니다!",
+                QMessageBox.Ok
+            )
 
             print(f"Person {track_id} posed")
 

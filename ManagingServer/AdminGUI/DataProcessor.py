@@ -97,6 +97,10 @@ class DataProcessor(QObject):
             result = cursor.fetchall()
             visit_id = result[0][0]
 
+            cursor.execute("select member_name from members where member_id=%s", (member_id,))
+            result = cursor.fetchall()
+            member_name = result[0][0]
+
             cart_cam = self.assign_cart_cam()
 
             cursor.execute("insert into cart (visit_id, cart_cam, purchased) values (%s, %s, %s)", (visit_id, cart_cam, 0))
@@ -107,11 +111,11 @@ class DataProcessor(QObject):
             cart_id = result[0][0]
 
             c = Cart(cart_id=cart_id, cart_cam=cart_cam)
-            v = Visitor(visit_id, member_id, c)
+            v = Visitor(visit_id, member_id, member_name, c)
             logger.info(f"Visitor 객체 생성: {member_id}, {visit_id}, {cart_id}, {cart_cam}")
 
-            with self.lock:
-                self.visitors[visit_id] = v
+            # with self.lock:
+            self.visitors[visit_id] = v
 
             logger.info(f"Visitor 추가: {member_id} -> Visit ID {visit_id}")
             cursor.close()
@@ -169,7 +173,9 @@ class DataProcessor(QObject):
                     print("entered yes")
                     conn = self.connectF2Mbase()
                     cursor = conn.cursor()
-                    cursor.execute("update cart set purchased=%s where cart_id=%s", (2, visitor.cart.cart_id))
+                    out_dttm = datetime.now()
+                    cursor.execute("update cart set purchased=%s, pur_dttm=%s where cart_id=%s", (2, out_dttm, visitor.cart.cart_id))
+                    cursor.execute("update visit_info set out_dttm=%s where visit_id=%s", (out_dttm, visitor.visit_id))
                     conn.commit()
                     conn.close()
                     cursor.close()
@@ -331,8 +337,8 @@ class DataProcessor(QObject):
         conn = mysql.connector.connect(
             host = "localhost",
             user = "root",
-            password = "1111",
-            database="f2mbase"
+            password = "whdgh29k05",
+            database="f2mdatabase"
         )
         return conn
         
