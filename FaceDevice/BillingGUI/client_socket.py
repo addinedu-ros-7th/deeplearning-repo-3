@@ -25,7 +25,6 @@ class ClientThread(QThread):
             logger.error(f"Client socket setup failed : {e}")
 
         self.camera_thread  = camera_thread
-        #self.recv_thread = RecvThread(self.cart_signal)
         self.recv_thread = RecvThread(self.cart_signal, self.client_socket)
         self.running = True
 
@@ -41,13 +40,10 @@ class ClientThread(QThread):
             dict_data = {"camera_id": "Face", "data": [{"member_id": data, "action": "visit"}]}
         else:
             dict_data = {"camera_id": "Purchase", "data": [{"member_id": data, "action": "yes"}]}
-        #print(f"dict_data : {dict_data} , data type :  {type(dict_data)}")
 
         send_data = json.dumps(dict_data).encode()
-        #print(f"send_data : {send_data} , data type :  {type(send_data)}")
-
         self.client_socket.send(send_data)
-        logger.info(f"Data has been send to server : {dict_data}")
+        logger.info(f"Data has been sent to server : {dict_data}")
 
     def stop(self):
         self.running = False
@@ -70,8 +66,6 @@ class RecvThread(QThread):
         while self.running:
             try:
                 data = self.client_socket.recv(1024).decode()
-                #test
-                #data = """[{"fruit_name": "Apple", "count": 1, "price": 1000}, {"fruit_name": "Peach", "count": 1, "price": 1000}]"""
                 if data is None:
                     continue
                 self.cart_signal.emit(data)
@@ -80,7 +74,6 @@ class RecvThread(QThread):
             except Exception as e:
                 #logger.info(f"Error receiving data : {e}")
                 continue
-        #self.exec_()
 
     def stop(self):
         self.running = False

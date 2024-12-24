@@ -13,6 +13,7 @@ import cv2
 # project dependencies
 from deepface import DeepFace
 from deepface.commons.logger import Logger
+from modules.modeling import modeling
 import logging
 
 logging.basicConfig(
@@ -34,15 +35,14 @@ TEXT_COLOR = (255, 255, 255)
 # pylint: disable=unused-variable
 def analysis(
     db_path: str,
-    model_name="VGG-Face",
-    detector_backend="opencv",
-    distance_metric="cosine",
+    model_name=modeling["models"][3],
+    detector_backend=modeling["backends"][4],
+    distance_metric=modeling["metrics"][0],
     enable_face_analysis=True,
     source=0,
     time_threshold=5,
     frame_threshold=5,
     anti_spoofing: bool = False,
-    name_queue: queue.Queue = queue.Queue(),
 ):
     
     logger.info("Initializing analysis module")
@@ -99,7 +99,7 @@ def analysis(
                 )
                 
                 # facial recogntion analysis
-                img, target_name = perform_facial_recognition(
+                img = perform_facial_recognition(
                     img=img,
                     faces_coordinates=faces_coordinates,
                     detected_faces=detected_faces,
@@ -108,14 +108,6 @@ def analysis(
                     distance_metric=distance_metric,
                     model_name=model_name,
                 )
-
-                #print("User Info------------")
-                #print("name : ", target_name)
-                #print("---------------------")
-
-                if target_name:
-                    name_queue.put(target_name)
-                    logger.info(f"Recognized member added to queue. Current queue: {list(name_queue.queue)}")
 
                 # freeze the img after analysis
                 freezed_img = img.copy()
@@ -183,23 +175,13 @@ def search_identity(
 
     df = dfs[0]
 
-    if len(df) == 0:
-        logger.info("member: Unknown")
-        return None, detected_face, "Unknown"
-    #print("Recognized Faces-----")
-    #print(df)
-    #print("---------------------")
-
     if df.shape[0] == 0:
-        return None, None, None
+        return None
 
     candidate = df.iloc[0]
     target_path = candidate["identity"]
-    #print(type(target_path))
-    target_name = target_path.split("/")[1]
     threshold = candidate["threshold"]
     distance = candidate["distance"]
-    logger.info(f"member: {target_name} ( {threshold} / {distance} )")
 
     # load found identity image - extracted if possible
     target_objs = DeepFace.extract_faces(
@@ -223,7 +205,7 @@ def search_identity(
     # resize anyway
     target_img = cv2.resize(target_img, (IDENTIFIED_IMG_SIZE, IDENTIFIED_IMG_SIZE))
 
-    return target_path.split("/")[-1], target_img, target_name
+    return target_path.split("/")[-1], target_img
 
 
 def highlight_facial_areas(
@@ -321,6 +303,16 @@ def extract_facial_areas(
     return detected_faces
 
 
+def extract_facial_areas(
+    img: np.ndarray, faces_coordinates: List[Tuple[int, int, int, int, bool, float]]
+) -> List[np.ndarray]:
+    detected_faces = []
+    for x, y, w, h, is_real, antispoof_score in faces_coordinates:
+        detected_face = img[int(y) : int(y + h), int(x) : int(x + w)]
+        detected_faces.append(detected_face)
+    return detected_faces
+
+
 def perform_facial_recognition(
     img: np.ndarray,
     detected_faces: List[np.ndarray],
@@ -332,7 +324,7 @@ def perform_facial_recognition(
 ) -> np.ndarray:
     for idx, (x, y, w, h, is_real, antispoof_score) in enumerate(faces_coordinates):
         detected_face = detected_faces[idx]
-        target_label, target_img, target_name= search_identity(
+        target_label, target_img=search_identity(
             detected_face=detected_face,
             db_path=db_path,
             detector_backend=detector_backend,
@@ -351,7 +343,7 @@ def perform_facial_recognition(
             w=w,
             h=h,
         )
-    return img, target_name
+    return img
 
 
 def overlay_identified_face(

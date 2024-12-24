@@ -49,7 +49,6 @@ class ServerThread(QThread):
                     break
                 data_type, data_len = header.split('|')
                 data_len = int(data_len)
-                #logger.info(f"Header : {header}")
 
                 received_data = b""
                 while len(received_data) < data_len:
@@ -57,8 +56,6 @@ class ServerThread(QThread):
                     if not packet:
                         break
                     received_data += packet
-                #print(f"data type : {type(received_data)}")
-                #print(received_data)
 
                 if data_type == "img":
                     string_data = base64.b64decode(received_data)
@@ -70,7 +67,7 @@ class ServerThread(QThread):
                 elif data_type == "json":
                     json_data = received_data.decode('utf-8')
                     data = json.loads(json_data)
-                    logger.info(f"Received json data: {data}")
+                    logger.info(f"Data has been received from client : {data}")
                     self.signin_signal.emit(data)
 
             except Exception as e:
@@ -78,14 +75,14 @@ class ServerThread(QThread):
                 continue
 
     def send(self):
-        result = "result updating".encode('utf-8')
+        result = "result updating"
+        resp = result.encode('utf-8')
         #print(f"send_data : {send_data} , data type :  {type(send_data)}")
         try:
-            self.client_socket.send(result)
-            logger.info(f"Data has been send to client : {result}")
+            self.client_socket.send(resp)
+            logger.info(f"Data has been sent to client : {result}")
         except Exception as e:
             logger.info("Server response failed")
-
 
     def stop(self):
         self.running = False

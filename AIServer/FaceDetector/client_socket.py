@@ -36,10 +36,11 @@ class ClientThread(threading.Thread):
         self.db_path = dir_utils.initialize_dir()
         self.recognition_handler = RecognitionHandler(
             db_path=self.db_path,
-            model_name=modeling["models"][2],
+            model_name=modeling["models"][3],
             detector_backend=modeling["backends"][4],
-            distance_metric=modeling["metrics"][1],
-            time_threshold=3
+            distance_metric=modeling["metrics"][0],
+            enable_face_analysis=True,
+            anti_spoofing=True
             )
         self.resp = queue.Queue()
         self.recv_thread = RecvThread(self.resp, self.client_socket)
@@ -75,7 +76,6 @@ class ClientThread(threading.Thread):
 
             
     def send_data(self, target_id, target_name):
-        #logger.info(f"Received data: {target_id} {target_name}")
         try:
             dict_data = {"member_id" : target_id, "member_name" : target_name}
             json_data = json.dumps(dict_data).encode('utf-8')
@@ -85,7 +85,7 @@ class ClientThread(threading.Thread):
             if self.recognition_handler.send_signal:
                 self.client_socket.send(header)
                 self.client_socket.send(json_data)
-                logger.info(f"Data sent successfully : {json}")
+                logger.info(f"Data has been sent to server : {dict_data}")
         except Exception as e:
             logger.error(f"Error in sending data: {e}")
             self.client_socket.close()
@@ -94,24 +94,17 @@ class ClientThread(threading.Thread):
 
     def run(self):
         try:
-            
+            logger.info("ClientThread is starting")
             while self.running:
-                logger.info("Analysis is starting")
-                #result = self.recognition_handler.analysis(db_path=self.db_path)
-                result = self.recognition_handler.analysis(db_path=self.db_path)
+                result = self.recognition_handler.analysis()
                 if result:
-                    #logger.info(f"result : {type(result)}")
                     target_id, target_name, frame = result
                     self.send_images(frame)
                     self.send_data(target_id, target_name)
                     time.sleep(0.5)                    
                     if not self.resp.empty():
-                        logger.info(">>>>>>>>>>cam stop")
                         time.sleep(5)
-                        logger.info(">>>>>>>>>>>>>cam start")
                         resp = self.resp.get(timeout=1)
-                        logger.info(">>>>>>>>>>> get queue")
-
                 else :
                     logger.warning("No image returned from analysis")
                     continue
