@@ -17,28 +17,32 @@ class ServerThread(QThread):
 
         self.running = True
 
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as self.server_socket:
-            try:
-                if (self.server_socket.bind((self.client, self.server_port)) == -1):
-                    logger.error("Server socket bind() failed")
-                    self.server_socket.close()
-                    return
-            except Exception as e :
-                logger.error(f"Server socket bind() failed : {e}")
-                self.server_socket.close()
-                return
-            
-            if self.server_socket.listen() == -1:
-                logger.error(f"Server socket listen() failed")
-                return
-            
-            self.client_socket, self.addr = self.server_socket.accept()
-            with self.client_socket:
-                logger.info("Connection to AdminCUI is success")
+        try:
+            self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            self.server_socket.bind((self.client, self.server_port))
+            logger.error("Server socket has been connected")
 
+            self.server_socket.listen(5)
+            logger.info("Server socket is listening")
+
+        except Exception as e :
+            logger.error(f"Server socket setup failed : {e}")
+            self.server_socket.close()
+
+
+
+    def accept_connection(self):
+        try:
+            self.client_socket, self.addr = self.server_socket.accept()
+            logger.info("Waiting data from client")
+        except Exception as e:
+            logger.info(f"Error accepting connection: {e}")
 
     def run(self):
         while self.running:
+            self.accept_connection()
+
             data = self.client_socket.recv(1024).decode()
             #data = """[{"fruit_name": "Apple", "count": 1, "price": 1000}, {"fruit_name": "Peach", "count": 1, "price": 1000}]"""
             if data is None:

@@ -11,6 +11,8 @@ import sys
 import os
 import glob
 
+from commons import dir_utils
+from commons import socket_setups
 """NOTE-------------------------------------------------
 - DeepFace.find(
             ...
@@ -28,13 +30,8 @@ CAM_NUM = 0
 
 # Image directory path
 IMAGE_DIRECTORY_PATH = "data/face_samples/"
-#DATABASE_DRECTORY_PATH = "data/face_database/"
-DATABASE_DRECTORY_PATH = "customer_database/"
+DATABASE_DRECTORY_PATH = dir_utils.initialize_dir()
 VIDEO_DIRECTORY_PATH = "data/video/"
-
-SERVER_IP = '192.168.0.100'
-SERVER_PORT = 5001
-CAMERA_ID = "Face"
 # -----------------------------------------------------
 
 logging.basicConfig(
@@ -119,12 +116,12 @@ def main():
     name_queue = queue.Queue()
 
     recognition_thread = FaceRecognition(DATABASE_DRECTORY_PATH,name_queue)
-    tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, CAMERA_ID, name_queue)
+    #tcp_thread = TCPSender(SERVER_IP, SERVER_PORT, CAMERA_ID, name_queue)
 
     recognition_thread.start()
-    tcp_thread.start()
+    #tcp_thread.start()
 
-    tcp_thread.join()
+    #tcp_thread.join()
 
     logger.info("Application shutting down")
     cv2.destroyAllWindows()
