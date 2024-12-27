@@ -113,7 +113,9 @@
 <br>
 <br>
 <h2>Result</h2>
-
+도난 감지 시연
+[![](https://github.com/user-attachments/assets/1645025f-8c75-4282-85f8-90ef94556128)](https://drive.google.com/file/d/1hxNYVdpTDN0Uc29_bTjHsH5l4BxCmtps/view?usp=drive_link)<br>
+전체 시연 <br>
 [![](https://github.com/user-attachments/assets/1645025f-8c75-4282-85f8-90ef94556128)](https://drive.google.com/file/d/1CZWh5j1DVTlnfuzvYG3wjAkVxbPhNY45/view?usp=drive_link)
 
 <br>
