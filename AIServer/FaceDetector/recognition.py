@@ -27,12 +27,16 @@ TEXT_COLOR = (255, 255, 255)
 
 
 class RecognitionHandler():
-    def __init__(self, db_path, model_name, detector_backend, distance_metric, time_threshold):
-        self.db_path = db_path
+    def __init__(self, db_path, model_name, detector_backend, distance_metric, enable_face_analysis, anti_spoofing):
+        # modeling
         self.model_name = model_name
         self.detector_backend = detector_backend
         self.distance_metric = distance_metric
-        self.time_threshold = time_threshold
+        self.enable_face_analysis = enable_face_analysis
+        self.anti_spoofing = anti_spoofing
+
+        self.db_path = db_path
+        self.source = 0
         
         self.camera = None
         self.initialized = False
@@ -44,13 +48,15 @@ class RecognitionHandler():
         # status various
         self.freeze = False
         self.tic = time.time()
+        self.time_threshold = 3
+        self.frame_threshold = 5
         self.num_frames_with_faces = 0
         self.freezed_img = None        
 
         self.initialize()
 
     def initialize(self):
-        if not self.initialized:
+        if self.initialized:
             build_facial_recognition_model(model_name=self.model_name)
             logger.info("Model initialized successfully")
 
@@ -61,6 +67,7 @@ class RecognitionHandler():
                 model_name=self.model_name,
                 detector_backend=self.detector_backend,
                 distance_metric=self.distance_metric,
+                anti_spoofing=self.anti_spoofing
             )
             logger.info(f"Database embeddings created successfully: {self.db_path}")
             self.initialized = True
@@ -73,18 +80,8 @@ class RecognitionHandler():
             if not self.cap.isOpened():
                 raise RuntimeError("Failed to open camera")
 
-    def analysis(
-        self,
-        db_path: str,
-        model_name="VGG-Face",
-        detector_backend="opencv",
-        distance_metric="cosine",
-        enable_face_analysis=True,
-        source=0,
-        time_threshold=3,
-        frame_threshold=5,
-        anti_spoofing: bool = False,
-    ):
+    def analysis(self):
+        print(self.model_name, self.detector_backend, self.distance_metric, self.enable_face_analysis, self.anti_spoofing)
         while self.running:
             self.send_signal = False
             has_frame, img = self.cap.read()
@@ -97,27 +94,27 @@ class RecognitionHandler():
             faces_coordinates = []
             if self.freeze is False:
                 faces_coordinates = grab_facial_areas(
-                    img=img, detector_backend=detector_backend, anti_spoofing=anti_spoofing
+                    img=img, detector_backend=self.detector_backend, anti_spoofing=self.anti_spoofing
                 )
 
                 detected_faces = extract_facial_areas(img=img, faces_coordinates=faces_coordinates)
-                img = highlight_facial_areas(img=img, faces_coordinates=faces_coordinates)
+                img = highlight_facial_areas(img=img, faces_coordinates=faces_coordinates, anti_spoofing=self.anti_spoofing)
 
                 img = countdown_to_freeze(
                     img=img,
                     faces_coordinates=faces_coordinates,
-                    frame_threshold=frame_threshold,
+                    frame_threshold=self.frame_threshold,
                     num_frames_with_faces=self.num_frames_with_faces,
                 )
 
                 self.num_frames_with_faces = self.num_frames_with_faces + 1 if len(faces_coordinates) else 0
 
-                self.freeze = self.num_frames_with_faces > 0 and self.num_frames_with_faces % frame_threshold == 0
+                self.freeze = self.num_frames_with_faces > 0 and self.num_frames_with_faces % self.frame_threshold == 0
                 if self.freeze:
                     logger.info("Face detected. Starting facial recognition analysis")
                     # add analyze results into img - derive from raw_img
                     img = highlight_facial_areas(
-                        img=raw_img, faces_coordinates=faces_coordinates, anti_spoofing=anti_spoofing
+                        img=raw_img, faces_coordinates=faces_coordinates, anti_spoofing=self.anti_spoofing
                     )
 
                     # facial recogntion analysis
@@ -129,6 +126,7 @@ class RecognitionHandler():
                         detector_backend=self.detector_backend,
                         distance_metric=self.distance_metric,
                         model_name=self.model_name,
+                        anti_spoofing=self.anti_spoofing
                     )
 
                     #if self.target_id:
@@ -139,9 +137,9 @@ class RecognitionHandler():
 
                     # start counter for freezing
                     self.tic = time.time()
-                    logger.info("Image frozen for feedback (Freeze duration: %d seconds)", time_threshold)
+                    logger.info("Image frozen for feedback (Freeze duration: %d seconds)", self.time_threshold)
 
-            elif self.freeze is True and time.time() - self.tic > time_threshold:
+            elif self.freeze is True and time.time() - self.tic > self.time_threshold:
                 self.freeze = False
                 self.freezed_img = None
                 # reset counter for freezing
@@ -149,7 +147,7 @@ class RecognitionHandler():
                 self.send_signal = True
                 #logger.info("Resuming face detection")
 
-            self.freezed_img = countdown_to_release(img=self.freezed_img, tic=self.tic, time_threshold=time_threshold)
+            self.freezed_img = countdown_to_release(img=self.freezed_img, tic=self.tic, time_threshold=self.time_threshold)
 
             #cv2.imshow("img", img if self.freezed_img is None else self.freezed_img)
             #if cv2.waitKey(1) & 0xFF == ord("q"):  # press q to quit
@@ -182,6 +180,7 @@ def search_identity(
     model_name: str,
     detector_backend: str,
     distance_metric: str,
+    anti_spoofing : bool = False,
 ) -> Tuple[Optional[str], Optional[np.ndarray]]:
     target_path = None
     try:
@@ -192,8 +191,9 @@ def search_identity(
             detector_backend=detector_backend,
             distance_metric=distance_metric,
             enforce_detection=False,
-            threshold=18,
-            silent=True
+            #threshold=18,
+            silent=True,
+            anti_spoofing=anti_spoofing
         )
 
         #print(dfs)
@@ -357,6 +357,7 @@ def perform_facial_recognition(
     detector_backend: str,
     distance_metric: str,
     model_name: str,
+    anti_spoofing: bool = False,
 ) -> np.ndarray:
     for idx, (x, y, w, h, is_real, antispoof_score) in enumerate(faces_coordinates):
         detected_face = detected_faces[idx]
@@ -366,6 +367,7 @@ def perform_facial_recognition(
             detector_backend=detector_backend,
             distance_metric=distance_metric,
             model_name=model_name,
+            anti_spoofing=anti_spoofing
         )
         if target_label is None:
             continue

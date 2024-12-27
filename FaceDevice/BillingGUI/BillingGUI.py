@@ -65,16 +65,14 @@ class SigninWindowClass(QMainWindow, signinwindow):
             self.member_name = member["member_name"]
             if self.member_id != "Unknown":
                 self.SigninTextLable.setText(f"Hello, {self.member_name}!")
-                logger.info("UI update!!!!!!!!!!!!!!!!")
+                logger.info(f"Sign in : {self.member_id} {self.member_name}")
                 self.camera_thread.send()
                 self.client_thread.send(self.member_id, False)
                 QTest.qWait(3000)
-                logger.info(f"Sign in : {self.member_id} {self.member_name}")
-                
                 
             else:
                 self.SigninTextLable.setText(f"Unregistered user")
-                logger.info("UI Update")
+                logger.info("Uregistered user")
                 self.camera_thread.send()
                 QTest.qWait(3000)
                 self.SigninTextLable.setText(f"Show your face here")
